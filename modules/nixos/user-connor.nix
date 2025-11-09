@@ -1,0 +1,33 @@
+{
+  pkgs,
+  vars,
+  home-manager,
+  ...
+}:
+
+{
+  users.users.connor = {
+    isNormalUser = true;
+    description = "Connor Alecks";
+    shell = pkgs.fish;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+  };
+
+  home-manager.users.connor = import ../../hosts/${vars.host}/home.nix;
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
+  # Packages in here must support all architectures
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+    plezy
+  ];
+
+  time.timeZone = "Europe/Amsterdam";
+}
