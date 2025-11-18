@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "fix": {
+      "locked": {
+        "lastModified": 1759597357,
+        "narHash": "sha256-/d9aSty3qX7ac03rgE7tLbhW8K4ZVNQyE6fhiKZxpdo=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c8d4dabc4357a22d1c249a9363998bdb00122544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c8d4dabc4357a22d1c249a9363998bdb00122544",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "locked": {
         "lastModified": 1746162366,
@@ -75,6 +91,7 @@
     "root": {
       "inputs": {
         "apple-silicon": "apple-silicon",
+        "fix": "fix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
