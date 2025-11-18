@@ -11,7 +11,8 @@
   boot.initrd.systemd.enable = true;
 
   networking.networkmanager.enable = true;
-  
+  networking.hostName = "${vars.host}";
+
   nix.channel.enable = false;
   nix.settings.use-xdg-base-directories = true;
   nix.settings.auto-optimise-store = true;

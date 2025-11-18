@@ -9,8 +9,6 @@
     ../../modules/nixos/laptop.nix
   ];
   
-  networking.hostName = "le-nix";
-
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=lz4"

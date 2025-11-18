@@ -1,11 +1,11 @@
-{ flakeRoot, ... }:
+{ vars, ... }:
 
 {
   config = {
     programs.hyprpanel = {
       enable = true;
       settings = {
-        menus.dashboard.powermenu.avatar.image = "${flakeRoot}/pictures/profilePic-Leo.png";
+        menus.dashboard.powermenu.avatar.image = ../../pictures/profilePic-${vars.user}.png;
     theme = {
       font = {
         name = "JetBrainsMono Nerd Font";

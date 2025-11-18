@@ -1,17 +1,13 @@
 # The system setup for escapepod3 (leo-macbook)
 
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, vars, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/user-leo.nix
     ../../modules/nixos/de-hyprland.nix
     ../../modules/nixos/laptop.nix
   ];
-  
-  userLeo.hostDir = ./.;
-  networking.hostName = "escapepod3";
   
   fileSystems = {
     "/".options = [ "compress=zstd" ];
@@ -21,7 +17,7 @@
     "/var/log".options = [ "compress=zstd" ];
     "/var/cache".options = [ "noatime" ];
   };
-
+  
   services.gnome.gnome-keyring.enable = true;
   services.libinput.enable = true;
 
@@ -50,6 +46,7 @@
       fontSize = "9";
     })
   ];
-
+  
+  hardware.graphics.package = inputs.fix.legacyPackages.aarch64-linux.mesa;
   system.stateVersion = "25.11"; # NEVER CHANGE
 }

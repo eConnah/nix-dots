@@ -195,6 +195,8 @@
   bind = $mod, SPACE, exec, uwsm app -- $menu
   bind = $mod, F, fullscreen
   bind = $mod, B, exec, uwsm app -- $browser
+  bind = $mod, P, exec, uwsm app -- hyprshot -m output -m eDP-1 --clipboard-only
+  bind = $mod SHIFT, P, exec, uwsm app -- hyprshot -m output -m eDP-1 --clipboard-only -z
   
   # Move focus with mainMod + arrow keys
   bind = $mod, left, movefocus, l
