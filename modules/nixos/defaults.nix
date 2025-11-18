@@ -11,7 +11,9 @@
   boot.initrd.systemd.enable = true;
 
   networking.networkmanager.enable = true;
-
+  
+  nix.channel.enable = false;
+  nix.settings.use-xdg-base-directories = true;
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
