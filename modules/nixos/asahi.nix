@@ -1,6 +1,12 @@
 # A module to enable the asahi kernel and necessary settings
 
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 with lib;
 
@@ -43,7 +49,7 @@ in
 
   config = {
     nixpkgs.config.allowUnsupportedSystem = true;
-    
+
     nix.settings = {
       extra-substituters = [
         "https://nixos-apple-silicon.cachix.org"
@@ -54,9 +60,9 @@ in
     };
 
     boot.loader.efi.canTouchEfiVariables = false;
-    
+
     boot.extraModprobeConfig = cfg.extraModprobeConfig;
-    
+
     boot.loader.limine = {
       enable = true;
       extraConfig = cfg.limine.extraConfig;

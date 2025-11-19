@@ -16,7 +16,10 @@
   nix.channel.enable = false;
   nix.settings.use-xdg-base-directories = true;
   nix.settings.auto-optimise-store = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -36,7 +39,7 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-  
+
   programs.seahorse.enable = true;
   programs.firefox.enable = true;
   programs.fish.enable = true;

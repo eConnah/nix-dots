@@ -1,5 +1,5 @@
 # Home Manger Setup For Connor
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -9,7 +9,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     atool
     httpie
     vicinae
@@ -26,7 +26,7 @@
     hyprpicker
     eduvpn-client
   ];
-  
+
   programs.kitty.enable = true;
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -34,7 +34,7 @@
     enable = true;
     package = null;
     portalPackage = null;
-    extraConfig = import ./hyprland.nix; 
+    extraConfig = import ./hyprland.nix;
     systemd.enable = false;
   };
 

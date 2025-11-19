@@ -1,6 +1,11 @@
 # The system setup for le-nix (connor-macbook)
 
-{ inputs, lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -8,7 +13,7 @@
     ../../modules/nixos/de-hyprland.nix
     ../../modules/nixos/laptop.nix
   ];
-  
+
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=lz4"
@@ -17,16 +22,19 @@
   ];
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
-  
+
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/swap".options = [ "noatime" ];
     "/var/log".options = [ "compress=zstd" ];
     "/var/cache".options = [ "noatime" ];
   };
-  
+
   services.libinput.enable = true;
 
   # List packages installed in system profile.
@@ -43,11 +51,11 @@
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
-      font  = "Noto Sans";
+      font = "Noto Sans";
       fontSize = "9";
     })
   ];
-  
+
   hardware.graphics.package = inputs.fix.legacyPackages.aarch64-linux.mesa;
   system.stateVersion = "25.11"; # NEVER CHANGE
 }

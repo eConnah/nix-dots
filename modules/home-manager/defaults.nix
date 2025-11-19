@@ -18,10 +18,10 @@
       {
         plugin = oil-nvim;
         config = ''
-          packadd! oil.nvim
-          lua << EOF
-require("oil").setup()
-EOF
+                    packadd! oil.nvim
+                    lua << EOF
+          require("oil").setup()
+          EOF
         '';
       }
     ];

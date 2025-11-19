@@ -1,11 +1,19 @@
-{ pkgs, vars, home-manager, ... }:
+{
+  pkgs,
+  vars,
+  home-manager,
+  ...
+}:
 
 {
   users.users.leo = {
     isNormalUser = true;
     description = "Leo Chittock";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   home-manager.users.leo = import ../../hosts/${vars.host}/home.nix;
