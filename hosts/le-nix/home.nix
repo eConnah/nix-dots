@@ -24,10 +24,15 @@
     vscode
     hyprshot
     hyprpicker
+    libinput
     eduvpn-client
   ];
 
   programs.kitty.enable = true;
+  # this does not exist
+  #xdg.mimeApps = {
+  #  "x-scheme-handler/terminal" = "kitty.desktop";
+  #};
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
   wayland.windowManager.hyprland = {
