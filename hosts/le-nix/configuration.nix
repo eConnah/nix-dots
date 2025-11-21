@@ -48,6 +48,7 @@
     liblc3
     mpv
     plex-mpv-shim
+    jellyfin-mpv-shim
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
