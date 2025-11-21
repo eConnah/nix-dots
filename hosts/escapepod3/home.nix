@@ -40,10 +40,10 @@
 
   services.hypridle.enable = true;
   
-  #services.vicinae = {
-  #  enable = true;
-  #  autoStart = true;
-  #};
+  services.vicinae = {
+    enable = true;
+    autoStart = true;
+  };
 
   home.file.".config/hypr/hypridle.conf".source = ../../modules/home-manager/hypridle.conf;
   home.file.".config/hyprpanel/modules.json".source = ../../modules/home-manager/hyprpanel.json;
