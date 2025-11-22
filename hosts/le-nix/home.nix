@@ -9,7 +9,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
+  
   home.packages = with pkgs; [
     atool
     httpie
