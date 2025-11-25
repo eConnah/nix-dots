@@ -24,6 +24,11 @@
     enable = true;
     useRoutingFeatures = "client";
   };
-
+  
+  # Packages in here must support all architectures
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+  ];
+  
   time.timeZone = "Europe/Amsterdam";
 }
