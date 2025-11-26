@@ -1,12 +1,15 @@
 # Default options that everyone should use
 
-{ vars, pkgs, ... }:
+{ vars, pkgs, home-manager, ... }:
 
 {
   imports = [
     ../../hosts/${vars.host}/configuration.nix
     ./user-${vars.user}.nix
   ];
+  
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   boot.initrd.systemd.enable = true;
 
