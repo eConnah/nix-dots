@@ -21,6 +21,10 @@
     "zswap.shrinker_enabled=1"
   ];
 
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 70;
+  };
+
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
   fileSystems = {
