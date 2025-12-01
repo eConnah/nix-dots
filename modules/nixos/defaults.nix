@@ -72,5 +72,6 @@
     usbutils
     nixfmt-rfc-style
     fastfetch
+    sshfs
   ];
 }
