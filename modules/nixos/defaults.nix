@@ -64,6 +64,7 @@
     pavucontrol
     pulseaudio
     easyeffects
+    alsa-utils
     qpwgraph
     liblc3
     kitty
