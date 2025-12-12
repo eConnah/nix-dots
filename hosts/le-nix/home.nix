@@ -25,6 +25,7 @@
     libinput
     moonlight-qt
     eduvpn-client
+    gimp
   ];
 
   programs.kitty.enable = true;
