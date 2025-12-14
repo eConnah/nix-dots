@@ -278,4 +278,5 @@
     windowrule = float,class:steam
     windowrule = tile,class:steam,title:Steam
     windowrule = fullscreen, class:com.moonlight_stream.Moonlight
+    windowrule = renderunfocused, class:com.mojang.minecraft.java-edition
 ''
