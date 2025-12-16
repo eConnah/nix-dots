@@ -26,6 +26,7 @@
     moonlight-qt
     eduvpn-client
     gimp
+    psst
   ];
 
   programs.kitty.enable = true;
