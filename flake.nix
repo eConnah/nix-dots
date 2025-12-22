@@ -15,9 +15,6 @@
     };
     
     vicinae.url = "github:vicinaehq/vicinae"; # To use cache do NOT follow nixpkgs
-
-    # Temp Stuff Below
-    fix.url = "github:nixos/nixpkgs/c8d4dabc4357a22d1c249a9363998bdb00122544";
   };
 
   outputs =

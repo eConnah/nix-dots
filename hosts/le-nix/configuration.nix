@@ -61,6 +61,5 @@
     })
   ];
 
-  hardware.graphics.package = inputs.fix.legacyPackages.aarch64-linux.mesa;
   system.stateVersion = "25.11"; # NEVER CHANGE
 }
