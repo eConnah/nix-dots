@@ -12,7 +12,7 @@
     atool
     httpie
     vesktop
-    spotify-player
+    spotifyd
     waypaper
     hyprpaper
     hyprcursor
@@ -26,7 +26,6 @@
     moonlight-qt
     eduvpn-client
     gimp
-    psst
   ];
 
   programs.kitty.enable = true;
@@ -53,7 +52,6 @@
 
   home.file.".config/hypr/hypridle.conf".source = ../../modules/home-manager/hypridle.conf;
   home.file.".config/hyprpanel/modules.json".source = ../../modules/home-manager/hyprpanel.json;
-  home.file.".config/spotify-player/theme.toml".source = ../../modules/home-manager/spotify-player.toml;
 
   home.stateVersion = "25.05";
 }
