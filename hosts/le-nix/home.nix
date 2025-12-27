@@ -26,6 +26,7 @@
     moonlight-qt
     eduvpn-client
     gimp
+    zulu 
   ];
 
   programs.kitty.enable = true;
