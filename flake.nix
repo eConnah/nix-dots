@@ -24,13 +24,20 @@
       home-manager,
       ...
     }@inputs:
+    let
+  # Create a helper for the x86_64 package set
+  pkgs-x86 = import nixpkgs {
+    system = "x86_64-linux";
+    config.allowUnfree = true; # Useful if your x64 pkg is unfree
+  };
+in
     {
       nixosConfigurations = {
         # connor-macbook
         le-nix = nixpkgs.lib.nixosSystem rec {
           system = "aarch64-linux";
           specialArgs = {
-            inherit inputs;
+            inherit inputs pkgs-x86;
             vars = {
               user = "connor";
               host = "le-nix";

@@ -4,6 +4,7 @@
   inputs,
   lib,
   pkgs,
+  pkgs-x86,
   ...
 }:
 
@@ -53,6 +54,7 @@
     mpv
     plex-mpv-shim
     jellyfin-mpv-shim
+    pkgs-x86.mathematica
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
@@ -60,6 +62,9 @@
       fontSize = "9";
     })
   ];
+  
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+  nix.settings.extra-platforms = [ "x86_64-linux" ];
 
   system.stateVersion = "25.11"; # NEVER CHANGE
 }
