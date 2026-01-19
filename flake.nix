@@ -1,75 +1,38 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "Connors NixOS Flake";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko";
+    };
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      url = "github:hercules-ci/flake-parts";
+    };
     home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
+    impermanence = {
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:nix-community/impermanence";
     };
-    
-    vicinae.url = "github:vicinaehq/vicinae"; # To use cache do NOT follow nixpkgs
-
-    # Temp Stuff Below
-    fix.url = "github:nixos/nixpkgs/c8d4dabc4357a22d1c249a9363998bdb00122544";
+    import-tree.url = "github:vic/import-tree";
+    nixos-apple-silicon = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:tpwrules/nixos-apple-silicon";
+    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-lib.follows = "nixpkgs";
+    systems.url = "github:nix-systems/default";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        # connor-macbook
-        le-nix = nixpkgs.lib.nixosSystem rec {
-          system = "aarch64-linux";
-          specialArgs = {
-            inherit inputs;
-            vars = {
-              user = "connor";
-              host = "le-nix";
-              dir = "/home/connor/Documents/dotfiles";
-            };
-          };
-
-          modules = [
-            inputs.apple-silicon.nixosModules.default
-            ./modules/nixos/asahi.nix
-            ./modules/nixos/defaults.nix
-            home-manager.nixosModules.default
-            { home-manager.extraSpecialArgs = specialArgs; }
-          ];
-        };
-        # leo-macbook
-        escapepod3 = nixpkgs.lib.nixosSystem rec {
-          system = "aarch64-linux";
-          specialArgs = {
-            inherit inputs;
-            vars = {
-              user = "leo";
-              host = "escapepod3";
-              dir = "/home/leo/Documents/dotfiles";
-            };
-          };
-
-          modules = [
-            inputs.apple-silicon.nixosModules.default
-            ./modules/nixos/asahi.nix
-            ./modules/nixos/defaults.nix
-            home-manager.nixosModules.default
-            { home-manager.extraSpecialArgs = specialArgs; }
-          ];
-        };
-
-      };
-    };
 }
