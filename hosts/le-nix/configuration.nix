@@ -54,7 +54,6 @@
     mpv
     plex-mpv-shim
     jellyfin-mpv-shim
-    pkgs-x86.mathematica
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
