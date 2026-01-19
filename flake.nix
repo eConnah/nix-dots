@@ -32,7 +32,12 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-lib.follows = "nixpkgs";
+    nixvim = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+    };
     systems.url = "github:nix-systems/default";
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
 }
