@@ -29,6 +29,6 @@
       mpv
     ];
 
-    home-manager.users.connor = inputs.self.modules.homeManager.hyprland-config;
+    home-manager.users.connor = { imports = [inputs.self.modules.homeManager.hyprland-config inputs.self.modules.homeManager.program-vicinae ]; };
   };
 }
