@@ -9,6 +9,7 @@
       inputs.self.modules.nixos.le-nix-hardware
       inputs.self.modules.nixos.desktop-hyprland
       inputs.self.modules.nixos.tool-tailscale
+      inputs.self.modules.nixos.program-vicinae
     ];
 
     networking.hostName = "le-nix";

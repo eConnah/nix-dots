@@ -17,7 +17,7 @@
         };
       };
     };
-
+    
     home-manager.sharedModules = [
       inputs.self.modules.homeManager.desktop-hyprland
     ];

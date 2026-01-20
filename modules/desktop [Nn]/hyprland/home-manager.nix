@@ -8,5 +8,7 @@
       portalPackage = null;
       systemd.enable = false;
     };
+
+    programs.kitty.enable = true;
   };
 }
