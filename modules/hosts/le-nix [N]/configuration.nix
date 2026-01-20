@@ -1,6 +1,6 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
-  flake.modules.nixos.le-nix = {
+  flake.modules.nixos.le-nix = { pkgs, ... }: {
     imports = [
       inputs.self.modules.nixos.system-default
       inputs.self.modules.nixos.user-connor

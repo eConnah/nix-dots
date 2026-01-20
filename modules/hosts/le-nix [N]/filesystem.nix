@@ -18,6 +18,12 @@
       options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
 
+    fileSystems."/swap" = {
+      device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" "noatime" ];
+    };
+
     fileSystems."/boot" = { 
       device = "/dev/disk/by-uuid/7B05-1316";
       fsType = "vfat";
