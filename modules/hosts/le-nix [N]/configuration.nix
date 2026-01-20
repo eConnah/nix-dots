@@ -8,7 +8,8 @@
       inputs.self.modules.nixos.le-nix-filesystem 
       inputs.self.modules.nixos.le-nix-hardware
       inputs.self.modules.nixos.desktop-hyprland
-      inputs.self.modules.nixos.tool-tailscale 
+      inputs.self.modules.nixos.hyprland-config
+      inputs.self.modules.nixos.tool-tailscale
     ];
 
     networking.hostName = "le-nix";

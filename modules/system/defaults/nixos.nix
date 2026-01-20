@@ -1,7 +1,10 @@
 { inputs, ... }:
 {
   flake.modules.nixos.system-default = {
-    imports = [ inputs.self.modules.generic.system-default ];
+    imports = [
+      inputs.self.modules.generic.system-default
+      inputs.self.modules.bootloader-limine
+    ];
 
     services.pipewire = {
       enable = true;
