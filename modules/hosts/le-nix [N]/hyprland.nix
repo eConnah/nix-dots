@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  flake.modules.nixos.hyprland-config = {
+  flake.modules.homeManager.hyprland-config = {
     wayland.windowManager.hyprland = {
       enable = true;
       

@@ -28,8 +28,6 @@
       mpv
     ];
 
-    home-manager.users.connor = [
-      inputs.self.modules.nixos.hyprland-config
-    ];
+    home-manager.users.connor = inputs.self.modules.homeManager.hyprland-config;
   };
 }
