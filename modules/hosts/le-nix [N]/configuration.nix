@@ -8,7 +8,6 @@
       inputs.self.modules.nixos.le-nix-filesystem 
       inputs.self.modules.nixos.le-nix-hardware
       inputs.self.modules.nixos.desktop-hyprland
-      inputs.self.modules.nixos.hyprland-config
       inputs.self.modules.nixos.tool-tailscale
     ];
 
@@ -27,6 +26,10 @@
       brightnessctl
       liblc3
       mpv
+    ];
+
+    home-manager.users.connor = [
+      inputs.self.modules.nixos.hyprland-config
     ];
   };
 }
