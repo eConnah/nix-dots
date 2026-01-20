@@ -1,10 +1,6 @@
 { inputs, pkgs, ... }:
 {
   flake.modules.homeManager.user-connor = { pkgs, ... }: {
-    imports = [
-      inputs.vicinae.homeManagerModules.default
-    ];
-
     home.packages = with pkgs; [
       atool
       httpie
