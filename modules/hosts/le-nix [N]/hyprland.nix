@@ -3,7 +3,9 @@
   flake.modules.homeManager.hyprland-config = {
     wayland.windowManager.hyprland = {
       enable = true;
-      
+      package = null;
+      portalPackage = null;
+
       settings = {
         "$mod" = "SUPER";
         "$terminal" = "kitty";
@@ -112,13 +114,15 @@
         };
 
         windowrule = [
-          "suppressevent maximize, class:.*"
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-          "float,class:steam"
-          "tile,class:steam,title:Steam"
-          "fullscreen, class:com.moonlight_stream.Moonlight"
-          "renderunfocused, class:com.mojang.minecraft.java-edition"
+          "match:class .*, suppress_event maximize"
+	  "match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen false, match:pin false, no_focus true"
+          "match:class hyprland-run, move 20 monitor_h-120, float yes"
+          "match:class com.mojang.minecraft.java-edition, render_unfocused on"
         ];
+	
+	layerrule = [
+	  "blur on, ignore_alpha 0, match:namespace vicinae"
+	];
 
         bindm = [
           "$mod, mouse:272, movewindow"
