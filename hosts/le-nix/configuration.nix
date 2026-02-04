@@ -54,6 +54,7 @@
     mpv
     plex-mpv-shim
     jellyfin-mpv-shim
+    obsidian
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
