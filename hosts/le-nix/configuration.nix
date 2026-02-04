@@ -41,6 +41,11 @@
   };
 
   services.libinput.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
