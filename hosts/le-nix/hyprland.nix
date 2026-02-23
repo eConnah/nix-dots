@@ -266,17 +266,64 @@
     # See https://wiki.hypr.land/Configuring/Window-Rules/ for more
     # See https://wiki.hypr.land/Configuring/Workspace-Rules/ for workspace rules
     
-    # Example windowrule
-    # windowrule = float,class:^(kitty)$,title:^(kitty)$
-    
-    # Ignore maximize requests from apps. You'll probably like this.
-    windowrule = suppressevent maximize, class:.*
-    
+windowrule {
+    # Ignore maximize requests from all apps. You'll probably like this.
+    name = suppress-maximize-events
+    match:class = .*
+
+    suppress_event = maximize
+}
+
+windowrule {
     # Fix some dragging issues with XWayland
+<<<<<<< Updated upstream
     windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
     
     windowrule = float,class:steam
     windowrule = tile,class:steam,title:Steam
     windowrule = fullscreen, class:com.moonlight_stream.Moonlight
     windowrule = renderunfocused, class:com.mojang.minecraft.java-edition
+=======
+    name = fix-xwayland-drags
+    match:class = ^$
+    match:title = ^$
+    match:xwayland = true
+    match:float = true
+    match:fullscreen = false
+    match:pin = false
+
+    no_focus = true
+}
+
+# Hyprland-run windowrule
+windowrule {
+    name = move-hyprland-run
+
+    match:class = hyprland-run
+
+    move = 20 monitor_h-120
+    float = yes
+}
+
+layerrule {
+    name = vicinae-1
+    blur = on
+    ignore_alpha = 0
+    match:namespace = vicinae
+}
+
+# disable animation for vicinae only
+layerrule {
+    name = vicinae-2
+    no_anim = on
+    match:namespace = vicinae
+}
+
+windowrule {
+     name = moonlight
+     fullscreen = yes
+     match:class = com.moonlight_stream.Moonlight
+}
+
+>>>>>>> Stashed changes
 ''
