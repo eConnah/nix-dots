@@ -275,7 +275,6 @@
 }
 
 windowrule {
-    # Fix some dragging issues with XWayland
     name = fix-xwayland-drags
     match:class = ^$
     match:title = ^$
@@ -296,4 +295,25 @@ windowrule {
     move = 20 monitor_h-120
     float = yes
 }
+
+layerrule {
+    name = vicinae-1
+    blur = on
+    ignore_alpha = 0
+    match:namespace = vicinae
+}
+
+# disable animation for vicinae only
+layerrule {
+    name = vicinae-2
+    no_anim = on
+    match:namespace = vicinae
+}
+
+windowrule {
+     name = moonlight
+     fullscreen = yes
+     match:class = com.moonlight_stream.Moonlight
+}
+
 ''
