@@ -4,8 +4,9 @@
     { lib, ... }:
     {
       imports = [
-        self.nixosModules.defaults
+        self.nixosModules.laptops
       ];
       boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
+      services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
     };
 }
