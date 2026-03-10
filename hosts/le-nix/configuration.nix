@@ -61,6 +61,7 @@
     jellyfin-mpv-shim
     obsidian
     asahi-bless
+    jetbrains.idea
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
