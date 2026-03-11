@@ -62,6 +62,7 @@
     obsidian
     asahi-bless
     jetbrains.idea
+    signal-desktop
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
