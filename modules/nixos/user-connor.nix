@@ -18,8 +18,6 @@
 
   home-manager.users.connor = import ../../hosts/${vars.host}/home.nix;
 
-  services.displayManager.autoLogin.user = "connor";
-
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";

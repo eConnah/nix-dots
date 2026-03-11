@@ -30,13 +30,6 @@
   services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  services.displayManager = {
-    autoLogin.enable = true;
-    sddm.enable = true;
-    sddm.theme = "catppuccin-mocha-mauve";
-    sddm.wayland.enable = true;
-  };
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -71,9 +64,10 @@
     wget
     p7zip
     usbutils
-    nixfmt-rfc-style
+    nixfmt
     fastfetch
     sshfs
     cryptsetup
+    uwsm
   ];
 }
