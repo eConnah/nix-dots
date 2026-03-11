@@ -69,5 +69,6 @@
     sshfs
     cryptsetup
     uwsm
+    tree
   ];
 }
