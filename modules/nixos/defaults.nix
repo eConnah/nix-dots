@@ -12,6 +12,8 @@
   home-manager.useUserPackages = true;
 
   boot.initrd.systemd.enable = true;
+  
+  nix.settings.trusted-users = [ "root" "@wheel" ]; 
 
   networking.networkmanager.enable = true;
   networking.hostName = "${vars.host}";
