@@ -68,6 +68,10 @@
     
         layout = dwindle
     }
+
+    xwayland {
+        force_zero_scaling = true
+    }
     
     # https://wiki.hypr.land/Configuring/Variables/#decoration
     decoration {
