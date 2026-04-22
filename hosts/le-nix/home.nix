@@ -1,5 +1,10 @@
 # Home Manger Setup For le-nix
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -26,7 +31,7 @@
     moonlight-qt
     eduvpn-client
     gimp
-    zulu 
+    zulu
   ];
 
   programs.kitty.enable = true;
@@ -48,7 +53,6 @@
     enable = true;
     systemd.enable = true;
   };
-
 
   home.file.".config/hyprpanel/modules.json".source = ../../modules/home-manager/hyprpanel.json;
 

@@ -46,6 +46,12 @@
     enableSSHSupport = true;
   };
 
+  hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
+    name = "asahi";
+    hashMode = "recursive";
+    hash = "sha256-jZ1nHCLnncRIMkoveGRspuhT9dVPchPmOvKXshihN4U=";
+    message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/asahi' to add the firmware.";
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -72,7 +78,7 @@
       fontSize = "9";
     })
   ];
-  
+
   boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
   nix.settings.extra-platforms = [ "x86_64-linux" ];
 

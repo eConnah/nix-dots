@@ -47,7 +47,7 @@
     setlocal shiftwidth=2
     setlocal softtabstop=2
   '';
-  
+
   # Detection: Tell Neovim that .rtl files are the "rtl" filetype
   home.file.".config/nvim/ftdetect/rtl.vim".text = ''
     autocmd BufRead,BufNewFile *.rtl set filetype=rtl

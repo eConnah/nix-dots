@@ -13,7 +13,7 @@
       url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     vicinae.url = "github:vicinaehq/vicinae"; # To use cache do NOT follow nixpkgs
   };
 
@@ -25,12 +25,12 @@
       ...
     }@inputs:
     let
-  # Create a helper for the x86_64 package set
-  pkgs-x86 = import nixpkgs {
-    system = "x86_64-linux";
-    config.allowUnfree = true; # Useful if your x64 pkg is unfree
-  };
-in
+      # Create a helper for the x86_64 package set
+      pkgs-x86 = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true; # Useful if your x64 pkg is unfree
+      };
+    in
     {
       nixosConfigurations = {
         # connor-macbook

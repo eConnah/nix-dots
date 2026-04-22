@@ -1,5 +1,10 @@
 # Home-Manger setup for escapepod3
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -37,7 +42,7 @@
   };
 
   services.hypridle.enable = true;
-  
+
   services.vicinae = {
     enable = true;
     autoStart = true;

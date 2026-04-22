@@ -1,19 +1,27 @@
 # Default options that everyone should use
 
-{ vars, pkgs, home-manager, ... }:
+{
+  vars,
+  pkgs,
+  home-manager,
+  ...
+}:
 
 {
   imports = [
     ../../hosts/${vars.host}/configuration.nix
     ./user-${vars.user}.nix
   ];
-  
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   boot.initrd.systemd.enable = true;
-  
-  nix.settings.trusted-users = [ "root" "@wheel" ]; 
+
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   networking.networkmanager.enable = true;
   networking.hostName = "${vars.host}";
@@ -25,7 +33,7 @@
     "nix-command"
     "flakes"
   ];
-  
+
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -51,7 +59,7 @@
   programs.gamemode.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
-  
+
   nix.settings = {
     extra-substituters = [
       "https://vicinae.cachix.org"
@@ -60,7 +68,7 @@
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
     ];
   };
-  
+
   environment.systemPackages = with pkgs; [
     eza
     pavucontrol
