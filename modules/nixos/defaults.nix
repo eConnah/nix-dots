@@ -23,7 +23,21 @@
     "@wheel"
   ];
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+
+    wireless = {
+      enable = false;
+      iwd = {
+        enable = true;
+        settings.Settings.AutoConnect = true;
+      };
+    };
+  };
+
   networking.hostName = "${vars.host}";
 
   nix.channel.enable = false;
