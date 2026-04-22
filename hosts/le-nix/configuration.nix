@@ -63,6 +63,7 @@
     asahi-bless
     jetbrains.idea
     signal-desktop
+    halloy
     (chromium.override { enableWideVine = true; })
     (catppuccin-sddm.override {
       flavor = "mocha";
