@@ -70,6 +70,7 @@
     jetbrains.idea
     signal-desktop
     halloy
+    wl-clipboard
     (chromium.override { enableWideVine = true; })
     (catppuccin-sddm.override {
       flavor = "mocha";
