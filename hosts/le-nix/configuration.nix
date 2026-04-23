@@ -63,8 +63,6 @@
     e2fsprogs
     liblc3
     mpv
-    plex-mpv-shim
-    jellyfin-mpv-shim
     obsidian
     asahi-bless
     jetbrains.idea

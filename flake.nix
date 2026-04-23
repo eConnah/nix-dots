@@ -2,7 +2,7 @@
   description = "Connors NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/e6240b52943206151249ad88ba3bc8c3e497228a";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";

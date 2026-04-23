@@ -26,6 +26,7 @@
   # Packages in here must support all architectures
   environment.systemPackages = with pkgs; [
     prismlauncher
+    plezy
   ];
 
   time.timeZone = "Europe/Amsterdam";
