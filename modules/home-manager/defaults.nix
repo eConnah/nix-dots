@@ -34,6 +34,8 @@
     '';
   };
 
+  fonts.fontconfig.enable = true;
+
   home.file.".config/nvim/ftplugin/python.vim".text = ''
     setlocal expandtab
     setlocal tabstop=4

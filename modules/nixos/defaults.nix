@@ -17,7 +17,7 @@
   home-manager.useUserPackages = true;
 
   boot.initrd.systemd.enable = true;
-
+  
   nix.settings.trusted-users = [
     "root"
     "@wheel"
@@ -36,6 +36,29 @@
         settings.Settings.AutoConnect = true;
       };
     };
+  };
+
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [ "Roboto" ];
+        monospace = [ "Roboto Mono" ];
+      };
+    };
+
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      liberation_ttf
+      roboto
+      ubuntu-classic
+      nerd-fonts.jetbrains-mono
+    ];
+
+    enableDefaultPackages = true;
+    fontDir.enable = true;
   };
 
   networking.hostName = "${vars.host}";
