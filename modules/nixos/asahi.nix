@@ -69,6 +69,23 @@ in
       style.wallpapers = cfg.limine.wallpapers;
     };
 
+    hardware.graphics = {
+      enable = true;
+      package = pkgs.mesa.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [
+          (pkgs.fetchpatch {
+            name = "revert-asahi-fragment-breakage.patch";
+            # We point to the commit that CAUSED the bug...
+            url = "https://gitlab.freedesktop.org/mesa/mesa/-/commit/7745b469.patch";
+            # ...and tell Nix to explicitly REVERT it!
+            revert = true;
+            # Put a fake hash here first. Nix will error out and give you the real one.
+            hash = "sha256-NURrUn1BTrNOI9UXYapCioDRH6pa4bSKo3sP0vu8HxU=";
+          })
+        ];
+      });
+    };
+
     virtualisation = {
       # Docker stuff
       docker = {
