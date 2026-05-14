@@ -111,11 +111,13 @@
         matugen
         (mpv.override { youtubeSupport = false; })
         nixfmt
+        nixfmt-tree
         p7zip
         pavucontrol
         pulseaudio
         qpwgraph
         sshfs
+        tree
         usbutils
         wget
         wl-clipboard
