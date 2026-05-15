@@ -16,25 +16,32 @@
   };
 
   flake.nixosModules.lenixHome =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
+
+        sharedModules = [
+          self.homeModules.defaults
+          self.homeModules.neovim
+        ];
+
+        users.connor = {
+          imports = [
+            self.homeModules.lenixHypr
+            self.homeModules.lenixPanel
+            self.homeModules.swaybg
+          ];
+
+          home.packages = with pkgs; [
+            #(plezy.override { use16kPagesizeWorkaround = true; })
+            moonlight-qt
+          ];
+        };
       };
-
-      home-manager.users.connor.imports = [
-        self.homeModules.lenixHypr
-        self.homeModules.lenixPanel
-        self.homeModules.swaybg
-      ];
-
-      home-manager.sharedModules = [
-        self.homeModules.defaults
-        self.homeModules.neovim
-      ];
     };
 
   flake.nixosModules.lenixConfig =
