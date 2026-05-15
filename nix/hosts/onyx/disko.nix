@@ -75,5 +75,33 @@
           };
         };
       };
+
+      disko.devices.disk.hdd = {
+        device = "/dev/disk/by-id/ata-ST2000LM015-2E8174_ZDZQ7T41";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            storage = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+
+                subvolumes = {
+                  "/data" = {
+                    mountOptions = [
+                      "subvol=data"
+                      "compress=zstd:3"
+                      "noatime"
+                    ];
+                    mountpoint = "/data";
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
     };
 }
