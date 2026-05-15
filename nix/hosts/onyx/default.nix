@@ -17,24 +17,30 @@
   };
 
   flake.nixosModules.onyxHome =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
+
+        sharedModules = [
+          self.homeModules.defaults
+          self.homeModules.neovim
+        ];
+
+        users.connor = {
+          imports = [
+            self.homeModules.onyxHypr
+            self.homeModules.swaybg
+          ];
+
+          home.packages = with pkgs; [
+            plezy
+          ];
+        };
       };
-
-      home-manager.users.connor.imports = [
-        self.homeModules.onyxHypr
-        self.homeModules.swaybg
-      ];
-
-      home-manager.sharedModules = [
-        self.homeModules.defaults
-        self.homeModules.neovim
-      ];
     };
 
   flake.nixosModules.onyxConfig =

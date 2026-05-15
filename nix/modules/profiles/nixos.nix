@@ -92,6 +92,7 @@
       };
 
       environment.systemPackages = with pkgs; [
+        (mpv.override { youtubeSupport = false; })
         alsa-utils
         atool
         cryptsetup
@@ -109,13 +110,13 @@
         liblc3
         liblc3
         matugen
-        (mpv.override { youtubeSupport = false; })
         nixfmt
         p7zip
         pavucontrol
         pulseaudio
         qpwgraph
         sshfs
+        tree
         usbutils
         wget
         wl-clipboard
