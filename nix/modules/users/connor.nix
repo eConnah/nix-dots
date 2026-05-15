@@ -41,9 +41,7 @@
         hyprshot
         jetbrains.idea
         libreoffice
-        moonlight-qt
         obsidian
-        plezy
         prismlauncher
         rose-pine-hyprcursor
         signal-desktop
