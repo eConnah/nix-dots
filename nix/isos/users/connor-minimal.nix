@@ -1,9 +1,9 @@
 { inputs, self, ... }:
 {
-  flake.nixosModules.connor =
+  flake.nixosModules.connorMinimal =
     { pkgs, ... }:
     {
-      home-manager.users.connor = self.homeModules.connor;
+      home-manager.users.connor = self.homeModules.connorMinimal;
 
       users.users.connor = {
         description = "Connor Alecks";
@@ -26,29 +26,11 @@
       time.timeZone = "Europe/Amsterdam";
     };
 
-  flake.homeModules.connor =
+  flake.homeModules.connorMinimal =
     { pkgs, ... }:
     {
-      imports = [ self.homeModules.vicinae ];
       home.username = "connor";
-      home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/connor" else "/home/connor";
+      home.homeDirectory = "/home/connor";
       home.stateVersion = "25.05";
-
-      home.packages = with pkgs; [
-        (chromium.override { enableWideVine = true; })
-        halloy
-        hyprcursor
-        hyprpicker
-        hyprshot
-        jetbrains.idea
-        libreoffice
-        obsidian
-        prismlauncher
-        rose-pine-hyprcursor
-        signal-desktop
-        spotifyd
-        vesktop
-        vscode
-      ];
     };
 }
