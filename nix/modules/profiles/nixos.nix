@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 {
   flake.nixosModules.defaults =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       imports = [
         self.nixosModules.substituters
@@ -39,7 +39,7 @@
         clean.extraArgs = "--keep-since 4d --keep 10";
       };
 
-      services.flatpak.enable = true;
+      services.flatpak.enable = lib.mkDefault true;
       services.gnome.gnome-keyring.enable = true;
       services.libinput.enable = true;
       services.openssh.enable = true;
@@ -88,6 +88,13 @@
         podman = {
           enable = true;
           dockerCompat = true;
+        };
+
+        # when I want to build a system vm
+        vmVariant = {
+          virtualisation.memorySize = 10240;
+          virtualisation.cores = 4;
+          boot.kernelParams = [ "video=2560x1440@240" ];
         };
       };
 

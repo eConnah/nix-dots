@@ -47,7 +47,27 @@
     { pkgs, ... }:
     {
       networking.hostName = "onyx";
-      users.users.connor.initialPassword = "password";
+
+      networking.useDHCP = false;
+      networking.networkmanager.enable = false;
+
+      systemd.network = {
+        enable = true;
+        networks."10-ethernet" = {
+          matchConfig.Name = "en*";
+          networkConfig = {
+            DHCP = "ipv4";
+            IPv6AcceptRA = false;
+          };
+          linkConfig = {
+            RequiredForOnline = "routable";
+          };
+        };
+      };
+
+      services.resolved = {
+        enable = true;
+      };
 
       zramSwap = {
         enable = true;
