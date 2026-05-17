@@ -7,7 +7,6 @@
 
       users.users.connor = {
         description = "Connor Alecks";
-        initialPassword = "PineappleOnPizza";
         isNormalUser = true;
         shell = pkgs.fish;
         extraGroups = [
@@ -23,6 +22,15 @@
         useRoutingFeatures = "client";
       };
 
+      # yubikey stuff
+      services.pcscd.enable = true;
+      services.udev.packages = with pkgs; [
+        yubikey-personalization
+      ];
+      environment.systemPackages = with pkgs; [
+        yubikey-manager
+      ];
+
       time.timeZone = "Europe/Amsterdam";
     };
 
@@ -34,8 +42,38 @@
       home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/connor" else "/home/connor";
       home.stateVersion = "25.05";
 
+      # yubikey git setup
+      programs.git = {
+        enable = true;
+        settings = {
+          user = {
+            name = "Connor Alecks";
+            email = "git@econnah.uk";
+            signingkey = "~/.ssh/id_ed25519_sk.pub";
+          };
+
+          gpg = {
+            format = "ssh";
+          };
+          pull = {
+            ff = "only";
+          };
+          init = {
+            defaultBranch = "main";
+          };
+          diff = {
+            tool = "vimdiff";
+          };
+          core = {
+            editor = "nvim";
+          };
+          push = {
+            autoSetupRemote = true;
+          };
+        };
+      };
+
       home.packages = with pkgs; [
-        (chromium.override { enableWideVine = true; })
         halloy
         hyprcursor
         hyprpicker

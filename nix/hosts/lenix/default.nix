@@ -38,6 +38,7 @@
 
           home.packages = with pkgs; [
             #(plezy.override { use16kPagesizeWorkaround = true; })
+            (chromium.override { enableWideVine = true; })
             moonlight-qt
           ];
         };

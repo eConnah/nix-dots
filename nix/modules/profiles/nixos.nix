@@ -42,8 +42,13 @@
       services.flatpak.enable = lib.mkDefault true;
       services.gnome.gnome-keyring.enable = true;
       services.libinput.enable = true;
-      services.openssh.enable = true;
 
+      services.openssh = {
+        enable = true;
+        settings = {
+          PermitRootLogin = "no";
+        };
+      };
       services.pipewire = {
         enable = true;
         pulse.enable = true;

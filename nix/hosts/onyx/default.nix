@@ -77,6 +77,11 @@
       # NH root
       programs.nh.flake = "/persistent/dotfiles";
 
+      users = {
+        mutableUsers = false;
+        users.connor.hashedPasswordFile = "/persistent/passwords/connor";
+      };
+
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
 }

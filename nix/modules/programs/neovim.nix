@@ -9,12 +9,15 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
+        withRuby = false;
+        withPython3 = false;
         plugins = with pkgs.vimPlugins; [
           diffview-nvim
           neogit
           catppuccin-nvim
           {
             plugin = oil-nvim;
+            type = "lua";
             config = ''
                         packadd! oil.nvim
                         lua << EOF
