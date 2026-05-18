@@ -44,14 +44,16 @@
 
       # yubikey git setup
       programs.git = {
-        enable = true;
         settings = {
           user = {
             name = "Connor Alecks";
             email = "git@econnah.uk";
-            signingkey = "~/.ssh/id_ed25519_sk.pub";
+            signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
           };
 
+          commit = {
+            gpgSign = true;
+          };
           gpg = {
             format = "ssh";
           };
@@ -69,6 +71,17 @@
           };
           push = {
             autoSetupRemote = true;
+          };
+        };
+      };
+
+      programs.ssh = {
+        enableDefaultConfig = false;
+        matchBlocks = {
+          "github.com" = {
+            user = "git";
+            identityFile = "~/.ssh/id_ed25519_sk_rk";
+            identitiesOnly = true;
           };
         };
       };
