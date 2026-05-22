@@ -37,8 +37,12 @@
           ];
 
           home.packages = with pkgs; [
+            efibootmgr
             plezy
+            spotify
           ];
+
+          theme.wallpaper = "86-01.png";
         };
       };
     };
@@ -76,6 +80,31 @@
 
       # NH root
       programs.nh.flake = "/persistent/dotfiles";
+
+      users = {
+        mutableUsers = false;
+        users.connor.hashedPasswordFile = "/persistent/passwords/connor";
+      };
+
+      programs.gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
+      programs.steam = {
+        enable = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
+      };
+
+      services.pipewire.extraConfig.pipewire."92-custom-quantum" = {
+        "context.properties" = {
+          "default.clock.rate" = 48000;
+          "default.clock.quantum" = 512;
+          "default.clock.min-quantum" = 512;
+          "default.clock.max-quantum" = 8192;
+        };
+      };
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

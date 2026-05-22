@@ -48,7 +48,6 @@
         # Or execute your favorite apps at launch like this:
 
         exec-once = xrandr --output DP-1 --primary
-        exec-once = easyeffects --gapplication-service
 
         #############################
         ### ENVIRONMENT VARIABLES ###
@@ -208,68 +207,67 @@
         ###################
 
         # See https://wiki.hypr.land/Configuring/Keywords/
-        $mainMod = SUPER # Sets "Windows" key as main modifier
+        $mod = SUPER # Sets "Windows" key as main modifier
 
         # Example binds, see https://wiki.hypr.land/Configuring/Binds/ for more
-        bind = $mainMod, T, exec, $terminal
-        bind = $mainMod, Q, killactive,
-        bind = $mainMod, E, exec, $fileManager
-        bind = $mainMod, V, togglefloating,
-        bind = $mainMod, SPACE, exec, $menu
-        bind = $mainMod, F, fullscreen
-        bind = $mainMod, B, exec, $browser
-        bind = $mainMod SHIFT, P, exec, grim -g "$(slurp)" - | swappy -f -
-        bind = $mainMod, P, exec, ~/Documents/Scripts/SSFreeze.sh
-
+        bind = $mod, T, exec, uwsm app -- $terminal
+        bind = $mod, Q, killactive,
+        bind = $mod, M, exit,
+        bind = $mod, V, togglefloating,
+        bind = $mod, SPACE, exec, uwsm app -- $menu
+        bind = $mod, F, fullscreen
+        bind = $mod, B, exec, uwsm app -- $browser
+        bind = $mod, P, exec, uwsm app -- hyprshot -m region --clipboard-only
+        bind = $mod SHIFT, P, exec, uwsm app -- hyprshot -m region --clipboard-only -z
 
         # Move focus with mainMod + arrow keys
-        bind = $mainMod, left, movefocus, l
-        bind = $mainMod, right, movefocus, r
-        bind = $mainMod, up, movefocus, u
-        bind = $mainMod, down, movefocus, d
+        bind = $mod, left, movefocus, l
+        bind = $mod, right, movefocus, r
+        bind = $mod, up, movefocus, u
+        bind = $mod, down, movefocus, d
 
         # Move window with mainMod + arrow keys
-        bind = $mainMod SHIFT, left, movewindow, l
-        bind = $mainMod SHIFT, right, movewindow, r
-        bind = $mainMod SHIFT, up, movewindow, u
-        bind = $mainMod SHIFT, down, movewindow, d
+        bind = $mod SHIFT, left, movewindow, l
+        bind = $mod SHIFT, right, movewindow, r
+        bind = $mod SHIFT, up, movewindow, u
+        bind = $mod SHIFT, down, movewindow, d
 
 
         # Switch workspaces with mainMod + [0-9]
-        bind = $mainMod, 1, workspace, 1
-        bind = $mainMod, 2, workspace, 2
-        bind = $mainMod, 3, workspace, 3
-        bind = $mainMod, 4, workspace, 4
-        bind = $mainMod, 5, workspace, 5
-        bind = $mainMod, 6, workspace, 6
-        bind = $mainMod, 7, workspace, 7
-        bind = $mainMod, 8, workspace, 8
-        bind = $mainMod, 9, workspace, 9
-        bind = $mainMod, 0, workspace, 10
+        bind = $mod, 1, workspace, 1
+        bind = $mod, 2, workspace, 2
+        bind = $mod, 3, workspace, 3
+        bind = $mod, 4, workspace, 4
+        bind = $mod, 5, workspace, 5
+        bind = $mod, 6, workspace, 6
+        bind = $mod, 7, workspace, 7
+        bind = $mod, 8, workspace, 8
+        bind = $mod, 9, workspace, 9
+        bind = $mod, 0, workspace, 10
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        bind = $mainMod SHIFT, 1, movetoworkspace, 1
-        bind = $mainMod SHIFT, 2, movetoworkspace, 2
-        bind = $mainMod SHIFT, 3, movetoworkspace, 3
-        bind = $mainMod SHIFT, 4, movetoworkspace, 4
-        bind = $mainMod SHIFT, 5, movetoworkspace, 5
-        bind = $mainMod SHIFT, 6, movetoworkspace, 6
-        bind = $mainMod SHIFT, 7, movetoworkspace, 7
-        bind = $mainMod SHIFT, 8, movetoworkspace, 8
-        bind = $mainMod SHIFT, 9, movetoworkspace, 9
-        bind = $mainMod SHIFT, 0, movetoworkspace, 10
+        bind = $mod SHIFT, 1, movetoworkspace, 1
+        bind = $mod SHIFT, 2, movetoworkspace, 2
+        bind = $mod SHIFT, 3, movetoworkspace, 3
+        bind = $mod SHIFT, 4, movetoworkspace, 4
+        bind = $mod SHIFT, 5, movetoworkspace, 5
+        bind = $mod SHIFT, 6, movetoworkspace, 6
+        bind = $mod SHIFT, 7, movetoworkspace, 7
+        bind = $mod SHIFT, 8, movetoworkspace, 8
+        bind = $mod SHIFT, 9, movetoworkspace, 9
+        bind = $mod SHIFT, 0, movetoworkspace, 10
 
         # Example special workspace (scratchpad)
-        bind = $mainMod, S, togglespecialworkspace, magic
-        bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+        bind = $mod, S, togglespecialworkspace, magic
+        bind = $mod SHIFT, S, movetoworkspace, special:magic
 
         # Scroll through existing workspaces with mainMod + scroll
-        bind = $mainMod, mouse_down, workspace, e+1
-        bind = $mainMod, mouse_up, workspace, e-1
+        bind = $mod, mouse_down, workspace, e+1
+        bind = $mod, mouse_up, workspace, e-1
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
-        bindm = $mainMod, mouse:272, movewindow
-        bindm = $mainMod, mouse:273, resizewindow
+        bindm = $mod, mouse:272, movewindow
+        bindm = $mod, mouse:273, resizewindow
 
         # Laptop multimedia keys for volume and LCD brightness
         bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+

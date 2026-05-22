@@ -22,6 +22,7 @@
         "@wheel"
       ];
 
+      programs.dconf.enable = true;
       programs.firefox.enable = true;
       programs.fish.enable = true;
       programs.gamemode.enable = true;
@@ -42,13 +43,20 @@
       services.flatpak.enable = lib.mkDefault true;
       services.gnome.gnome-keyring.enable = true;
       services.libinput.enable = true;
-      services.openssh.enable = true;
 
+      services.openssh = {
+        enable = true;
+        settings = {
+          PermitRootLogin = "no";
+        };
+      };
       services.pipewire = {
         enable = true;
         pulse.enable = true;
         wireplumber.enable = true;
       };
+
+      security.rtkit.enable = true;
 
       fonts = {
         fontconfig = {
@@ -105,7 +113,6 @@
         cryptsetup
         distrobox
         e2fsprogs
-        easyeffects
         eza
         fastfetch
         gh
