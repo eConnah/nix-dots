@@ -41,6 +41,8 @@
         signal-desktop
         vesktop
         vscode
+        eduvpn-client
+        jetbrains.rider
       ];
     };
 }

@@ -39,6 +39,8 @@
           home.packages = with pkgs; [
             #(plezy.override { use16kPagesizeWorkaround = true; })
           ];
+
+          programs.ncspot.enable = true;
         };
       };
     };
@@ -47,6 +49,8 @@
     { pkgs, ... }:
     {
       networking.hostName = "escapepod3";
+
+      boot.initrd.kernelModules = [ "lz4" ];
 
       boot.kernelParams = [
         "zswap.compressor=lz4"

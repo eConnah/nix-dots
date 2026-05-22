@@ -3,6 +3,8 @@
   flake.homeModules.defaults =
     { pkgs, lib, ... }:
     {
+      imports = [ self.homeModules.optioned ];
+
       programs.fish.enable = true;
       programs.git.enable = true;
       programs.kitty.enable = true;

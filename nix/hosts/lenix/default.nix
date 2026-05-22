@@ -52,6 +52,8 @@
     {
       networking.hostName = "lenix";
 
+      boot.initrd.kernelModules = [ "lz4" ];
+
       boot.kernelParams = [
         "zswap.compressor=lz4"
         "zswap.enabled=1"
