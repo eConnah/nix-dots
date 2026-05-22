@@ -50,7 +50,6 @@
             email = "git@econnah.uk";
             signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
           };
-
           commit = {
             gpgSign = true;
           };
@@ -76,7 +75,6 @@
       };
 
       programs.ssh = {
-        enableDefaultConfig = false;
         matchBlocks = {
           "github.com" = {
             user = "git";

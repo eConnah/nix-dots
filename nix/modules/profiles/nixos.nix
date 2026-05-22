@@ -22,6 +22,7 @@
         "@wheel"
       ];
 
+      programs.dconf.enable = true;
       programs.firefox.enable = true;
       programs.fish.enable = true;
       programs.gamemode.enable = true;
@@ -54,6 +55,8 @@
         pulse.enable = true;
         wireplumber.enable = true;
       };
+
+      security.rtkit.enable = true;
 
       fonts = {
         fontconfig = {
@@ -110,7 +113,6 @@
         cryptsetup
         distrobox
         e2fsprogs
-        easyeffects
         eza
         fastfetch
         gh

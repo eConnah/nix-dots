@@ -41,6 +41,8 @@
             (chromium.override { enableWideVine = true; })
             moonlight-qt
           ];
+
+          theme.wallpaper = "frieren-01.png";
         };
       };
     };
