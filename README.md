@@ -1,6 +1,6 @@
 # NixOS System Configurations
 
-This repository contains my declarative NixOS and Home Manager configurations. It is structured using a dendritic architecture, which strictly separates hardware-agnostic defaults and user profiles from host-specific hardware configurations. 
+This repository contains my declarative NixOS and Home Manager configurations. It is structured using a dendritic architecture, which strictly separates hardware-agnostic defaults and user profiles from host-specific hardware configurations.
 
 ## Repository Structure
 
@@ -8,31 +8,38 @@ The configuration uses `import-tree` to automatically evaluate modules within th
 
 * `flake.nix`: The primary entry point defining inputs (nixpkgs, disko, preservation, home-manager, etc.) and outputs.
 * `nix/hosts/`: Machine-specific configurations.
-    * `onyx`: Desktop PC configuration.
-    * `lenix`: Apple Silicon laptop configuration.
-    * `iso`: Minimal Live USB configuration for bootstrapping.
+    * `onyx`: Connor's PC configuration.
+    * `lenix`: Connor's Apple Silicon laptop configuration.
+    * `escapepod3`: Leo's Apple Silicon laptop configuration.
 * `nix/modules/`: Reusable components and logic.
     * `profiles/`: Shared system configurations, package sets, and specific hardware logic (e.g., Asahi, Nvidia).
-    * `programs/`: Application-specific settings (e.g., Neovim, Vicinae).
+    * `programs/`: Application-specific settings (e.g., Neovim, Vicinae, Hyprpanel).
     * `desktops/`: Window manager configurations (Hyprland).
+    * `services/`: User service configurations (e.g., swaybg).
+    * `themes/`: System-wide colour theme integrations (Catppuccin).
+    * `presets/`: Non-nix mass presets.
     * `users/`: User-specific data and Home Manager integrations.
 
 ## Host Configurations
 
 ### Onyx (Desktop)
-A desktop environment configured for gaming and general use.
+Connor's desktop environment configured for gaming and general use.
 * **Filesystem:** Declarative Btrfs disk layout managed by Disko.
-* **State Management:** Ephemeral root on tmpfs (`/`), with opt-in state persistence managed by Preservation. System and user data are routed to a persistent NVMe subvolume.
+* **State Management:** Ephemeral root on tmpfs (`/`), with opt-in persistence managed by Preservation. System and user data are routed to a persistent NVMe subvolume.
 * **Hardware:** Nvidia proprietary drivers with modesetting.
-* **Networking:** Minimal `dhcpcd` configuration, with Tailscale for secure network access.
+* **Networking:** Minimal systemd-networkd configuration, with Tailscale for secure network access.
 
 ### Lenix (Laptop)
-A laptop configuration tailored for Apple Silicon hardware.
+Connor's laptop configuration tailored for Apple Silicon hardware.
 * **Hardware Integration:** Utilises the `apple-silicon-support` flake.
-* **Power Management:** Specific configurations and scripts designed for the Asahi Linux environment, isolated to prevent path conflicts on standard x86 hardware.
+* **Memory:** zswap with lz4 compression and x86 emulation via binfmt.
+* **Power Management:** iio-hyprland for auto-rotation, but Asahi suspend unsupported.
 
-### ISO
-A lightweight, hardware-agnostic Live USB configuration. It imports basic terminal profiles (Neovim, Fish shell, SSH keys) to provide a familiar environment for formatting disks and bootstrapping systems, without compiling graphical environments or proprietary drivers.
+### Escapepod3 (Laptop)
+Leo's laptop configuration, also targeting Apple Silicon hardware.
+* **Hardware Integration:** Utilises the `apple-silicon-support` flake, sharing the Asahi profile with Lenix.
+* **Memory:** zswap with lz4 compression and x86 emulation via binfmt.
+* **Power Management:** iio-hyprland for auto-rotation, but Asahi suspend unsupported.
 
 ## Key Technologies
 
@@ -40,12 +47,6 @@ A lightweight, hardware-agnostic Live USB configuration. It imports basic termin
 * **Home Manager:** User environment and dotfile management.
 * **Disko:** Declarative disk partitioning and formatting.
 * **Preservation:** Opt-in state management for ephemeral root filesystems.
-* **Hyprland:** Wayland compositor.
+* **Hyprland:** Wayland compositor managed via UWSM.
 * **Catppuccin:** System-wide colour theme integration.
-
-## Usage
-
-To bootstrap a new machine, build the minimal ISO image:
-
-```bash
-nix build .#nixosConfigurations.iso.config.system.build.isoImage
+* **Vicinae:** Application launcher.
