@@ -86,6 +86,10 @@
         users.connor.hashedPasswordFile = "/persistent/passwords/connor";
       };
 
+      programs.gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
       programs.steam = {
         enable = true;
         extraCompatPackages = with pkgs; [
