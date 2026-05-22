@@ -13,8 +13,7 @@
       # 2. Loop through the list and generate a file for each one
       config = lib.mkMerge (
         map (presetName: {
-          home.file.".config/easyeffects/input/${presetName}".source =
-            ./easyeffects/${presetName};
+          home.file.".config/easyeffects/input/${presetName}".source = ./easyeffects/${presetName};
         }) config.theme.audioPresets
       );
     };
