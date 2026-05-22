@@ -30,10 +30,12 @@
 
       home.packages = with pkgs; [
         (chromium.override { enableWideVine = true; })
+        eduvpn-client
         hyprcursor
         hyprpicker
         hyprshot
         jetbrains.idea
+        jetbrains.rider
         libreoffice
         obsidian
         prismlauncher
@@ -41,8 +43,6 @@
         signal-desktop
         vesktop
         vscode
-        eduvpn-client
-        jetbrains.rider
       ];
     };
 }
