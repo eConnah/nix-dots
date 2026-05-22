@@ -9,6 +9,7 @@
       boot.tmp.cleanOnBoot = true;
 
       systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
+      security.sudo.extraConfig = "Defaults lecture=never";
 
       preservation = {
         enable = true;
@@ -37,31 +38,44 @@
           users.connor = {
             directories = [
               # Core User State
+              ".local/share/applications"
+              ".local/share/fish"
+              ".local/share/keyrings"
+              ".local/state/wireplumber"
+              ".ssh"
               "Desktop"
               "Documents"
               "Downloads"
               "Music"
               "Pictures"
               "Videos"
-              ".ssh"
-              ".local/share/keyrings"
-              ".local/share/fish"
 
               # Application Data & Configs
-              ".config/chromium"
               ".config/Code"
-              ".config/halloy"
               ".config/JetBrains"
-              ".config/libreoffice"
-              ".config/obsidian"
               ".config/Signal"
+              ".config/easyeffects"
+              ".config/halloy"
+              ".config/libreoffice"
+              ".config/mozilla"
+              ".config/obsidian"
+              ".config/spotify"
               ".config/vesktop"
+              ".config/vicinae"
+              ".steam"
+              ".vscode"
 
               # Application Local Share (Heavier Data)
+              ".java"
               ".local/share/JetBrains"
               ".local/share/PrismLauncher"
+              ".local/share/Steam"
+              ".local/share/com.edde746.plezy"
+              ".local/share/docker"
+              ".local/share/flatpak"
+              ".local/share/nvim"
+              ".local/share/qalculate"
               ".vscode"
-              ".java"
             ];
           };
         };

@@ -20,6 +20,11 @@
         package = null;
         portalPackage = null;
         systemd.enable = false;
+        configType = "hyprlang";
       };
+
+      home.file.".config/uwsm/default-id".text = ''
+        hyprland-uwsm.desktop
+      '';
     };
 }
