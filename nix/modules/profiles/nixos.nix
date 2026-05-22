@@ -7,6 +7,7 @@
         self.nixosModules.substituters
         inputs.home-manager.nixosModules.home-manager
       ];
+      boot.zfs.forceImportRoot = lib.mkDefault false;
 
       nix.channel.enable = false;
       nix.settings.auto-optimise-store = true;

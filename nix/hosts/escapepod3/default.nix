@@ -1,21 +1,21 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.lenix = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.asahi
       self.nixosModules.catppuccin
-      self.nixosModules.connor
       self.nixosModules.defaults
+      self.nixosModules.escapepod3Config
+      self.nixosModules.escapepod3Hardware
+      self.nixosModules.escapepod3Home
       self.nixosModules.hyprland
       self.nixosModules.laptops
-      self.nixosModules.lenixConfig
-      self.nixosModules.lenixHardware
-      self.nixosModules.lenixHome
+      self.nixosModules.leo
       self.nixosModules.limine
     ];
   };
 
-  flake.nixosModules.lenixHome =
+  flake.nixosModules.escapepod3Home =
     { pkgs, ... }:
     {
       imports = [ inputs.home-manager.nixosModules.default ];
@@ -29,28 +29,26 @@
           self.homeModules.neovim
         ];
 
-        users.connor = {
+        users.leo = {
           imports = [
-            self.homeModules.lenixHypr
-            self.homeModules.lenixPanel
+            self.homeModules.escapepod3Hypr
+            self.homeModules.escapepod3Panel
             self.homeModules.swaybg
           ];
 
           home.packages = with pkgs; [
             #(plezy.override { use16kPagesizeWorkaround = true; })
-            (chromium.override { enableWideVine = true; })
-            moonlight-qt
           ];
 
-          theme.wallpaper = "frieren-01.png";
+          programs.ncspot.enable = true;
         };
       };
     };
 
-  flake.nixosModules.lenixConfig =
+  flake.nixosModules.escapepod3Config =
     { pkgs, ... }:
     {
-      networking.hostName = "lenix";
+      networking.hostName = "escapepod3";
 
       boot.initrd.kernelModules = [ "lz4" ];
 
@@ -93,7 +91,7 @@
       programs.iio-hyprland.enable = true;
 
       # NH root
-      programs.nh.flake = "/home/connor/Documents/dotfiles";
+      programs.nh.flake = "/home/leo/Documents/dotfiles";
 
       boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
       nix.settings.extra-platforms = [ "x86_64-linux" ];
