@@ -14,7 +14,7 @@
       config = lib.mkMerge (
         map (presetName: {
           home.file.".config/easyeffects/input/${presetName}".source =
-            ../../presets/easyeffects/${presetName};
+            ./easyeffects/${presetName};
         }) config.theme.audioPresets
       );
     };
