@@ -17,7 +17,7 @@
     };
 
   flake.homeModules.asahi =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       programs.fish.functions = {
         hyprbattery = ''
@@ -39,5 +39,7 @@
           	      end
         '';
       };
+
+      services.easyeffects.enable = lib.mkForce false;
     };
 }
