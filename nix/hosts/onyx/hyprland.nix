@@ -210,7 +210,7 @@
         $mod = SUPER # Sets "Windows" key as main modifier
 
         # Example binds, see https://wiki.hypr.land/Configuring/Binds/ for more
-        bind = $mod, T, exec, uwsm app -- $terminal
+        bind = $mod, T, exec, $terminal
         bind = $mod, Q, killactive,
         bind = $mod, M, exit,
         bind = $mod, V, togglefloating,

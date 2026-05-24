@@ -19,6 +19,14 @@
         enableDefaultConfig = lib.mkDefault false;
       };
 
+      xdg.mimeApps = {
+        enable = pkgs.stdenv.isLinux;
+
+        defaultApplications = {
+          "x-scheme-handler/terminal" = "kitty.desktop";
+        };
+      };
+
       services.easyeffects.enable = lib.mkDefault true;
     };
 }

@@ -41,6 +41,8 @@
           ];
 
           programs.ncspot.enable = true;
+
+          theme.wallpaper = "ultrakill-01.png";
         };
       };
     };
@@ -81,7 +83,7 @@
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
         name = "asahi";
         hashMode = "recursive";
-        hash = "sha256-jZ1nHCLnncRIMkoveGRspuhT9dVPchPmOvKXshihN4U=";
+        hash = "sha256-X2XGA984LlJILJtRHEDXWTiJ6A/rqEE3NHXwkoCMAwI=";
         message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/asahi' to add the firmware.";
       };
       boot.extraModprobeConfig = "options hid_apple iso_layout=0";
