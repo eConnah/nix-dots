@@ -40,6 +40,7 @@
               # Core User State
               ".local/share/applications"
               ".local/share/fish"
+              ".local/share/icons"
               ".local/share/keyrings"
               ".local/state/wireplumber"
               ".ssh"
@@ -52,6 +53,7 @@
 
               # Application Data & Configs
               ".config/Code"
+              ".config/Epic"
               ".config/JetBrains"
               ".config/Signal"
               ".config/easyeffects"
@@ -75,6 +77,7 @@
               ".local/share/flatpak"
               ".local/share/nvim"
               ".local/share/qalculate"
+              ".local/share/vicinae"
               ".vscode"
             ];
           };

@@ -82,6 +82,13 @@
         fontDir.enable = true;
       };
 
+      xdg.mime = {
+        enable = true;
+        defaultApplications = {
+          "x-scheme-handler/terminal" = "kitty.desktop";
+        };
+      };
+
       virtualisation = {
         docker = {
           enable = false;
