@@ -136,6 +136,7 @@
         liblc3
         liblc3
         matugen
+        mesa-demos
         nixfmt
         nixfmt-tree
         p7zip
@@ -145,6 +146,7 @@
         sshfs
         tree
         usbutils
+        vulkan-tools
         wget
         wl-clipboard
         zulu
