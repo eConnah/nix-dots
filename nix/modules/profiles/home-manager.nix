@@ -17,6 +17,12 @@
       programs.ssh = {
         enable = true;
         enableDefaultConfig = lib.mkDefault false;
+        matchBlocks."*" = {
+          serverAliveInterval = 30;
+          serverAliveCountMax = 3;
+          hashKnownHosts = false;
+          userKnownHostsFile = "~/.ssh/known_hosts";
+        };
       };
 
       xdg.mimeApps = {
