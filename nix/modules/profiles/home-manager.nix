@@ -17,12 +17,23 @@
       programs.ssh = {
         enable = true;
         enableDefaultConfig = lib.mkDefault false;
-        matchBlocks."*" = {
-          serverAliveInterval = 30;
-          serverAliveCountMax = 3;
-          hashKnownHosts = false;
-          userKnownHostsFile = "~/.ssh/known_hosts";
+        settings = {
+          "*" = {
+            AddKeysToAgent = "yes";
+            ServerAliveInterval = 30;
+            ServerAliveCountMax = 3;
+            HashKnownHosts = false;
+            UserKnownHostsFile = "~/.ssh/known_hosts";
+          };
         };
+      };
+
+      services.gnome-keyring = {
+        enable = true;
+        components = [
+          "pkcs11"
+          "secrets"
+        ];
       };
 
       xdg.mimeApps = {

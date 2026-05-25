@@ -30,10 +30,11 @@
       programs.git.enable = true;
       programs.neovim.enable = true;
       programs.seahorse.enable = true;
+      programs.ssh.startAgent = true;
 
       programs.gnupg.agent = {
         enable = true;
-        enableSSHSupport = true;
+        enableSSHSupport = false;
       };
       programs.nh = {
         enable = true;
@@ -42,9 +43,12 @@
       };
 
       services.flatpak.enable = lib.mkDefault true;
-      services.gnome.gnome-keyring.enable = true;
       services.libinput.enable = true;
 
+      services.gnome = {
+        gnome-keyring.enable = true;
+        gcr-ssh-agent.enable = false;
+      };
       services.openssh = {
         enable = true;
         settings = {
