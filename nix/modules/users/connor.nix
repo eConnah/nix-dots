@@ -75,11 +75,11 @@
       };
 
       programs.ssh = {
-        matchBlocks = {
+        settings = {
           "github.com" = {
-            user = "git";
-            identityFile = "~/.ssh/id_ed25519_sk_rk";
-            identitiesOnly = true;
+            User = "git";
+            IdentityFile = "~/.ssh/id_ed25519_sk_rk";
+            IdentitiesOnly = true;
           };
         };
       };
