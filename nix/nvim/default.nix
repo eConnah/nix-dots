@@ -1,24 +1,66 @@
-{ inputs, self, ... }:
+{ ... }:
 {
-  perSystem =
-    { pkgs, system, ... }:
+  flake.nvfModules.defaults =
+    { ... }:
     {
-      packages.nvim-qwerty =
-        (inputs.nvf.lib.neovimConfiguration {
-          inherit pkgs;
+      vim = {
+        # Core Editor
+        viAlias = true;
+        vimAlias = true;
+        opts.expandtab = true;
 
-          modules = [
-            self.nvfModules.default
-          ];
-        }).neovim;
+        # Visuals & UI
+        theme = {
+          enable = true;
+          name = "catppuccin";
+          style = "mocha";
+        };
+        tabline.nvimBufferline.enable = true;
+        statusline.lualine.enable = true;
 
-    };
+        # Navigation & Menus
+        filetree.neo-tree.enable = true;
+        telescope.enable = true;
+        binds.whichKey.enable = true;
 
-  flake.nvfModules.default =
-    { config, ... }:
-    {
-      config.vim = {
-        theme.enable = true;
+        # Coding & Completion
+        autocomplete.blink-cmp.enable = true; # The modern, faster completion engine
+        snippets.luasnip.enable = true;
+
+        # Extras
+        clipboard.providers.wl-copy.enable = true;
+        searchCase = "smart";
+        preventJunkFiles = true;
+        undoFile.enable = true;
+
+        # Language Support
+        languages = {
+          enableFormat = true;
+          enableTreesitter = true;
+          enableExtraDiagnostics = true;
+
+          bash.enable = true;
+          fish.enable = true;
+          java.enable = true;
+          lua.enable = true;
+          markdown.enable = true;
+          nix.enable = true;
+          python.enable = true;
+        };
+
+        # LSP UI integrations
+        lsp = {
+          enable = true;
+          formatOnSave = true;
+          trouble.enable = true;
+          lightbulb.enable = true;
+        };
+
+        # Git integration
+        git = {
+          enable = true;
+          gitsigns.enable = true;
+        };
       };
     };
 }

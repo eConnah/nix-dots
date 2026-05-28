@@ -28,7 +28,6 @@
       programs.fish.enable = true;
       programs.gamemode.enable = true;
       programs.git.enable = true;
-      programs.neovim.enable = true;
       programs.seahorse.enable = true;
       programs.ssh.startAgent = true;
 

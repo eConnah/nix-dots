@@ -26,7 +26,6 @@
 
         sharedModules = [
           self.homeModules.defaults
-          self.homeModules.neovim
         ];
 
         users.connor = {

@@ -27,7 +27,6 @@
 
         sharedModules = [
           self.homeModules.defaults
-          self.homeModules.neovim
         ];
 
         users.connor = {
@@ -111,6 +110,8 @@
         };
       };
 
+      environment.systemPackages = [ self.packages.${pkgs.system}.nvim-qwerty ];
+      
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
 }
