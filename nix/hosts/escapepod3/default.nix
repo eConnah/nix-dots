@@ -96,7 +96,9 @@
 
       boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
       nix.settings.extra-platforms = [ "x86_64-linux" ];
-
+      
+      environment.systemPackages = [ self.packages.${pkgs.system}.nvim-qwerty ];
+      
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
 }
