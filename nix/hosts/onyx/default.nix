@@ -43,6 +43,11 @@
           ];
 
           theme.wallpaper = "86-01.png";
+
+          home.file.".config/lazyspotify/config.yml".text = ''
+            auth:
+              client_id: a05e9b38cd3e420a87ca1d09b26b7179
+          '';
         };
       };
     };

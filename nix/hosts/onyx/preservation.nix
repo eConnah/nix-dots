@@ -58,6 +58,7 @@
               ".config/Signal"
               ".config/easyeffects"
               ".config/halloy"
+              ".config/lazyspotify"
               ".config/libreoffice"
               ".config/mozilla"
               ".config/obsidian"
