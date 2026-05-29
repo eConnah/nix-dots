@@ -7,7 +7,14 @@
         # Core Editor
         viAlias = true;
         vimAlias = true;
-        opts.expandtab = true;
+
+        # Tab indents
+        utility.sleuth.enable = true;
+        options = {
+          shiftwidth = 4;
+          tabstop = 4;
+          expandtab = true;
+        };
 
         # Visuals & UI
         theme = {
