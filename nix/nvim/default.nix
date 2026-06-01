@@ -9,7 +9,6 @@
         vimAlias = true;
 
         # Tab indents
-        utility.sleuth.enable = true;
         options = {
           shiftwidth = 4;
           tabstop = 4;
