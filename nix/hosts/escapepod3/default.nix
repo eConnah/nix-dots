@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
@@ -37,6 +41,7 @@
 
           home.packages = with pkgs; [
             #(plezy.override { use16kPagesizeWorkaround = true; })
+            lazyspotify
           ];
 
           programs.ncspot.enable = true;
@@ -97,7 +102,7 @@
       boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
       nix.settings.extra-platforms = [ "x86_64-linux" ];
 
-      environment.systemPackages = [ self.packages.${pkgs.system}.nvim-qwerty ];
+      environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

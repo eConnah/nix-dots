@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosConfigurations.lenix = inputs.nixpkgs.lib.nixosSystem {
     modules = [
@@ -39,6 +43,7 @@
             #(plezy.override { use16kPagesizeWorkaround = true; })
             (chromium.override { enableWideVine = true; })
             moonlight-qt
+            lazyspotify
           ];
 
           theme.wallpaper = "frieren-01.png";
@@ -97,7 +102,7 @@
       boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
       nix.settings.extra-platforms = [ "x86_64-linux" ];
 
-      environment.systemPackages = [ self.packages.${pkgs.system}.nvim-qwerty ];
+      environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

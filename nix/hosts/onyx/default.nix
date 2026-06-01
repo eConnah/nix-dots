@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = [
@@ -110,7 +114,7 @@
         };
       };
 
-      environment.systemPackages = [ self.packages.${pkgs.system}.nvim-qwerty ];
+      environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
