@@ -35,7 +35,6 @@
         users.connor = {
           imports = [
             self.homeModules.lenixHypr
-            self.homeModules.lenixPanel
             self.homeModules.swaybg
           ];
 
