@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.connor =
     { pkgs, ... }:
@@ -90,6 +94,7 @@
         hyprpicker
         hyprshot
         jetbrains.idea
+        lazyspotify
         libreoffice
         obsidian
         prismlauncher
