@@ -42,7 +42,6 @@
             #(plezy.override { use16kPagesizeWorkaround = true; })
             (chromium.override { enableWideVine = true; })
             moonlight-qt
-            lazyspotify
           ];
 
           theme.wallpaper = "frieren-01.png";
