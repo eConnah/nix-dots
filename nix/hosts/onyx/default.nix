@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = [
@@ -27,7 +31,6 @@
 
         sharedModules = [
           self.homeModules.defaults
-          self.homeModules.neovim
         ];
 
         users.connor = {
@@ -43,6 +46,11 @@
           ];
 
           theme.wallpaper = "86-01.png";
+
+          home.file.".config/lazyspotify/config.yml".text = ''
+            auth:
+              client_id: a05e9b38cd3e420a87ca1d09b26b7179
+          '';
         };
       };
     };
@@ -105,6 +113,8 @@
           "default.clock.max-quantum" = 8192;
         };
       };
+
+      environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

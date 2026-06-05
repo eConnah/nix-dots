@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.onyxPreservation =
     { ... }:
@@ -58,6 +62,7 @@
               ".config/Signal"
               ".config/easyeffects"
               ".config/halloy"
+              ".config/lazyspotify"
               ".config/libreoffice"
               ".config/mozilla"
               ".config/obsidian"
@@ -72,6 +77,7 @@
               ".local/share/JetBrains"
               ".local/share/PrismLauncher"
               ".local/share/Steam"
+              ".local/share/Terraria"
               ".local/share/com.edde746.plezy"
               ".local/share/docker"
               ".local/share/flatpak"

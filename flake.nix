@@ -8,6 +8,11 @@
     preservation.url = "github:nix-community/preservation";
     vicinae.url = "github:vicinaehq/vicinae";
 
+    apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,8 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
