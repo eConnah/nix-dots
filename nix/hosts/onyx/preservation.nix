@@ -65,6 +65,7 @@
               ".config/lazyspotify"
               ".config/libreoffice"
               ".config/mozilla"
+              ".config/obs-studio"
               ".config/obsidian"
               ".config/spotify"
               ".config/vesktop"
