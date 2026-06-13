@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.catppuccin =
     {
@@ -8,8 +8,8 @@
       ...
     }:
     {
+      imports = [ self.nixosModules.themes ];
       stylix = {
-        enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
         override.base00 = "000000";
       };

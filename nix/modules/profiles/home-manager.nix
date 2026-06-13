@@ -4,6 +4,7 @@
     {
       pkgs,
       lib,
+      config,
       ...
     }:
     {
@@ -16,6 +17,28 @@
         icons = "always";
         enableFishIntegration = true;
         colors = "always";
+      };
+
+      programs.firefox = {
+        enable = true;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
+        profiles.default = {
+          extensions.force = true;
+
+          settings = {
+            "app.shield.optoutstudies.enabled" = false;
+
+            "browser.discovery.enabled" = false;
+            "browser.ml.chat.enabled" = false;
+            "browser.ml.chat.shortcuts" = false;
+            "browser.ml.enable" = false;
+
+            "sidebar.revamp" = true;
+            "sidebar.verticalTabs" = true;
+
+            "toolkit.telemetry.enabled" = false;
+          };
+        };
       };
 
       programs.kitty = {
