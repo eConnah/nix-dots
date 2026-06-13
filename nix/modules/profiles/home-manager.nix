@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}:
+{ ... }:
 {
   flake.homeModules.defaults =
     {
@@ -21,6 +17,7 @@
         enableFishIntegration = true;
         colors = "always";
       };
+
       programs.kitty = {
         enable = true;
 
