@@ -1,9 +1,20 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.limine =
-    { pkgs, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [ self.nixosModules.bootloader ];
-      boot.loader.limine.enable = true;
+      boot.loader.limine = {
+        enable = true;
+        style.wallpapers = [ ];
+      };
     };
 }

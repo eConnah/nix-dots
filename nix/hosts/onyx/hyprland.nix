@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.homeModules.onyxHypr =
     { ... }:
@@ -10,47 +14,43 @@
       wayland.windowManager.hyprland = {
         configType = "lua";
         extraConfig = ''
-          ---------------------- DISPLAY TOPOLOGY AND MONITORS ---------------------- 
-          hl.monitor({ 
-              output = "DP-1", 
-              mode = "2560x1440@240", 
-              position = "0x0", 
+          ---------------------- DISPLAY TOPOLOGY AND MONITORS ----------------------
+          hl.monitor({
+              output = "DP-1",
+              mode = "2560x1440@240",
+              position = "0x0",
               scale = 1,
               vrr = 2
           })
 
-          hl.monitor({ 
-            output = "", 
-            mode = "preferred", 
-            position = "auto", 
-            scale = "auto" 
+          hl.monitor({
+            output = "",
+            mode = "preferred",
+            position = "auto",
+            scale = "auto"
           })
 
-          ------------------------- VARIABLE NAMESPACES ------------------------- 
+          ------------------------- VARIABLE NAMESPACES -------------------------
           local terminal = "kitty"
           local menu = "vicinae toggle"
           local browser = "firefox"
 
-          ----------------------- ASYNCHRONOUS AUTOSTART ----------------------- 
+          ----------------------- ASYNCHRONOUS AUTOSTART -----------------------
           hl.on("hyprland.start", function()
               hl.exec_cmd("xrandr --output DP-1 --primary")
           end)
 
-          --------------------------- ENVIRONMENT INJECTION --------------------------- 
+          --------------------------- ENVIRONMENT INJECTION ---------------------------
           hl.env("XCURSOR_SIZE", "24")
           hl.env("HYPRCURSOR_SIZE", "24")
           hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 
-          --------------------------- AESTHETICS AND RENDER PIPELINE --------------------------- 
+          --------------------------- AESTHETICS AND RENDER PIPELINE ---------------------------
           hl.config({
               general = {
                   gaps_in = 5,
                   gaps_out = 20,
                   border_size = 2,
-                  col = {
-                      active_border = { colors = {"rgba(ff2600ee)", "rgba(ff7433ee)"}, angle = 45 },
-                      inactive_border = "rgba(595959aa)",
-                  },
                   resize_on_border = false,
                   allow_tearing = false,
                   layout = "dwindle",
@@ -64,7 +64,6 @@
                       enabled = true,
                       range = 4,
                       render_power = 3,
-                      color = "rgba(1a1a1aee)",
                   },
                   blur = {
                       enabled = true,
@@ -96,7 +95,7 @@
               }
           })
 
-          --------------------------- KINEMATICS AND ANIMATION GRAPHS --------------------------- 
+          --------------------------- KINEMATICS AND ANIMATION GRAPHS ---------------------------
           hl.curve("easeOutQuint", { type = "bezier", points = { {0.23, 1}, {0.32, 1} } })
           hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1} } })
           hl.curve("linear", { type = "bezier", points = { {0, 0}, {1, 1} } })
@@ -120,7 +119,7 @@
           hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
           hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 
-          ------------------------- INPUT EVENT DISPATCHERS ------------------------- 
+          ------------------------- INPUT EVENT DISPATCHERS -------------------------
           local mod = "SUPER"
 
           -- Core System Execution Wrappers
@@ -173,7 +172,7 @@
           hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
           hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-          ------------------------------ CONDITIONAL LAYER AND WINDOW PROTOCOLS ------------------------------ 
+          ------------------------------ CONDITIONAL LAYER AND WINDOW PROTOCOLS ------------------------------
           hl.window_rule({
               name = "suppress-maximize-events",
               match = { class = ".*" },
