@@ -1,4 +1,8 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   perSystem =
     { pkgs, ... }:
@@ -7,7 +11,7 @@
         (inputs.nvf.lib.neovimConfiguration {
           inherit pkgs;
           modules = [
-            self.nvfModules.defaults
+            (self.nvfModules.defaults { inherit pkgs; })
             self.nvfModules.notes
             self.nvfModules.ui
             self.nvfModules.workflow
