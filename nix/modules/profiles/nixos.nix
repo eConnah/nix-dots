@@ -1,7 +1,15 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.defaults =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [
         self.nixosModules.substituters
@@ -130,7 +138,6 @@
         gimp
         httpie
         hy
-        kitty
         libinput
         liblc3
         liblc3

@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.nvfModules.defaults =
-    { ... }:
+    { pkgs, ... }:
     {
       vim = {
         # Core Editor
@@ -53,6 +53,7 @@
           markdown.enable = true;
           nix.enable = true;
           python.enable = true;
+          xml.enable = true;
         };
 
         # LSP UI integrations
@@ -67,6 +68,17 @@
         git = {
           enable = true;
           gitsigns.enable = true;
+        };
+        extraPlugins = {
+          kitty-scrollback = {
+            package = pkgs.vimPlugins.kitty-scrollback-nvim;
+
+            # The setup function as required by the plugin
+            setup = ''
+              require('kitty-scrollback').setup({
+              })
+            '';
+          };
         };
       };
     };
