@@ -1,5 +1,4 @@
-{ inputs, self, ... }:
-{
+{ ... }: {
   flake.nixosModules.lenixHardware =
     {
       config,
@@ -19,47 +18,40 @@
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
-        fsType = "btrfs";
-        options = [ "subvol=@" ];
-      };
-
-      fileSystems."/home" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
-        fsType = "btrfs";
-        options = [ "subvol=@home" ];
-      };
-
-      fileSystems."/swap" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
-        fsType = "btrfs";
-        options = [ "subvol=@swap" ];
+        device = "none";
+        fsType = "tmpfs";
       };
 
       fileSystems."/nix" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
         fsType = "btrfs";
         options = [ "subvol=@nix" ];
       };
 
-      fileSystems."/var/cache" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
+      fileSystems."/persistent" = {
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
         fsType = "btrfs";
-        options = [ "subvol=@cache" ];
+        options = [ "subvol=@persistent" ];
       };
 
-      fileSystems."/var/log" = {
-        device = "/dev/disk/by-uuid/e1c62851-c063-4751-a53c-1ce398a85a78";
+      fileSystems."/snapshots" = {
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
         fsType = "btrfs";
-        options = [ "subvol=@log" ];
+        options = [ "subvol=@snapshots" ];
+      };
+
+      fileSystems."/swap" = {
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
+        fsType = "btrfs";
+        options = [ "subvol=@swap" ];
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/7B05-1316";
+        device = "/dev/disk/by-uuid/33D3-16FC";
         fsType = "vfat";
         options = [
-          "fmask=0177"
-          "dmask=0077"
+          "fmask=0022"
+          "dmask=0022"
         ];
       };
 
