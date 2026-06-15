@@ -19,18 +19,25 @@
       boot.zfs.forceImportRoot = lib.mkDefault false;
 
       nix.channel.enable = false;
-      nix.settings.auto-optimise-store = true;
-      nix.settings.use-xdg-base-directories = true;
       nixpkgs.config.allowUnfree = true;
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
 
-      nix.settings.trusted-users = [
-        "root"
-        "@wheel"
-      ];
+      nix.settings = {
+        auto-optimise-store = true;
+        use-xdg-base-directories = true;
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
+
+        trusted-public-keys = [
+          "lenix-cache:UBqEJFxzG1tdZko/QAlnWZncCDHqgbb9dyo9zTUUfAM="
+        ];
+      };
 
       programs.dconf.enable = true;
       programs.firefox.enable = true;
