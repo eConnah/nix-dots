@@ -19,6 +19,7 @@
           "/etc/nixos"
           "/etc/ssh"
           "/var/lib/tailscale"
+          "/var/log"
           {
             directory = "/var/lib/nixos";
             inInitrd = true;
