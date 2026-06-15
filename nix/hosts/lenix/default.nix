@@ -116,6 +116,7 @@
 
     environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
+    nix.settings.secret-key-files = "/persistent/nix-keys/secret-key.pem";
     system.stateVersion = "25.11"; # NEVER CHANGE
   };
 }

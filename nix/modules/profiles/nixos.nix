@@ -35,7 +35,8 @@
         ];
 
         trusted-public-keys = [
-          "lenix-cache:UBqEJFxzG1tdZko/QAlnWZncCDHqgbb9dyo9zTUUfAM="
+          "lenix-cache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
+          "onyx-cache:O+2Ad+2xMdljj1G8eH5KYQxdkixoEGUREXKTRV/BBKk="
         ];
       };
 
