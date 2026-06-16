@@ -39,7 +39,7 @@
         ];
 
         home.packages = with pkgs; [
-          efibootmgr
+          davinci-resolve
           plezy
           spotify
         ];
@@ -124,7 +124,10 @@
       };
     };
 
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
+    environment.systemPackages = [
+      pkgs.efibootmgr
+      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
+    ];
 
     nix.settings.secret-key-files = "/persistent/nix-keys/secret-key.pem";
     boot.kernelPackages = pkgs.linuxPackages_latest;
