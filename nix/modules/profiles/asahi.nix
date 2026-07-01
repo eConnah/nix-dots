@@ -4,34 +4,32 @@
   ...
 }:
 {
-  flake.nixosModules.asahi =
-    {
-      pkgs,
-      lib,
-      ...
-    }:
-    {
-      imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
-      boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
-      services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
+  flake = {
+    nixosModules.asahi =
+      {
+        pkgs,
+        lib,
+        ...
+      }:
+      {
+        imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
+        boot = {
+          kexec.enable = false;
+          loader.efi.canTouchEfiVariables = lib.mkForce false;
+        };
+        services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
 
-      environment.systemPackages = with pkgs; [
-        asahi-bless
-        muvm
-      ];
+        environment.systemPackages = with pkgs; [
+          asahi-bless
+          muvm
+        ];
 
-      home-manager.sharedModules = [
-        self.homeModules.asahi
-      ];
-    };
+        home-manager.sharedModules = [
+          self.homeModules.asahi
+        ];
+      };
 
-  flake.homeModules.asahi =
-    {
-      pkgs,
-      lib,
-      ...
-    }:
-    {
+    homeModules.asahi = { lib, ... }: {
       programs.fish.functions = {
         hyprbattery = ''
           set realCharge (cat /sys/class/power_supply/macsmc-battery/capacity)
@@ -55,4 +53,5 @@
 
       services.easyeffects.enable = lib.mkForce false;
     };
+  };
 }

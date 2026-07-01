@@ -4,24 +4,23 @@
   ...
 }:
 {
-  flake.nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.asahi
-      self.nixosModules.catppuccin
-      self.nixosModules.defaults
-      self.nixosModules.escapepod3Config
-      self.nixosModules.escapepod3Hardware
-      self.nixosModules.escapepod3Home
-      self.nixosModules.hyprland
-      self.nixosModules.laptops
-      self.nixosModules.leo
-      self.nixosModules.limine
-    ];
-  };
+  flake = {
+    nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        self.nixosModules.asahi
+        self.nixosModules.catppuccin
+        self.nixosModules.defaults
+        self.nixosModules.escapepod3Config
+        self.nixosModules.escapepod3Hardware
+        self.nixosModules.escapepod3Home
+        self.nixosModules.hyprland
+        self.nixosModules.laptops
+        self.nixosModules.leo
+        self.nixosModules.limine
+      ];
+    };
 
-  flake.nixosModules.escapepod3Home =
-    { pkgs, ... }:
-    {
+    nixosModules.escapepod3Home = { pkgs, ... }: {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
@@ -41,7 +40,7 @@
           ];
 
           home.packages = with pkgs; [
-            #(plezy.override { use16kPagesizeWorkaround = true; })
+            (plezy.override { use16kPagesizeWorkaround = true; })
             lazyspotify
           ];
 
@@ -52,22 +51,20 @@
       };
     };
 
-  flake.nixosModules.escapepod3Config =
-    { pkgs, ... }:
-    {
+    nixosModules.escapepod3Config = { pkgs, ... }: {
       networking.hostName = "escapepod3";
 
-      boot.initrd.kernelModules = [ "lz4" ];
-
-      boot.kernelParams = [
-        "zswap.compressor=lz4"
-        "zswap.enabled=1"
-        "zswap.max_pool_percent=20"
-        "zswap.shrinker_enabled=1"
-      ];
-
-      boot.kernel.sysctl = {
-        "vm.swappiness" = 70;
+      boot = {
+        initrd.kernelModules = [ "lz4" ];
+        kernelParams = [
+          "zswap.compressor=lz4"
+          "zswap.enabled=1"
+          "zswap.max_pool_percent=20"
+          "zswap.shrinker_enabled=1"
+        ];
+        kernel.sysctl = {
+          "vm.swappiness" = 70;
+        };
       };
 
       swapDevices = [ { device = "/swap/swapfile"; } ];
@@ -107,4 +104,5 @@
 
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
+  };
 }

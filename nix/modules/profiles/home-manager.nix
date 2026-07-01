@@ -7,73 +7,75 @@
       ...
     }:
     {
-      programs.fish.enable = true;
-      programs.git.enable = true;
+      programs = {
+        fish.enable = true;
+        git.enable = true;
 
-      programs.eza = {
-        enable = true;
-        git = true;
-        icons = "always";
-        enableFishIntegration = true;
-        colors = "always";
-      };
+        eza = {
+          enable = true;
+          git = true;
+          icons = "always";
+          enableFishIntegration = true;
+          colors = "always";
+        };
 
-      programs.firefox = {
-        enable = true;
-        configPath = "${config.xdg.configHome}/mozilla/firefox";
-        profiles.default = {
-          extensions.force = true;
+        firefox = {
+          enable = true;
+          configPath = "${config.xdg.configHome}/mozilla/firefox";
+          profiles.default = {
+            extensions.force = true;
 
-          settings = {
-            "app.shield.optoutstudies.enabled" = false;
+            settings = {
+              "app.shield.optoutstudies.enabled" = false;
 
-            "browser.discovery.enabled" = false;
-            "browser.ml.chat.enabled" = false;
-            "browser.ml.chat.shortcuts" = false;
-            "browser.ml.enable" = false;
+              "browser.discovery.enabled" = false;
+              "browser.ml.chat.enabled" = false;
+              "browser.ml.chat.shortcuts" = false;
+              "browser.ml.enable" = false;
 
-            "sidebar.revamp" = true;
-            "sidebar.verticalTabs" = true;
+              "sidebar.revamp" = true;
+              "sidebar.verticalTabs" = true;
 
-            "toolkit.telemetry.enabled" = false;
+              "toolkit.telemetry.enabled" = false;
+            };
           };
         };
-      };
 
-      programs.kitty = {
-        enable = true;
+        kitty = {
+          enable = true;
 
-        settings = {
-          allow_remote_control = "socket-only";
-          listen_on = "unix:/tmp/kitty";
-          shell_integration = "enabled";
+          settings = {
+            allow_remote_control = "socket-only";
+            listen_on = "unix:/tmp/kitty";
+            shell_integration = "enabled";
+          };
+
+          keybindings = {
+            "kitty_mod+h" = "kitty_scrollback_nvim";
+            "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
+          };
+
+          mouseBindings = {
+            "ctrl+shift+right press ungrabbed" =
+              "mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output";
+          };
+
+          extraConfig = ''
+            action_alias kitty_scrollback_nvim kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py
+            scrollback_lines 10000
+          '';
         };
-
-        keybindings = {
-          "kitty_mod+h" = "kitty_scrollback_nvim";
-          "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
-        };
-
-        mouseBindings = {
-          "ctrl+shift+right press ungrabbed" =
-            "mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output";
-        };
-
-        extraConfig = ''
-          action_alias kitty_scrollback_nvim kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py
-          scrollback_lines 10000
-        '';
-      };
-      programs.ssh = {
-        enable = true;
-        enableDefaultConfig = lib.mkDefault false;
-        settings = {
-          "*" = {
-            AddKeysToAgent = "yes";
-            ServerAliveInterval = 30;
-            ServerAliveCountMax = 3;
-            HashKnownHosts = false;
-            UserKnownHostsFile = "~/.ssh/known_hosts";
+        ssh = {
+          enable = true;
+          enableDefaultConfig = lib.mkDefault false;
+          settings = {
+            "*" = {
+              AddKeysToAgent = "yes";
+              ServerAliveInterval = 30;
+              ServerAliveCountMax = 3;
+              HashKnownHosts = false;
+              UserKnownHostsFile = "~/.ssh/known_hosts";
+            };
           };
         };
       };
