@@ -17,6 +17,7 @@
       self.nixosModules.lenixHome
       self.nixosModules.lenixPreservation
       self.nixosModules.limine
+      self.nixosModules.lix
     ];
   };
 
@@ -94,7 +95,7 @@
     hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
       name = "asahi";
       hashMode = "recursive";
-      hash = "sha256-jZ1nHCLnncRIMkoveGRspuhT9dVPchPmOvKXshihN4U=";
+      hash = "sha256-8XCXLbVRO6gRsohowZmpcIAKVdhApTUifpDev5eF+dA=";
       message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/asahi' to add the firmware.";
     };
     boot.extraModprobeConfig = "options hid_apple iso_layout=0";
