@@ -143,6 +143,7 @@
         e2fsprogs
         eza
         fastfetch
+        file
         gh
         gimp
         httpie
@@ -155,6 +156,7 @@
         nixfmt
         nixfmt-tree
         p7zip
+        patchelf
         pavucontrol
         pulseaudio
         qpwgraph

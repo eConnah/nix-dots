@@ -1,7 +1,15 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.asahi =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
       boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
@@ -9,6 +17,7 @@
 
       environment.systemPackages = with pkgs; [
         asahi-bless
+        muvm
       ];
 
       home-manager.sharedModules = [
@@ -17,26 +26,30 @@
     };
 
   flake.homeModules.asahi =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       programs.fish.functions = {
         hyprbattery = ''
-          	      set realCharge (cat /sys/class/power_supply/macsmc-battery/capacity)
-          	      set charge (math "10 * round($realCharge / 10)")
-          	      set state (cat /sys/class/power_supply/macsmc-battery/status)
-          	      set iconKey "$state$charge"
-          	      echo "{ 
-          	        \"charge\": \"$realCharge\",
-          	        \"state\": \"$state\",
-          	        \"alt\": \"$iconKey\" 
-                  }"
+          set realCharge (cat /sys/class/power_supply/macsmc-battery/capacity)
+          set charge (math "10 * round($realCharge / 10)")
+          set state (cat /sys/class/power_supply/macsmc-battery/status)
+          set iconKey "$state$charge"
+          echo "{
+            \"charge\": \"$realCharge\",
+            \"state\": \"$state\",
+            \"alt\": \"$iconKey\"
+           }"
         '';
 
         ifdischarging = ''
-                  set state (cat /sys/class/power_supply/macsmc-battery/status)
-                  if test "$state" = "Discharging"
-          	        eval $argv
-          	      end
+           set state (cat /sys/class/power_supply/macsmc-battery/status)
+           if test "$state" = "Discharging"
+            eval $argv
+          end
         '';
       };
 
