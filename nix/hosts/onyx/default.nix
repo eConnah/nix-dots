@@ -138,7 +138,12 @@
         self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
       ];
 
-      nix.settings.secret-key-files = "/persistent/nix-keys/secret-key.pem";
+      nix.settings = {
+        cores = 4;
+        http-connections = 100;
+        max-jobs = 4;
+        secret-key-files = "/persistent/nix-keys/secret-key.pem";
+      };
       boot.kernelPackages = pkgs.linuxPackages_latest;
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

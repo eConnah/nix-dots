@@ -40,41 +40,45 @@
         ];
       };
 
-      programs.dconf.enable = true;
-      programs.firefox.enable = true;
-      programs.fish.enable = true;
-      programs.gamemode.enable = true;
-      programs.git.enable = true;
-      programs.seahorse.enable = true;
-      programs.ssh.startAgent = true;
+      programs = {
+        dconf.enable = true;
+        firefox.enable = true;
+        fish.enable = true;
+        gamemode.enable = true;
+        git.enable = true;
+        seahorse.enable = true;
+        ssh.startAgent = true;
 
-      programs.gnupg.agent = {
-        enable = true;
-        enableSSHSupport = false;
-      };
-      programs.nh = {
-        enable = true;
-        clean.enable = true;
-        clean.extraArgs = "--keep-since 4d --keep 10";
-      };
-
-      services.flatpak.enable = lib.mkDefault true;
-      services.libinput.enable = true;
-
-      services.gnome = {
-        gnome-keyring.enable = true;
-        gcr-ssh-agent.enable = false;
-      };
-      services.openssh = {
-        enable = true;
-        settings = {
-          PermitRootLogin = "no";
+        gnupg.agent = {
+          enable = true;
+          enableSSHSupport = false;
+        };
+        nh = {
+          enable = true;
+          clean.enable = true;
+          clean.extraArgs = "--keep-since 4d --keep 10";
         };
       };
-      services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-        wireplumber.enable = true;
+
+      services = {
+        flatpak.enable = lib.mkDefault true;
+        libinput.enable = true;
+
+        gnome = {
+          gnome-keyring.enable = true;
+          gcr-ssh-agent.enable = false;
+        };
+        openssh = {
+          enable = true;
+          settings = {
+            PermitRootLogin = "no";
+          };
+        };
+        pipewire = {
+          enable = true;
+          pulse.enable = true;
+          wireplumber.enable = true;
+        };
       };
 
       security.rtkit.enable = true;
@@ -83,18 +87,19 @@
         fontconfig = {
           enable = true;
           defaultFonts = {
-            sansSerif = [ "Roboto" ];
-            monospace = [ "Roboto Mono" ];
+            sansSerif = [ "Atkinson Hyperlegible Next" ];
+            monospace = [ "Atkinson Hyperlegible Mono" ];
           };
         };
 
         packages = with pkgs; [
+          atkinson-hyperlegible-next
+          atkinson-hyperlegible-mono
           liberation_ttf
           nerd-fonts.jetbrains-mono
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-color-emoji
-          roboto
           ubuntu-classic
         ];
 
@@ -110,22 +115,6 @@
       };
 
       virtualisation = {
-        docker = {
-          enable = false;
-          storageDriver = "btrfs";
-          rootless = {
-            enable = true;
-            setSocketVariable = true;
-            daemon.settings = {
-              registry-mirrors = [ "https://mirror.gcr.io" ];
-            };
-          };
-        };
-        podman = {
-          enable = true;
-          dockerCompat = true;
-        };
-
         # when I want to build a system vm
         vmVariant = {
           virtualisation.memorySize = 10240;
@@ -149,7 +138,6 @@
         httpie
         hy
         libinput
-        liblc3
         liblc3
         matugen
         mesa-demos

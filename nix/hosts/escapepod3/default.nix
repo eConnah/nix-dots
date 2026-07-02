@@ -102,6 +102,10 @@
 
       environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
+      nix.settings = {
+        cores = 4;
+        max-jobs = 2;
+      };
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
   };
