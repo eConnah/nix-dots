@@ -1,4 +1,4 @@
-{ ... }: {
+{ self, ... }: {
   flake.homeModules.defaults =
     {
       pkgs,
@@ -7,6 +7,10 @@
       ...
     }:
     {
+      imports = [
+        self.homeModules.remote-assets
+      ];
+
       programs = {
         fish.enable = true;
         git.enable = true;

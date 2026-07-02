@@ -1,10 +1,10 @@
-{ inputs, self, ... }:
-{
+{ ... }: {
   flake.homeModules.swaybg =
     {
       pkgs,
       lib,
       config,
+      remoteAssets,
       ...
     }:
     let
@@ -27,7 +27,7 @@
             After = [ "graphical-session.target" ];
           };
           Service = {
-            ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${self}/pictures/wallpapers/${wallpaperName} -m fill";
+            ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${remoteAssets.wallpapers.${wallpaperName}} -m fill";
             Restart = "always";
           };
           Install = {

@@ -12,9 +12,9 @@
     }:
     {
       imports = [
-        self.nixosModules.substituters
         inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
+        self.nixosModules.substituters
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
 
