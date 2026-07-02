@@ -86,20 +86,14 @@
       fonts = {
         fontconfig = {
           enable = true;
-          defaultFonts = {
-            sansSerif = [ "Atkinson Hyperlegible Next" ];
-            monospace = [ "Atkinson Hyperlegible Mono" ];
-          };
         };
 
+        # fallback fonts main fonts are done with stylix
         packages = with pkgs; [
-          atkinson-hyperlegible-next
-          atkinson-hyperlegible-mono
           liberation_ttf
           nerd-fonts.jetbrains-mono
           noto-fonts
           noto-fonts-cjk-sans
-          noto-fonts-color-emoji
           ubuntu-classic
         ];
 

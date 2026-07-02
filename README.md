@@ -1,81 +1,55 @@
-# NixOS System Configurations
+# nix-dots
 
-This repository contains my declarative NixOS and Home Manager configurations.
-It is structured using a dendritic architecture, which strictly separates
-hardware-agnostic defaults and user profiles from host-specific hardware
-configurations.
+My declarative NixOS + Home Manager configs for three machines across two
+architectures. Built with the dendritic pattern via `flake-parts` +
+`import-tree` every file just contributes to the flake, no central import list
+to maintain.
 
-## Repository Structure
+This setup is highly opinionated toward how I want to run things. If you're
+building your own, feel free to steal whatever's useful, but unless you agree
+with all my opinions you probably will need to change a fair bit.
 
-The configuration uses `import-tree` to automatically evaluate modules within
-the `nix/` directory.
+## Highlights
 
-- `flake.nix`: The primary entry point defining inputs (nixpkgs, disko,
-  preservation, home-manager, nvf, stylix, etc.) and outputs.
-- `nix/hosts/`: Machine-specific configurations.
-  - `onyx`: Connor's desktop PC configuration.
-  - `lenix`: Connor's Apple Silicon laptop configuration.
-  - `escapepod3`: Leo's Apple Silicon laptop configuration.
-- `nix/modules/`: Reusable components and logic.
-  - `bootloaders/`: Bootloader configuration, primarily using Limine.
-  - `desktops/`: Window manager configurations (Hyprland).
-  - `presets/`: Application-specific configurations and audio profiles (e.g.,
-    EasyEffects).
-  - `profiles/`: Shared system configurations, package sets, and specific
-    hardware logic (e.g., Asahi, Nvidia).
-  - `programs/`: Application-specific settings (e.g., Vicinae, Hyprpanel).
-  - `services/`: User service configurations (e.g., swaybg).
-  - `themes/`: System-wide colour theme integrations using Stylix and
-    Catppuccin.
-  - `users/`: User-specific data, Home Manager integrations, and state
-    preservation rules.
-- `nix/nvim/`: Modular and declarative Neovim configuration built with NVF.
+- **Three hosts, two architectures** — `x86_64-linux` desktop + two
+  `aarch64-linux` Apple Silicon laptops, sharing profiles cleanly across both
+- **Ephemeral root** on Onyx and Lenix — tmpfs `/`, Disko-managed Btrfs, opt-in
+  state via [Preservation](https://github.com/nix-community/preservation)
+- **Stylix + Catppuccin** theming, driven declaratively across every app
+- **Hyprland**, launched through UWSM, with Hyprpanel and Vicinae
+- **Fully declarative Neovim** via [nvf](https://github.com/notashelf/nvf)
 
-## Host Configurations
+## Hosts
 
-### Onyx (Desktop)
+| Host           | Owner  | Device                  | Notable bits                                                                     |
+| -------------- | ------ | ----------------------- | -------------------------------------------------------------------------------- |
+| **onyx**       | Connor | Desktop (x86_64)        | Nvidia, gaming (Steam/Proton/Gamescope), custom PipeWire quantum, ephemeral root |
+| **lenix**      | Connor | MacBook (Apple Silicon) | Asahi, ephemeral root, zswap                                                     |
+| **escapepod3** | Leo    | MacBook (Apple Silicon) | Asahi, traditional (non-ephemeral) root                                          |
 
-Connor's primary desktop environment configured for gaming and general use.
+## Structure
 
-- **Filesystem:** Declarative Btrfs disk layout managed by Disko, featuring an
-  ephemeral root on tmpfs (`/`).
-- **State Management:** Opt-in persistence managed by Preservation. System and
-  user data are routed to a persistent NVMe subvolume.
-- **Hardware:** Nvidia proprietary drivers with modesetting.
-- **Networking:** Minimal systemd-networkd configuration, with Tailscale for
-  secure network access.
-- **Audio:** Custom PipeWire quantum configurations.
+```bash
+nix/
+├── flake/            # flake-parts stuff (home-manager, nvf wiring)
+├── hosts/            # per-machine configs — hardware, disks, host-specific home-manager
+├── modules/
+│   ├── bootloaders/  # only Limine but probably easy to expand
+│   ├── desktops/     # Hyprland getting other ones to work may or may not be a challenge.
+│   ├── presets/      # per-app configs (audio profiles, etc.)
+│   ├── profiles/     # shared system logic — nvidia, asahi, laptops, preservation
+│   ├── programs/     # per-app modules (vicinae, hyprpanel, lix)
+│   ├── services/     # user services (swaybg)
+│   ├── themes/       # Stylix + Catppuccin
+│   └── users/        # per-user NixOS + home-manager + preservation rules
+└── nvim/             # nvf-based Neovim config
+```
 
-### Lenix (Laptop)
+## Key technologies
 
-Connor's laptop configuration tailored for Apple Silicon hardware.
+NixOS · Home Manager · Disko · Preservation · Limine · Hyprland (UWSM) · Stylix
+· Catppuccin · nvf · Vicinae · Lix
 
-- **Hardware Integration:** Utilises the `apple-silicon-support` flake for
-  hardware compatibility.
-- **Filesystem & State:** Ephemeral root on tmpfs (`/`) with opt-in state
-  persistence, mirroring the desktop architecture.
-- **Memory:** zswap with lz4 compression and x86_64 emulation via binfmt.
-- **Power Management:** iio-hyprland for auto-rotation, with NetworkManager and
-  iwd handling connectivity.
+## License
 
-### Escapepod3 (Laptop)
-
-Leo's laptop configuration, also targeting Apple Silicon hardware.
-
-- **Hardware Integration:** Utilises the `apple-silicon-support` flake, sharing
-  the Asahi profile with Lenix.
-- **Filesystem:** Standard Btrfs root filesystem.
-- **Memory:** zswap with lz4 compression and x86_64 emulation via binfmt.
-- **Power Management:** iio-hyprland for auto-rotation.
-
-## Key Technologies
-
-- **NixOS & Flakes:** System configuration and dependency management.
-- **Home Manager:** User environment and dotfile management.
-- **Disko:** Declarative disk partitioning and formatting.
-- **Preservation:** Opt-in state management for ephemeral root filesystems.
-- **Limine:** Modern and minimal bootloader.
-- **Hyprland:** Wayland compositor managed via UWSM.
-- **Stylix & Catppuccin:** Declarative system-wide colour theme integration.
-- **NVF:** Modular Neovim configuration.
-- **Vicinae:** Application launcher.
+See [LICENSE](./LICENSE).
