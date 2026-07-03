@@ -106,7 +106,7 @@
 
       users = {
         mutableUsers = false;
-        users.connor.hashedPasswordFile = "/persistent/passwords/connor";
+        users.connor.hashedPasswordFile = "/persistent/passwords/connor/linux";
       };
 
       programs = {

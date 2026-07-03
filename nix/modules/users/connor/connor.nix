@@ -44,50 +44,82 @@
         stateVersion = "25.05";
       };
 
+      stylix.targets.halloy.enable = false;
       # yubikey git setup
-      programs.git = {
-        settings = {
-          user = {
-            name = "Connor Alecks";
-            email = "git@econnah.uk";
-            signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
-          };
-          commit = {
-            gpgSign = true;
-          };
-          gpg = {
-            format = "ssh";
-          };
-          pull = {
-            ff = "only";
-          };
-          init = {
-            defaultBranch = "main";
-          };
-          diff = {
-            tool = "vimdiff";
-          };
-          core = {
-            editor = "nvim";
-          };
-          push = {
-            autoSetupRemote = true;
+      programs = {
+        halloy = {
+          enable = true;
+
+          settings = {
+            servers = {
+              asahi = {
+                nickname = "eConnah";
+                server = "irc.oftc.net";
+                channels = [
+                  "#asahi"
+                  "#asahi-dev"
+                  "#asahi-alt"
+                ];
+              };
+
+              nixos = {
+                nickname = "eConnah";
+                server = "irc.libera.chat";
+                channels = [
+                  "#nixos"
+                ];
+                sasl.plain = {
+                  username = "eConnah";
+                  password_file = "/persistent/passwords/connor/halloy";
+                };
+              };
+            };
           };
         };
-      };
 
-      programs.ssh = {
-        settings = {
-          "github.com" = {
-            User = "git";
-            IdentityFile = "~/.ssh/id_ed25519_sk_rk";
-            IdentitiesOnly = true;
+        git = {
+          settings = {
+            user = {
+              name = "Connor Alecks";
+              email = "git@econnah.uk";
+              signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
+            };
+            commit = {
+              gpgSign = true;
+            };
+            gpg = {
+              format = "ssh";
+            };
+            pull = {
+              ff = "only";
+            };
+            init = {
+              defaultBranch = "main";
+            };
+            diff = {
+              tool = "vimdiff";
+            };
+            core = {
+              editor = "nvim";
+            };
+            push = {
+              autoSetupRemote = true;
+            };
+          };
+        };
+
+        ssh = {
+          settings = {
+            "github.com" = {
+              User = "git";
+              IdentityFile = "~/.ssh/id_ed25519_sk_rk";
+              IdentitiesOnly = true;
+            };
           };
         };
       };
 
       home.packages = with pkgs; [
-        halloy
         hyprcursor
         hyprpicker
         hyprshot
