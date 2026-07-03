@@ -51,6 +51,7 @@
           ".local/share/flatpak"
           ".local/share/nvim"
           ".local/share/qalculate"
+          ".local/share/robrix"
           ".local/share/vicinae"
           ".vscode"
         ];

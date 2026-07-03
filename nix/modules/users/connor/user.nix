@@ -119,21 +119,26 @@
         };
       };
 
-      home.packages = with pkgs; [
-        hyprcursor
-        hyprpicker
-        hyprshot
-        jetbrains.idea
-        lazyspotify
-        libreoffice
-        obsidian
-        prismlauncher
-        rose-pine-hyprcursor
-        signal-desktop
-        spotifyd
-        vesktop
-        vscode
-      ];
+      home.packages =
+        with pkgs;
+        [
+          hyprcursor
+          hyprpicker
+          hyprshot
+          jetbrains.idea
+          lazyspotify
+          libreoffice
+          obsidian
+          prismlauncher
+          rose-pine-hyprcursor
+          signal-desktop
+          spotifyd
+          vesktop
+          vscode
+        ]
+        ++ [
+          self.packages.${pkgs.stdenv.hostPlatform.system}.robrix
+        ];
     };
   };
 }

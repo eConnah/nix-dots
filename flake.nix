@@ -3,7 +3,7 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:denful/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     preservation.url = "github:nix-community/preservation";
     vicinae.url = "github:vicinaehq/vicinae";
