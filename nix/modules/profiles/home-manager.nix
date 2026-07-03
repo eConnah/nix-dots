@@ -15,6 +15,11 @@
         fish.enable = true;
         git.enable = true;
 
+        direnv = {
+          enable = true;
+          enableFishIntegration = true;
+          nix-direnv.enable = true;
+        };
         eza = {
           enable = true;
           git = true;
