@@ -52,7 +52,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
         "InstantMessaging"
         "Chat"
       ];
-      startupWMClass = "robrix";
+      startupWMClass = "Makepad";
     })
   ];
 
