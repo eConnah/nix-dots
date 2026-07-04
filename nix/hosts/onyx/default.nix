@@ -13,6 +13,7 @@
         self.nixosModules.hyprland
         self.nixosModules.insecure
         self.nixosModules.limine
+        self.nixosModules.lix
         self.nixosModules.nvidia
         self.nixosModules.onyxConfig
         self.nixosModules.onyxDisko
