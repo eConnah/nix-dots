@@ -95,10 +95,10 @@
 
       # Asahi-Host Specifics
       hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
-        name = "asahi";
+        name = "vendorfw";
         hashMode = "recursive";
-        hash = "sha256-8XCXLbVRO6gRsohowZmpcIAKVdhApTUifpDev5eF+dA=";
-        message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/asahi' to add the firmware.";
+        hash = "sha256-ich1SH/YkuDja91ln/PcD0/Oe6Zb5uxGhWIBCeYaHvc=";
+        message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/vendorfw' to add the firmware.";
       };
       boot.extraModprobeConfig = "options hid_apple iso_layout=0";
 

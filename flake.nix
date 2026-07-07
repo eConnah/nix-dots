@@ -9,7 +9,7 @@
     vicinae.url = "github:vicinaehq/vicinae";
 
     apple-silicon = {
-      url = "github:eConnah/nixos-apple-silicon/fix-limine-m1n1";
+      url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
