@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.homeModules.onyx-hyprland = { ... }: {
+  flake.homeModules.phoenix-hyprland = { ... }: {
     imports = [
       self.homeModules.hyprland
     ];
@@ -9,11 +9,10 @@
       extraConfig = ''
         ---------------------- DISPLAY TOPOLOGY AND MONITORS ----------------------
         hl.monitor({
-            output = "DP-1",
-            mode = "2560x1440@240",
+            output = "eDP-1",
+            mode = "2560x1600@60",
             position = "0x0",
-            scale = 1,
-            vrr = 2
+            scale = 1.25
         })
 
         hl.monitor({
@@ -30,7 +29,7 @@
 
         ----------------------- ASYNCHRONOUS AUTOSTART -----------------------
         hl.on("hyprland.start", function()
-            hl.exec_cmd("xrandr --output DP-1 --primary")
+            hl.exec_cmd("xrandr --output eDP-1 --primary")
         end)
 
         --------------------------- ENVIRONMENT INJECTION ---------------------------
@@ -78,10 +77,13 @@
                 disable_hyprland_logo = true,
             },
             input = {
-                kb_layout = "us",
                 follow_mouse = 1,
-                sensitivity = 0,
-                accel_profile = "flat",
+                sensitivity = 0.3,
+                touchpad = {
+                  natural_scroll = true,
+                  clickfinger_behavior = true,
+                  disable_while_typing = false,
+                },
             },
             animations = {
                 enabled = true,

@@ -14,16 +14,15 @@
         self.nixosModules.hyprland
         self.nixosModules.insecure
         self.nixosModules.laptops
-        self.nixosModules.lenixConfig
-        self.nixosModules.lenixHardware
-        self.nixosModules.lenixHome
-        self.nixosModules.lenixPreservation
+        self.nixosModules.lenix-config
+        self.nixosModules.lenix-hardware
+        self.nixosModules.lenix-home
         self.nixosModules.limine
         self.nixosModules.lix
       ];
     };
 
-    nixosModules.lenixHome = { pkgs, ... }: {
+    nixosModules.lenix-home = { pkgs, ... }: {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
@@ -37,7 +36,7 @@
 
         users.connor = {
           imports = [
-            self.homeModules.lenixHypr
+            self.homeModules.lenix-hyprland
             self.homeModules.swaybg
           ];
 
@@ -52,7 +51,7 @@
       };
     };
 
-    nixosModules.lenixConfig = { pkgs, ... }: {
+    nixosModules.lenix-config = { pkgs, ... }: {
       networking.hostName = "lenix";
 
       boot = {
@@ -125,6 +124,9 @@
         max-jobs = 1;
         secret-key-files = "/persistent/nix-keys/secret-key.pem";
       };
+
+      time.timeZone = "Europe/London";
+
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
   };

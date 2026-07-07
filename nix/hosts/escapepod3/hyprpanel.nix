@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.homeModules.escapepod3Panel = { remoteAssets, ... }: {
+  flake.homeModules.escapepod3-hyprpanel = { remoteAssets, ... }: {
     imports = [ self.homeModules.hyprpanel ];
     programs.hyprpanel = {
       enable = true;

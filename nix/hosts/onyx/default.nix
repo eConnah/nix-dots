@@ -15,15 +15,14 @@
         self.nixosModules.limine
         self.nixosModules.lix
         self.nixosModules.nvidia
-        self.nixosModules.onyxConfig
-        self.nixosModules.onyxDisko
-        self.nixosModules.onyxHardware
-        self.nixosModules.onyxHome
-        self.nixosModules.onyxPreservation
+        self.nixosModules.onyx-config
+        self.nixosModules.onyx-disko
+        self.nixosModules.onyx-hardware
+        self.nixosModules.onyx-home
       ];
     };
 
-    nixosModules.onyxHome = { pkgs, ... }: {
+    nixosModules.onyx-home = { pkgs, ... }: {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
@@ -37,7 +36,7 @@
 
         users.connor = {
           imports = [
-            self.homeModules.onyxHypr
+            self.homeModules.onyx-hyprland
             self.homeModules.swaybg
           ];
 
@@ -75,7 +74,7 @@
       };
     };
 
-    nixosModules.onyxConfig = { pkgs, ... }: {
+    nixosModules.onyx-config = { pkgs, ... }: {
       networking = {
         hostName = "onyx";
         useDHCP = false;
@@ -145,6 +144,9 @@
         max-jobs = 4;
         secret-key-files = "/persistent/nix-keys/secret-key.pem";
       };
+
+      time.timeZone = "Europe/Amsterdam";
+
       boot.kernelPackages = pkgs.linuxPackages_latest;
       system.stateVersion = "25.11"; # NEVER CHANGE
     };

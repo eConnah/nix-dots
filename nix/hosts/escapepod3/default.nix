@@ -10,9 +10,9 @@
         self.nixosModules.asahi
         self.nixosModules.catppuccin
         self.nixosModules.defaults
-        self.nixosModules.escapepod3Config
-        self.nixosModules.escapepod3Hardware
-        self.nixosModules.escapepod3Home
+        self.nixosModules.escapepod3-config
+        self.nixosModules.escapepod3-hardware
+        self.nixosModules.escapepod3-home
         self.nixosModules.hyprland
         self.nixosModules.laptops
         self.nixosModules.leo
@@ -20,7 +20,7 @@
       ];
     };
 
-    nixosModules.escapepod3Home = { pkgs, ... }: {
+    nixosModules.escapepod3-home = { pkgs, ... }: {
       imports = [ inputs.home-manager.nixosModules.default ];
 
       home-manager = {
@@ -34,8 +34,8 @@
 
         users.leo = {
           imports = [
-            self.homeModules.escapepod3Hypr
-            self.homeModules.escapepod3Panel
+            self.homeModules.escapepod3-hyprland
+            self.homeModules.escapepod3-hyprpanel
             self.homeModules.swaybg
           ];
 
@@ -51,7 +51,7 @@
       };
     };
 
-    nixosModules.escapepod3Config = { pkgs, ... }: {
+    nixosModules.escapepod3-config = { pkgs, ... }: {
       networking.hostName = "escapepod3";
 
       boot = {
@@ -106,6 +106,9 @@
         cores = 4;
         max-jobs = 2;
       };
+
+      time.timeZone = "Europe/London";
+
       system.stateVersion = "25.11"; # NEVER CHANGE
     };
   };

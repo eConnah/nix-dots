@@ -1,6 +1,8 @@
 { self, ... }: {
   flake = {
     nixosModules.connor = { pkgs, ... }: {
+      imports = [ self.nixosModules.connor-preservation ];
+
       home-manager.users.connor = self.homeModules.connor;
 
       users.users.connor = {
@@ -32,8 +34,6 @@
       environment.systemPackages = with pkgs; [
         yubikey-manager
       ];
-
-      time.timeZone = "Europe/Amsterdam";
     };
 
     homeModules.connor = { pkgs, ... }: {
