@@ -108,6 +108,30 @@
           };
         };
 
+        jujutsu = {
+          enable = true;
+
+          settings = {
+            user = {
+              name = "Connor Alecks";
+              email = "git@econnah.uk";
+            };
+
+            ui = {
+              editor = "nvim";
+              diff-editor = "vimdiff";
+              merge-editor = "vimdiff";
+              default-command = "log";
+            };
+
+            signing = {
+              sign-all = false;
+              backend = "ssh";
+              key = "~/.ssh/id_ed25519_sk_rk.pub";
+            };
+          };
+        };
+
         ssh = {
           settings = {
             "github.com" = {
