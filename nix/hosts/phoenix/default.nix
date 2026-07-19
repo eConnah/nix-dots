@@ -78,17 +78,19 @@
 
       users = {
         mutableUsers = false;
-        users.ewan.initialPassword = "tacobell";
-        # users.ewan.hashedPasswordFile = "/persistent/passwords/ewan";
+        users = {
+          ewan.hashedPasswordFile = "/persistent/passwords/ewan/linux";
+          connor.hashedPasswordFile = "/persistent/passwords/connor/linux";
+        };
       };
 
       environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
 
       nix.settings = {
-        cores = 4;
-        http-connections = 30;
+        cores = 8;
+        http-connections = 100;
         max-jobs = 1;
-        # secret-key-files = "/persistent/nix-keys/secret-key.pem";
+        secret-key-files = "/persistent/nix-keys/secret-key.pem";
       };
 
       time.timeZone = "Europe/London";
