@@ -44,10 +44,32 @@
               tool = "vimdiff";
             };
             core = {
-              editor = "vim";
+              editor = "nvim";
             };
             push = {
               autoSetupRemote = true;
+            };
+          };
+        };
+
+        jujutsu = {
+          enable = true;
+
+          settings = {
+            user = {
+              name = "Ewan Alecks";
+              email = "ewan.alecks@gmail.com";
+            };
+
+            ui = {
+              editor = "nvim";
+              diff-editor = "vimdiff";
+              merge-editor = "vimdiff";
+              default-command = "log";
+            };
+
+            signing = {
+              sign-all = false;
             };
           };
         };

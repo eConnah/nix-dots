@@ -132,6 +132,9 @@
         gh
         gimp
         httpie
+        hunspell
+        hunspellDicts.en_GB-large
+        hunspellDicts.fr-moderne
         hy
         libinput
         liblc3

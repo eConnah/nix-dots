@@ -13,7 +13,6 @@
         self.nixosModules.ewan
         self.nixosModules.hyprland
         self.nixosModules.insecure
-        self.nixosModules.laptops
         self.nixosModules.limine
         self.nixosModules.lix
         self.nixosModules.mesa
@@ -45,6 +44,7 @@
 
             home.packages = with pkgs; [
               plezy
+              spotify
             ];
 
             theme.wallpaper = "86-02.png";
@@ -67,7 +67,29 @@
     };
 
     nixosModules.phoenix-config = { pkgs, ... }: {
-      networking.hostName = "phoenix";
+      networking = {
+        hostName = "phoenix";
+        useDHCP = false;
+        networkmanager.enable = false;
+      };
+
+      systemd.network = {
+        enable = true;
+        networks."10-ethernet" = {
+          matchConfig.Name = "en*";
+          networkConfig = {
+            DHCP = "ipv4";
+            IPv6AcceptRA = false;
+          };
+          linkConfig = {
+            RequiredForOnline = "routable";
+          };
+        };
+      };
+
+      services.resolved = {
+        enable = true;
+      };
 
       # iio stuff
       hardware.sensor.iio.enable = true;
