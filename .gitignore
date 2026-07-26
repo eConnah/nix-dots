@@ -6,3 +6,5 @@ result-*
 .direnv
 
 *.qcow2
+
+.jj

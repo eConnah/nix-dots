@@ -1,6 +1,5 @@
-{ inputs, self, ... }:
-{
-  flake.nixosModules.onyxHardware =
+{ ... }: {
+  flake.nixosModules.onyx-hardware =
     {
       config,
       lib,

@@ -1,7 +1,10 @@
-{ inputs, self, ... }:
-{
+{ ... }: {
   flake.nixosModules.laptops =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       hardware.bluetooth.enable = true;
       powerManagement.enable = true;
@@ -22,6 +25,16 @@
             };
           };
         };
+      };
+
+      preservation.preserveAt."/persistent" = {
+        # System-level persistence
+        directories = [
+          "/etc/NetworkManager"
+          "/etc/iwd"
+          "/var/lib/bluetooth"
+          "/var/lib/iwd"
+        ];
       };
 
       environment.systemPackages = with pkgs; [
