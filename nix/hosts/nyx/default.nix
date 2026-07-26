@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.nixosConfigurations.phoenix = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.nyx = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.catppuccin
       self.nixosModules.connor
@@ -14,11 +14,11 @@
       self.nixosModules.insecure
       self.nixosModules.limine
       self.nixosModules.lix
-      self.nixosModules.mesa
-      self.nixosModules.phoenix-config
-      self.nixosModules.phoenix-disko
-      self.nixosModules.phoenix-hardware
-      self.nixosModules.phoenix-home
+      self.nixosModules.nvidia
+      self.nixosModules.nyx-config
+      self.nixosModules.nyx-disko
+      self.nixosModules.nyx-hardware
+      self.nixosModules.nyx-home
     ];
   };
 }

@@ -64,6 +64,7 @@
         libreoffice
         prismlauncher
         rose-pine-hyprcursor
+        signal-desktop
         vesktop
         vscode
       ];
