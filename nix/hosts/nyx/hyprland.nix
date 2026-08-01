@@ -1,5 +1,5 @@
-{self, ...}: {
-  flake.homeModules.nyx-hyprland = {...}: {
+{ self, ... }: {
+  flake.homeModules.nyx-hyprland = { ... }: {
     imports = [
       self.homeModules.hyprland
     ];

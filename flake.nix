@@ -27,8 +27,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pedantix = {
+      url = "github:swarsel/pedantix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+
     stylix = {
       url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
