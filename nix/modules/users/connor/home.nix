@@ -9,26 +9,21 @@
             client_id: a05e9b38cd3e420a87ca1d09b26b7179
         '';
         homeDirectory = if pkgs.stdenv.isDarwin then "/Users/connor" else "/home/connor";
-        packages =
-          with pkgs;
-          [
-            hyprcursor
-            hyprpicker
-            hyprshot
-            jetbrains.idea
-            lazyspotify
-            libreoffice
-            obsidian
-            prismlauncher
-            rose-pine-hyprcursor
-            signal-desktop
-            spotifyd
-            vesktop
-            vscode
-          ]
-          ++ [
-            self.packages.${pkgs.stdenv.hostPlatform.system}.robrix
-          ];
+        packages = with pkgs; [
+          hyprcursor
+          hyprpicker
+          hyprshot
+          jetbrains.idea
+          lazyspotify
+          libreoffice
+          obsidian
+          prismlauncher
+          rose-pine-hyprcursor
+          signal-desktop
+          spotifyd
+          vesktop
+          vscode
+        ];
         stateVersion = "25.05";
         username = "connor";
       };
@@ -104,9 +99,9 @@
             };
             ui = {
               default-command = "log";
-              diff-editor = "vimdiff";
+              diff-editor = ":builtin";
               editor = "nvim";
-              merge-editor = "vimdiff";
+              merge-editor = "nvim";
             };
             user = {
               email = "git@econnah.uk";
