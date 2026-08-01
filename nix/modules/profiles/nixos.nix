@@ -13,6 +13,7 @@
     {
       imports = [
         inputs.home-manager.nixosModules.home-manager
+        inputs.lix-module.nixosModules.default
         inputs.preservation.nixosModules.default
         inputs.stylix.nixosModules.stylix
         self.nixosModules.substituters

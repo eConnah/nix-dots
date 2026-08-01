@@ -17,7 +17,6 @@
       self.nixosModules.lenix-hardware
       self.nixosModules.lenix-home
       self.nixosModules.limine
-      self.nixosModules.lix
     ];
   };
 }

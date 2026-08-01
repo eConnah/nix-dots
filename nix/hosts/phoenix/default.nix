@@ -13,7 +13,6 @@
       self.nixosModules.hyprland
       self.nixosModules.insecure
       self.nixosModules.limine
-      self.nixosModules.lix
       self.nixosModules.mesa
       self.nixosModules.phoenix-config
       self.nixosModules.phoenix-disko
