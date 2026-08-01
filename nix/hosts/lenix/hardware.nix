@@ -11,52 +11,43 @@
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
-
+      boot.extraModulePackages = [ ];
       boot.initrd.availableKernelModules = [ "uas" ];
       boot.initrd.kernelModules = [ ];
       boot.kernelModules = [ ];
-      boot.extraModulePackages = [ ];
-
       fileSystems."/" = {
         device = "none";
         fsType = "tmpfs";
       };
-
-      fileSystems."/nix" = {
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-        options = [ "subvol=@nix" ];
-      };
-
-      fileSystems."/persistent" = {
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-        options = [ "subvol=@persistent" ];
-      };
-
-      fileSystems."/snapshots" = {
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-        options = [ "subvol=@snapshots" ];
-      };
-
-      fileSystems."/swap" = {
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-        options = [ "subvol=@swap" ];
-      };
-
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/33D3-16FC";
-        fsType = "vfat";
         options = [
           "fmask=0022"
           "dmask=0022"
         ];
+        device = "/dev/disk/by-uuid/33D3-16FC";
+        fsType = "vfat";
       };
-
-      swapDevices = [ ];
-
+      fileSystems."/nix" = {
+        options = [ "subvol=@nix" ];
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
+        fsType = "btrfs";
+      };
+      fileSystems."/persistent" = {
+        options = [ "subvol=@persistent" ];
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
+        fsType = "btrfs";
+      };
+      fileSystems."/snapshots" = {
+        options = [ "subvol=@snapshots" ];
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
+        fsType = "btrfs";
+      };
+      fileSystems."/swap" = {
+        options = [ "subvol=@swap" ];
+        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
+        fsType = "btrfs";
+      };
       nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+      swapDevices = [ ];
     };
 }

@@ -6,30 +6,10 @@
       programs.hyprpanel = {
         enable = true;
         settings = {
-          theme = {
-            font = {
-              name = "JetBrainsMono Nerd Font";
-              label = "JetBrainsMono Nerd Font Medium";
-              size = "16px";
-            };
-            bar = {
-              floating = true;
-              transparent = true;
-              menus.monochrome = true;
-              buttons.monochrome = true;
-            };
-          };
-          menus.clock = {
-            weather.unit = "metric";
-            time.military = true;
-          };
-          bar.customModules = {
-            storage.paths = [ "/" ];
-            weather.unit = "metric";
-            worldclock.format = "%H:%M:%S %Z";
-            worldclock.formatDiffDate = "%a %b %d %H:%M:%S %Z";
-          };
           bar = {
+            bluetooth.label = false;
+            clock.format = "%a %b %d  %H:%M:%S";
+            launcher.autoDetectIcon = true;
             layouts = {
               "*" = {
                 "left" = [
@@ -47,9 +27,29 @@
               showWifiInfo = true;
               truncation = false;
             };
-            launcher.autoDetectIcon = true;
-            bluetooth.label = false;
-            clock.format = "%a %b %d  %H:%M:%S";
+          };
+          bar.customModules = {
+            storage.paths = [ "/" ];
+            weather.unit = "metric";
+            worldclock.format = "%H:%M:%S %Z";
+            worldclock.formatDiffDate = "%a %b %d %H:%M:%S %Z";
+          };
+          menus.clock = {
+            time.military = true;
+            weather.unit = "metric";
+          };
+          theme = {
+            bar = {
+              buttons.monochrome = true;
+              floating = true;
+              menus.monochrome = true;
+              transparent = true;
+            };
+            font = {
+              label = "JetBrainsMono Nerd Font Medium";
+              name = "JetBrainsMono Nerd Font";
+              size = "16px";
+            };
           };
         };
       };

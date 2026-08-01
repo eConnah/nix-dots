@@ -2,45 +2,38 @@
   description = "Connors NixOS Dendritic Flake";
 
   inputs = {
+    apple-silicon = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixos-apple-silicon";
+    };
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+    };
     import-tree.url = "github:denful/import-tree";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    preservation.url = "github:nix-community/preservation";
-
-    apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
-      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:notashelf/nvf";
     };
-
     pedantix = {
-      url = "github:swarsel/pedantix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
+      url = "github:swarsel/pedantix";
     };
-
+    preservation.url = "github:nix-community/preservation";
     stylix = {
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-
     treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:numtide/treefmt-nix";
     };
   };
 

@@ -8,15 +8,15 @@
       };
 
       users.leo = {
-        isNormalUser = true;
         description = "Leo Chittock";
-        uid = 2006;
-        group = "leo";
-        shell = pkgs.fish;
         extraGroups = [
           "wheel"
           "networkmanager"
         ];
+        group = "leo";
+        isNormalUser = true;
+        shell = pkgs.fish;
+        uid = 2006;
       };
     };
   };

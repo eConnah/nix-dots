@@ -2,9 +2,9 @@
 {
   flake.nixosModules.catppuccin =
     {
-      pkgs,
       config,
       lib,
+      pkgs,
       ...
     }:
     {

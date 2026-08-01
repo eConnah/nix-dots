@@ -1,8 +1,8 @@
 { ... }: {
   perSystem =
     {
-      pkgs,
       lib,
+      pkgs,
       ...
     }:
     let

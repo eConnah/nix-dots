@@ -1,16 +1,15 @@
 { ... }: {
   flake.nixosModules.laptops =
     {
-      pkgs,
       lib,
+      pkgs,
       ...
     }:
     {
+      environment.systemPackages = with pkgs; [
+        brightnessctl
+      ];
       hardware.bluetooth.enable = true;
-      powerManagement.enable = true;
-      services.logind.settings.Login.HandleLidSwitch = lib.mkDefault "suspend-then-hibernate";
-      services.power-profiles-daemon.enable = true;
-
       networking = {
         networkmanager = {
           enable = true;
@@ -26,7 +25,7 @@
           };
         };
       };
-
+      powerManagement.enable = true;
       preservation.preserveAt."/persistent" = {
         # System-level persistence
         directories = [
@@ -36,9 +35,7 @@
           "/var/lib/iwd"
         ];
       };
-
-      environment.systemPackages = with pkgs; [
-        brightnessctl
-      ];
+      services.logind.settings.Login.HandleLidSwitch = lib.mkDefault "suspend-then-hibernate";
+      services.power-profiles-daemon.enable = true;
     };
 }

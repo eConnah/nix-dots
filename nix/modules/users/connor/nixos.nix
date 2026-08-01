@@ -2,29 +2,10 @@
   flake = {
     nixosModules.connor = { pkgs, ... }: {
       imports = [ self.nixosModules.connor-preservation ];
-
+      environment.systemPackages = with pkgs; [
+        yubikey-manager
+      ];
       home-manager.users.connor = self.homeModules.connor;
-
-      users = {
-        groups.connor = {
-          gid = 2026;
-        };
-
-        users.connor = {
-          description = "Connor Alecks";
-          isNormalUser = true;
-          uid = 2026;
-          group = "connor";
-          shell = pkgs.fish;
-          extraGroups = [
-            "wheel"
-            "networkmanager"
-            "dialout"
-            "uucp"
-          ];
-        };
-      };
-
       services = {
         displayManager.autoLogin.user = "connor";
 
@@ -38,10 +19,25 @@
           yubikey-personalization
         ];
       };
+      users = {
+        groups.connor = {
+          gid = 2026;
+        };
 
-      environment.systemPackages = with pkgs; [
-        yubikey-manager
-      ];
+        users.connor = {
+          description = "Connor Alecks";
+          extraGroups = [
+            "wheel"
+            "networkmanager"
+            "dialout"
+            "uucp"
+          ];
+          group = "connor";
+          isNormalUser = true;
+          shell = pkgs.fish;
+          uid = 2026;
+        };
+      };
     };
   };
 }

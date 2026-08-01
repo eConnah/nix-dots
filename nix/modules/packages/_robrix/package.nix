@@ -1,13 +1,8 @@
 {
   lib,
-  stdenv,
-  rustPlatform,
-  pkg-config,
-  makeWrapper,
-  makeDesktopItem,
-  copyDesktopItems,
-  callPackage,
   alsa-lib,
+  callPackage,
+  copyDesktopItems,
   fetchFromGitHub,
   fontconfig,
   libGL,
@@ -16,46 +11,17 @@
   libx11,
   libxcursor,
   libxkbcommon,
+  makeDesktopItem,
+  makeWrapper,
   openssl,
+  pkg-config,
+  rustPlatform,
+  stdenv,
   wayland,
   robius-packaging-commands ? callPackage ../_robius-packaging-commands/package.nix { },
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
-  pname = "robrix";
-  version = "unstable-2026-07-03";
-  src = fetchFromGitHub {
-    owner = "project-robius";
-    repo = "robrix";
-    rev = "8c79e1dece370d4cbe0cb050ce0ba2a4017acea0";
-    hash = "sha256-DbmFhp7m6c9f0LhWJ7+bMf7DslfORTl/y1ago7dRVQo=";
-  };
-  cargoHash = "sha256-XhZvG1im3yHSPEdfzTA6T4IVX543y6HyXo2y4egaduk=";
   MAKEPAD_PACKAGE_DIR = "${placeholder "out"}/share/robrix/resources";
-
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-    copyDesktopItems
-    robius-packaging-commands
-  ];
-
-  desktopItems = [
-    (makeDesktopItem {
-      name = "robrix";
-      exec = "robrix";
-      icon = "robrix";
-      desktopName = "Robrix";
-      genericName = "Matrix Chat Client";
-      comment = "A multi-platform Matrix chat client written in Rust";
-      categories = [
-        "Network"
-        "InstantMessaging"
-        "Chat"
-      ];
-      startupWMClass = "Makepad";
-    })
-  ];
-
   buildInputs = [
     openssl
   ]
@@ -70,7 +36,44 @@ rustPlatform.buildRustPackage (finalAttrs: {
     libxkbcommon
     wayland
   ];
-
+  cargoHash = "sha256-XhZvG1im3yHSPEdfzTA6T4IVX543y6HyXo2y4egaduk=";
+  desktopItems = [
+    (makeDesktopItem {
+      categories = [
+        "Network"
+        "InstantMessaging"
+        "Chat"
+      ];
+      comment = "A multi-platform Matrix chat client written in Rust";
+      desktopName = "Robrix";
+      exec = "robrix";
+      genericName = "Matrix Chat Client";
+      icon = "robrix";
+      name = "robrix";
+      startupWMClass = "Makepad";
+    })
+  ];
+  nativeBuildInputs = [
+    pkg-config
+    makeWrapper
+    copyDesktopItems
+    robius-packaging-commands
+  ];
+  pname = "robrix";
+  postFixup = lib.optionalString stdenv.hostPlatform.isLinux ''
+    wrapProgram $out/bin/robrix \
+      --prefix LD_LIBRARY_PATH : "${
+        lib.makeLibraryPath [
+          fontconfig
+          libGL
+          libglvnd
+          libx11
+          libxcursor
+          libxkbcommon
+          wayland
+        ]
+      }"
+  '';
   postInstall = ''
     CARGO_PACKAGER_FORMAT=${if stdenv.hostPlatform.isDarwin then "app" else "appimage"} \
       robius-packaging-commands before-each-package \
@@ -90,28 +93,19 @@ rustPlatform.buildRustPackage (finalAttrs: {
       fi
     done
   '';
-
-  postFixup = lib.optionalString stdenv.hostPlatform.isLinux ''
-    wrapProgram $out/bin/robrix \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fontconfig
-          libGL
-          libglvnd
-          libx11
-          libxcursor
-          libxkbcommon
-          wayland
-        ]
-      }"
-  '';
-
+  src = fetchFromGitHub {
+    hash = "sha256-DbmFhp7m6c9f0LhWJ7+bMf7DslfORTl/y1ago7dRVQo=";
+    owner = "project-robius";
+    repo = "robrix";
+    rev = "8c79e1dece370d4cbe0cb050ce0ba2a4017acea0";
+  };
+  version = "unstable-2026-07-03";
   meta = {
     description = "A multi-platform Matrix chat client written in Rust.";
     homepage = "https://github.com/project-robius/robrix";
     license = lib.licenses.mit;
+    mainProgram = "robrix";
     maintainers = with lib.maintainers; [ eConnah ];
     platforms = lib.platforms.unix;
-    mainProgram = "robrix";
   };
 })

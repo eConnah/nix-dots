@@ -1,11 +1,7 @@
 { ... }: {
   flake.nixosModules.preservation = { ... }: {
-    boot.tmp.useTmpfs = false;
     boot.tmp.cleanOnBoot = true;
-
-    systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
-    security.sudo.extraConfig = "Defaults lecture=never";
-
+    boot.tmp.useTmpfs = false;
     preservation = {
       enable = true;
 
@@ -30,5 +26,7 @@
         ];
       };
     };
+    security.sudo.extraConfig = "Defaults lecture=never";
+    systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
   };
 }

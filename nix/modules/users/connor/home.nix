@@ -3,16 +3,12 @@
     homeModules.connor = { pkgs, ... }: {
       imports = [ self.homeModules.vicinae ];
       home = {
-        username = "connor";
-        homeDirectory = if pkgs.stdenv.isDarwin then "/Users/connor" else "/home/connor";
-        stateVersion = "25.05";
-
         # home files
         file.".config/lazyspotify/config.yml".text = ''
           auth:
             client_id: a05e9b38cd3e420a87ca1d09b26b7179
         '';
-
+        homeDirectory = if pkgs.stdenv.isDarwin then "/Users/connor" else "/home/connor";
         packages =
           with pkgs;
           [
@@ -33,107 +29,102 @@
           ++ [
             self.packages.${pkgs.stdenv.hostPlatform.system}.robrix
           ];
+        stateVersion = "25.05";
+        username = "connor";
       };
-
-      stylix.targets.halloy.enable = false;
-
       # yubikey git setup
       programs = {
+        git = {
+          settings = {
+            commit = {
+              gpgSign = true;
+            };
+            core = {
+              editor = "nvim";
+            };
+            diff = {
+              tool = "vimdiff";
+            };
+            gpg = {
+              format = "ssh";
+            };
+            init = {
+              defaultBranch = "main";
+            };
+            pull = {
+              ff = "only";
+            };
+            push = {
+              autoSetupRemote = true;
+            };
+            user = {
+              email = "git@econnah.uk";
+              name = "Connor Alecks";
+              signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
+            };
+          };
+        };
         halloy = {
           enable = true;
 
           settings = {
             servers = {
               asahi = {
-                nickname = "eConnah";
-                server = "irc.oftc.net";
                 channels = [
                   "#asahi"
                   "#asahi-dev"
                   "#asahi-alt"
                 ];
+                nickname = "eConnah";
+                server = "irc.oftc.net";
               };
 
               nixos = {
-                nickname = "eConnah";
-                server = "irc.libera.chat";
                 channels = [
                   "#nixos"
                 ];
+                nickname = "eConnah";
                 sasl.plain = {
-                  username = "eConnah";
                   password_file = "/persistent/passwords/connor/halloy";
+                  username = "eConnah";
                 };
+                server = "irc.libera.chat";
               };
             };
           };
         };
-
-        git = {
-          settings = {
-            user = {
-              name = "Connor Alecks";
-              email = "git@econnah.uk";
-              signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
-            };
-            commit = {
-              gpgSign = true;
-            };
-            gpg = {
-              format = "ssh";
-            };
-            pull = {
-              ff = "only";
-            };
-            init = {
-              defaultBranch = "main";
-            };
-            diff = {
-              tool = "vimdiff";
-            };
-            core = {
-              editor = "nvim";
-            };
-            push = {
-              autoSetupRemote = true;
-            };
-          };
-        };
-
         jujutsu = {
           enable = true;
 
           settings = {
-            user = {
-              name = "Connor Alecks";
-              email = "git@econnah.uk";
-            };
-
-            ui = {
-              editor = "nvim";
-              diff-editor = "vimdiff";
-              merge-editor = "vimdiff";
-              default-command = "log";
-            };
-
             signing = {
-              sign-all = false;
               backend = "ssh";
               key = "~/.ssh/id_ed25519_sk_rk.pub";
+              sign-all = false;
+            };
+            ui = {
+              default-command = "log";
+              diff-editor = "vimdiff";
+              editor = "nvim";
+              merge-editor = "vimdiff";
+            };
+            user = {
+              email = "git@econnah.uk";
+              name = "Connor Alecks";
             };
           };
         };
-
         ssh = {
           settings = {
             "github.com" = {
-              User = "git";
-              IdentityFile = "~/.ssh/id_ed25519_sk_rk";
               IdentitiesOnly = true;
+              IdentityFile = "~/.ssh/id_ed25519_sk_rk";
+              User = "git";
             };
           };
         };
       };
+      stylix.targets.halloy.enable = false;
     };
   };
 }

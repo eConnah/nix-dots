@@ -5,32 +5,6 @@
 }:
 {
   flake = {
-    nixosModules.asahi =
-      {
-        pkgs,
-        lib,
-        ...
-      }:
-      {
-        imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
-        boot = {
-          kexec.enable = false;
-          loader.efi.canTouchEfiVariables = lib.mkForce false;
-        };
-        hardware.asahi.enable = true;
-
-        services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
-
-        environment.systemPackages = with pkgs; [
-          asahi-bless
-          muvm
-        ];
-
-        home-manager.sharedModules = [
-          self.homeModules.asahi
-        ];
-      };
-
     homeModules.asahi = { lib, ... }: {
       programs.fish.functions = {
         hyprbattery = ''
@@ -55,5 +29,27 @@
 
       services.easyeffects.enable = lib.mkForce false;
     };
+    nixosModules.asahi =
+      {
+        lib,
+        pkgs,
+        ...
+      }:
+      {
+        imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
+        boot = {
+          kexec.enable = false;
+          loader.efi.canTouchEfiVariables = lib.mkForce false;
+        };
+        environment.systemPackages = with pkgs; [
+          asahi-bless
+          muvm
+        ];
+        hardware.asahi.enable = true;
+        home-manager.sharedModules = [
+          self.homeModules.asahi
+        ];
+        services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
+      };
   };
 }

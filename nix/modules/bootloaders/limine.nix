@@ -6,8 +6,8 @@
 {
   flake.nixosModules.limine =
     {
-      pkgs,
       lib,
+      pkgs,
       ...
     }:
     {

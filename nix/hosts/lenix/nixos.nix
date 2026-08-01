@@ -1,80 +1,67 @@
 { self, ... }: {
   flake.nixosModules.lenix-config = { pkgs, ... }: {
-    networking.hostName = "lenix";
-
     boot = {
       initrd.kernelModules = [ "lz4" ];
+      kernel.sysctl = {
+        "vm.swappiness" = 70;
+      };
       kernelParams = [
         "zswap.compressor=lz4"
         "zswap.enabled=1"
         "zswap.max_pool_percent=20"
         "zswap.shrinker_enabled=1"
       ];
-      kernel.sysctl = {
-        "vm.swappiness" = 70;
-      };
     };
-
-    swapDevices = [ { device = "/swap/swapfile"; } ];
-
+    boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+    boot.extraModprobeConfig = "options hid_apple iso_layout=0";
+    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
     fileSystems = {
-      "/nix" = {
-        neededForBoot = true;
-        options = [
-          "compress=zstd"
-          "noatime"
-        ];
-      };
-      "/persistent" = {
-        neededForBoot = true;
-        options = [
-          "compress=zstd"
-          "noatime"
-        ];
-      };
-
       "/".options = [
         "size=25%"
         "mode=755"
       ];
+      "/nix" = {
+        options = [
+          "compress=zstd"
+          "noatime"
+        ];
+        neededForBoot = true;
+      };
+      "/persistent" = {
+        options = [
+          "compress=zstd"
+          "noatime"
+        ];
+        neededForBoot = true;
+      };
       "/swap".options = [ "noatime" ];
     };
-
     # Asahi-Host Specifics
     hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
-      name = "vendorfw";
-      hashMode = "recursive";
       hash = "sha256-ich1SH/YkuDja91ln/PcD0/Oe6Zb5uxGhWIBCeYaHvc=";
+      hashMode = "recursive";
       message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/vendorfw' to add the firmware.";
+      name = "vendorfw";
     };
-    boot.extraModprobeConfig = "options hid_apple iso_layout=0";
-
     # iio stuff
     hardware.sensor.iio.enable = true;
-    programs.iio-hyprland.enable = true;
-
-    # NH root
-    programs.nh.flake = "/persistent/dotfiles";
-
-    users = {
-      mutableUsers = false;
-      users.connor.hashedPasswordFile = "/persistent/passwords/connor";
-    };
-
-    boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
-    nix.settings.extra-platforms = [ "x86_64-linux" ];
-
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
-
+    networking.hostName = "lenix";
     nix.settings = {
       cores = 4;
       http-connections = 30;
       max-jobs = 1;
       secret-key-files = "/persistent/nix-keys/secret-key.pem";
     };
-
-    time.timeZone = "Europe/London";
-
+    nix.settings.extra-platforms = [ "x86_64-linux" ];
+    programs.iio-hyprland.enable = true;
+    # NH root
+    programs.nh.flake = "/persistent/dotfiles";
+    swapDevices = [ { device = "/swap/swapfile"; } ];
     system.stateVersion = "25.11"; # NEVER CHANGE
+    time.timeZone = "Europe/London";
+    users = {
+      mutableUsers = false;
+      users.connor.hashedPasswordFile = "/persistent/passwords/connor";
+    };
   };
 }
