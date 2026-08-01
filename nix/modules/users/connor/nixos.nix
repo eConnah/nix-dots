@@ -5,16 +5,24 @@
 
       home-manager.users.connor = self.homeModules.connor;
 
-      users.users.connor = {
-        description = "Connor Alecks";
-        isNormalUser = true;
-        shell = pkgs.fish;
-        extraGroups = [
-          "wheel"
-          "networkmanager"
-          "dialout"
-          "uucp"
-        ];
+      users = {
+        groups.connor = {
+          gid = 2026;
+        };
+
+        users.connor = {
+          description = "Connor Alecks";
+          isNormalUser = true;
+          uid = 2026;
+          group = "connor";
+          shell = pkgs.fish;
+          extraGroups = [
+            "wheel"
+            "networkmanager"
+            "dialout"
+            "uucp"
+          ];
+        };
       };
 
       services = {

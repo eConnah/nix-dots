@@ -17,6 +17,8 @@
           kexec.enable = false;
           loader.efi.canTouchEfiVariables = lib.mkForce false;
         };
+        hardware.asahi.enable = true;
+
         services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
 
         environment.systemPackages = with pkgs; [
