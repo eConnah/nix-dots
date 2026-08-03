@@ -24,7 +24,6 @@
           vesktop
           vscode
         ];
-        stateVersion = "25.05";
         username = "connor";
       };
       # yubikey git setup

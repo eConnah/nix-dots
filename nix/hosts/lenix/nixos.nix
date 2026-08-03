@@ -57,7 +57,6 @@
     # NH root
     programs.nh.flake = "/persistent/dotfiles";
     swapDevices = [ { device = "/swap/swapfile"; } ];
-    system.stateVersion = "25.11"; # NEVER CHANGE
     time.timeZone = "Europe/London";
     users = {
       mutableUsers = false;

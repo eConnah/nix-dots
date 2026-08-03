@@ -40,7 +40,6 @@
     services.resolved = {
       enable = true;
     };
-    system.stateVersion = "25.11"; # NEVER CHANGE
     systemd.network = {
       enable = true;
       networks."10-ethernet" = {

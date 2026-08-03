@@ -59,7 +59,7 @@ nix/
 │   ├── desktops/     # Hyprland — getting other WMs to work may or may not be a challenge
 │   ├── packages/     # custom derivations (Robrix, robius-packaging-commands)
 │   ├── presets/      # per-app configs (audio profiles, etc.)
-│   ├── profiles/     # shared system logic — nvidia, mesa, asahi, laptops, lix, insecure, preservation
+│   ├── profiles/     # shared system logic — nvidia, mesa, asahi, laptops, lix, preservation
 │   ├── programs/     # per-app modules (vicinae, hyprpanel, lix)
 │   ├── services/     # user services (swaybg)
 │   ├── themes/       # Stylix + Catppuccin

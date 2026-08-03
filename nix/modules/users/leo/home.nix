@@ -18,7 +18,6 @@
       vesktop
       vscode
     ];
-    home.stateVersion = "25.05";
     home.username = "leo";
   };
 }

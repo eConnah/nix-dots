@@ -127,6 +127,7 @@
           wireplumber.enable = true;
         };
       };
+      system.stateVersion = "25.11";
       virtualisation = {
         # when I want to build a system vm
         vmVariant = {

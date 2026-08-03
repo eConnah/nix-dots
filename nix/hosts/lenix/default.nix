@@ -11,7 +11,6 @@
       self.nixosModules.connor
       self.nixosModules.defaults
       self.nixosModules.hyprland
-      self.nixosModules.insecure
       self.nixosModules.laptops
       self.nixosModules.lenix-config
       self.nixosModules.lenix-hardware

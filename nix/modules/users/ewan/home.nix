@@ -4,7 +4,6 @@
       imports = [ self.homeModules.vicinae ];
       home = {
         homeDirectory = if pkgs.stdenv.isDarwin then "/Users/ewan" else "/home/ewan";
-        stateVersion = "25.05";
         username = "ewan";
       };
       home.packages = with pkgs; [

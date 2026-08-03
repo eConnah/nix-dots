@@ -10,7 +10,6 @@
       self.nixosModules.connor
       self.nixosModules.defaults
       self.nixosModules.hyprland
-      self.nixosModules.insecure
       self.nixosModules.limine
       self.nixosModules.nvidia
       self.nixosModules.onyx-config

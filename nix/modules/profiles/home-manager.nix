@@ -10,6 +10,7 @@
       imports = [
         self.homeModules.remote-assets
       ];
+      home.stateVersion = "25.11";
       programs = {
         direnv = {
           enable = true;
