@@ -119,6 +119,7 @@
         };
       };
       stylix.targets.halloy.enable = false;
+      stylix.targets.vicinae.enable = false;
     };
   };
 }
