@@ -36,6 +36,7 @@
         hunspellDicts.en_GB-large
         hunspellDicts.fr-moderne
         hy
+        imv
         libinput
         liblc3
         matugen
