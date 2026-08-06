@@ -1,7 +1,6 @@
 { ... }: {
   flake.nixosModules.lenix-hardware =
     {
-      config,
       lib,
       pkgs,
       modulesPath,
@@ -11,43 +10,92 @@
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
-      boot.extraModulePackages = [ ];
-      boot.initrd.availableKernelModules = [ "uas" ];
-      boot.initrd.kernelModules = [ ];
-      boot.kernelModules = [ ];
-      fileSystems."/" = {
-        device = "none";
-        fsType = "tmpfs";
+      boot = {
+        extraModulePackages = [ ];
+        initrd = {
+          availableKernelModules = [ "uas" ];
+          kernelModules = [ ];
+          luks.devices."cryptlenix".device = "/dev/disk/by-uuid/6a31662c-38a3-43f7-bf31-2185d0baf64d";
+          systemd.services.rollback-void = {
+            after = [ "cryptsetup.target" ];
+            before = [ "sysroot.mount" ];
+            description = "Roll back @void root subvolume to blank snapshot";
+            path = [
+              pkgs.btrfs-progs
+              pkgs.coreutils
+              pkgs.gawk
+              pkgs.util-linux
+            ];
+            script = ''
+              mkdir -p /mnt
+              mount /dev/mapper/cryptlenix /mnt
+              for sub in $(btrfs subvolume list -o /mnt/@void 2>/dev/null | awk '{print $NF}' | sort -r); do
+                  btrfs subvolume delete "/mnt/$sub" || true
+              done
+              btrfs subvolume delete /mnt/@void
+              btrfs subvolume snapshot /mnt/@void-blank /mnt/@void
+              umount /mnt
+            '';
+            serviceConfig.Type = "oneshot";
+            unitConfig.DefaultDependencies = "no";
+            wantedBy = [ "initrd.target" ];
+          };
+        };
+        kernelModules = [ ];
       };
-      fileSystems."/boot" = {
-        options = [
-          "fmask=0022"
-          "dmask=0022"
-        ];
-        device = "/dev/disk/by-uuid/33D3-16FC";
-        fsType = "vfat";
-      };
-      fileSystems."/nix" = {
-        options = [ "subvol=@nix" ];
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-      };
-      fileSystems."/persistent" = {
-        options = [ "subvol=@persistent" ];
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-      };
-      fileSystems."/snapshots" = {
-        options = [ "subvol=@snapshots" ];
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
-      };
-      fileSystems."/swap" = {
-        options = [ "subvol=@swap" ];
-        device = "/dev/disk/by-uuid/6f190059-8d44-4692-87d4-077ea4034697";
-        fsType = "btrfs";
+      fileSystems = {
+        "/" = {
+          options = [
+            "subvol=@void"
+            "compress=zstd"
+            "noatime"
+          ];
+          device = "/dev/disk/by-uuid/31955c6c-b21a-48f1-aa60-b2e9ac155e28";
+          fsType = "btrfs";
+        };
+        "/boot" = {
+          options = [
+            "fmask=0022"
+            "dmask=0022"
+          ];
+          device = "/dev/disk/by-uuid/33D3-16FC";
+          fsType = "vfat";
+        };
+        "/nix" = {
+          options = [
+            "subvol=@nix"
+            "compress=zstd"
+            "noatime"
+          ];
+          device = "/dev/disk/by-uuid/31955c6c-b21a-48f1-aa60-b2e9ac155e28";
+          fsType = "btrfs";
+          neededForBoot = true;
+        };
+        "/persistent" = {
+          options = [
+            "subvol=@persistent"
+            "compress=zstd"
+            "noatime"
+          ];
+          device = "/dev/disk/by-uuid/31955c6c-b21a-48f1-aa60-b2e9ac155e28";
+          fsType = "btrfs";
+          neededForBoot = true;
+        };
+        "/snapshots" = {
+          options = [ "subvol=@snapshots" ];
+          device = "/dev/disk/by-uuid/31955c6c-b21a-48f1-aa60-b2e9ac155e28";
+          fsType = "btrfs";
+        };
+        "/swap" = {
+          options = [
+            "subvol=@swap"
+            "noatime"
+          ];
+          device = "/dev/disk/by-uuid/31955c6c-b21a-48f1-aa60-b2e9ac155e28";
+          fsType = "btrfs";
+        };
       };
       nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-      swapDevices = [ ];
+      swapDevices = [ { device = "/swap/swapfile"; } ];
     };
 }

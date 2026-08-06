@@ -48,7 +48,6 @@
           ".local/share/Terraria"
           ".local/share/com.edde746.plezy"
           ".local/share/direnv"
-          ".local/share/docker"
           ".local/share/flatpak"
           ".local/share/nvim"
           ".local/share/qalculate"
