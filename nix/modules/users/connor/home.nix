@@ -13,7 +13,6 @@
           hyprcursor
           hyprpicker
           hyprshot
-          jetbrains.idea
           lazyspotify
           libreoffice
           obsidian
