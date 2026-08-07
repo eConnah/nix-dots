@@ -14,6 +14,7 @@
       imports = [
         inputs.home-manager.nixosModules.home-manager
         inputs.lix-module.nixosModules.default
+        inputs.nix-secrets.nixosModules.default
         inputs.preservation.nixosModules.default
         inputs.stylix.nixosModules.stylix
         self.nixosModules.substituters
@@ -79,7 +80,7 @@
           "flakes"
         ];
         trusted-public-keys = [
-          "lenix-cache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
+          "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
           "onyx-cache:O+2Ad+2xMdljj1G8eH5KYQxdkixoEGUREXKTRV/BBKk="
           "phoenix-cache:YvJE4WPv95BDa8a7mTn83J1Oqib+3qpHOrztWpRLoPI="
         ];
@@ -108,7 +109,21 @@
         seahorse.enable = true;
         ssh.startAgent = true;
       };
-      security.rtkit.enable = true;
+      security = {
+        nix-secrets = {
+          enable = true;
+          recipientAliases = {
+            escapepod3 = "age1REPLACE_ME";
+            lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
+            nyx = "age1REPLACE_ME";
+            onyx = "age1REPLACE_ME";
+            phoenix = "age1REPLACE_ME";
+          };
+          secrets."nix-cache-key".recipients = [ "lenix" ]; # will become [ "lenix" "onyx" "phoenix" ] via rekey later
+          storage = self + "/secrets";
+        };
+        rtkit.enable = true;
+      };
       services = {
         flatpak.enable = lib.mkDefault true;
         gnome = {

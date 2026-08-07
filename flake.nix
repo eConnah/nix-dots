@@ -25,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
     };
+    nix-secrets = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:unnamed-systems/nix-secrets";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nvf = {
       inputs.nixpkgs.follows = "nixpkgs";

@@ -6,6 +6,10 @@
         yubikey-manager
       ];
       home-manager.users.connor = self.homeModules.connor;
+      security.nix-secrets.secrets."passwords/connor/linux" = {
+        neededForUsers = true;
+        recipients = [ "lenix" ];
+      };
       services = {
         displayManager.autoLogin.user = "connor";
 

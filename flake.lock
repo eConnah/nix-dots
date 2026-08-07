@@ -409,6 +409,26 @@
         "type": "github"
       }
     },
+    "nix-secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786013172,
+        "narHash": "sha256-7a80WzEx8foVYZ4u9gLoAcPbV1ncITEpJshtuznqrIg=",
+        "owner": "unnamed-systems",
+        "repo": "nix-secrets",
+        "rev": "2f713c2e612fed887c58e94ca4d332de85ec0945",
+        "type": "github"
+      },
+      "original": {
+        "owner": "unnamed-systems",
+        "repo": "nix-secrets",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1785967620,
@@ -536,6 +556,7 @@
         "import-tree": "import-tree",
         "lix": "lix",
         "lix-module": "lix-module",
+        "nix-secrets": "nix-secrets",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
         "pedantix": "pedantix",
