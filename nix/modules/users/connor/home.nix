@@ -23,6 +23,7 @@
           vesktop
           vscode
         ];
+        sessionVariables.EDITOR = "nvim";
         username = "connor";
       };
       # yubikey git setup
