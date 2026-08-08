@@ -92,6 +92,7 @@
       };
       nixpkgs.config.allowUnfree = true;
       programs = {
+        bat.enable = true;
         dconf.enable = true;
         firefox.enable = true;
         fish.enable = true;
@@ -108,6 +109,13 @@
         };
         seahorse.enable = true;
         ssh.startAgent = true;
+        zoxide = {
+          enable = true;
+          enableFishIntegration = true;
+          flags = [
+            "--cmd cd"
+          ];
+        };
       };
       security = {
         nix-secrets = {
