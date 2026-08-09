@@ -8,20 +8,6 @@
       # User-level persistence
       users.connor = {
         directories = [
-          # Core User State
-          ".local/share/applications"
-          ".local/share/fish"
-          ".local/share/icons"
-          ".local/share/keyrings"
-          ".local/state/wireplumber"
-          ".ssh"
-          "Desktop"
-          "Documents"
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Videos"
-
           # Application Data & Configs
           ".config/Code"
           ".config/Epic"
@@ -48,8 +34,6 @@
           ".local/share/Terraria"
           ".local/share/com.edde746.plezy"
           ".local/share/direnv"
-          ".local/share/flatpak"
-          ".local/share/nvim"
           ".local/share/qalculate"
           ".local/share/robrix"
           ".local/share/vicinae"

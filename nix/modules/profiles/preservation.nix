@@ -35,7 +35,21 @@
 
           users = lib.mapAttrs (_name: _: {
             directories = [
+              ".local/share/applications"
+              ".local/share/fish"
+              ".local/share/flatpak"
+              ".local/share/icons"
+              ".local/share/keyrings"
+              ".local/share/nvim"
               ".local/share/zoxide"
+              ".local/state/wireplumber"
+              ".ssh"
+              "Desktop"
+              "Documents"
+              "Downloads"
+              "Music"
+              "Pictures"
+              "Videos"
             ];
           }) normalUsers;
         };
