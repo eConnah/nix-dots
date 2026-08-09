@@ -5,17 +5,17 @@
 }:
 {
   flake.nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.asahi
-      self.nixosModules.catppuccin
-      self.nixosModules.defaults
-      self.nixosModules.escapepod3-config
-      self.nixosModules.escapepod3-hardware
-      self.nixosModules.escapepod3-home
-      self.nixosModules.hyprland
-      self.nixosModules.laptops
-      self.nixosModules.leo
-      self.nixosModules.limine
+    modules = with self.nixosModules; [
+      asahi
+      catppuccin
+      defaults
+      escapepod3-config
+      escapepod3-hardware
+      escapepod3-home
+      hyprland
+      laptops
+      leo
+      limine
     ];
   };
 }

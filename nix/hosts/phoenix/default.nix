@@ -5,18 +5,18 @@
 }:
 {
   flake.nixosConfigurations.phoenix = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.catppuccin
-      self.nixosModules.connor
-      self.nixosModules.defaults
-      self.nixosModules.ewan
-      self.nixosModules.hyprland
-      self.nixosModules.limine
-      self.nixosModules.mesa
-      self.nixosModules.phoenix-config
-      self.nixosModules.phoenix-disko
-      self.nixosModules.phoenix-hardware
-      self.nixosModules.phoenix-home
+    modules = with self.nixosModules; [
+      catppuccin
+      connor
+      defaults
+      ewan
+      hyprland
+      limine
+      mesa
+      phoenix-config
+      phoenix-disko
+      phoenix-hardware
+      phoenix-home
     ];
   };
 }

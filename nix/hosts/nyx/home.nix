@@ -15,9 +15,9 @@
       useUserPackages = true;
       users = {
         connor = {
-          imports = [
-            self.homeModules.nyx-hyprland
-            self.homeModules.swaybg
+          imports = with self.homeModules; [
+            nyx-hyprland
+            swaybg
           ];
           home = {
             packages = with pkgs; [
@@ -45,9 +45,9 @@
         };
 
         ewan = {
-          imports = [
-            self.homeModules.nyx-hyprland
-            self.homeModules.swaybg
+          imports = with self.homeModules; [
+            nyx-hyprland
+            swaybg
           ];
           home = {
             packages = with pkgs; [

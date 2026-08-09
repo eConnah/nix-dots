@@ -5,17 +5,17 @@
 }:
 {
   flake.nixosConfigurations.lenix = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.asahi
-      self.nixosModules.catppuccin
-      self.nixosModules.connor
-      self.nixosModules.defaults
-      self.nixosModules.hyprland
-      self.nixosModules.laptops
-      self.nixosModules.lenix-config
-      self.nixosModules.lenix-hardware
-      self.nixosModules.lenix-home
-      self.nixosModules.limine
+    modules = with self.nixosModules; [
+      asahi
+      catppuccin
+      connor
+      defaults
+      hyprland
+      laptops
+      lenix-config
+      lenix-hardware
+      lenix-home
+      limine
     ];
   };
 }

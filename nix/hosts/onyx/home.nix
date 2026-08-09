@@ -8,15 +8,15 @@
     imports = [ inputs.home-manager.nixosModules.default ];
     home-manager = {
       backupFileExtension = "backup";
-      sharedModules = [
-        self.homeModules.defaults
+      sharedModules = with self.homeModules; [
+        defaults
       ];
       useGlobalPkgs = true;
       useUserPackages = true;
       users.connor = {
-        imports = [
-          self.homeModules.onyx-hyprland
-          self.homeModules.swaybg
+        imports = with self.homeModules; [
+          nyx-hyprland
+          swaybg
         ];
         home = {
           packages = with pkgs; [

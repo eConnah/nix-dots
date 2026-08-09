@@ -5,18 +5,18 @@
 }:
 {
   flake.nixosConfigurations.nyx = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.catppuccin
-      self.nixosModules.connor
-      self.nixosModules.defaults
-      self.nixosModules.ewan
-      self.nixosModules.hyprland
-      self.nixosModules.limine
-      self.nixosModules.nvidia
-      self.nixosModules.nyx-config
-      self.nixosModules.nyx-disko
-      self.nixosModules.nyx-hardware
-      self.nixosModules.nyx-home
+    modules = with self.nixosModules; [
+      catppuccin
+      connor
+      defaults
+      ewan
+      hyprland
+      limine
+      nvidia
+      nyx-config
+      nyx-disko
+      nyx-hardware
+      nyx-home
     ];
   };
 }

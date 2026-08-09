@@ -8,16 +8,16 @@
     imports = [ inputs.home-manager.nixosModules.default ];
     home-manager = {
       backupFileExtension = "backup";
-      sharedModules = [
-        self.homeModules.defaults
+      sharedModules = with self.homeModules; [
+        defaults
       ];
       useGlobalPkgs = true;
       useUserPackages = true;
       users = {
         connor = {
-          imports = [
-            self.homeModules.phoenix-hyprland
-            self.homeModules.swaybg
+          imports = with self.homeModules; [
+            phoenix-hyprland
+            swaybg
           ];
           home.packages = with pkgs; [
             plezy
@@ -27,9 +27,9 @@
         };
 
         ewan = {
-          imports = [
-            self.homeModules.phoenix-hyprland
-            self.homeModules.swaybg
+          imports = with self.homeModules; [
+            phoenix-hyprland
+            swaybg
           ];
           home.packages = with pkgs; [
             plezy

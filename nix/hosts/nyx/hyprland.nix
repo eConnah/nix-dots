@@ -1,11 +1,11 @@
 { self, ... }: {
   flake.homeModules.nyx-hyprland = { lib, ... }: {
-    imports = [
-      self.homeModules.hyprland
-      self.homeModules.preset-hyprland-animations
-      self.homeModules.preset-hyprland-keybinds
-      self.homeModules.preset-hyprland-rules
-      self.homeModules.preset-hyprland-settings
+    imports = with self.homeModules; [
+      hyprland
+      preset-hyprland-animations
+      preset-hyprland-keybinds
+      preset-hyprland-rules
+      preset-hyprland-settings
     ];
 
     wayland.windowManager.hyprland = {
