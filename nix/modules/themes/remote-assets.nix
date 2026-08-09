@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.homeModules.remote-assets =
     {
       lib,

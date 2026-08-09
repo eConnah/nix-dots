@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.nixosModules.onyx-hardware =
     {
       config,

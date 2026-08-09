@@ -3,7 +3,7 @@
     inputs.treefmt-nix.flakeModule
     inputs.pedantix.flakeModules.default
   ];
-  perSystem = { ... }: {
+  perSystem = {
     treefmt.programs.pedantix = {
       enable = true;
       settings = {

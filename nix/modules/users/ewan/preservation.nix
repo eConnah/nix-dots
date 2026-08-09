@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.nixosModules.ewan-preservation = { ... }: {
+  flake.nixosModules.ewan-preservation = {
     imports = [
       self.nixosModules.preservation
     ];

@@ -1,7 +1,6 @@
-{ ... }:
 {
   flake.nvfModules.ui =
-    { ... }:
+
     {
       vim = {
         notify.nvim-notify.enable = true;

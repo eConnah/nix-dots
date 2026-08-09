@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.homeModules.preset-hyprland-animations = { ... }: {
+{
+  flake.homeModules.preset-hyprland-animations = {
     wayland.windowManager.hyprland = {
       extraConfig = ''
         require("animations")

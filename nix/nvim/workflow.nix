@@ -1,7 +1,6 @@
-{ ... }:
 {
   flake.nvfModules.workflow =
-    { ... }:
+
     {
       vim = {
         navigation.harpoon.enable = true;

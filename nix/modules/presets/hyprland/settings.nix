@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.homeModules.preset-hyprland-settings = { ... }: {
+{
+  flake.homeModules.preset-hyprland-settings = {
     wayland.windowManager.hyprland = {
       extraConfig = ''
         require("settings")

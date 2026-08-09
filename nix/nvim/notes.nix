@@ -1,7 +1,6 @@
-{ ... }:
 {
   flake.nvfModules.notes =
-    { ... }:
+
     {
       vim = {
         notes = {

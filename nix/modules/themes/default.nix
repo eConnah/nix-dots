@@ -1,6 +1,6 @@
 { self, ... }: {
   flake = {
-    homeModules.themes = { ... }: {
+    homeModules.themes = {
       stylix = {
         targets.firefox = {
           colorTheme.enable = true;

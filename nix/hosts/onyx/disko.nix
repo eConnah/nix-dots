@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.onyx-disko = { ... }: {
+  flake.nixosModules.onyx-disko = {
     imports = [ inputs.disko.nixosModules.disko ];
     disko.devices.disk.hdd = {
       content = {

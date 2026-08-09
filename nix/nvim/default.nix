@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.nvfModules.defaults = { pkgs, ... }: {
     vim = {
       # Tab indents

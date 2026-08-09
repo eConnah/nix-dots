@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.homeModules.preset-hyprland-keybinds = { ... }: {
+{
+  flake.homeModules.preset-hyprland-keybinds = {
     wayland.windowManager.hyprland = {
       extraConfig = ''
         require("keybinds")

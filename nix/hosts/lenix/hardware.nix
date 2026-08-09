@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.nixosModules.lenix-hardware =
     {
       lib,

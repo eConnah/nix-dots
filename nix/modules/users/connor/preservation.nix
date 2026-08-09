@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.nixosModules.connor-preservation = { ... }: {
+  flake.nixosModules.connor-preservation = {
     imports = [
       self.nixosModules.preservation
     ];

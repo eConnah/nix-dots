@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake = {
     homeModules.hyprland = { lib, ... }: {
       home.file.".config/uwsm/default-id".text = ''
@@ -23,7 +23,7 @@
         systemd.enable = false;
       };
     };
-    nixosModules.hyprland = { ... }: {
+    nixosModules.hyprland = {
       programs.hyprland = {
         enable = true;
         withUWSM = true;

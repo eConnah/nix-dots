@@ -1,4 +1,4 @@
-{ ... }: {
+{
   flake.nixosModules.phoenix-hardware =
     {
       lib,
