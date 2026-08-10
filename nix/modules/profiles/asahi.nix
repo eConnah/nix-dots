@@ -5,8 +5,8 @@
 }:
 {
   flake = {
-    homeModules.asahi = { lib, ... }: {
-      programs.fish.functions = {
+    hjemModules.asahi = {
+      rum.programs.fish.functions = {
         hyprbattery = ''
           set realCharge (cat /sys/class/power_supply/macsmc-battery/capacity)
           set charge (math "10 * round($realCharge / 10)")
@@ -25,7 +25,6 @@
           end
         '';
       };
-      services.easyeffects.enable = lib.mkForce false;
     };
     nixosModules.asahi =
       {
@@ -112,9 +111,6 @@
           muvm
         ];
         hardware.asahi.enable = true;
-        home-manager.sharedModules = [
-          self.homeModules.asahi
-        ];
         services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
       };
   };

@@ -12,11 +12,10 @@
     }:
     {
       imports = [
-        inputs.home-manager.nixosModules.home-manager
+        inputs.hjem.nixosModules.default
         inputs.lix-module.nixosModules.default
         inputs.nix-secrets.nixosModules.default
         inputs.preservation.nixosModules.default
-        inputs.stylix.nixosModules.stylix
         self.nixosModules.substituters
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
@@ -30,14 +29,17 @@
         eza
         fastfetch
         file
+        firefox
         gh
         gimp
+        gnome-keyring
         httpie
         hunspell
         hunspellDicts.en_GB-large
         hunspellDicts.fr-moderne
         hy
         imv
+        jujutsu
         libinput
         liblc3
         matugen
@@ -71,6 +73,10 @@
           noto-fonts-cjk-sans
           ubuntu-classic
         ];
+      };
+      hjem = {
+        clobberByDefault = true;
+        extraModules = [ inputs.hjem-rum.hjemModules.default ];
       };
       nix.channel.enable = false;
       nix.settings = {

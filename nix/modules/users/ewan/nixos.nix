@@ -1,7 +1,20 @@
 { self, ... }: {
   flake.nixosModules.ewan = { pkgs, ... }: {
-    imports = [ self.nixosModules.ewan-preservation ];
-    home-manager.users.ewan = self.homeModules.ewan;
+    imports = with self.nixosModules; [ ewan-preservation ];
+    hjem = {
+      users.ewan = {
+        imports = with self.hjemModules; [ ewan ];
+        enable = true;
+        directory = "/home/ewan";
+        user = "ewan";
+      };
+    };
+    services = {
+      tailscale = {
+        enable = true;
+        useRoutingFeatures = "client";
+      };
+    };
     users = {
       groups.ewan = {
         gid = 2000;

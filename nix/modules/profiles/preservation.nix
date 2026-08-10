@@ -35,6 +35,7 @@
 
           users = lib.mapAttrs (_name: _: {
             directories = [
+              ".config/jj/repos"
               ".local/share/applications"
               ".local/share/fish"
               ".local/share/flatpak"

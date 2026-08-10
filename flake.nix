@@ -11,9 +11,14 @@
       url = "github:nix-community/disko";
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
-    home-manager = {
+    hjem = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
+      url = "github:feel-co/hjem";
+    };
+    hjem-rum = {
+      inputs.hjem.follows = "hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:snugnug/hjem-rum";
     };
     import-tree.url = "github:denful/import-tree";
     lix = {
@@ -40,10 +45,6 @@
       url = "github:swarsel/pedantix";
     };
     preservation.url = "github:nix-community/preservation";
-    stylix = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/stylix";
-    };
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";

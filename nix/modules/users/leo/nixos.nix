@@ -1,7 +1,13 @@
 { self, ... }: {
   flake.nixosModules.leo = { pkgs, ... }: {
-    home-manager.users.leo = self.homeModules.leo;
-
+    hjem = {
+      users.leo = {
+        imports = with self.hjemModules; [ leo ];
+        enable = true;
+        directory = "/home/leo";
+        user = "leo";
+      };
+    };
     users = {
       groups.leo = {
         gid = 2006;
@@ -12,6 +18,8 @@
         extraGroups = [
           "wheel"
           "networkmanager"
+          "dialout"
+          "uucp"
         ];
         group = "leo";
         isNormalUser = true;

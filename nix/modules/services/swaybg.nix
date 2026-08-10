@@ -1,5 +1,5 @@
 {
-  flake.homeModules.swaybg =
+  flake.hjemModules.swaybg =
     {
       config,
       lib,
@@ -17,21 +17,18 @@
         type = lib.types.nullOr lib.types.str;
       };
       config = lib.mkIf (wallpaperName != null) {
-        home.packages = [ pkgs.swaybg ];
+        packages = with pkgs; [ swaybg ];
 
-        systemd.user.services.swaybg = {
-          Install = {
-            WantedBy = [ "graphical-session.target" ];
-          };
-          Service = {
+        systemd.services.swaybg = {
+          enable = true;
+          after = [ "graphical-session.target" ];
+          description = "Wayland wallpaper daemon";
+          partOf = [ "graphical-session.target" ];
+          serviceConfig = {
             ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${remoteAssets.wallpapers.${wallpaperName}} -m fill";
             Restart = "always";
           };
-          Unit = {
-            After = [ "graphical-session.target" ];
-            Description = "Wayland wallpaper daemon";
-            PartOf = [ "graphical-session.target" ];
-          };
+          wantedBy = [ "graphical-session.target" ];
         };
       };
     };
