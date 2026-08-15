@@ -19,58 +19,70 @@
         self.nixosModules.substituters
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
-      environment.systemPackages = with pkgs; [
-        (mpv.override { youtubeSupport = false; })
-        alsa-utils
-        atool
-        cryptsetup
-        distrobox
-        e2fsprogs
-        eza
-        fastfetch
-        file
-        firefox
-        gh
-        gimp
-        gnome-keyring
-        httpie
-        hunspell
-        hunspellDicts.en_GB-large
-        hunspellDicts.fr-moderne
-        hy
-        imv
-        jujutsu
-        libinput
-        liblc3
-        matugen
-        mesa-demos
-        nixfmt
-        nixfmt-tree
-        p7zip
-        patchelf
-        pavucontrol
-        pulseaudio
-        qpwgraph
-        sshfs
-        tree
-        usbutils
-        vulkan-tools
-        wget
-        wl-clipboard
-        zulu
-      ];
+      environment = {
+        sessionVariables.MANPAGER = "bat -plman";
+        systemPackages = with pkgs; [
+          (mpv.override { youtubeSupport = false; })
+          alsa-utils
+          atool
+          cryptsetup
+          distrobox
+          e2fsprogs
+          eza
+          fastfetch
+          file
+          firefox
+          gh
+          gimp
+          gnome-keyring
+          httpie
+          hunspell
+          hunspellDicts.en_GB-large
+          hunspellDicts.fr-moderne
+          hy
+          imv
+          jujutsu
+          libinput
+          liblc3
+          matugen
+          mesa-demos
+          nixfmt
+          nixfmt-tree
+          p7zip
+          patchelf
+          pavucontrol
+          pulseaudio
+          qpwgraph
+          sshfs
+          tree
+          usbutils
+          vulkan-tools
+          wget
+          wl-clipboard
+          zulu
+        ];
+      };
       fonts = {
-        enableDefaultPackages = true;
+        enableDefaultPackages = false;
         fontDir.enable = true;
         fontconfig = {
           enable = true;
+          defaultFonts = {
+            emoji = [ "Noto Color Emoji" ];
+            monospace = [ "Atkinson Hyperlegible Mono" ];
+            sansSerif = [ "Atkinson Hyperlegible Next" ];
+            serif = [ "Merriweather" ];
+          };
         };
-        # fallback fonts main fonts are done with stylix
         packages = with pkgs; [
+          atkinson-hyperlegible-mono
+          atkinson-hyperlegible-next
           liberation_ttf
+          merriweather
           nerd-fonts.jetbrains-mono
           noto-fonts
           noto-fonts-cjk-sans
+          noto-fonts-color-emoji
           ubuntu-classic
         ];
       };
@@ -159,7 +171,6 @@
       };
       system.stateVersion = "25.11";
       virtualisation = {
-        # when I want to build a system vm
         vmVariant = {
           boot.kernelParams = [ "video=2560x1440@240" ];
           virtualisation.cores = 4;

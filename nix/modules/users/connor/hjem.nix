@@ -1,8 +1,8 @@
-{ self, ... }: {
-  flake.hjemModules.connor = { pkgs, ... }: {
+{self, ...}: {
+  flake.hjemModules.connor = {pkgs, ...}: {
     imports = with self.hjemModules; [
-      vicinae
       defaults
+      vicinae
     ];
     environment.sessionVariables.EDITOR = "nvim";
     files.".ssh/config" = {
@@ -14,46 +14,51 @@
       halloy
       lazyspotify
       libreoffice
+      librespot
       obsidian
       prismlauncher
       signal-desktop
-      spotifyd
       vesktop
       vscode
     ];
-    rum.programs.git = {
-      settings = {
-        commit = {
-          gpgSign = true;
-        };
-        core = {
-          editor = "nvim";
-        };
-        diff = {
-          tool = "vimdiff";
-        };
-        gpg = {
-          format = "ssh";
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        pull = {
-          ff = "only";
-        };
-        push = {
-          autoSetupRemote = true;
-        };
-        user = {
-          email = "git@econnah.uk";
-          name = "Connor Alecks";
-          signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
+    rum.programs = {
+      git = {
+        settings = {
+          commit = {
+            gpgSign = true;
+          };
+          core = {
+            editor = "nvim";
+          };
+          diff = {
+            tool = "vimdiff";
+          };
+          gpg = {
+            format = "ssh";
+          };
+          init = {
+            defaultBranch = "main";
+          };
+          pull = {
+            ff = "only";
+          };
+          push = {
+            autoSetupRemote = true;
+          };
+          user = {
+            email = "git@econnah.uk";
+            name = "Connor Alecks";
+            signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
+          };
         };
       };
+      kitty.settings.include = "theme.conf";
     };
     xdg.config.files = {
+      "bat/config".text = "--theme='Catppuccin Oled'";
+      "bat/themes/Catppuccin Oled.tmTheme".source = "${self}/not-nix/connor/bat/Catppuccin Oled.tmTheme";
       "halloy/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
           servers = {
             asahi = {
@@ -66,7 +71,7 @@
               server = "irc.oftc.net";
             };
             nixos = {
-              channels = [ "#nixos" ];
+              channels = ["#nixos"];
               nickname = "eConnah";
               sasl.plain = {
                 password_file = "/persistent/passwords/connor/halloy";
@@ -78,16 +83,40 @@
         };
       };
       "jj/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
+          alias = {
+            pull-pr = {
+              definition = [
+                "util"
+                "exec"
+                "--"
+                "bash"
+                "-c"
+                "set -euo pipefail; git fetch $0 pull/$1/head:$2"
+              ];
+              doc = "A convenient alias to pull a pr $1 from remote $0 into branch $2";
+            };
+          };
           signing = {
             backend = "ssh";
             key = "~/.ssh/id_ed25519_sk_rk.pub";
             sign-all = false;
           };
+          template-aliases = {
+            "format_short_signature(signature)" = ''
+              coalesce(signature.name(), name_placeholder)
+            '';
+          };
           ui = {
             default-command = "log";
             diff-editor = ":builtin";
+            diff-formatter = [
+              "kitten"
+              "diff"
+              "$left"
+              "$right"
+            ];
             editor = "nvim";
             merge-editor = "vimdiff";
           };
@@ -97,6 +126,8 @@
           };
         };
       };
+      "kitty/diff.conf".source = "${self}/not-nix/connor/kitty/kitty-diff.conf";
+      "kitty/theme.conf".source = "${self}/not-nix/connor/kitty/oledppuccin.conf";
     };
   };
 }
