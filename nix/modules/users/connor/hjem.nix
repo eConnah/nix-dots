@@ -97,6 +97,7 @@
           };
         };
       };
+      "vesktop/settings/settings.json".source = "${self}/not-nix/connor/vesktop/settings.json";
     };
   };
 }
