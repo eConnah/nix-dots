@@ -33,7 +33,7 @@
           input = {
             accel_profile = "flat",
             follow_mouse = 1,
-            kb_layout = "uk",
+            kb_layout = "gb",
             sensitivity = 0,
           }
         })
