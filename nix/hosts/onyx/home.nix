@@ -15,7 +15,7 @@
       useUserPackages = true;
       users.connor = {
         imports = with self.homeModules; [
-          nyx-hyprland
+          onyx-hyprland
           swaybg
         ];
         home = {
