@@ -36,7 +36,10 @@
           users = lib.mapAttrs (_name: _: {
             directories = [
               ".cache/bat"
+              ".config/Signal"
+              ".config/easyeffects"
               ".config/jj/repos"
+              ".config/vesktop"
               ".local/share/applications"
               ".local/share/fish"
               ".local/share/flatpak"

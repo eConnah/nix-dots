@@ -1,7 +1,8 @@
-{ self, ... }: {
-  flake.hjemModules.connor = { pkgs, ... }: {
+{self, ...}: {
+  flake.hjemModules.connor = {pkgs, ...}: {
     imports = with self.hjemModules; [
       defaults
+      oledppuccin
       vicinae
     ];
     environment.sessionVariables.EDITOR = "nvim";
@@ -21,44 +22,39 @@
       vesktop
       vscode
     ];
-    rum.programs = {
-      git = {
-        settings = {
-          commit = {
-            gpgSign = true;
-          };
-          core = {
-            editor = "nvim";
-          };
-          diff = {
-            tool = "vimdiff";
-          };
-          gpg = {
-            format = "ssh";
-          };
-          init = {
-            defaultBranch = "main";
-          };
-          pull = {
-            ff = "only";
-          };
-          push = {
-            autoSetupRemote = true;
-          };
-          user = {
-            email = "git@econnah.uk";
-            name = "Connor Alecks";
-            signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
-          };
+    rum.programs.git = {
+      settings = {
+        commit = {
+          gpgSign = true;
+        };
+        core = {
+          editor = "nvim";
+        };
+        diff = {
+          tool = "vimdiff";
+        };
+        gpg = {
+          format = "ssh";
+        };
+        init = {
+          defaultBranch = "main";
+        };
+        pull = {
+          ff = "only";
+        };
+        push = {
+          autoSetupRemote = true;
+        };
+        user = {
+          email = "git@econnah.uk";
+          name = "Connor Alecks";
+          signingkey = "~/.ssh/id_ed25519_sk_rk.pub";
         };
       };
-      kitty.settings.include = "theme.conf";
     };
     xdg.config.files = {
-      "bat/config".text = "--theme='Catppuccin Oled'";
-      "bat/themes/Catppuccin Oled.tmTheme".source = "${self}/not-nix/connor/bat/Catppuccin Oled.tmTheme";
       "halloy/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
           servers = {
             asahi = {
@@ -71,7 +67,7 @@
               server = "irc.oftc.net";
             };
             nixos = {
-              channels = [ "#nixos" ];
+              channels = ["#nixos"];
               nickname = "eConnah";
               sasl.plain = {
                 password_file = "/persistent/passwords/connor/halloy";
@@ -83,7 +79,7 @@
         };
       };
       "jj/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
           alias = {
             pull-pr = {
@@ -118,7 +114,7 @@
               "$right"
             ];
             editor = "nvim";
-            merge-editor = "vimdiff";
+            merge-editor = ":builtin";
           };
           user = {
             email = "git@econnah.uk";
@@ -126,8 +122,6 @@
           };
         };
       };
-      "kitty/diff.conf".source = "${self}/not-nix/connor/kitty/kitty-diff.conf";
-      "kitty/theme.conf".source = "${self}/not-nix/connor/kitty/oledppuccin.conf";
       "vesktop/settings/settings.json".source = "${self}/not-nix/connor/vesktop/settings.json";
     };
   };

@@ -7,8 +7,9 @@
     }:
     {
       imports = with self.hjemModules; [
-        swaybg
+        easyeffects
         remote-assets
+        swaybg
       ];
       rum.programs = {
         direnv = {

@@ -6,10 +6,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-apple-silicon";
     };
-    catppuccin = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:catppuccin/nix";
-    };
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";

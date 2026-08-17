@@ -2,7 +2,10 @@
   flake.nixosModules.leo = { pkgs, ... }: {
     hjem = {
       users.leo = {
-        imports = with self.hjemModules; [ leo ];
+        imports = with self.hjemModules; [
+          leo
+          oledppuccin
+        ];
         enable = true;
         directory = "/home/leo";
         user = "leo";

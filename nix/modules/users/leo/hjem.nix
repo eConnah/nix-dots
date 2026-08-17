@@ -1,8 +1,9 @@
 { self, ... }: {
   flake.hjemModules.leo = { pkgs, ... }: {
     imports = with self.hjemModules; [
-      vicinae
       defaults
+      oledppuccin
+      vicinae
     ];
     environment.sessionVariables.EDITOR = "nvim";
     packages = with pkgs; [

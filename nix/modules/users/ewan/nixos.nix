@@ -1,6 +1,9 @@
 { self, ... }: {
   flake.nixosModules.ewan = { pkgs, ... }: {
-    imports = with self.nixosModules; [ ewan-preservation ];
+    imports = with self.nixosModules; [
+      ewan-preservation
+      oledppuccin
+    ];
     hjem = {
       users.ewan = {
         imports = with self.hjemModules; [ ewan ];

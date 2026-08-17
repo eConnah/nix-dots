@@ -142,7 +142,7 @@
             escapepod3 = "age1REPLACE_ME";
             lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
             nyx = "age1REPLACE_ME";
-            onyx = "age1REPLACE_ME";
+            onyx = "age1vx67nthmpprcv7mws3rvp6wtqe23td8rkxvexhvay0gvsqse0saqquv2fe";
             phoenix = "age1REPLACE_ME";
           };
           secrets."nix-cache-key".recipients = [ "lenix" ]; # will become [ "lenix" "onyx" "phoenix" ] via rekey later

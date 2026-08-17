@@ -3,9 +3,9 @@
 <plist version="1.0">
     <dict>
         <key>name</key>
-        <string>Catppuccin Oled</string>
+        <string>oledppuccin</string>
         <key>semanticClass</key>
-        <string>theme.dark.catppuccin-oled</string>
+        <string>theme.dark.oledppuccin</string>
         <key>uuid</key>
         <string>627ce890-fabb-4d39-9819-7be71f4bdca7</string>
         <key>author</key>

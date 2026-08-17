@@ -18,7 +18,6 @@
       };
       config = lib.mkIf (wallpaperName != null) {
         packages = with pkgs; [ swaybg ];
-
         systemd.services.swaybg = {
           enable = true;
           after = [ "graphical-session.target" ];

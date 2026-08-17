@@ -9,12 +9,9 @@
         directories = [
           ".config/Code"
           ".config/Epic"
-          ".config/Signal"
-          ".config/easyeffects"
           ".config/libreoffice"
           ".config/mozilla"
           ".config/spotify"
-          ".config/vesktop"
           ".config/vicinae"
           ".java"
           ".local/share/PrismLauncher"

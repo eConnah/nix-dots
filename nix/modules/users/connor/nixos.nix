@@ -1,8 +1,8 @@
 { self, ... }: {
   flake.nixosModules.connor = { pkgs, ... }: {
     imports = with self.nixosModules; [
-      catppuccin
       connor-preservation
+      oledppuccin
     ];
     environment.systemPackages = with pkgs; [
       yubikey-manager
