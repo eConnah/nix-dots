@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786696832,
+        "narHash": "sha256-wjdfX+jCJCJsteGD75xEfsDR3yATFFEx4mwelhlDXdU=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "35d78c213b65e38789bcb359aae2380fcb4dc3e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -430,6 +450,7 @@
     "root": {
       "inputs": {
         "apple-silicon": "apple-silicon",
+        "catppuccin": "catppuccin",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "hjem": "hjem",

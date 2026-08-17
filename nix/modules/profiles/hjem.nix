@@ -55,11 +55,12 @@
       xdg = {
         config.files = {
           "fish/conf.d/eza.fish".text = ''
-            abbr -a --position command ls "eza --color=always --icons=always --git"
-            abbr -a --position command ll "eza --color=always --icons=always --git -l"
+            abbr -a --position command l "eza --color=always --icons=always --git -lah"
             abbr -a --position command la "eza --color=always --icons=always --git -a"
-            abbr -a --position command lt "eza --color=always --icons=always --git --tree"
+            abbr -a --position command ll "eza --color=always --icons=always --git -l"
             abbr -a --position command lla "eza --color=always --icons=always --git -la"
+            abbr -a --position command ls "eza --color=always --icons=always --git"
+            abbr -a --position command lt "eza --color=always --icons=always --git --tree"
           '';
           "xdg-terminals.list".text = ''
             kitty.desktop
