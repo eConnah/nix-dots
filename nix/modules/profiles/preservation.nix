@@ -18,6 +18,7 @@
           directories = [
             "/etc/nixos"
             "/etc/ssh"
+            "/var/lib/flatpak"
             "/var/lib/tailscale"
             "/var/log"
             {
@@ -49,6 +50,7 @@
               ".local/share/zoxide"
               ".local/state/wireplumber"
               ".ssh"
+              ".var/app"
               "Desktop"
               "Documents"
               "Downloads"

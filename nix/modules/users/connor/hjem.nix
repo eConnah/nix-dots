@@ -1,5 +1,5 @@
-{self, ...}: {
-  flake.hjemModules.connor = {pkgs, ...}: {
+{ self, ... }: {
+  flake.hjemModules.connor = { pkgs, ... }: {
     imports = with self.hjemModules; [
       defaults
       oledppuccin
@@ -54,7 +54,7 @@
     };
     xdg.config.files = {
       "halloy/config.toml" = {
-        generator = (pkgs.formats.toml {}).generate "config.toml";
+        generator = (pkgs.formats.toml { }).generate "config.toml";
         value = {
           servers = {
             asahi = {
@@ -67,7 +67,7 @@
               server = "irc.oftc.net";
             };
             nixos = {
-              channels = ["#nixos"];
+              channels = [ "#nixos" ];
               nickname = "eConnah";
               sasl.plain = {
                 password_file = "/persistent/passwords/connor/halloy";
@@ -79,7 +79,7 @@
         };
       };
       "jj/config.toml" = {
-        generator = (pkgs.formats.toml {}).generate "config.toml";
+        generator = (pkgs.formats.toml { }).generate "config.toml";
         value = {
           alias = {
             pull-pr = {
