@@ -33,6 +33,9 @@
         diff = {
           tool = "vimdiff";
         };
+        git = {
+          sign-on-push = true;
+        };
         gpg = {
           format = "ssh";
         };
