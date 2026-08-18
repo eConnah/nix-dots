@@ -15,7 +15,6 @@
           enable = true;
           wifi.backend = "iwd";
         };
-
         wireless = {
           enable = false;
           iwd.settings = {
