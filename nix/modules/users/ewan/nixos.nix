@@ -12,6 +12,7 @@
         user = "ewan";
       };
     };
+    programs.ydotool.enable = true;
     services = {
       tailscale = {
         enable = true;
@@ -26,10 +27,11 @@
       users.ewan = {
         description = "Ewan Alecks";
         extraGroups = [
-          "wheel"
-          "networkmanager"
           "dialout"
+          "networkmanager"
           "uucp"
+          "wheel"
+          "ydotool"
         ];
         group = "ewan";
         isNormalUser = true;

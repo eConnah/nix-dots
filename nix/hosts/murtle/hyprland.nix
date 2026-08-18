@@ -38,6 +38,8 @@
       })
 
       menu = "vicinae toggle"
+
+      hl.bind("F1", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
     '';
     presets.hyprland = [
       "animations"
