@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.nixosConfigurations.nyx = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.turtle = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       connor
       defaults
@@ -12,10 +12,10 @@
       hyprland
       limine
       nvidia
-      nyx-config
-      nyx-disko
-      nyx-hardware
-      nyx-hjem
+      turtle-config
+      turtle-disko
+      turtle-hardware
+      turtle-hjem
     ];
   };
 }

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.phoenix-hardware =
+  flake.nixosModules.turtle-hardware =
     {
       lib,
       pkgs,
@@ -36,7 +36,6 @@
         };
         kernelModules = [
           "kvm-intel"
-          "kvm-amd"
         ];
       };
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -1,17 +1,22 @@
 { self, ... }: {
-  flake.hjemModules.phoenix-hyprland = { lib, ... }: {
+  flake.hjemModules.murtle-hyprland = { lib, ... }: {
     imports = with self.hjemModules; [
       presets-hyprland
       hyprland
     ];
     custom.hyprland.extraLuaConfig = lib.mkOrder 501 ''
       hl.monitor({
-          output = "eDP-1",
-          mode = "2560x1600@60",
+          output = "DP-1",
+          mode = "1920x1080@60",
           position = "0x0",
-          scale = 1.25
+          scale = 1,
       })
-
+      hl.monitor({
+          output = "DP-2",
+          mode = "1920x1080@60",
+          position = "1920x0",
+          scale = 1,
+      })
       hl.monitor({
         output = "",
         mode = "preferred",
@@ -20,7 +25,7 @@
       })
 
       hl.on("hyprland.start", function()
-        hl.exec_cmd("xrandr --output eDP-1 --primary")
+        hl.exec_cmd("xrandr --output DP-1 --primary")
       end)
 
       hl.config({

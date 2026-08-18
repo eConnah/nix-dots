@@ -1,11 +1,11 @@
 { self, ... }: {
-  flake.nixosModules.nyx-config = { pkgs, ... }: {
+  flake.nixosModules.turtle-config = { pkgs, ... }: {
     boot.kernelPackages = pkgs.linuxPackages_latest;
     environment.systemPackages = [
       self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
     ];
     networking = {
-      hostName = "nyx";
+      hostName = "turtle";
       networkmanager.enable = false;
       useDHCP = false;
     };
@@ -13,7 +13,6 @@
       cores = 4;
       http-connections = 100;
       max-jobs = 4;
-      #secret-key-files = "/persistent/nix-keys/secret-key.pem";
     };
     programs = {
       gamescope = {
@@ -55,10 +54,7 @@
     time.timeZone = "Europe/London";
     users = {
       mutableUsers = false;
-      users = {
-        connor.hashedPasswordFile = "/persistent/passwords/connor/linux";
-        ewan.initialPassword = "tacobell";
-      };
+      users.connor.initialPassword = "tacobell";
     };
     zramSwap = {
       enable = true;

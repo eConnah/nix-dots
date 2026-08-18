@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.phoenix-disko = {
+  flake.nixosModules.turtle-disko = {
     imports = [ inputs.disko.nixosModules.disko ];
     disko.devices.disk = {
       main = {
@@ -30,7 +30,7 @@
                 type = "filesystem";
               };
               name = "persistent";
-              priority = 4;
+              priority = 3;
               size = "100%";
             };
             root = {
@@ -46,22 +46,13 @@
                 type = "filesystem";
               };
               name = "root";
-              priority = 3;
-              size = "8G";
-            };
-            swap = {
-              content = {
-                resumeDevice = true;
-                type = "swap";
-              };
-              name = "swap";
               priority = 2;
-              size = "12G";
+              size = "8G";
             };
           };
           type = "gpt";
         };
-        device = "/dev/disk/by-id/nvme-WDC_PC_SN520_SDAPNUW-256G-1006_19525E800918";
+        device = "/dev/disk/by-id/ata-SanDisk_SDSSDH3_500G_21107B801252";
         type = "disk";
       };
 
@@ -72,10 +63,10 @@
               content = {
                 extraArgs = [
                   "-f"
-                  "-l"
+                  "-L"
                   "data"
                 ];
-                format = "f2fs";
+                format = "xfs";
                 mountOptions = [ "noatime" ];
                 mountpoint = "/data";
                 type = "filesystem";
@@ -85,7 +76,7 @@
           };
           type = "gpt";
         };
-        device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_250GB_S4CJNZFN216585Y";
+        device = "/dev/disk/by-id/ata-TOSHIBA_DT01ACA100_897K99ANS";
         type = "disk";
       };
     };

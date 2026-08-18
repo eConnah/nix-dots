@@ -1,10 +1,10 @@
 { self, ... }: {
-  flake.nixosModules.phoenix-config = { pkgs, ... }: {
+  flake.nixosModules.murtle-config = { pkgs, ... }: {
     environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty ];
     # iio stuff
     hardware.sensor.iio.enable = true;
     networking = {
-      hostName = "phoenix";
+      hostName = "murtle";
       networkmanager.enable = false;
       useDHCP = false;
     };

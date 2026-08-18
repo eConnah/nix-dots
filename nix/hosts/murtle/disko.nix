@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.nyx-disko = {
+  flake.nixosModules.murtle-disko = {
     imports = [ inputs.disko.nixosModules.disko ];
     disko.devices.disk = {
       main = {
@@ -17,7 +17,6 @@
               size = "5G";
               type = "EF00";
             };
-
             persistent = {
               content = {
                 extraArgs = [
@@ -31,13 +30,38 @@
                 type = "filesystem";
               };
               name = "persistent";
-              priority = 2;
+              priority = 4;
               size = "100%";
+            };
+            root = {
+              content = {
+                extraArgs = [
+                  "-f"
+                  "-l"
+                  "root"
+                ];
+                format = "f2fs";
+                mountOptions = [ "noatime" ];
+                mountpoint = "/";
+                type = "filesystem";
+              };
+              name = "root";
+              priority = 3;
+              size = "8G";
+            };
+            swap = {
+              content = {
+                resumeDevice = true;
+                type = "swap";
+              };
+              name = "swap";
+              priority = 2;
+              size = "12G";
             };
           };
           type = "gpt";
         };
-        device = "/dev/disk/by-id/ata-SanDisk_SDSSDH3_500G_21107B801252";
+        device = "/dev/disk/by-id/nvme-WDC_PC_SN520_SDAPNUW-256G-1006_19525E800918";
         type = "disk";
       };
 
@@ -48,10 +72,10 @@
               content = {
                 extraArgs = [
                   "-f"
-                  "-L"
+                  "-l"
                   "data"
                 ];
-                format = "xfs";
+                format = "f2fs";
                 mountOptions = [ "noatime" ];
                 mountpoint = "/data";
                 type = "filesystem";
@@ -61,17 +85,8 @@
           };
           type = "gpt";
         };
-        device = "/dev/disk/by-id/ata-TOSHIBA_DT01ACA100_897K99ANS";
+        device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_250GB_S4CJNZFN216585Y";
         type = "disk";
-      };
-    };
-    disko.devices.nodev = {
-      "/" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "size=25%"
-          "mode=755"
-        ];
       };
     };
     fileSystems = {

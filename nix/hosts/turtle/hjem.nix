@@ -1,9 +1,9 @@
 { self, ... }: {
-  flake.nixosModules.nyx-hjem = { pkgs, ... }: {
+  flake.nixosModules.turtle-hjem = { pkgs, ... }: {
     hjem.users = {
       connor = {
         imports = with self.hjemModules; [
-          nyx-hyprland
+          turtle-hyprland
         ];
         environment.sessionVariables = {
           PROTON_ENABLE_WAYLAND = "1";
@@ -28,12 +28,11 @@
                 ];
               };
         };
-        theme.wallpaper = "mountains-01.jpg";
+        theme.wallpaper = "frieren-04.png";
       };
-
       ewan = {
         imports = with self.hjemModules; [
-          nyx-hyprland
+          turtle-hyprland
         ];
         environment.sessionVariables = {
           PROTON_ENABLE_WAYLAND = "1";

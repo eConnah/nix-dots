@@ -1,9 +1,9 @@
 { self, ... }: {
-  flake.nixosModules.phoenix-hjem = { pkgs, ... }: {
+  flake.nixosModules.murtle-hjem = { pkgs, ... }: {
     hjem.users = {
       connor = {
         imports = with self.hjemModules; [
-          phoenix-hyprland
+          murtle-hyprland
         ];
         packages = with pkgs; [
           plezy
@@ -14,7 +14,7 @@
 
       ewan = {
         imports = with self.hjemModules; [
-          phoenix-hyprland
+          murtle-hyprland
         ];
         packages = with pkgs; [
           plezy
