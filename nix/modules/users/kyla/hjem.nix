@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.hjemModules.ewan = { pkgs, ... }: {
+  flake.hjemModules.kyla = { pkgs, ... }: {
     imports = with self.hjemModules; [
       defaults
       oledppuccin
@@ -20,6 +20,7 @@
         diff = {
           tool = "vimdiff";
         };
+
         init = {
           defaultBranch = "main";
         };
@@ -30,8 +31,8 @@
           autoSetupRemote = true;
         };
         user = {
-          email = "ewan.alecks@gmail.com";
-          name = "Ewan Alecks";
+          email = "kyla.alecks@gmail.com";
+          name = "kyla Alecks";
         };
       };
     };
@@ -71,8 +72,8 @@
             merge-editor = ":builtin";
           };
           user = {
-            email = "ewan.alecks@gmail.com";
-            name = "Ewan Alecks";
+            email = "kyla.alecks@gmail.com";
+            name = "kyla Alecks";
           };
         };
       };
