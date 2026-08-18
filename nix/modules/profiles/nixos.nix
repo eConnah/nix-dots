@@ -12,65 +12,83 @@
     }:
     {
       imports = [
-        inputs.home-manager.nixosModules.home-manager
+        inputs.hjem.nixosModules.default
         inputs.lix-module.nixosModules.default
         inputs.nix-secrets.nixosModules.default
         inputs.preservation.nixosModules.default
-        inputs.stylix.nixosModules.stylix
         self.nixosModules.substituters
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
-      environment.systemPackages = with pkgs; [
-        (mpv.override { youtubeSupport = false; })
-        alsa-utils
-        atool
-        cryptsetup
-        distrobox
-        e2fsprogs
-        eza
-        fastfetch
-        file
-        gh
-        gimp
-        httpie
-        hunspell
-        hunspellDicts.en_GB-large
-        hunspellDicts.fr-moderne
-        hy
-        imv
-        libinput
-        liblc3
-        matugen
-        mesa-demos
-        nixfmt
-        nixfmt-tree
-        p7zip
-        patchelf
-        pavucontrol
-        pulseaudio
-        qpwgraph
-        sshfs
-        tree
-        usbutils
-        vulkan-tools
-        wget
-        wl-clipboard
-        zulu
-      ];
+      environment = {
+        sessionVariables.MANPAGER = "bat -plman";
+        systemPackages = with pkgs; [
+          (mpv.override { youtubeSupport = false; })
+          alsa-utils
+          atool
+          cryptsetup
+          distrobox
+          e2fsprogs
+          eza
+          fastfetch
+          file
+          firefox
+          gh
+          gimp
+          gnome-keyring
+          httpie
+          hunspell
+          hunspellDicts.en_GB-large
+          hunspellDicts.fr-moderne
+          hy
+          imv
+          jujutsu
+          libinput
+          liblc3
+          matugen
+          mesa-demos
+          nixfmt
+          nixfmt-tree
+          p7zip
+          patchelf
+          pavucontrol
+          pulseaudio
+          qpwgraph
+          sshfs
+          tree
+          usbutils
+          vulkan-tools
+          wget
+          wl-clipboard
+          zulu
+        ];
+      };
       fonts = {
-        enableDefaultPackages = true;
+        enableDefaultPackages = false;
         fontDir.enable = true;
         fontconfig = {
           enable = true;
+          defaultFonts = {
+            emoji = [ "Noto Color Emoji" ];
+            monospace = [ "Atkinson Hyperlegible Mono" ];
+            sansSerif = [ "Atkinson Hyperlegible Next" ];
+            serif = [ "Merriweather" ];
+          };
         };
-        # fallback fonts main fonts are done with stylix
         packages = with pkgs; [
+          atkinson-hyperlegible-mono
+          atkinson-hyperlegible-next
           liberation_ttf
+          merriweather
           nerd-fonts.jetbrains-mono
           noto-fonts
           noto-fonts-cjk-sans
+          noto-fonts-color-emoji
           ubuntu-classic
         ];
+      };
+      hjem = {
+        clobberByDefault = true;
+        extraModules = [ inputs.hjem-rum.hjemModules.default ];
       };
       nix.channel.enable = false;
       nix.settings = {
@@ -124,7 +142,7 @@
             escapepod3 = "age1REPLACE_ME";
             lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
             nyx = "age1REPLACE_ME";
-            onyx = "age1REPLACE_ME";
+            onyx = "age1vx67nthmpprcv7mws3rvp6wtqe23td8rkxvexhvay0gvsqse0saqquv2fe";
             phoenix = "age1REPLACE_ME";
           };
           secrets."nix-cache-key".recipients = [ "lenix" ]; # will become [ "lenix" "onyx" "phoenix" ] via rekey later
@@ -153,7 +171,6 @@
       };
       system.stateVersion = "25.11";
       virtualisation = {
-        # when I want to build a system vm
         vmVariant = {
           boot.kernelParams = [ "video=2560x1440@240" ];
           virtualisation.cores = 4;

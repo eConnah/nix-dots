@@ -1,5 +1,5 @@
 {
-  flake.homeModules.remote-assets =
+  flake.hjemModules.remote-assets =
     {
       lib,
       pkgs,

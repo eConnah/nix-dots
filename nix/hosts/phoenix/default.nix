@@ -6,7 +6,6 @@
 {
   flake.nixosConfigurations.phoenix = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      catppuccin
       connor
       defaults
       ewan
@@ -16,7 +15,7 @@
       phoenix-config
       phoenix-disko
       phoenix-hardware
-      phoenix-home
+      phoenix-hjem
     ];
   };
 }

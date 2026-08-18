@@ -6,7 +6,6 @@
 {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      catppuccin
       connor
       defaults
       hyprland
@@ -15,7 +14,7 @@
       onyx-config
       onyx-disko
       onyx-hardware
-      onyx-home
+      onyx-hjem
     ];
   };
 }

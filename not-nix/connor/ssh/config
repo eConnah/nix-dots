@@ -1,0 +1,11 @@
+Host github.com
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519_sk_rk
+  User git
+
+Host *
+  AddKeysToAgent yes
+  HashKnownHosts no
+  ServerAliveCountMax 3
+  ServerAliveInterval 30
+  UserKnownHostsFile ~/.ssh/known_hosts

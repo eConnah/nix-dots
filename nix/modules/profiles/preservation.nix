@@ -18,6 +18,7 @@
           directories = [
             "/etc/nixos"
             "/etc/ssh"
+            "/var/lib/flatpak"
             "/var/lib/tailscale"
             "/var/log"
             {
@@ -35,6 +36,11 @@
 
           users = lib.mapAttrs (_name: _: {
             directories = [
+              ".cache/bat"
+              ".config/Signal"
+              ".config/easyeffects"
+              ".config/jj/repos"
+              ".config/vesktop"
               ".local/share/applications"
               ".local/share/fish"
               ".local/share/flatpak"
@@ -44,6 +50,7 @@
               ".local/share/zoxide"
               ".local/state/wireplumber"
               ".ssh"
+              ".var/app"
               "Desktop"
               "Documents"
               "Downloads"

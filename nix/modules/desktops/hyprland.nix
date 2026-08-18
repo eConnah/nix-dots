@@ -1,35 +1,53 @@
-{
+{ self, ... }: {
   flake = {
-    homeModules.hyprland = { lib, ... }: {
-      home.file.".config/uwsm/default-id".text = ''
-        hyprland-uwsm.desktop
-      '';
-      wayland.windowManager.hyprland = {
-        enable = true;
-        package = null;
-        configType = "lua";
-        extraConfig = lib.mkBefore ''
-          terminal = "kitty"
-          menu = "vicinae toggle"
-          browser = "firefox"
-          mod = "SUPER"
+    hjemModules.hyprland =
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
+      let
+        inherit (lib) mkOption types;
+      in
+      {
+        options.custom.hyprland.extraLuaConfig = mkOption {
+          default = "";
+          description = "Lua snippets that will be merged into hyprland.lua";
+          type = types.lines;
+        };
 
-          hl.env("XCURSOR_SIZE", "24")
-          hl.env("HYPRCURSOR_SIZE", "24")
-          hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+        config = {
+          custom.hyprland.extraLuaConfig = lib.mkBefore ''
+            mod = "SUPER"
+            browser = "firefox"
+            terminal = "kitty"
 
-        '';
-        portalPackage = null;
-        systemd.enable = false;
+            hl.env("XCURSOR_SIZE", "24")
+            hl.env("HYPRCURSOR_SIZE", "24")
+            hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+          '';
+          packages = with pkgs; [
+            hyprcursor
+            hyprpicker
+            hyprshot
+            rose-pine-hyprcursor
+          ];
+          rum.desktops.hyprland.enable = true;
+          xdg.config.files = {
+            "hypr/hyprland.lua".text = config.custom.hyprland.extraLuaConfig;
+            "uwsm/default-id".text = ''
+              hyprland-uwsm.desktop
+            '';
+          };
+        };
       };
-    };
     nixosModules.hyprland = {
       programs.hyprland = {
         enable = true;
         withUWSM = true;
         xwayland.enable = true;
       };
-
       programs.uwsm.enable = true;
     };
   };

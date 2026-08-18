@@ -1,43 +1,44 @@
 { self, ... }: {
-  flake.homeModules.phoenix-hyprland = { lib, ... }: {
-    imports = with self.homeModules; [
+  flake.hjemModules.phoenix-hyprland = { lib, ... }: {
+    imports = with self.hjemModules; [
+      presets-hyprland
       hyprland
-      preset-hyprland-animations
-      preset-hyprland-keybinds
-      preset-hyprland-rules
-      preset-hyprland-settings
     ];
+    custom.hyprland.extraLuaConfig = lib.mkOrder 501 ''
+      hl.monitor({
+          output = "eDP-1",
+          mode = "2560x1600@60",
+          position = "0x0",
+          scale = 1.25
+      })
 
-    wayland.windowManager.hyprland = {
-      configType = "lua";
-      extraConfig = lib.mkOrder 501 ''
-        hl.monitor({
-            output = "eDP-1",
-            mode = "2560x1600@60",
-            position = "0x0",
-            scale = 1.25
-        })
+      hl.monitor({
+        output = "",
+        mode = "preferred",
+        position = "auto",
+        scale = "auto"
+      })
 
-        hl.monitor({
-          output = "",
-          mode = "preferred",
-          position = "auto",
-          scale = "auto"
-        })
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("xrandr --output eDP-1 --primary")
+      end)
 
-        hl.on("hyprland.start", function()
-          hl.exec_cmd("xrandr --output eDP-1 --primary")
-        end)
+      hl.config({
+        input = {
+          accel_profile = "flat",
+          follow_mouse = 1,
+          kb_layout = "gb",
+          sensitivity = 0,
+        }
+      })
 
-        hl.config({
-          input = {
-            accel_profile = "flat",
-            follow_mouse = 1,
-            kb_layout = "uk",
-            sensitivity = 0,
-          }
-        })
-      '';
-    };
+      menu = "vicinae toggle"
+    '';
+    presets.hyprland = [
+      "animations"
+      "keybinds"
+      "rules"
+      "settings"
+    ];
   };
 }

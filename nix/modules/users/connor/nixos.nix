@@ -1,17 +1,25 @@
 { self, ... }: {
   flake.nixosModules.connor = { pkgs, ... }: {
-    imports = [ self.nixosModules.connor-preservation ];
+    imports = with self.nixosModules; [
+      connor-preservation
+      oledppuccin
+    ];
     environment.systemPackages = with pkgs; [
       yubikey-manager
     ];
-    home-manager.users.connor = self.homeModules.connor;
+    hjem = {
+      users.connor = {
+        imports = with self.hjemModules; [ connor ];
+        enable = true;
+        directory = "/home/connor";
+        user = "connor";
+      };
+    };
     security.nix-secrets.secrets."passwords/connor/linux" = {
       neededForUsers = true;
       recipients = [ "lenix" ];
     };
     services = {
-      displayManager.autoLogin.user = "connor";
-
       pcscd.enable = true;
 
       tailscale = {

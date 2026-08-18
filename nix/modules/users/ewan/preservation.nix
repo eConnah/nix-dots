@@ -5,29 +5,25 @@
     ];
 
     preservation.preserveAt."/persistent" = {
-      # User-level persistence
       users.ewan = {
         directories = [
-          # Application Data & Configs
           ".config/Code"
           ".config/Epic"
-          ".config/JetBrains"
-          ".config/Signal"
-          ".config/easyeffects"
           ".config/libreoffice"
           ".config/mozilla"
           ".config/spotify"
-          ".config/vesktop"
           ".config/vicinae"
-          ".steam"
-
-          # Application Local Share (Heavier Data)
+          ".java"
           ".local/share/PrismLauncher"
           ".local/share/Steam"
           ".local/share/Terraria"
           ".local/share/com.edde746.plezy"
+          ".local/share/direnv"
           ".local/share/qalculate"
+          ".local/share/robrix"
           ".local/share/vicinae"
+          ".steam"
+          ".vscode"
         ];
       };
     };

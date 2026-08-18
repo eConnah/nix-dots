@@ -27,7 +27,6 @@
       };
       powerManagement.enable = true;
       preservation.preserveAt."/persistent" = {
-        # System-level persistence
         directories = [
           "/etc/NetworkManager"
           "/etc/iwd"
