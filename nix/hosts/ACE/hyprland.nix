@@ -4,7 +4,7 @@
       presets-hyprland
       hyprland
     ];
-    custom.hyprland.extraLuaConfig = lib.mkOrder 501 ''
+    custom.hyprland.extraLuaConfig = lib.mkOrder 501 /* lua */ ''
       hl.monitor({
           output = "eDP-1",
           mode = "1920x1080@60",
@@ -22,14 +22,17 @@
         hl.exec_cmd("xrandr --output eDP-1 --primary")
       end)
 
-      hl.config({
-        input = {
-          accel_profile = "flat",
-          follow_mouse = 1,
-          kb_layout = "gb",
-          sensitivity = 0,
-        }
-      })
+        hl.config({
+          input = {
+            follow_mouse = 1,
+            sensitivity = 0.3,
+            touchpad = {
+              natural_scroll = true,
+              clickfinger_behavior = true,
+              disable_while_typing = false,
+            },
+          }
+        })
 
       menu = "vicinae toggle"
     '';

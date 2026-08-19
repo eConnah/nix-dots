@@ -4,7 +4,7 @@
       hyprland
       presets-hyprland
     ];
-    custom.hyprland.extraLuaConfig = lib.mkOrder 501 ''
+    custom.hyprland.extraLuaConfig = lib.mkOrder 501 /* lua */ ''
       hl.monitor({
           output = "eDP-1",
           mode = "2560x1600@60",

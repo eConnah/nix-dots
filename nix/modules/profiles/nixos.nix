@@ -147,7 +147,9 @@
               "onyx"
               "ACE"
               "murtle"
+              "cookie"
             ];
+            cookie = "age17tdwsudlll0ykq4xlhpm758nlawnzt43kcefp6af3vkaczperahsqslydt";
             escapepod3 = "age1REPLACE_ME";
             lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
             murtle = "age1eqm8wgfpc8aawaxardpypg5gcdluavplfy7gn2qp9tefwauezs2sd69wvl";

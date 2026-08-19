@@ -30,7 +30,6 @@
           autoSetupRemote = true;
         };
         user = {
-          email = "ewan.alecks@gmail.com";
           name = "Ewan Alecks";
         };
       };
@@ -71,7 +70,6 @@
             merge-editor = ":builtin";
           };
           user = {
-            email = "ewan.alecks@gmail.com";
             name = "Ewan Alecks";
           };
         };

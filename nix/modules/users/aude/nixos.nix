@@ -1,16 +1,16 @@
 { self, ... }: {
-  flake.nixosModules.kyla = { pkgs, ... }: {
+  flake.nixosModules.aude = { pkgs, ... }: {
     imports = with self.nixosModules; [
-      kyla-preservation
+      aude-preservation
       oledppuccin
-      self.secretModules.kyla
+      self.secretModules.aude
     ];
     hjem = {
-      users.kyla = {
-        imports = with self.hjemModules; [ kyla ];
+      users.aude = {
+        imports = with self.hjemModules; [ aude ];
         enable = true;
-        directory = "/home/kyla";
-        user = "kyla";
+        directory = "/home/aude";
+        user = "aude";
       };
     };
     services = {
@@ -20,22 +20,22 @@
       };
     };
     users = {
-      groups.kyla = {
-        gid = 2001;
+      groups.aude = {
+        gid = 1220;
       };
 
-      users.kyla = {
-        description = "Kyla Alecks";
+      users.aude = {
+        description = "Aude Alecks";
         extraGroups = [
           "wheel"
           "networkmanager"
           "dialout"
           "uucp"
         ];
-        group = "kyla";
+        group = "aude";
         isNormalUser = true;
         shell = pkgs.fish;
-        uid = 2001;
+        uid = 1220;
       };
     };
   };

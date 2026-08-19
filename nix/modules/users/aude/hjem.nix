@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.hjemModules.kyla = { pkgs, ... }: {
+  flake.hjemModules.aude = { pkgs, ... }: {
     imports = with self.hjemModules; [
       defaults
       oledppuccin
@@ -31,7 +31,7 @@
           autoSetupRemote = true;
         };
         user = {
-          name = "Kyla Alecks";
+          name = "Aude Alecks";
         };
       };
     };
@@ -71,7 +71,7 @@
             merge-editor = ":builtin";
           };
           user = {
-            name = "Kyla Alecks";
+            name = "Aude Alecks";
           };
         };
       };

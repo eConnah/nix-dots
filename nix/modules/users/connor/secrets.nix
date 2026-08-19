@@ -10,6 +10,7 @@
             "ACE"
             "murtle"
             "onyx"
+            "cookie"
           ];
         };
         "connor/linux" = {
@@ -19,6 +20,7 @@
             "ACE"
             "murtle"
             "onyx"
+            "cookie"
           ];
         };
       };

@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.hjemModules.escapepod3-hyprland = { lib, ... }: {
+  flake.hjemModules.cookie-hyprland = { lib, ... }: {
     imports = with self.hjemModules; [
       presets-hyprland
       hyprland
@@ -7,11 +7,10 @@
     custom.hyprland.extraLuaConfig = lib.mkOrder 501 /* lua */ ''
       hl.monitor({
           output = "eDP-1",
-          mode = "2560x1600@60",
+          mode = "1920x1080@60",
           position = "0x0",
-          scale = 1.25
+          scale = 1,
       })
-
       hl.monitor({
         output = "",
         mode = "preferred",
@@ -24,16 +23,17 @@
       end)
 
       hl.config({
-        input = {
-          follow_mouse = 1,
-          sensitivity = 0.3,
-          touchpad = {
-            natural_scroll = true,
-            clickfinger_behavior = true,
-            disable_while_typing = false,
-          },
-        }
-      })
+          input = {
+            follow_mouse = 1,
+            sensitivity = 0.3,
+            kb_layout = "gb",
+            touchpad = {
+              natural_scroll = true,
+              clickfinger_behavior = true,
+              disable_while_typing = true,
+            },
+          }
+        })
 
       menu = "vicinae toggle"
     '';

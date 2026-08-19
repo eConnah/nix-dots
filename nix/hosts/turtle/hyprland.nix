@@ -4,7 +4,7 @@
       presets-hyprland
       hyprland
     ];
-    custom.hyprland.extraLuaConfig = lib.mkOrder 501 ''
+    custom.hyprland.extraLuaConfig = lib.mkOrder 501 /* lua */ ''
       hl.monitor({
           output = "DP-1",
           mode = "1920x1080@144",

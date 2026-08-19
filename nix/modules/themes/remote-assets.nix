@@ -62,6 +62,14 @@
             hash = "sha256-tD1Qfj3HcrLajI1RykCd4wysAZv37qy4ZtLknDJ7ybA=";
             url = "https://assets.econnah.uk/wallpapers/weathering_with_you-01.png";
           };
+          "your_name-01.png" = pkgs.fetchurl {
+            hash = "sha256-Z5mMsNiRAqdUlwOAY38ICXKqVDLZaZE4eRj+76OSY+4=";
+            url = "https://assets.econnah.uk/wallpapers/your_name-01.png";
+          };
+          "your_name-02.png" = pkgs.fetchurl {
+            hash = "sha256-DKLfkT/3FzF4OOPdUqkKl5OOqrU3IofiQeop2jLwp+Q=";
+            url = "https://assets.econnah.uk/wallpapers/your_name-02.png";
+          };
         };
       };
     };

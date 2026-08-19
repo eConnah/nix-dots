@@ -1,11 +1,10 @@
 {
   flake.secretModules = {
-    kyla = {
+    aude = {
       security.nix-secrets.secrets = {
-        "kyla/linux" = {
+        "aude/linux" = {
           neededForUsers = true;
           recipients = [
-            "ACE"
             "cookie"
           ];
         };
