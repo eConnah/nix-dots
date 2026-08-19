@@ -99,8 +99,6 @@
         ];
         trusted-public-keys = [
           "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
-          "onyx-cache:O+2Ad+2xMdljj1G8eH5KYQxdkixoEGUREXKTRV/BBKk="
-          "phoenix-cache:YvJE4WPv95BDa8a7mTn83J1Oqib+3qpHOrztWpRLoPI="
         ];
         trusted-users = [
           "root"
@@ -139,13 +137,19 @@
         nix-secrets = {
           enable = true;
           recipientAliases = {
+            ACE = "age1qa58lk685uwd9s8g3evvh9kyaf48rj0pggnsx6gc8nza4redx52qgrqyc0";
             escapepod3 = "age1REPLACE_ME";
             lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
-            nyx = "age1REPLACE_ME";
+            murtle = "age1eqm8wgfpc8aawaxardpypg5gcdluavplfy7gn2qp9tefwauezs2sd69wvl";
             onyx = "age1vx67nthmpprcv7mws3rvp6wtqe23td8rkxvexhvay0gvsqse0saqquv2fe";
-            phoenix = "age1REPLACE_ME";
+            turtle = "age1REPLACE_ME";
           };
-          secrets."nix-cache-key".recipients = [ "lenix" ]; # will become [ "lenix" "onyx" "phoenix" ] via rekey later
+          secrets."nix-cache-key".recipients = [
+            "lenix"
+            "onyx"
+            "ACE"
+            "murtle"
+          ];
           storage = self + "/secrets";
         };
         rtkit.enable = true;

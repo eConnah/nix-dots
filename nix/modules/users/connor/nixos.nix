@@ -17,7 +17,12 @@
     };
     security.nix-secrets.secrets."passwords/connor/linux" = {
       neededForUsers = true;
-      recipients = [ "lenix" ];
+      recipients = [
+        "lenix"
+        "ACE"
+        "murtle"
+        "onyx"
+      ];
     };
     services = {
       pcscd.enable = true;
@@ -45,6 +50,9 @@
         ];
         group = "connor";
         isNormalUser = true;
+        openssh.authorizedKeys.keys = [
+          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIILd7radoI+ZnYz/NKDVLBDH8zFdq6r2I/gP0HuZGs0gAAAABHNzaDo= ssh:"
+        ];
         shell = pkgs.fish;
         uid = 2026;
       };

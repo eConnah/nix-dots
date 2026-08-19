@@ -4,7 +4,6 @@
       kyla-preservation
       oledppuccin
     ];
-
     hjem = {
       users.kyla = {
         imports = with self.hjemModules; [ kyla ];
@@ -13,7 +12,10 @@
         user = "kyla";
       };
     };
-
+    security.nix-secrets.secrets."passwords/kyla/linux" = {
+      neededForUsers = true;
+      recipients = [ "ACE" ];
+    };
     services = {
       tailscale = {
         enable = true;

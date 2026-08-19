@@ -13,6 +13,12 @@
       };
     };
     programs.ydotool.enable = true;
+    security.nix-secrets.secrets."passwords/ewan/linux" = {
+      neededForUsers = true;
+      recipients = [
+        "murtle"
+      ];
+    };
     services = {
       tailscale = {
         enable = true;
@@ -23,7 +29,6 @@
       groups.ewan = {
         gid = 2000;
       };
-
       users.ewan = {
         description = "Ewan Alecks";
         extraGroups = [

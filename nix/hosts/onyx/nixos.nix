@@ -1,66 +1,76 @@
 { self, ... }: {
-  flake.nixosModules.onyx-config = { pkgs, ... }: {
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    environment.systemPackages = [
-      pkgs.efibootmgr
-      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
-    ];
-    networking = {
-      hostName = "onyx";
-      networkmanager.enable = false;
-      useDHCP = false;
-    };
-    nix.settings = {
-      cores = 4;
-      http-connections = 100;
-      max-jobs = 4;
-      secret-key-files = "/persistent/nix-keys/secret-key.pem";
-    };
-    programs = {
-      gamescope = {
-        enable = true;
-        capSysNice = true;
+  flake.nixosModules.onyx-config =
+    {
+      config,
+      pkgs,
+      ...
+    }:
+    {
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+      environment.systemPackages = [
+        pkgs.efibootmgr
+        self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
+      ];
+      networking = {
+        hostName = "onyx";
+        networkmanager.enable = false;
+        useDHCP = false;
       };
-      nh.flake = "/persistent/dotfiles";
-      steam = {
-        enable = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
+      nix.settings = {
+        cores = 4;
+        http-connections = 100;
+        max-jobs = 4;
+        secret-key-files = [ config.security.nix-secrets.secrets."nix-cache-key".path ];
       };
-    };
-    services.pipewire.extraConfig.pipewire."92-custom-quantum" = {
-      "context.properties" = {
-        "default.clock.max-quantum" = 8192;
-        "default.clock.min-quantum" = 512;
-        "default.clock.quantum" = 512;
-        "default.clock.rate" = 48000;
-      };
-    };
-    services.resolved = {
-      enable = true;
-    };
-    systemd.network = {
-      enable = true;
-      networks."10-ethernet" = {
-        linkConfig = {
-          RequiredForOnline = "routable";
+      programs = {
+        gamescope = {
+          enable = true;
+          capSysNice = true;
         };
-        matchConfig.Name = "en*";
-        networkConfig = {
-          DHCP = "ipv4";
-          IPv6AcceptRA = false;
+        nh.flake = "/persistent/dotfiles";
+        steam = {
+          enable = true;
+          extraCompatPackages = with pkgs; [
+            proton-ge-bin
+          ];
         };
       };
+      security.nix-secrets = {
+        identityPaths = [ "/persistent/nix-keys/age-identity.txt" ];
+        storagePath = "/persistent/dotfiles/secrets";
+      };
+      services.pipewire.extraConfig.pipewire."92-custom-quantum" = {
+        "context.properties" = {
+          "default.clock.max-quantum" = 8192;
+          "default.clock.min-quantum" = 512;
+          "default.clock.quantum" = 512;
+          "default.clock.rate" = 48000;
+        };
+      };
+      services.resolved = {
+        enable = true;
+      };
+      systemd.network = {
+        enable = true;
+        networks."10-ethernet" = {
+          linkConfig = {
+            RequiredForOnline = "routable";
+          };
+          matchConfig.Name = "en*";
+          networkConfig = {
+            DHCP = "ipv4";
+            IPv6AcceptRA = false;
+          };
+        };
+      };
+      time.timeZone = "Europe/Amsterdam";
+      users = {
+        mutableUsers = false;
+        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."passwords/connor/linux".path;
+      };
+      zramSwap = {
+        enable = true;
+        memoryPercent = 25;
+      };
     };
-    time.timeZone = "Europe/Amsterdam";
-    users = {
-      mutableUsers = false;
-      users.connor.hashedPasswordFile = "/persistent/passwords/connor/linux";
-    };
-    zramSwap = {
-      enable = true;
-      memoryPercent = 25;
-    };
-  };
 }
