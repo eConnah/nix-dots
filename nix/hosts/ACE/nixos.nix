@@ -14,7 +14,7 @@
     users = {
       mutableUsers = false;
       users = {
-        connor.initialPassword = "tacobell";
+        connor.password = "tacobell";
       };
     };
   };

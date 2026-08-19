@@ -26,6 +26,11 @@
               format = "f2fs";
               mountOptions = [ "noatime" ];
               mountpoint = "/persistent";
+              postMountHook = ''
+                mkdir -p /mnt/persistent/nix
+                mkdir -p /mnt/nix
+                mount --bind /mnt/persistent/nix /mnt/nix
+              '';
               type = "filesystem";
             };
             name = "persistent";
