@@ -7,7 +7,6 @@
     preservation.preserveAt."/persistent" = {
       users.connor = {
         directories = [
-          ".config/Code"
           ".config/Epic"
           ".config/JetBrains"
           ".config/halloy"
@@ -28,7 +27,6 @@
           ".local/share/robrix"
           ".local/share/vicinae"
           ".steam"
-          ".vscode"
         ];
       };
     };

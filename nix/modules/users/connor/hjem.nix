@@ -20,7 +20,6 @@
       prismlauncher
       signal-desktop
       vesktop
-      vscode
     ];
     rum.programs.git = {
       settings = {
