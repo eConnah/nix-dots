@@ -15,17 +15,13 @@
       rum.programs.obs-studio = {
         enable = true;
 
-        package =
-          (pkgs.wrapOBS.override {
-            obs-studio = pkgs.obs-studio.override { cudaSupport = true; };
-          })
-            {
-              plugins = with pkgs.obs-studio-plugins; [
-                obs-pipewire-audio-capture
-                obs-vkcapture
-                wlrobs
-              ];
-            };
+        package = pkgs.wrapOBS {
+          plugins = with pkgs.obs-studio-plugins; [
+            obs-pipewire-audio-capture
+            obs-vkcapture
+            wlrobs
+          ];
+        };
       };
       theme.wallpaper = "86-01.png";
     };
