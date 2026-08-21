@@ -12,7 +12,7 @@
         user = "kyla";
       };
     };
-    security.nix-secrets.secrets."passwords/kyla/linux" = {
+    security.nix-secrets.secrets."kyla/linux" = {
       neededForUsers = true;
       recipients = [ "ACE" ];
     };

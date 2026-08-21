@@ -13,7 +13,7 @@
       };
     };
     programs.ydotool.enable = true;
-    security.nix-secrets.secrets."passwords/ewan/linux" = {
+    security.nix-secrets.secrets."ewan/linux" = {
       neededForUsers = true;
       recipients = [
         "murtle"

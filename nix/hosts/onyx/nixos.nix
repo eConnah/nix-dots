@@ -66,7 +66,7 @@
       time.timeZone = "Europe/Amsterdam";
       users = {
         mutableUsers = false;
-        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."passwords/connor/linux".path;
+        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
       };
       zramSwap = {
         enable = true;

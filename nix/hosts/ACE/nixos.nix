@@ -25,8 +25,8 @@
       users = {
         mutableUsers = false;
         users = {
-          connor.hashedPasswordFile = config.security.nix-secrets.secrets."passwords/connor/linux".path;
-          kyla.hashedPasswordFile = config.security.nix-secrets.secrets."passwords/kyla/linux".path;
+          connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
+          kyla.hashedPasswordFile = config.security.nix-secrets.secrets."kyla/linux".path;
         };
       };
     };

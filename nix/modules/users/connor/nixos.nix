@@ -15,14 +15,26 @@
         user = "connor";
       };
     };
-    security.nix-secrets.secrets."passwords/connor/linux" = {
-      neededForUsers = true;
-      recipients = [
-        "lenix"
-        "ACE"
-        "murtle"
-        "onyx"
-      ];
+    security.nix-secrets.secrets = {
+      "connor/halloy" = {
+        group = "connor";
+        owner = "connor";
+        recipients = [
+          "lenix"
+          "ACE"
+          "murtle"
+          "onyx"
+        ];
+      };
+      "connor/linux" = {
+        neededForUsers = true;
+        recipients = [
+          "lenix"
+          "ACE"
+          "murtle"
+          "onyx"
+        ];
+      };
     };
     services = {
       pcscd.enable = true;

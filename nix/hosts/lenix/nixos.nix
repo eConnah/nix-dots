@@ -49,7 +49,7 @@
       time.timeZone = "Europe/London";
       users = {
         mutableUsers = false;
-        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."passwords/connor/linux".path;
+        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
       };
     };
 }
