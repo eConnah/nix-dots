@@ -46,6 +46,11 @@
         identityPaths = [ "/persistent/nix-keys/age-identity.txt" ];
         storagePath = "/persistent/dotfiles/secrets";
       };
+      systemd.tmpfiles.rules = [
+        "L+ /var/lib/iwd/eduroam.8021x - - - - ${
+          config.security.nix-secrets.secrets."connor/wifi/eduroam".path
+        }"
+      ];
       time.timeZone = "Europe/London";
       users = {
         mutableUsers = false;

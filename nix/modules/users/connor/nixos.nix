@@ -35,6 +35,7 @@
           "onyx"
         ];
       };
+      "connor/wifi/eduroam".recipients = [ "lenix" ];
     };
     services = {
       pcscd.enable = true;
