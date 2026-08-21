@@ -3,6 +3,7 @@
     imports = with self.nixosModules; [
       ewan-preservation
       oledppuccin
+      self.secretModules.ewan
     ];
     hjem = {
       users.ewan = {
@@ -13,12 +14,6 @@
       };
     };
     programs.ydotool.enable = true;
-    security.nix-secrets.secrets."ewan/linux" = {
-      neededForUsers = true;
-      recipients = [
-        "murtle"
-      ];
-    };
     services = {
       tailscale = {
         enable = true;

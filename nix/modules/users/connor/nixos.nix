@@ -3,6 +3,7 @@
     imports = with self.nixosModules; [
       connor-preservation
       oledppuccin
+      self.secretModules.connor
     ];
     environment.systemPackages = with pkgs; [
       yubikey-manager
@@ -14,28 +15,6 @@
         directory = "/home/connor";
         user = "connor";
       };
-    };
-    security.nix-secrets.secrets = {
-      "connor/halloy" = {
-        group = "connor";
-        owner = "connor";
-        recipients = [
-          "lenix"
-          "ACE"
-          "murtle"
-          "onyx"
-        ];
-      };
-      "connor/linux" = {
-        neededForUsers = true;
-        recipients = [
-          "lenix"
-          "ACE"
-          "murtle"
-          "onyx"
-        ];
-      };
-      "connor/wifi/eduroam".recipients = [ "lenix" ];
     };
     services = {
       pcscd.enable = true;

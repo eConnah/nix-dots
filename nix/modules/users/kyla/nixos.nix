@@ -3,6 +3,7 @@
     imports = with self.nixosModules; [
       kyla-preservation
       oledppuccin
+      self.secretModules.kyla
     ];
     hjem = {
       users.kyla = {
@@ -11,10 +12,6 @@
         directory = "/home/kyla";
         user = "kyla";
       };
-    };
-    security.nix-secrets.secrets."kyla/linux" = {
-      neededForUsers = true;
-      recipients = [ "ACE" ];
     };
     services = {
       tailscale = {

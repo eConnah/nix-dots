@@ -17,6 +17,7 @@
         inputs.nix-secrets.nixosModules.default
         inputs.preservation.nixosModules.default
         self.nixosModules.substituters
+        self.nixosModules.secret-assertions
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
       environment = {
@@ -138,6 +139,12 @@
           enable = true;
           recipientAliases = {
             ACE = "age1qa58lk685uwd9s8g3evvh9kyaf48rj0pggnsx6gc8nza4redx52qgrqyc0";
+            all-hosts = [
+              "lenix"
+              "onyx"
+              "ACE"
+              "murtle"
+            ];
             escapepod3 = "age1REPLACE_ME";
             lenix = "age1xpg656d826awgldew9svunr9r4r8rdmf8fz7zgjlgmpd809q5flsavsmkd";
             murtle = "age1eqm8wgfpc8aawaxardpypg5gcdluavplfy7gn2qp9tefwauezs2sd69wvl";
@@ -145,10 +152,7 @@
             turtle = "age1REPLACE_ME";
           };
           secrets."nix-cache-key".recipients = [
-            "lenix"
-            "onyx"
-            "ACE"
-            "murtle"
+            "all-hosts"
           ];
           storage = self + "/secrets";
         };

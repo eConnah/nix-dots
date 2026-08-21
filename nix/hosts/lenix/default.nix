@@ -15,6 +15,7 @@
       lenix-hardware
       lenix-hjem
       limine
+      self.secretModules.connor-eduroam
     ];
   };
 }
