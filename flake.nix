@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:unnamed-systems/nix-secrets";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     nvf = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:notashelf/nvf";
