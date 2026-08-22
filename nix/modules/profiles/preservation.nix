@@ -47,6 +47,7 @@
               ".local/share/flatpak"
               ".local/share/icons"
               ".local/share/keyrings"
+              ".local/share/modprobed-db"
               ".local/share/nvim"
               ".local/share/zoxide"
               ".local/state/wireplumber"
