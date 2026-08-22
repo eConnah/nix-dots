@@ -17,9 +17,9 @@
         useDHCP = false;
       };
       nix.settings = {
-        cores = 4;
+        cores = 0;
         http-connections = 100;
-        max-jobs = 4;
+        max-jobs = 2;
         secret-key-files = [ config.security.nix-secrets.secrets."nix-cache-key".path ];
       };
       programs = {
