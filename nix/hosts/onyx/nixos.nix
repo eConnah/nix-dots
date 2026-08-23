@@ -47,9 +47,7 @@
           "default.clock.rate" = 48000;
         };
       };
-      services.resolved = {
-        enable = true;
-      };
+      services.resolved.enable = true;
       systemd.network = {
         enable = true;
         networks."10-ethernet" = {

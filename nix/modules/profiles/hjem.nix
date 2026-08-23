@@ -67,18 +67,6 @@
             kitty.desktop
           '';
         };
-        mime-apps.default-applications = {
-          "application/pdf" = "firefox.desktop";
-          "application/x-desktop" = "nvim.desktop";
-          "text/html" = "firefox.desktop";
-          "text/markdown" = "nvim.desktop";
-          "text/plain" = "nvim.desktop";
-          "x-scheme-handler/about" = "firefox.desktop";
-          "x-scheme-handler/http" = "firefox.desktop";
-          "x-scheme-handler/https" = "firefox.desktop";
-          "x-scheme-handler/terminal" = "kitty.desktop";
-          "x-scheme-handler/unknown" = "firefox.desktop";
-        };
       };
     };
 }

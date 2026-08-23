@@ -24,6 +24,20 @@
         };
       };
       theme.wallpaper = "86-01.png";
+      xdg.config.files."mpv/mpv.conf".text = ''
+        profile=high-quality
+        vo=gpu-next
+        gpu-api=vulkan
+        hwdec=nvdec-copy
+        video-sync=display-resample
+        interpolation=yes
+        tscale=oversample
+        deband-iterations=4
+        deband-threshold=48
+        deband-range=16
+        deband-grain=48
+        target-colorspace-hint=yes
+      '';
     };
   };
 }
