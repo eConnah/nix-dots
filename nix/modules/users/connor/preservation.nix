@@ -8,7 +8,6 @@
       users.connor = {
         directories = [
           ".config/Epic"
-          ".config/JetBrains"
           ".config/halloy"
           ".config/libreoffice"
           ".config/mozilla"
@@ -17,7 +16,6 @@
           ".config/spotify"
           ".config/vicinae"
           ".java"
-          ".local/share/JetBrains"
           ".local/share/PrismLauncher"
           ".local/share/Steam"
           ".local/share/Terraria"

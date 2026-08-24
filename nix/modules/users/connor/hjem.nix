@@ -19,7 +19,6 @@
       };
       packages = with pkgs; [
         halloy
-        lazyspotify
         libreoffice
         librespot
         obsidian

@@ -11,7 +11,6 @@
       eduvpn-client
       jetbrains.idea
       jetbrains.rider
-      lazyspotify
       libreoffice
       obsidian
       prismlauncher

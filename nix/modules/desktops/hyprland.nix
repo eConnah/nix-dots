@@ -1,4 +1,4 @@
-{ self, ... }: {
+{
   flake = {
     hjemModules.hyprland =
       {
@@ -18,19 +18,23 @@
         };
 
         config = {
-          custom.hyprland.extraLuaConfig = lib.mkBefore ''
+          custom.hyprland.extraLuaConfig = lib.mkBefore /* lua */ ''
             mod = "SUPER"
             browser = "firefox"
             terminal = "kitty"
 
-            hl.env("XCURSOR_SIZE", "24")
-            hl.env("HYPRCURSOR_SIZE", "24")
             hl.env("QT_QPA_PLATFORM", "wayland;xcb")
           '';
+          environment.sessionVariables = {
+            HYPRCURSOR_SIZE = "24";
+            HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+            XCURSOR_SIZE = "24";
+            XCURSOR_THEME = "BreezeX-RosePine-Linux";
+          };
           packages = with pkgs; [
-            hyprcursor
             hyprpicker
             hyprshot
+            rose-pine-cursor
             rose-pine-hyprcursor
           ];
           rum.desktops.hyprland.enable = true;

@@ -60,6 +60,7 @@
           vulkan-tools
           wget
           wl-clipboard
+          yt-dlp
           zulu
         ];
       };
