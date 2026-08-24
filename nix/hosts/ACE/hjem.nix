@@ -17,6 +17,7 @@
           ACE-hyprland
         ];
         packages = with pkgs; [
+          mixxx
           plezy
           spotify
         ];
