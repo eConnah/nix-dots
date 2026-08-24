@@ -8,6 +8,7 @@
     {
       environment.systemPackages = with pkgs; [
         brightnessctl
+        jolt-tui
       ];
       hardware.bluetooth.enable = true;
       networking = {
