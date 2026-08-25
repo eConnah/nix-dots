@@ -9,6 +9,7 @@
       };
       packages = with pkgs; [
         davinci-resolve
+        heroic
         plezy
         spotify
       ];

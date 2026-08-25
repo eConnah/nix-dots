@@ -9,6 +9,7 @@
         directories = [
           ".config/Epic"
           ".config/halloy"
+          ".config/heroic"
           ".config/libreoffice"
           ".config/mozilla"
           ".config/obs-studio"
@@ -21,6 +22,7 @@
           ".local/share/Terraria"
           ".local/share/com.edde746.plezy"
           ".local/share/direnv"
+          ".local/share/heroic"
           ".local/share/qalculate"
           ".local/share/robrix"
           ".local/share/vicinae"
