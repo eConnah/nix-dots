@@ -6,7 +6,19 @@
       ...
     }:
     {
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot = {
+        kernelPackages = pkgs.linuxPackages_latest;
+        loader.limine = {
+          extraEntries = ''
+            /+Other
+            //Windows 11
+              protocol: efi_chainload
+              image_path: guid(8fef2ca3-6a98-445a-80a0-0e94b8ea8ba6):/EFI/Microsoft/Boot/bootmgfw.efi
+          '';
+          resolution = "2560x1440x32";
+          style.interface.resolution = "2560x1440";
+        };
+      };
       environment.systemPackages = [
         pkgs.efibootmgr
         self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
