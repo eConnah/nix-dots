@@ -16,6 +16,11 @@
               image_path: guid(8fef2ca3-6a98-445a-80a0-0e94b8ea8ba6):/EFI/Microsoft/Boot/bootmgfw.efi
           '';
           resolution = "2560x1440x32";
+          secureBoot = {
+            enable = true;
+            autoEnrollKeys.enable = true;
+            autoGenerateKeys = true;
+          };
           style.interface.resolution = "2560x1440";
         };
       };

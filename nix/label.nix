@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "add-windows-to-limine";
+    system.nixos.label = "onyx-secure-boot";
   };
 }

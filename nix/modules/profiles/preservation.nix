@@ -19,6 +19,7 @@
             "/etc/nixos"
             "/etc/ssh"
             "/var/lib/flatpak"
+            "/var/lib/sbctl"
             "/var/lib/tailscale"
             "/var/log"
             {

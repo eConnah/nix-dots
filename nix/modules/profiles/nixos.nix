@@ -55,6 +55,7 @@
           pavucontrol
           pulseaudio
           qpwgraph
+          sbctl
           sshfs
           tree
           usbutils
