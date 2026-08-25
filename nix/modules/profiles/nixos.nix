@@ -18,6 +18,7 @@
         inputs.preservation.nixosModules.default
         self.nixosModules.substituters
         self.nixosModules.secret-assertions
+        self.nixosModules.label
       ];
       boot.zfs.forceImportRoot = lib.mkDefault false;
       environment = {
