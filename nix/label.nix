@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "fwupdmgr";
+    system.nixos.label = "onyx-10bit";
   };
 }
