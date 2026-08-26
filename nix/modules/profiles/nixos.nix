@@ -163,6 +163,7 @@
       };
       services = {
         flatpak.enable = lib.mkDefault true;
+        fwupd.enable = true;
         gnome = {
           gcr-ssh-agent.enable = false;
           gnome-keyring.enable = true;

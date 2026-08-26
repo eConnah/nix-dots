@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "disko-fixes";
+    system.nixos.label = "fwupdmgr";
   };
 }
