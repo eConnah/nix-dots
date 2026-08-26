@@ -61,7 +61,7 @@
       time.timeZone = "Europe/London";
       users = {
         mutableUsers = false;
-        users.connor.initialPassword = "tacobell";
+        users.connor.password = "tacobell";
       };
       zramSwap = {
         enable = true;
