@@ -63,6 +63,7 @@
             abbr -a --position command ls "eza --color=always --icons=always --git"
             abbr -a --position command lt "eza --color=always --icons=always --git --tree"
           '';
+          "fish/conf.d/rexies_prompt.fish".source = "${self}/not-nix/presets/fish/rexies_prompt.fish";
           "xdg-terminals.list".text = ''
             kitty.desktop
           '';

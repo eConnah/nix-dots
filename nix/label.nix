@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "onyx-install-heroic";
+    system.nixos.label = "rexiels-fish-prompt";
   };
 }
