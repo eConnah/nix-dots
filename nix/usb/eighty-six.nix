@@ -36,7 +36,7 @@
             users = {
               connor.password = "nixos";
               root = {
-                initialHashedPassword = null;
+                initialHashedPassword = lib.mkForce null;
                 openssh.authorizedKeys.keys = config.users.users.connor.openssh.authorizedKeys.keys;
                 password = "nixos";
               };
