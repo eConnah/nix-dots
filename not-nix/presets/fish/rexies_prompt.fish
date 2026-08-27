@@ -30,9 +30,15 @@ set -g __rexies_paths_jj "$__rexies_paths_root/jj"
 set -g __rexies_async_counter 0
 
 # THEME SPECIFIC
-set -g __rexies_color_primary $fish_color_rexies_primary # direnv / host
-set -g __rexies_color_secondary $fish_color_rexies_secondary # pwd / head
-set -g __rexies_color_tertiary $fish_color_rexies_tertiary # jj id
+if test "$TERM" = linux
+    set -g __rexies_color_primary $fish_color_rexies_primary_tty # direnv / host
+    set -g __rexies_color_secondary $fish_color_rexies_secondary_tty # pwd / head
+    set -g __rexies_color_tertiary $fish_color_rexies_tertiary_tty # jj id
+else
+    set -g __rexies_color_primary $fish_color_rexies_primary # direnv / host
+    set -g __rexies_color_secondary $fish_color_rexies_secondary # pwd / head
+    set -g __rexies_color_tertiary $fish_color_rexies_tertiary # jj id
+end
 
 touch $__rexies_paths_prompt
 touch $__rexies_paths_jj

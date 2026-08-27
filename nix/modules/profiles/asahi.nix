@@ -111,6 +111,7 @@
           muvm
         ];
         hardware.asahi.enable = true;
+        services.fwupd.enable = lib.mkForce false;
         services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
       };
   };

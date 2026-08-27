@@ -6,11 +6,13 @@
     ];
     custom.hyprland.extraLuaConfig = lib.mkOrder 501 /* lua */ ''
       hl.monitor({
-          output = "DP-1",
-          mode = "2560x1440@240",
-          position = "0x0",
-          scale = 1,
-          vrr = 2
+        output = "DP-3",
+        mode = "2560x1440@240",
+        position = "0x0",
+        scale = 1,
+        bitdepth = 10,
+        cm = "srgb",
+        vrr = 2
       })
 
       hl.monitor({
@@ -21,7 +23,7 @@
       })
 
       hl.on("hyprland.start", function()
-        hl.exec_cmd("xrandr --output DP-1 --primary")
+        hl.exec_cmd("xrandr --output DP-3 --primary")
       end)
 
       hl.config({
