@@ -12,10 +12,17 @@
         vicinae
       ];
       environment.sessionVariables.EDITOR = "nvim";
-      files.".ssh/config" = {
-        permissions = "0600";
-        source = "${self}/not-nix/connor/ssh/config";
-        type = "copy";
+      files = {
+        ".ssh/config" = {
+          permissions = "0600";
+          source = "${self}/not-nix/connor/ssh/config";
+          type = "copy";
+        };
+        ".ssh/id_ed25519_sk_rk.pub" = {
+          permissions = "0644";
+          source = "${self}/not-nix/connor/ssh/id_ed25519_sk_rk.pub";
+          type = "copy";
+        };
       };
       packages = with pkgs; [
         halloy
