@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "fish-colours-tty";
+    system.nixos.label = "kyla-cookie-switchbg";
   };
 }

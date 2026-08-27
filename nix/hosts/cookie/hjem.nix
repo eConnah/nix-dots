@@ -30,7 +30,7 @@
           plezy
           spotify
         ];
-        theme.wallpaper = "your_name-02.png";
+        theme.wallpaper = "point_break-01.png";
       };
     };
   };
