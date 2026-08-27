@@ -11,6 +11,7 @@
             "murtle"
             "onyx"
             "cookie"
+            "yubikey"
           ];
         };
         "connor/linux" = {
@@ -21,6 +22,7 @@
             "murtle"
             "onyx"
             "cookie"
+            "yubikey"
           ];
         };
       };

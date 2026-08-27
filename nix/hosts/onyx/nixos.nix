@@ -53,7 +53,10 @@
         };
       };
       security.nix-secrets = {
-        identityPaths = [ "/persistent/nix-keys/age-identity.txt" ];
+        identityPaths = [
+          "/persistent/nix-keys/age-identity.txt"
+          "/persistent/nix-keys/yubikey-age.txt"
+        ];
         storagePath = "/persistent/dotfiles/secrets";
       };
       services.pipewire.extraConfig.pipewire."92-custom-quantum" = {

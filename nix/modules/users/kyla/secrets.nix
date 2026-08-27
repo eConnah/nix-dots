@@ -7,6 +7,7 @@
           recipients = [
             "ACE"
             "cookie"
+            "yubikey"
           ];
         };
       };

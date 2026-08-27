@@ -6,6 +6,7 @@
           neededForUsers = true;
           recipients = [
             "cookie"
+            "yubikey"
           ];
         };
       };
