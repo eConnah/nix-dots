@@ -60,6 +60,7 @@
           tree
           usbutils
           vulkan-tools
+          waypipe
           wget
           wl-clipboard
           yt-dlp
