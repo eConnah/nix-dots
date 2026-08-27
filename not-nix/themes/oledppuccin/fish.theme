@@ -33,3 +33,6 @@ fish_pager_color_progress 6c7086
 fish_color_rexies_primary cba6f7
 fish_color_rexies_secondary 89b4fa
 fish_color_rexies_tertiary 94e2d5
+fish_color_rexies_primary_tty ff00ff
+fish_color_rexies_secondary_tty 0000ff
+fish_color_rexies_tertiary_tty 00ffff
