@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "kyla-cookie-switchbg";
+    system.nixos.label = "themes-update-assets";
   };
 }

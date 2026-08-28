@@ -8,9 +8,9 @@
     {
       _module.args.remoteAssets = {
         profile-pics = {
-          "connor.png" = pkgs.fetchurl {
-            hash = "sha256-tn+hVdAxKIpkLOw3SsqrCSV37PIKdYROZ0wjn2Hx7cA=";
-            url = "https://assets.econnah.uk/profile-pics/connor.png";
+          "connor.jpg" = pkgs.fetchurl {
+            hash = "sha256-jvghKg73h6+QyaEb/yNcJrt5EJSlMnL2NMuOiKRXgmY=";
+            url = "https://assets.econnah.uk/profile-pics/connor.jpg";
           };
           "leo.png" = pkgs.fetchurl {
             hash = "sha256-w9cHmg3SyIAXv1j14sNvl2JAY2CwOarJXVs2Ym4eYmE=";
