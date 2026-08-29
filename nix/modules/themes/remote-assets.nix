@@ -7,6 +7,12 @@
     }:
     {
       _module.args.remoteAssets = {
+        other = {
+          "thirsty.png" = pkgs.fetchurl {
+            hash = "sha256-zOe7RUEBDd7Abum6sm0msUdorZkAJiPCJDHpnWvCvCQ=";
+            url = "https://assets.econnah.uk/other/thirsty.png";
+          };
+        };
         profile-pics = {
           "connor.jpg" = pkgs.fetchurl {
             hash = "sha256-jvghKg73h6+QyaEb/yNcJrt5EJSlMnL2NMuOiKRXgmY=";

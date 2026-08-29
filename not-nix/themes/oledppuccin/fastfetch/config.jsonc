@@ -1,0 +1,91 @@
+{
+    "$schema": "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/dev/doc/json_schema.json",
+    "logo": {
+        "type": "kitty-direct",
+        "source": "./fastfetch.png",
+        "height": 14,
+        "width": 31,
+        "position": "left",
+        "padding": {
+            "top": 1,
+            "right": 1
+        }
+    },
+    "display": {
+        "separator": " : "
+    },
+    "modules": [
+        "break",
+        {
+            "type": "command",
+            "key": "  ",
+            "keyColor": "cyan",
+            "text": "splash=$(hyprctl splash);echo $splash"
+        },
+        {
+            "type": "custom",
+            "format": "┌───────────────────────────────┐"
+        },
+        {
+            "type": "os",
+            "key": "   OS",
+            "format": "{2}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "key": "   Kernel",
+            "format": "{2}",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "command",
+            "key": "   Arch",
+            "keyColor": "magenta",
+            "text": "arch=$(uname -m);page=$(getconf PAGESIZE);echo $arch - $page KiB"
+        },
+        {
+            "type": "wm",
+            "key": "   WM",
+            "format": "{2}",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "└───────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "title",
+            "key": "  󱄅 Nix",
+            "keyColor": "blue",
+            "format": "{7}{8}/{6}"
+        },
+        {
+            "type": "custom",
+            "format": "┌───────────────────────────────┐"
+        },
+        {
+            "type": "command",
+            "key": "  󰆙 Generation",
+            "keyColor": "blue",
+            "text": "gen=$(readlink /nix/var/nix/profiles/system);gen=$(grep -o '[0-9]*' <<< $gen);echo $gen"
+        },
+        {
+            "type": "command",
+            "key": "   Closure Size",
+            "keyColor": "blue",
+            "text": "size=$(nix path-info -Sh /run/current-system | awk '{print $2}');echo $size"
+        },
+        {
+            "type": "uptime",
+            "key": "  󱫐 Uptime ",
+            "keyColor": "green"
+        },
+        {
+            "type": "custom",
+            "format": "└───────────────────────────────┘"
+        },
+        "break"
+    ]
+}

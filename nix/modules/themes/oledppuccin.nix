@@ -5,6 +5,7 @@
     in
     {
       hjemModules.oledppuccin = {
+        imports = [ self.hjemModules.themes-shared ];
         rum.programs.kitty.settings.include = "oledppuccin.conf";
         xdg.config.files = {
           "bat/config".text = "--theme='oledppuccin'";

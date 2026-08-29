@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "connor-vesktop";
+    system.nixos.label = "theme-fastfetch";
   };
 }
