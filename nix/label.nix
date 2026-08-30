@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "nvf-json-support";
+    system.nixos.label = "connor-vesktop";
   };
 }

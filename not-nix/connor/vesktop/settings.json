@@ -98,7 +98,8 @@
             "enabled": false
         },
         "CallTimer": {
-            "enabled": false
+            "enabled": true,
+            "format": "human"
         },
         "CharacterCounter": {
             "enabled": false
@@ -149,7 +150,7 @@
             "enabled": false
         },
         "DisableCallIdle": {
-            "enabled": false
+            "enabled": true
         },
         "DontRoundMyTimestamps": {
             "enabled": false
@@ -278,7 +279,8 @@
             "ignoreSelf": true,
             "ignoreUsers": "",
             "ignoreChannels": "",
-            "ignoreGuilds": ""
+            "ignoreGuilds": "",
+            "logDeletedAttachments": true
         },
         "MoreQuickReactions": {
             "enabled": false
@@ -609,6 +611,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1787395138160
+        "settingsSyncVersion": 1788122673825
     }
 }
