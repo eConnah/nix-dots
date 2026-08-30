@@ -1,5 +1,5 @@
 {
-  flake.nvfModules.defaults = { pkgs, ... }: {
+  flake.nvfModules.defaults = {pkgs, ...}: {
     vim = {
       # Tab indents
       options = {
@@ -22,6 +22,31 @@
             })
           '';
         };
+        smear-cursor = {
+          package = pkgs.vimPlugins.smear-cursor-nvim;
+
+          setup =
+            /*
+            lua
+            */
+            ''
+              require("smear_cursor").setup({
+                  legacy_computing_symbols_support = true,
+                  scroll_buffer_space = true,
+                  smear_between_buffers = true,
+                  smear_between_neighbor_lines = true,
+                  smear_insert_mode = true,
+                  stiffness = 0.8,
+                  trailing_stiffness = 0.6,
+                  stiffness_insert_mode = 0.7,
+                  trailing_stiffness_insert_mode = 0.7,
+                  damping = 0.95,
+                  damping_insert_mode = 0.95,
+                  distance_stop_animating = 0.5,
+                  time_interval = 7,
+              })
+            '';
+        };
       };
       # Navigation & Menus
       filetree.neo-tree.enable = true;
@@ -39,9 +64,16 @@
         enableTreesitter = true;
         fish.enable = true;
         java.enable = true;
+        json = {
+          enable = true;
+          format.type = ["biome"];
+        };
         lua.enable = true;
         markdown.enable = true;
-        nix.enable = true;
+        nix = {
+          enable = true;
+          format.type = ["alejandra" "injected"];
+        };
         python.enable = true;
         rust.enable = true;
         xml.enable = true;
