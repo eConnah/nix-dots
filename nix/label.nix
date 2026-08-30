@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "theme-fastfetch";
+    system.nixos.label = "formatting-alejandra";
   };
 }

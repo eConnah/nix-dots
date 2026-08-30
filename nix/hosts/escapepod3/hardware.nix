@@ -9,17 +9,16 @@
       pkgs,
       modulesPath,
       ...
-    }:
-    {
+    }: {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
-      boot.extraModulePackages = [ ];
-      boot.initrd.availableKernelModules = [ "usb_storage" ];
-      boot.initrd.kernelModules = [ ];
-      boot.kernelModules = [ ];
+      boot.extraModulePackages = [];
+      boot.initrd.availableKernelModules = ["usb_storage"];
+      boot.initrd.kernelModules = [];
+      boot.kernelModules = [];
       fileSystems."/" = {
-        options = [ "subvol=@" ];
+        options = ["subvol=@"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
@@ -32,31 +31,31 @@
         fsType = "vfat";
       };
       fileSystems."/home" = {
-        options = [ "subvol=@home" ];
+        options = ["subvol=@home"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
       fileSystems."/nix" = {
-        options = [ "subvol=@nix" ];
+        options = ["subvol=@nix"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
       fileSystems."/swap" = {
-        options = [ "subvol=@swap" ];
+        options = ["subvol=@swap"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
       fileSystems."/var/cache" = {
-        options = [ "subvol=@cache" ];
+        options = ["subvol=@cache"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
       fileSystems."/var/log" = {
-        options = [ "subvol=@log" ];
+        options = ["subvol=@log"];
         device = "/dev/disk/by-uuid/1c9f11c5-629f-4a7f-bc09-118258472a7b";
         fsType = "btrfs";
       };
       nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-      swapDevices = [ ];
+      swapDevices = [];
     };
 }

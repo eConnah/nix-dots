@@ -1,4 +1,4 @@
-{ self, ... }: {
+{self, ...}: {
   flake.nixosModules.ewan-preservation = {
     imports = [
       self.nixosModules.preservation

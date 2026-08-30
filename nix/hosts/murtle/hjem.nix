@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.murtle-hjem = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.murtle-hjem = {pkgs, ...}: {
     hjem.users = {
       connor = {
         imports = with self.hjemModules; [

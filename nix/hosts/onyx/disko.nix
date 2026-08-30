@@ -1,12 +1,12 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   flake.nixosModules.onyx-disko = {
-    imports = [ inputs.disko.nixosModules.disko ];
+    imports = [inputs.disko.nixosModules.disko];
     disko.devices.disk.hdd = {
       content = {
         partitions = {
           storage = {
             content = {
-              extraArgs = [ "-f" ];
+              extraArgs = ["-f"];
               subvolumes = {
                 "/data" = {
                   mountOptions = [
@@ -40,7 +40,7 @@
       };
       content.partitions.root = {
         content = {
-          extraArgs = [ "-f" ];
+          extraArgs = ["-f"];
           subvolumes = {
             "/nix" = {
               mountOptions = [

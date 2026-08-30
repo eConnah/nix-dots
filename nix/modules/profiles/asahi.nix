@@ -2,11 +2,10 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake = {
     hjemModules.asahi = {
-      imports = [ self.hjemModules.modprobed-db ];
+      imports = [self.hjemModules.modprobed-db];
       rum.programs.fish.functions = {
         hyprbattery = ''
           set realCharge (cat /sys/class/power_supply/macsmc-battery/capacity)
@@ -27,25 +26,23 @@
         '';
       };
     };
-    nixosModules.asahi =
-      {
-        lib,
-        pkgs,
-        ...
-      }:
-      {
-        imports = [ inputs.apple-silicon.nixosModules.apple-silicon-support ];
-        boot = {
-          kexec.enable = false;
-          loader.efi.canTouchEfiVariables = lib.mkForce false;
-        };
-        environment.systemPackages = with pkgs; [
-          asahi-bless
-          muvm
-        ];
-        hardware.asahi.enable = true;
-        services.fwupd.enable = lib.mkForce false;
-        services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
+    nixosModules.asahi = {
+      lib,
+      pkgs,
+      ...
+    }: {
+      imports = [inputs.apple-silicon.nixosModules.apple-silicon-support];
+      boot = {
+        kexec.enable = false;
+        loader.efi.canTouchEfiVariables = lib.mkForce false;
       };
+      environment.systemPackages = with pkgs; [
+        asahi-bless
+        muvm
+      ];
+      hardware.asahi.enable = true;
+      services.fwupd.enable = lib.mkForce false;
+      services.logind.settings.Login.HandleLidSwitch = lib.mkForce "ignore";
+    };
   };
 }

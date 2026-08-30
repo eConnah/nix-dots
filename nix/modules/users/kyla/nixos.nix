@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.kyla = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.kyla = {pkgs, ...}: {
     imports = with self.nixosModules; [
       kyla-preservation
       oledppuccin
@@ -7,7 +7,7 @@
     ];
     hjem = {
       users.kyla = {
-        imports = with self.hjemModules; [ kyla ];
+        imports = with self.hjemModules; [kyla];
         enable = true;
         directory = "/home/kyla";
         user = "kyla";

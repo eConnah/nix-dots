@@ -1,5 +1,5 @@
 {
-  flake.hjemModules.themes-shared = { remoteAssets, ... }: {
+  flake.hjemModules.themes-shared = {remoteAssets, ...}: {
     xdg.config.files."fastfetch/config.jsonc" = {
       generator = builtins.toJSON;
       value = {

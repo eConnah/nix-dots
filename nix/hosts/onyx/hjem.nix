@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.onyx-hjem = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.onyx-hjem = {pkgs, ...}: {
     hjem.users.connor = {
       imports = with self.hjemModules; [
         onyx-hyprland

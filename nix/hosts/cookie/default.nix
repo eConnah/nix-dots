@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.cookie = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       aude

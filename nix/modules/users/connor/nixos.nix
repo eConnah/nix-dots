@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.connor = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.connor = {pkgs, ...}: {
     imports = with self.nixosModules; [
       connor-preservation
       oledppuccin
@@ -10,7 +10,7 @@
     ];
     hjem = {
       users.connor = {
-        imports = with self.hjemModules; [ connor ];
+        imports = with self.hjemModules; [connor];
         enable = true;
         directory = "/home/connor";
         user = "connor";

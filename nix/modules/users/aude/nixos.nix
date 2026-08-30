@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.aude = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.aude = {pkgs, ...}: {
     imports = with self.nixosModules; [
       aude-preservation
       oledppuccin
@@ -7,7 +7,7 @@
     ];
     hjem = {
       users.aude = {
-        imports = with self.hjemModules; [ aude ];
+        imports = with self.hjemModules; [aude];
         enable = true;
         directory = "/home/aude";
         user = "aude";

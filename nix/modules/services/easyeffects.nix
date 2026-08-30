@@ -1,11 +1,11 @@
 {
-  flake.hjemModules.easyeffects = { pkgs, ... }: {
-    packages = [ pkgs.easyeffects ];
+  flake.hjemModules.easyeffects = {pkgs, ...}: {
+    packages = [pkgs.easyeffects];
     systemd.services.easyeffects = {
       enable = true;
-      after = [ "graphical-session.target" ];
+      after = ["graphical-session.target"];
       description = "EasyEffects daemon";
-      partOf = [ "graphical-session.target" ];
+      partOf = ["graphical-session.target"];
       serviceConfig = {
         ExecStart = "${pkgs.easyeffects}/bin/easyeffects --hide-window --service-mode";
         ExecStop = "${pkgs.easyeffects}/bin/easyeffects --quit";
@@ -14,7 +14,7 @@
         RestartSec = 5;
         TimeoutStopSec = 10;
       };
-      wantedBy = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
     };
   };
 }

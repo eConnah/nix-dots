@@ -1,41 +1,39 @@
 {
-  flake.nixosModules.preservation =
-    {
-      config,
-      lib,
-      ...
-    }:
-    let
-      normalUsers = lib.filterAttrs (_name: user: user.isNormalUser) config.users.users;
-    in
-    {
-      boot.tmp.cleanOnBoot = true;
-      boot.tmp.useTmpfs = false;
-      preservation = {
-        enable = true;
+  flake.nixosModules.preservation = {
+    config,
+    lib,
+    ...
+  }: let
+    normalUsers = lib.filterAttrs (_name: user: user.isNormalUser) config.users.users;
+  in {
+    boot.tmp.cleanOnBoot = true;
+    boot.tmp.useTmpfs = false;
+    preservation = {
+      enable = true;
 
-        preserveAt."/persistent" = {
-          directories = [
-            "/etc/nixos"
-            "/etc/ssh"
-            "/var/lib/flatpak"
-            "/var/lib/sbctl"
-            "/var/lib/tailscale"
-            "/var/log"
-            {
-              directory = "/var/lib/nixos";
-              inInitrd = true;
-            }
-          ];
+      preserveAt."/persistent" = {
+        directories = [
+          "/etc/nixos"
+          "/etc/ssh"
+          "/var/lib/flatpak"
+          "/var/lib/sbctl"
+          "/var/lib/tailscale"
+          "/var/log"
+          {
+            directory = "/var/lib/nixos";
+            inInitrd = true;
+          }
+        ];
 
-          files = [
-            {
-              file = "/etc/machine-id";
-              inInitrd = true;
-            }
-          ];
+        files = [
+          {
+            file = "/etc/machine-id";
+            inInitrd = true;
+          }
+        ];
 
-          users = lib.mapAttrs (_name: _: {
+        users =
+          lib.mapAttrs (_name: _: {
             directories = [
               ".cache/bat"
               ".config/Signal"
@@ -60,10 +58,11 @@
               "Pictures"
               "Videos"
             ];
-          }) normalUsers;
-        };
+          })
+          normalUsers;
       };
-      security.sudo.extraConfig = "Defaults lecture=never";
-      systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
     };
+    security.sudo.extraConfig = "Defaults lecture=never";
+    systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
+  };
 }

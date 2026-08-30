@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.hjemModules.kyla = { pkgs, ... }: {
+{self, ...}: {
+  flake.hjemModules.kyla = {pkgs, ...}: {
     imports = with self.hjemModules; [
       defaults
       oledppuccin
@@ -37,7 +37,7 @@
     };
     xdg.config.files = {
       "jj/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
           alias = {
             pull-pr = {

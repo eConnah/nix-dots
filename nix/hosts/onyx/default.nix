@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       connor

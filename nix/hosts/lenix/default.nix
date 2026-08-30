@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.lenix = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       asahi

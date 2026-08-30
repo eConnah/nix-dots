@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.ewan = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.ewan = {pkgs, ...}: {
     imports = with self.nixosModules; [
       ewan-preservation
       oledppuccin
@@ -7,7 +7,7 @@
     ];
     hjem = {
       users.ewan = {
-        imports = with self.hjemModules; [ ewan ];
+        imports = with self.hjemModules; [ewan];
         enable = true;
         directory = "/home/ewan";
         user = "ewan";

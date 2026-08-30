@@ -18,6 +18,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/project-robius/robius-packaging-commands";
     license = lib.licenses.mit;
     mainProgram = "robius-packaging-commands";
-    maintainers = with lib.maintainers; [ eConnah ];
+    maintainers = with lib.maintainers; [eConnah];
   };
 }

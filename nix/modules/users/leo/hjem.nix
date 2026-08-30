@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.hjemModules.leo = { pkgs, ... }: {
+{self, ...}: {
+  flake.hjemModules.leo = {pkgs, ...}: {
     imports = with self.hjemModules; [
       defaults
       oledppuccin
@@ -7,7 +7,7 @@
     ];
     environment.sessionVariables.EDITOR = "nvim";
     packages = with pkgs; [
-      (chromium.override { enableWideVine = true; })
+      (chromium.override {enableWideVine = true;})
       eduvpn-client
       jetbrains.idea
       jetbrains.rider
@@ -43,7 +43,7 @@
     };
     xdg.config.files = {
       "jj/config.toml" = {
-        generator = (pkgs.formats.toml { }).generate "config.toml";
+        generator = (pkgs.formats.toml {}).generate "config.toml";
         value = {
           ui = {
             default-command = "log";

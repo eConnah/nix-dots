@@ -28,7 +28,7 @@
       };
     };
     connor-eduroam = {
-      security.nix-secrets.secrets."connor/wifi/eduroam".recipients = [ "lenix" ];
+      security.nix-secrets.secrets."connor/wifi/eduroam".recipients = ["lenix"];
     };
   };
 }

@@ -1,13 +1,13 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   flake.nixosModules.ACE-disko = {
-    imports = [ inputs.disko.nixosModules.disko ];
+    imports = [inputs.disko.nixosModules.disko];
     disko.devices.disk.main = {
       content = {
         partitions = {
           esp = {
             content = {
               format = "vfat";
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
               mountpoint = "/boot";
               type = "filesystem";
             };
@@ -24,7 +24,7 @@
                 "persistent"
               ];
               format = "f2fs";
-              mountOptions = [ "noatime" ];
+              mountOptions = ["noatime"];
               mountpoint = "/persistent";
               postMountHook = ''
                 mkdir -p /mnt/persistent/nix
@@ -45,7 +45,7 @@
                 "root"
               ];
               format = "f2fs";
-              mountOptions = [ "noatime" ];
+              mountOptions = ["noatime"];
               mountpoint = "/";
               type = "filesystem";
             };
@@ -70,7 +70,7 @@
     };
     fileSystems = {
       "/nix" = {
-        options = [ "bind" ];
+        options = ["bind"];
         device = "/persistent/nix";
         fsType = "none";
         neededForBoot = true;

@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.eighty-six = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
@@ -15,8 +14,7 @@
           config,
           lib,
           ...
-        }:
-        {
+        }: {
           isoImage.squashfsCompression = "gzip -Xcompression-level 1";
           networking = {
             hostName = "nixos-iso";

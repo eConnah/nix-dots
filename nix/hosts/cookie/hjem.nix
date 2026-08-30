@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.cookie-hjem = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.cookie-hjem = {pkgs, ...}: {
     hjem.users = {
       aude = {
         imports = with self.hjemModules; [

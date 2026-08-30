@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.murtle = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       murtle-config

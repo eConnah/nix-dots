@@ -1,13 +1,13 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   flake.nixosModules.cookie-disko = {
-    imports = [ inputs.disko.nixosModules.disko ];
+    imports = [inputs.disko.nixosModules.disko];
     disko.devices.disk.main = {
       content = {
         partitions = {
           esp = {
             content = {
               format = "vfat";
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
               mountpoint = "/boot";
               type = "filesystem";
             };
@@ -18,7 +18,7 @@
           };
           root = {
             content = {
-              extraArgs = [ "-f" ];
+              extraArgs = ["-f"];
               subvolumes = {
                 "/@nix" = {
                   mountOptions = [
@@ -37,7 +37,7 @@
                   mountpoint = "/persistent";
                 };
                 "/@snapshots" = {
-                  mountOptions = [ "subvol=@snapshots" ];
+                  mountOptions = ["subvol=@snapshots"];
                   mountpoint = "/snapshots";
                 };
                 "/@void" = {
@@ -49,7 +49,7 @@
                   mountpoint = "/";
                 };
                 "/@void-blank" = {
-                  mountOptions = [ "subvol=@void-blank" ];
+                  mountOptions = ["subvol=@void-blank"];
                 };
               };
               type = "btrfs";

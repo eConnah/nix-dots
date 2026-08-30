@@ -3,26 +3,25 @@
   flake-parts-lib,
   moduleLocation,
   ...
-}:
-let
-  inherit (lib)
+}: let
+  inherit
+    (lib)
     mapAttrs
     mkOption
     types
     ;
-in
-{
+in {
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       secretModules = mkOption {
         apply = mapAttrs (
           k: v: {
-            imports = [ v ];
+            imports = [v];
             _class = "nixos";
             _file = "${toString moduleLocation}#secretModules.${k}";
           }
         );
-        default = { };
+        default = {};
         description = ''
           Optional per-host `nix-secrets` declarations. `nix-secrets`
           attempts to decrypt every secret declared for a host's

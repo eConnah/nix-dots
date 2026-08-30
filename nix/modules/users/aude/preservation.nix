@@ -1,4 +1,4 @@
-{ self, ... }: {
+{self, ...}: {
   flake.nixosModules.aude-preservation = {
     imports = [
       self.nixosModules.preservation

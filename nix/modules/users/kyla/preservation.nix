@@ -1,4 +1,4 @@
-{ self, ... }: {
+{self, ...}: {
   flake.nixosModules.kyla-preservation = {
     imports = [
       self.nixosModules.preservation

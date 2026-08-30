@@ -2,8 +2,7 @@
   inputs,
   self,
   ...
-}:
-{
+}: {
   flake.nixosConfigurations.escapepod3 = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       asahi

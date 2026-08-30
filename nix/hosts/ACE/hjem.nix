@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.ACE-hjem = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.ACE-hjem = {pkgs, ...}: {
     hjem.users = {
       connor = {
         imports = with self.hjemModules; [

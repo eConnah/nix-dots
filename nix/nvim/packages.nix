@@ -2,9 +2,8 @@
   inputs,
   self,
   ...
-}:
-{
-  perSystem = { pkgs, ... }: {
+}: {
+  perSystem = {pkgs, ...}: {
     packages = {
       nvim-qwerty =
         (inputs.nvf.lib.neovimConfiguration {

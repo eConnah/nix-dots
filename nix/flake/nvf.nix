@@ -3,26 +3,25 @@
   flake-parts-lib,
   moduleLocation,
   ...
-}:
-let
-  inherit (lib)
+}: let
+  inherit
+    (lib)
     mapAttrs
     mkOption
     types
     ;
-in
-{
+in {
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       nvfModules = mkOption {
         apply = mapAttrs (
           k: v: {
-            imports = [ v ];
+            imports = [v];
             _class = "nvf";
             _file = "${toString moduleLocation}#nvfModules.${k}";
           }
         );
-        default = { };
+        default = {};
         description = ''
           NVF configuration modules.
 

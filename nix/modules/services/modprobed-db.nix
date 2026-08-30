@@ -1,6 +1,6 @@
 {
-  flake.hjemModules.modprobed-db = { pkgs, ... }: {
-    packages = [ pkgs.modprobed-db ];
+  flake.hjemModules.modprobed-db = {pkgs, ...}: {
+    packages = [pkgs.modprobed-db];
     systemd.services.modprobed-db-store = {
       description = "Snapshot currently loaded kernel modules for modprobed-db";
       serviceConfig = {
@@ -14,7 +14,7 @@
         OnBootSec = "1min";
         OnUnitActiveSec = "5min";
       };
-      wantedBy = [ "timers.target" ];
+      wantedBy = ["timers.target"];
     };
     xdg.config.files."modprobed-db.conf".text = ''
       DBPATH="/home/connor/.local/share/modprobed-db"
