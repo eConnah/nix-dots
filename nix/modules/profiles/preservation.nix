@@ -44,6 +44,7 @@
               ".local/share/fish"
               ".local/share/flatpak"
               ".local/share/icons"
+              ".local/share/jolt"
               ".local/share/keyrings"
               ".local/share/modprobed-db"
               ".local/share/nvim"

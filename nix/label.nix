@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "formatting-alejandra";
+    system.nixos.label = "jolt-theme-and-preserve";
   };
 }
