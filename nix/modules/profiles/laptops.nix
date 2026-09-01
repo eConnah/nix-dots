@@ -10,15 +10,19 @@
     ];
     hardware.bluetooth.enable = true;
     networking = {
-      networkmanager = {
+      networkmanager.enable = false;
+      dhcpcd = {
         enable = true;
-        wifi.backend = "iwd";
+        wait = "background";
       };
       wireless = {
         enable = false;
-        iwd.settings = {
-          General = {
-            AddressRandomization = "network";
+        iwd = {
+          enable = true;
+          settings = {
+            General = {
+              AddressRandomization = "network";
+            };
           };
         };
       };
@@ -26,9 +30,9 @@
     powerManagement.enable = true;
     preservation.preserveAt."/persistent" = {
       directories = [
-        "/etc/NetworkManager"
         "/etc/iwd"
         "/var/lib/bluetooth"
+        "/var/lib/dhcpcd/"
         "/var/lib/iwd"
       ];
     };

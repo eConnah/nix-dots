@@ -28,7 +28,6 @@
         description = "Ewan Alecks";
         extraGroups = [
           "dialout"
-          "networkmanager"
           "uucp"
           "wheel"
           "ydotool"

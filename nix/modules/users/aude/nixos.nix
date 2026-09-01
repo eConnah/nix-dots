@@ -28,7 +28,6 @@
         description = "Aude Alecks";
         extraGroups = [
           "wheel"
-          "networkmanager"
           "dialout"
           "uucp"
         ];

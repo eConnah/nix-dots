@@ -28,7 +28,7 @@
     ];
     networking = {
       hostName = "onyx";
-      networkmanager.enable = false;
+      dhcpcd.enable = false;
       useDHCP = false;
     };
     nix.settings = {

@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "lenix-wireshark";
+    system.nixos.label = "networking-lean";
   };
 }

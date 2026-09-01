@@ -94,6 +94,7 @@
       clobberByDefault = true;
       extraModules = [inputs.hjem-rum.hjemModules.default];
     };
+    networking.networkmanager.enable = false;
     nix.channel.enable = false;
     nix.settings = {
       auto-optimise-store = true;
