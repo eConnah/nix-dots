@@ -3,6 +3,7 @@
     packages = [pkgs.modprobed-db];
     systemd.services.modprobed-db-store = {
       description = "Snapshot currently loaded kernel modules for modprobed-db";
+      path = [pkgs.getent];
       serviceConfig = {
         ExecStart = "${pkgs.modprobed-db}/bin/modprobed-db storesilent";
         Type = "oneshot";

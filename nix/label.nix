@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "networking-lean";
+    system.nixos.label = "modprobed-fix-service";
   };
 }

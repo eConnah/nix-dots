@@ -49,7 +49,7 @@
         config.security.nix-secrets.secrets."connor/wifi/eduroam".path
       }"
     ];
-    time.timeZone = "Europe/London";
+    time.timeZone = "Europe/Amsterdam";
 
     # Wireshark Course
     programs.wireshark = {
