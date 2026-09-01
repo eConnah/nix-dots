@@ -50,6 +50,14 @@
       }"
     ];
     time.timeZone = "Europe/London";
+
+    # Wireshark Course
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+    users.users.connor.extraGroups = ["wireshark"];
+
     users = {
       mutableUsers = false;
       users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
