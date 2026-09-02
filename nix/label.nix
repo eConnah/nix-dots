@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "modprobed-fix-service";
+    system.nixos.label = "refactor-self_prime";
   };
 }

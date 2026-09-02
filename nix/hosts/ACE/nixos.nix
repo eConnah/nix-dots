@@ -1,10 +1,6 @@
-{self, ...}: {
-  flake.nixosModules.ACE-config = {
-    config,
-    pkgs,
-    ...
-  }: {
-    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty];
+{moduleWithSystem, ...}: {
+  flake.nixosModules.ACE-config = moduleWithSystem ({self', ...}: {config, ...}: {
+    environment.systemPackages = [self'.packages.nvim-qwerty];
     hardware.sensor.iio.enable = true;
     networking.hostName = "ACE";
     nix.settings = {
@@ -27,5 +23,5 @@
         kyla.hashedPasswordFile = config.security.nix-secrets.secrets."kyla/linux".path;
       };
     };
-  };
+  });
 }

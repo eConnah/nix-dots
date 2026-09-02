@@ -1,12 +1,12 @@
-{self, ...}: {
-  flake.nixosModules.turtle-config = {
+{moduleWithSystem, ...}: {
+  flake.nixosModules.turtle-config = moduleWithSystem ({self', ...}: {
     lib,
     pkgs,
     ...
   }: {
     boot.kernelPackages = pkgs.linuxPackages_latest;
     environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
+      self'.packages.nvim-qwerty
     ];
     networking = {
       hostName = "turtle";
@@ -65,5 +65,5 @@
       enable = true;
       memoryPercent = 25;
     };
-  };
+  });
 }

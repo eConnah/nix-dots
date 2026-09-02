@@ -1,10 +1,6 @@
-{self, ...}: {
-  flake.nixosModules.murtle-config = {
-    config,
-    pkgs,
-    ...
-  }: {
-    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty];
+{moduleWithSystem, ...}: {
+  flake.nixosModules.murtle-config = moduleWithSystem ({self', ...}: {config, ...}: {
+    environment.systemPackages = [self'.packages.nvim-qwerty];
     hardware.sensor.iio.enable = true;
     networking = {
       hostName = "murtle";
@@ -47,5 +43,5 @@
         ewan.hashedPasswordFile = config.security.nix-secrets.secrets."ewan/linux".path;
       };
     };
-  };
+  });
 }

@@ -1,12 +1,11 @@
-{self, ...}: {
-  flake.nixosModules.cookie-config = {
+{moduleWithSystem, ...}: {
+  flake.nixosModules.cookie-config = moduleWithSystem ({self', ...}: {
     config,
-    lib,
     pkgs,
     ...
   }: {
     environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty
+      self'.packages.nvim-qwerty
       pkgs.efibootmgr
     ];
     hardware.sensor.iio.enable = true;
@@ -32,5 +31,5 @@
         kyla.hashedPasswordFile = config.security.nix-secrets.secrets."kyla/linux".path;
       };
     };
-  };
+  });
 }

@@ -19,7 +19,7 @@
           networking = {
             hostName = "nixos-iso";
             networkmanager = {
-              enable = true;
+              enable = lib.mkForce true;
               wifi.backend = "iwd";
             };
             wireless.enable = false;

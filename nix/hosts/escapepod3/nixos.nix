@@ -1,5 +1,5 @@
-{self, ...}: {
-  flake.nixosModules.escapepod3-config = {
+{moduleWithSystem, ...}: {
+  flake.nixosModules.escapepod3-config = moduleWithSystem ({self', ...}: {
     lib,
     pkgs,
     ...
@@ -18,7 +18,7 @@
     };
     boot.binfmt.emulatedSystems = ["x86_64-linux"];
     boot.extraModprobeConfig = "options hid_apple iso_layout=0";
-    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.nvim-qwerty];
+    environment.systemPackages = [self'.packages.nvim-qwerty];
     fileSystems = {
       "/".options = ["compress=zstd"];
       "/home".options = ["compress=zstd"];
@@ -51,5 +51,5 @@
     security.nix-secrets.enable = lib.mkForce false;
     swapDevices = [{device = "/swap/swapfile";}];
     time.timeZone = "Europe/London";
-  };
+  });
 }
