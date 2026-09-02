@@ -53,8 +53,8 @@
       };
       "/boot" = {
         options = [
-          "fmask=0022"
-          "dmask=0022"
+          "fmask=0077"
+          "dmask=0077"
         ];
         device = "/dev/disk/by-uuid/33D3-16FC";
         fsType = "vfat";

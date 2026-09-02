@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "refactor-self_prime";
+    system.nixos.label = "various-fixes";
   };
 }

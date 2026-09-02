@@ -35,9 +35,10 @@
       users.connor = {
         description = "Connor Alecks";
         extraGroups = [
-          "wheel"
           "dialout"
+          "input"
           "uucp"
+          "wheel"
         ];
         group = "connor";
         isNormalUser = true;

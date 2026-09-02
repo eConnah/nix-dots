@@ -165,6 +165,8 @@
         ];
         storage = self + "/secrets";
       };
+      pam.enableUMask = true;
+      loginDefs.settings.UMASK = "002";
       rtkit.enable = true;
     };
     services = {
