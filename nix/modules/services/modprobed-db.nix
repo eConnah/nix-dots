@@ -17,7 +17,7 @@
       };
       wantedBy = ["timers.target"];
     };
-    xdg.config.files."modprobed-db.conf".text = ''
+    xdg.config.files."modprobed-db/modprobed-db.conf".text = ''
       DBPATH="/home/connor/.local/share/modprobed-db"
       COLORS=dark
     '';
