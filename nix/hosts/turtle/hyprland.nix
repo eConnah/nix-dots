@@ -47,8 +47,20 @@
 
         menu = "vicinae toggle"
 
-        hl.bind("F1", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+        hl.bind("F6", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+
+        for i = 1, 10 do
+            local key = i % 10
+            if i % 2 == 1 then
+                hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1" })
+            else
+                hl.workspace_rule({ workspace = tostring(i), monitor = "HDMI-A-1" })
+            end
+            hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+            hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+        end
       '';
+
     presets.hyprland = [
       "animations"
       "keybinds"

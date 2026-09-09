@@ -18,12 +18,6 @@ hl.bind(mod .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mod .. " + SHIFT + up", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
 
-for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
-
 hl.bind(mod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
