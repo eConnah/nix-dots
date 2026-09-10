@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "hyprland-monitor-binds";
+    system.nixos.label = "ewan-anti-afk";
   };
 }

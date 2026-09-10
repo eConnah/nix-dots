@@ -44,7 +44,8 @@
 
         menu = "vicinae toggle"
 
-        hl.bind("F1", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+        hl.bind("F5", hl.dsp.exec_cmd("${self}/not-nix/ewan/antiafk.sh"))
+        hl.bind("F6", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
 
         for i = 1, 10 do
             local key = i % 10
