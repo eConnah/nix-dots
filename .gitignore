@@ -8,3 +8,5 @@ result-*
 *.qcow2
 
 .jj
+
+build
