@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "ewan-anti-afk";
+    system.nixos.label = "update-nix-flake";
   };
 }
