@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "seperate-wallpapers";
+    system.nixos.label = "ewan-anti-afk";
   };
 }

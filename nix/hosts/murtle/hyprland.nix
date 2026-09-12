@@ -23,29 +23,42 @@
             scale = 1,
         })
         hl.monitor({
-          output = "",
-          mode = "preferred",
-          position = "auto",
-          scale = "auto"
+            output = "",
+            mode = "preferred",
+            position = "auto",
+            scale = "auto",
         })
 
         hl.on("hyprland.start", function()
-          hl.exec_cmd("xrandr --output DP-1 --primary")
+            hl.exec_cmd("xrandr --output DP-1 --primary")
         end)
 
         hl.config({
-          input = {
-            accel_profile = "flat",
-            follow_mouse = 1,
-            kb_layout = "gb",
-            sensitivity = 0,
-          }
+            input = {
+                accel_profile = "flat",
+                follow_mouse = 1,
+                kb_layout = "gb",
+                sensitivity = 0,
+            },
         })
 
         menu = "vicinae toggle"
 
-        hl.bind("F1", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+        hl.bind("F5", hl.dsp.exec_cmd("${self}/not-nix/ewan/antiafk.sh"))
+        hl.bind("F6", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+
+        for i = 1, 10 do
+            local key = i % 10
+            if i % 2 == 1 then
+                hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1" })
+            else
+                hl.workspace_rule({ workspace = tostring(i), monitor = "DP-2" })
+            end
+            hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+            hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+        end
       '';
+
     presets.hyprland = [
       "animations"
       "keybinds"
