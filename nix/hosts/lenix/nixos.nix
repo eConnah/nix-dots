@@ -60,11 +60,13 @@
         enable = true;
         package = pkgs.wireshark;
       };
-      users.users.connor.extraGroups = ["wireshark"];
 
       users = {
         mutableUsers = false;
-        users.connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
+        users.connor = {
+          hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
+          extraGroups = ["wireshark"];
+        };
       };
     }
   );
