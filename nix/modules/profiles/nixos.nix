@@ -130,14 +130,17 @@
       };
       nh = {
         enable = true;
-        clean.enable = true;
-        clean.extraArgs = "--keep-since 4d --keep 10";
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 4d --keep 10";
+        };
       };
       ssh.startAgent = true;
       zoxide = {
         enable = true;
         enableFishIntegration = true;
       };
+      nano.enable = lib.mkForce false;
     };
     security = {
       loginDefs.settings.UMASK = "002";
@@ -186,6 +189,7 @@
     services = {
       flatpak.enable = lib.mkDefault true;
       fwupd.enable = true;
+      gnome.gnome-keyring.enable = lib.mkForce false;
       libinput.enable = true;
       oo7.enable = true;
       openssh = {
@@ -209,6 +213,13 @@
         };
       };
       stateVersion = "25.11";
+      tools = {
+        nixos-rebuild.enable = false;
+        nixos-generate-config.enable = false;
+        nixos-build-vms.enable = false;
+        nixos-install.enable = false;
+        nixos-option.enable = false;
+      };
     };
     systemd.services."user@".serviceConfig.LimitMEMLOCK = "infinity";
     virtualisation = {

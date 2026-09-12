@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "switch-to-oo7";
+    system.nixos.label = "small-things";
   };
 }

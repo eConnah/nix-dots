@@ -3,7 +3,17 @@
   self,
   ...
 }: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    pkgs,
+    system,
+    ...
+  }: {
+    _module.args = {
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
     packages = {
       nvim-qwerty =
         (inputs.nvf.lib.neovimConfiguration {

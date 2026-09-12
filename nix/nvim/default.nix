@@ -1,22 +1,33 @@
 {
-  flake.nvfModules.defaults = {pkgs, ...}: {
+  flake.nvfModules.defaults = {
+    pkgs,
+    lib,
+    ...
+  }: {
     vim = {
-      # Tab indents
       options = {
         expandtab = true;
         shiftwidth = 4;
         tabstop = 4;
       };
-      # Coding & Completion
-      autocomplete.blink-cmp.enable = true; # The modern, faster completion engine
+      autocomplete.blink-cmp = {
+        enable = true;
+        friendly-snippets.enable = true;
+        setupOpts = {
+          snippets = {
+            expand = lib.generators.mkLuaInline ''
+              function(snippet)
+                require('luasnip').lsp_expand(snippet)
+              end
+            '';
+          };
+        };
+      };
       binds.whichKey.enable = true;
-      # Extras
       clipboard.providers.wl-copy.enable = true;
       extraPlugins = {
         kitty-scrollback = {
           package = pkgs.vimPlugins.kitty-scrollback-nvim;
-
-          # The setup function as required by the plugin
           setup = ''
             require('kitty-scrollback').setup({
             })
@@ -48,17 +59,21 @@
             '';
         };
       };
-      # Navigation & Menus
       filetree.neo-tree.enable = true;
-      # Git integration
       git = {
         enable = true;
         gitsigns.enable = true;
       };
-      # Language Support
       languages = {
         bash.enable = true;
-        csharp.enable = true;
+        csharp = {
+          enable = true;
+          lsp.servers = ["roslyn-ls"];
+          extensions.roslyn-nvim = {
+            enable = true;
+            setupOpts.extensions.razor.enabled = false;
+          };
+        };
         enableExtraDiagnostics = true;
         enableFormat = true;
         enableTreesitter = true;
@@ -78,7 +93,6 @@
         rust.enable = true;
         xml.enable = true;
       };
-      # LSP UI integrations
       lsp = {
         enable = true;
         formatOnSave = true;
@@ -91,7 +105,6 @@
       statusline.lualine.enable = true;
       tabline.nvimBufferline.enable = true;
       telescope.enable = true;
-      # Visuals & UI
       theme = {
         enable = true;
         name = "catppuccin";
@@ -99,9 +112,22 @@
         transparent = true;
       };
       undoFile.enable = true;
-      # Core Editor
       viAlias = true;
       vimAlias = true;
+      # remove annoying C# yellow warnings
+      luaConfigRC.notify-filter =
+        /*
+        lua
+        */
+        ''
+          local orig_notify = vim.notify
+          vim.notify = function(msg, level, opts)
+              if type(msg) == "string" and (msg:find("roslyn.nvim extensions is deprecated") or msg:find("roslyn.lua:9:")) then
+                  return
+              end
+              orig_notify(msg, level, opts)
+          end
+        '';
     };
   };
 }

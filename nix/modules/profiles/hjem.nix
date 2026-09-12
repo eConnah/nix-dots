@@ -40,21 +40,19 @@
         };
       };
     };
-    xdg = {
-      config.files = {
-        "fish/conf.d/eza.fish".text = ''
-          abbr -a --position command l "eza --color=always --icons=always --no-time --git -lahg"
-          abbr -a --position command la "eza --color=always --icons=always --git -a"
-          abbr -a --position command ll "eza --color=always --icons=always --no-time --git -lg"
-          abbr -a --position command lla "eza --color=always --icons=always --no-time --git -lag"
-          abbr -a --position command ls "eza --color=always --icons=always --git"
-          abbr -a --position command lt "eza --color=always --icons=always --git --tree"
-        '';
-        "fish/conf.d/rexies_prompt.fish".source = "${self}/not-nix/presets/fish/rexies_prompt.fish";
-        "xdg-terminals.list".text = ''
-          kitty.desktop
-        '';
-      };
+    xdg.config.files = {
+      "fish/conf.d/eza.fish".text = ''
+        abbr -a --position command l "eza --color=always --icons=always --no-time --git -lahg"
+        abbr -a --position command la "eza --color=always --icons=always --git -a"
+        abbr -a --position command ll "eza --color=always --icons=always --no-time --git -lg"
+        abbr -a --position command lla "eza --color=always --icons=always --no-time --git -lag"
+        abbr -a --position command ls "eza --color=always --icons=always --git"
+        abbr -a --position command lt "eza --color=always --icons=always --git --tree"
+      '';
+      "fish/conf.d/rexies_prompt.fish".source = "${self}/not-nix/presets/fish/rexies_prompt.fish";
+      "xdg-terminals.list".text = ''
+        kitty.desktop
+      '';
     };
   };
 }
