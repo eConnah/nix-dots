@@ -34,6 +34,7 @@
         ];
         group = "kyla";
         isNormalUser = true;
+        linger = true;
         shell = pkgs.fish;
         uid = 2001;
       };

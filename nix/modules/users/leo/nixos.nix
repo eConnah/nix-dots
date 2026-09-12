@@ -26,6 +26,7 @@
         ];
         group = "leo";
         isNormalUser = true;
+        linger = true;
         shell = pkgs.fish;
         uid = 2006;
       };

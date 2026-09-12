@@ -38,7 +38,6 @@
         firefox
         gh
         gimp
-        gnome-keyring
         httpie
         hunspell
         hunspellDicts.en_GB-large
@@ -134,7 +133,6 @@
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 10";
       };
-      seahorse.enable = true;
       ssh.startAgent = true;
       zoxide = {
         enable = true;
@@ -170,7 +168,10 @@
         ];
         storage = self + "/secrets";
       };
-      pam.enableUMask = true;
+      pam = {
+        enableUMask = true;
+        services.login.oo7.enable = true;
+      };
       rtkit.enable = true;
       run0 = {
         enable = true;
@@ -185,11 +186,8 @@
     services = {
       flatpak.enable = lib.mkDefault true;
       fwupd.enable = true;
-      gnome = {
-        gcr-ssh-agent.enable = false;
-        gnome-keyring.enable = true;
-      };
       libinput.enable = true;
+      oo7.enable = true;
       openssh = {
         enable = true;
         settings = {
@@ -212,6 +210,7 @@
       };
       stateVersion = "25.11";
     };
+    systemd.services."user@".serviceConfig.LimitMEMLOCK = "infinity";
     virtualisation = {
       vmVariant = {
         boot.kernelParams = ["video=2560x1440@240"];

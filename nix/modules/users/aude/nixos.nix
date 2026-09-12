@@ -34,6 +34,7 @@
         ];
         group = "aude";
         isNormalUser = true;
+        linger = true;
         shell = pkgs.fish;
         uid = 1220;
       };

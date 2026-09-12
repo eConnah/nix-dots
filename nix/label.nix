@@ -1,5 +1,5 @@
 {
   flake.nixosModules.label = {
-    system.nixos.label = "update-nix-flake";
+    system.nixos.label = "switch-to-oo7";
   };
 }

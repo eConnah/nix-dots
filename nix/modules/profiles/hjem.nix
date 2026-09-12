@@ -40,17 +40,6 @@
         };
       };
     };
-    systemd.services.gnome-keyring = {
-      enable = true;
-      after = ["graphical-session-pre.target"];
-      description = "GNOME Keyring";
-      partOf = ["graphical-session-pre.target"];
-      serviceConfig = {
-        ExecStart = "${lib.getExe' pkgs.gnome-keyring "gnome-keyring-daemon"} --start --foreground --components=pkcs11,secrets";
-        Restart = "on-abort";
-      };
-      wantedBy = ["graphical-session-pre.target"];
-    };
     xdg = {
       config.files = {
         "fish/conf.d/eza.fish".text = ''

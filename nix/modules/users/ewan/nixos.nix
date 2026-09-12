@@ -35,6 +35,7 @@
         ];
         group = "ewan";
         isNormalUser = true;
+        linger = true;
         shell = pkgs.fish;
         uid = 2000;
       };
