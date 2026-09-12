@@ -16,7 +16,7 @@
           turtle-hyprland
         ];
         packages = with pkgs; [
-          davinci-resolve
+          #davinci-resolve
           heroic
           plezy
           spotify
