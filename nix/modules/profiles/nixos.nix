@@ -13,7 +13,6 @@
       inputs.lix-module.nixosModules.default
       inputs.nix-secrets.nixosModules.default
       inputs.nixos-core.nixosModules.default
-      self.nixosModules.label
       self.nixosModules.secret-assertions
       self.nixosModules.substituters
     ];
