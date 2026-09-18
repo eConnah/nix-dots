@@ -49,12 +49,6 @@
           capSysNice = true;
         };
         nh.flake = "/persistent/dotfiles";
-        steam = {
-          enable = true;
-          extraCompatPackages = with pkgs; [
-            proton-ge-bin
-          ];
-        };
       };
       security.nix-secrets = {
         identityPaths = [

@@ -30,14 +30,12 @@
       "/var/cache".options = ["noatime"];
       "/var/log".options = ["compress=zstd"];
     };
-    # Asahi-Host Specifics
     hardware.asahi.peripheralFirmwareDirectory = pkgs.requireFile {
       hash = "sha256-X2XGA984LlJILJtRHEDXWTiJ6A/rqEE3NHXwkoCMAwI=";
       hashMode = "recursive";
       message = "Please run 'nix-store --add-fixed sha256 --recursive /boot/asahi' to add the firmware.";
       name = "asahi";
     };
-    # iio stuff
     hardware.sensor.iio.enable = true;
     networking.hostName = "escapepod3";
     nix.settings = {
@@ -45,9 +43,11 @@
       max-jobs = 2;
     };
     nix.settings.extra-platforms = ["x86_64-linux"];
-    programs.iio-hyprland.enable = true;
-    # NH root
-    programs.nh.flake = "/home/leo/Documents/dotfiles";
+    programs = {
+      iio-hyprland.enable = true;
+      nh.flake = "/home/leo/Documents/dotfiles";
+      steam.enable = false;
+    };
     security.nix-secrets.enable = lib.mkForce false;
     swapDevices = [{device = "/swap/swapfile";}];
     time.timeZone = "Europe/London";

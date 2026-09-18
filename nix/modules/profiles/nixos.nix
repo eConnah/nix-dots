@@ -22,6 +22,7 @@
       sessionVariables = {
         MANPAGER = "bat -plman";
         PROTON_ENABLE_WAYLAND = "1";
+        NIXOS_OZONE_WL = "1";
       };
       systemPackages = with pkgs; [
         (mpv.override {youtubeSupport = false;})
@@ -141,6 +142,18 @@
         };
       };
       ssh.startAgent = true;
+      steam = {
+        enable = lib.mkDefault true;
+        extraPackages = with pkgs; [
+          hyprpicker
+          hyprshot
+          rose-pine-cursor
+          rose-pine-hyprcursor
+        ];
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
+      };
       zoxide = {
         enable = true;
         enableFishIntegration = true;

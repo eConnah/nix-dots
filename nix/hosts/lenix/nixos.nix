@@ -40,6 +40,7 @@
       programs = {
         iio-hyprland.enable = true;
         nh.flake = "/persistent/dotfiles";
+        steam.enable = false;
       };
       security.nix-secrets = {
         identityPaths = [

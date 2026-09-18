@@ -30,12 +30,6 @@
         enable = true;
         capSysNice = true;
       };
-      steam = {
-        enable = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
-      };
     };
     security.nix-secrets = {
       identityPaths = ["/persistent/nix-keys/age-identity.txt"];
