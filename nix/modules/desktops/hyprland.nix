@@ -55,6 +55,7 @@
         xwayland.enable = true;
       };
       programs.uwsm.enable = true;
+      environment.sessionVariables.TUIGREET_SESSION_COMMAND = "uwsm start default";
     };
   };
 }

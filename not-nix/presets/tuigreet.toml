@@ -1,0 +1,35 @@
+[display]
+greeting = "Bonsoir, Elliot"
+
+[layout.widgets]
+time_position = "top"      
+status_position = "hidden" 
+
+[remember]
+username = false
+user_session = false
+
+[keybindings]
+command = 2    
+background = 4
+power = 12  
+
+[background]
+kind = "matrix"
+fps = 60
+
+[background.matrix]
+min_speed = 0.15    
+max_speed = 0.55
+
+[theme]
+border    = "#45475a"  
+text      = "#cdd6f4" 
+time      = "#89dceb"  
+container = "#000000"  
+title     = "#cba6f7"  
+greet     = "#fab387"  
+prompt    = "#a6e3a1"  
+input     = "#cdd6f4"  
+action    = "#74c7ec"  
+button    = "#f38ba8" 

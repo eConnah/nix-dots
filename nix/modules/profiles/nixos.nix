@@ -18,6 +18,7 @@
     ];
     boot.zfs.forceImportRoot = lib.mkDefault false;
     environment = {
+      etc."tuigreet/config.toml".source = "${self}/not-nix/presets/tuigreet.toml";
       sessionVariables = {
         MANPAGER = "bat -plman";
         PROTON_ENABLE_WAYLAND = "1";
@@ -98,10 +99,15 @@
     networking.networkmanager.enable = false;
     nix.channel.enable = false;
     nix.settings = {
+      auto-allocate-uids = true;
       auto-optimise-store = true;
+      use-cgroups = true;
       experimental-features = [
-        "nix-command"
+        "auto-allocate-uids"
+        "cgroups"
         "flakes"
+        "nix-command"
+        "pipe-operator"
       ];
       trusted-public-keys = [
         "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
@@ -172,7 +178,10 @@
       };
       pam = {
         enableUMask = true;
-        services.login.oo7.enable = true;
+        services = {
+          greetd.oo7.enable = false; # for now
+          login.oo7.enable = lib.mkForce false;
+        };
       };
       rtkit.enable = true;
       run0 = {
@@ -189,6 +198,14 @@
       flatpak.enable = lib.mkDefault true;
       fwupd.enable = true;
       gnome.gnome-keyring.enable = lib.mkForce false;
+      greetd = {
+        enable = true;
+        useTextGreeter = true;
+        settings.default_session = {
+          user = "greeter";
+          command = "${lib.getExe pkgs.tuigreet}";
+        };
+      };
       libinput.enable = true;
       oo7.enable = true;
       openssh = {
@@ -220,7 +237,10 @@
         nixos-option.enable = false;
       };
     };
-    systemd.services."user@".serviceConfig.LimitMEMLOCK = "infinity";
+    systemd = {
+      services."user@".serviceConfig.LimitMEMLOCK = "infinity";
+      user.services."dbus-org.freedesktop.secrets".enable = false;
+    };
     virtualisation = {
       vmVariant = {
         boot.kernelParams = ["video=2560x1440@240"];
