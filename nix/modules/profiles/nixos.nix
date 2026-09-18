@@ -205,6 +205,7 @@
           enableRemote = true;
         };
       };
+      soteria.enable = true;
       sudo.enable = false;
     };
     services = {

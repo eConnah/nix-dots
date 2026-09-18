@@ -45,6 +45,9 @@
           "uwsm/default-id".text = ''
             hyprland-uwsm.desktop
           '';
+          "uwsm/env-hyprland".text = ''
+            systemctl --user import-environment XDG_SESSION_ID
+          '';
         };
       };
     };
