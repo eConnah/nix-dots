@@ -1,9 +1,5 @@
 {self, ...}: {
-  flake.hjemModules.defaults = {
-    lib,
-    pkgs,
-    ...
-  }: {
+  flake.hjemModules.defaults = {pkgs, ...}: {
     imports = with self.hjemModules; [
       easyeffects
       remote-assets

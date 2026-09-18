@@ -24,6 +24,9 @@
         PROTON_ENABLE_WAYLAND = "1";
         NIXOS_OZONE_WL = "1";
       };
+      variables = {
+        QT_STYLE_OVERRIDE = lib.mkForce null;
+      };
       systemPackages = with pkgs; [
         (mpv.override {youtubeSupport = false;})
         age-plugin-fido2-hmac
@@ -159,6 +162,11 @@
         enableFishIntegration = true;
       };
       nano.enable = lib.mkForce false;
+    };
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+      style = "kvantum";
     };
     security = {
       loginDefs.settings.UMASK = "002";

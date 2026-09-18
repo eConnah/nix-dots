@@ -1,0 +1,29 @@
+{
+    "colors": {
+        "AlternateBase": "#000000",
+        "Base": "#010101",
+        "BrightText": "#bac2de",
+        "Button": "#313244",
+        "ButtonText": "#cdd6f4",
+        "Highlight": "#b4befe",
+        "HighlightedText": "#000000",
+        "Link": "#b4befe",
+        "Text": "#cdd6f4",
+        "ToolTipBase": "#dee5fc",
+        "ToolTipText": "#dee5fc",
+        "Window": "#000000",
+        "WindowText": "#bac2de",
+        "fadeAmount": 0.5,
+        "fadeColor": "#6c7086"
+    },
+    "logColors": {
+        "Launcher": "#cba6f7",
+        "Error": "#f38ba8",
+        "Warning": "#f9e2af",
+        "Debug": "#a6e3a1",
+        "FatalHighlight": "#f38ba8",
+        "Fatal": "#010101"
+    },
+    "name": "oledppuccin",
+    "widgets": "Fusion"
+}
