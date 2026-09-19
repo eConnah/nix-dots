@@ -36,6 +36,15 @@ Unlike the other hosts, it uses a traditional BTRFS partition layout without the
 `preservation` module or `nix-secrets`, running the Asahi Linux kernel and
 firmware.
 
+## evilix
+
+A wsl host for Connor. Runs without `preservation` module. To use via windows
+terminal utilise this command:
+
+```
+C:\WINDOWS\system32\wsl.exe --distribution-id {4ecd6a96-010b-4efe-8d88-fb7435a26e5b} -u root -e /run/current-system/sw/bin/machinectl shell -E DISPLAY=:0 -E WAYLAND_DISPLAY=wayland-0 -E XDG_RUNTIME_DIR=/run/user/2026 connor@.host /etc/wsl-session-init.sh
+```
+
 ## lenix
 
 Connor's primary Apple Silicon laptop. It features LUKS full-disk encryption
