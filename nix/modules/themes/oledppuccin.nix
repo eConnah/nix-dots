@@ -3,7 +3,7 @@
     theme = self + "/not-nix/themes/oledppuccin/";
   in {
     hjemModules.oledppuccin = {pkgs, ...}: let
-      catppuccinTheme = pkgs.magnetic-catppuccin-gtk.override {
+      gtkTheme = pkgs.magnetic-catppuccin-gtk.override {
         accent = ["mauve"];
         shade = "dark";
         tweaks = ["black"];
@@ -16,7 +16,7 @@
       '';
     in {
       imports = [self.hjemModules.themes-shared];
-      packages = [catppuccinTheme];
+      packages = [gtkTheme];
       rum.programs.kitty.settings.include = "oledppuccin.conf";
       xdg = {
         config.files = {
@@ -27,9 +27,9 @@
             fish_config theme choose oledppuccin
           '';
           "fish/themes/oledppuccin.theme".source = theme + "fish.theme";
-          "gtk-4.0/assets".source = "${catppuccinTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/assets";
-          "gtk-4.0/gtk.css".source = "${catppuccinTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/gtk.css";
-          "gtk-4.0/gtk-dark.css".source = "${catppuccinTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/gtk-dark.css";
+          "gtk-4.0/assets".source = "${gtkTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/assets";
+          "gtk-4.0/gtk.css".source = "${gtkTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/gtk.css";
+          "gtk-4.0/gtk-dark.css".source = "${gtkTheme}/share/themes/Catppuccin-GTK-Mauve-Dark-BK/gtk-4.0/gtk-dark.css";
           "gtk-3.0/settings.ini".text = ''
             [Settings]
             gtk-theme-name=Catppuccin-GTK-Mauve-Dark-BK
