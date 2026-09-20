@@ -4,7 +4,6 @@
     hardware.sensor.iio.enable = true;
     networking = {
       hostName = "murtle";
-      networkmanager.enable = false;
       useDHCP = false;
     };
     nix.settings = {

@@ -10,10 +10,12 @@
     ];
     hardware.bluetooth.enable = true;
     networking = {
-      networkmanager.enable = false;
       dhcpcd = {
         enable = true;
         wait = "background";
+        extraConfig = ''
+          clientid
+        '';
       };
       wireless = {
         enable = false;
@@ -21,7 +23,13 @@
           enable = true;
           settings = {
             General = {
-              AddressRandomization = "network";
+              AddressRandomization = "none";
+            };
+            Network = {
+              EnableIPv6 = true;
+            };
+            Settings = {
+              AutoConnect = true;
             };
           };
         };
@@ -29,7 +37,6 @@
     };
     powerManagement.enable = true;
     system.nixos-core.persistence.stores."/persistent".directories = [
-      "/etc/iwd"
       "/var/lib/bluetooth"
       "/var/lib/dhcpcd/"
       "/var/lib/iwd"

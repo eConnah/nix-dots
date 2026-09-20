@@ -16,7 +16,6 @@
     ];
     networking = {
       hostName = "turtle";
-      networkmanager.enable = false;
       useDHCP = false;
     };
     nix.settings = {
