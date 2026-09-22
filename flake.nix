@@ -30,6 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
     };
+    ncro = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:manic-systems/ncro";
+    };
     nix-secrets = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:unnamed-systems/nix-secrets";

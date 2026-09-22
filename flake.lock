@@ -233,6 +233,26 @@
         "type": "github"
       }
     },
+    "ncro": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790039094,
+        "narHash": "sha256-o5qPU/QPxcAmeVwFydXqEkn1HI6TbPgkHpecXyme6Bs=",
+        "owner": "manic-systems",
+        "repo": "ncro",
+        "rev": "bb4fb8329e30dc294b2298618ba96379860dfd4d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "manic-systems",
+        "repo": "ncro",
+        "type": "github"
+      }
+    },
     "nix-secrets": {
       "inputs": {
         "nixpkgs": [
@@ -333,6 +353,7 @@
         "import-tree": "import-tree",
         "lix": "lix",
         "lix-module": "lix-module",
+        "ncro": "ncro",
         "nix-secrets": "nix-secrets",
         "nixos-core": "nixos-core",
         "nixpkgs": "nixpkgs",
