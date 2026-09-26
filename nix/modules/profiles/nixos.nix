@@ -61,6 +61,7 @@
         pavucontrol
         pulseaudio
         qpwgraph
+        ripgrep
         sbctl
         sshfs
         tree
