@@ -21,8 +21,9 @@
       etc."tuigreet/config.toml".source = "${self}/not-nix/presets/tuigreet.toml";
       sessionVariables = {
         MANPAGER = "bat -plman";
-        PROTON_ENABLE_WAYLAND = "1";
+        NH_ELEVATION_STRATEGY = "run0";
         NIXOS_OZONE_WL = "1";
+        PROTON_ENABLE_WAYLAND = "1";
       };
       variables = {
         QT_STYLE_OVERRIDE = lib.mkForce null;
