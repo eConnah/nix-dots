@@ -20,7 +20,7 @@
     environment = {
       etc."tuigreet/config.toml".source = "${self}/not-nix/presets/tuigreet.toml";
       sessionVariables = {
-        MANPAGER = "bat -plman";
+        MANPAGER = "nvim -n --cmd 'set laststatus=0 nonumber noruler noshowcmd' +Man!";
         NH_ELEVATION_STRATEGY = "run0";
         NIXOS_OZONE_WL = "1";
         PROTON_ENABLE_WAYLAND = "1";
