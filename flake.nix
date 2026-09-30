@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:manic-systems/nixos-core";
     };
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     nvf = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:notashelf/nvf";
