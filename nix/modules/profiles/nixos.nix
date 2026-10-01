@@ -42,6 +42,7 @@
         e2fsprogs
         eza
         fastfetch
+        fd
         file
         firefox
         gh
