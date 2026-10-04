@@ -9,11 +9,13 @@
     pkgs,
     ...
   }: {
+    disabledModules = ["programs/tack.nix"];
     imports = [
       inputs.hjem.nixosModules.default
       inputs.lix-module.nixosModules.default
       inputs.nix-secrets.nixosModules.default
       inputs.nixos-core.nixosModules.default
+      inputs.tack.nixosModules.default
       self.nixosModules.secret-assertions
       self.nixosModules.substituters
     ];
@@ -164,6 +166,10 @@
         extraCompatPackages = with pkgs; [
           proton-ge-bin
         ];
+      };
+      tack = {
+        enable = true;
+        nixConfTokens = true;
       };
       zoxide = {
         enable = true;

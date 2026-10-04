@@ -1,0 +1,95 @@
+# tack pins
+# edit by hand or with tack add / rm / alias
+# nix reads pins.lock.json
+# this file drives tack update
+
+# shorturl schemes
+# scheme rest expands rest into {path}
+[shorturls]
+# gh = "github:{path}"
+
+# all_follow maps input names at every depth to the top-level pin they follow
+# opt out per-input with exclude_follow, scope with flake: or tack:
+[all_follow]
+hjem = "hjem"
+lix = "lix"
+nixpkgs = "nixpkgs"
+
+# recursively omit selected upstream inputs from every top-level pin
+[omit_inputs]
+names = [
+  "flake-compat",
+  "flakey-profile"
+]
+
+# signers name the public keys pins can require, as an ssh key line, an
+# armored pgp key, a file under .tack holding either, or an array of those.
+# `tack signer add <name> --github <user>` fills one in from GitHub
+[signers]
+# alice = "ssh-ed25519 AAAA..."
+
+# inputs.<name> fields
+#   url             required, shorturl ok, ?rev=<sha> pins an exact commit
+#   type            flake (default), fetch, or fixed
+#   flake           legacy false means type = "fetch"
+#   follows         { child = "pin" } immediate-input override map
+#   exclude_follow  all_follow names to skip, flake:/tack: scoped or *
+#   omit_inputs     upstream input names to omit recursively for this pin
+#   keep_inputs     omitted input names to allow recursively for this pin
+#   dir             subdir holding flake.nix
+#   submodules      fetch git submodules
+#   unpack          fixed-only tarball or file
+#   signers         names from [signers], one of whom must have signed the locked commit
+#   patches         patch urls or files relative to this dir, applied in order
+#   tag             follow the newest tag like "v{version}", where {version} is numbers
+#                   joined by one separator, `.` `-` or `_`, used consistently so mixed
+#                   tags are skipped, needs a github, gitlab or network git url with
+#                   no ref or rev, not file://, or for a fixed pin a release
+#                   download url naming the asset with {tag} or {version}. a trailing
+#                   * matches anything after, like a build hash in "b{version}-*"
+#   tags_from       fixed-only repo url or http(s) page to read tag's tags from, for an
+#                   asset that isn't a release download
+
+# nixpkgs
+[inputs.nixpkgs]
+url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst"
+
+# manic systems + rafware <3
+[inputs.ncro]
+url = "github:manic-systems/ncro"
+group = "rafware"
+exclude_follow = ["nixpkgs"]
+[inputs.nixos-core]
+url = "github:manic-systems/nixos-core"
+group = "rafware"
+exclude_follow = ["nixpkgs"]
+[inputs.tack]
+url = "github:manic-systems/tack"
+group = "rafware"
+exclude_follow = ["nixpkgs"]
+[inputs.nvf]
+url = "github:notashelf/nvf"
+group = "rafware"
+[inputs.hjem]
+url = "github:feel-co/hjem"
+group = "rafware"
+exclude_follow = ["nixpkgs"]
+
+# other stuff
+[inputs.apple-silicon]
+url = "github:nix-community/nixos-apple-silicon"
+[inputs.disko]
+url = "github:nix-community/disko"
+[inputs.flake-parts]
+url = "github:hercules-ci/flake-parts"
+[inputs.hjem-rum]
+url = "github:snugnug/hjem-rum"
+[inputs.import-tree]
+url = "github:denful/import-tree"
+[inputs.lix]
+url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz"
+type = "fetch"
+[inputs.lix-module]
+url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz"
+[inputs.nix-secrets]
+url = "github:unnamed-systems/nix-secrets"

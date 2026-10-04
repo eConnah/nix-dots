@@ -43,6 +43,17 @@ outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.impor
 flake-parts module. This means adding a new host, hjem module, or NixOS module
 is usually just "add a new file" — nothing else needs to know it exists.
 
+### Dependency Management (Tack)
+
+Normal Nix flakes use a flake.lock with an inputs block. This configuration
+doesn't, could that mean something... Instead it uses this glorious creation
+[tack](https://github.com/manic-systems/tack).
+
+Inputs are declared in .tack/pins.toml and locked via .tack/pins.lock.json. Tack
+allows for powerful features like global exclude_follow rules and recursive
+input omission (omit_inputs). This optimises the dependency closure size by
+removing garbage.
+
 ### One file, one concern
 
 Host specific modules are generally named `<host>-config.nix`,
