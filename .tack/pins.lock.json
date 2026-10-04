@@ -5,8 +5,8 @@
     "flake-parts": "github:hercules-ci/flake-parts",
     "hjem": "github:feel-co/hjem",
     "hjem-rum": "github:snugnug/hjem-rum",
-    "lix": "https://git.lix.systems/lix-project/lix/archive/main.tar.gz",
-    "lix-module": "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz",
+    "lix": "git+https://git.lix.systems/lix-project/lix",
+    "lix-module": "git+https://git.lix.systems/lix-project/nixos-module",
     "ncro": "github:manic-systems/ncro",
     "nix-secrets": "github:unnamed-systems/nix-secrets",
     "nixos-core": "github:manic-systems/nixos-core",
@@ -55,16 +55,20 @@
     "lastModified": 1789576270
   },
   "lix": {
-    "type": "tarball",
-    "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/b4c0a61943de5d74a4521143aace4058323c826c.tar.gz?rev=b4c0a61943de5d74a4521143aace4058323c826c",
+    "type": "git",
+    "url": "https://git.lix.systems/lix-project/lix",
+    "ref": "HEAD",
+    "rev": "b4c0a61943de5d74a4521143aace4058323c826c",
     "narHash": "sha256-OeI3N/mu75Vidt/6X9gBBXkoTaUhrHYpbsmq043LCIY=",
-    "lastModified": 1791126229
+    "lastModified": 1791112051
   },
   "lix-module": {
-    "type": "tarball",
-    "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/c5b8d8576206ddce31b86e336476c2f9b8361085.tar.gz?rev=c5b8d8576206ddce31b86e336476c2f9b8361085",
+    "type": "git",
+    "url": "https://git.lix.systems/lix-project/nixos-module",
+    "ref": "HEAD",
+    "rev": "c5b8d8576206ddce31b86e336476c2f9b8361085",
     "narHash": "sha256-Ikdf593tWTFMkKhtScxE+t2fV+Myh8n4JeYU/0Xc8H8=",
-    "lastModified": 1791072079
+    "lastModified": 1787347232
   },
   "ncro": {
     "type": "github",
