@@ -27,7 +27,7 @@ dots themselves support inserting different themes... in theory.
 
 ## Architecture
 
-This is a "dendritic" flake: almost every file under `nix/` is a small,
+This is a dendritic flake: almost every file under `nix/` is a small,
 self-contained module that attaches itself to the flake's output tree, rather
 than being wired together by hand in `flake.nix`.
 
@@ -47,50 +47,50 @@ assimilate = d:
   |> builtins.concatLists;
 ```
 
-assimilate natively walks nix/ and imports every file it finds as a flake-parts
-module. This means adding a new host, hjem module, or NixOS module is just a new
-file.
+`assimilate` natively walks `nix/` and imports every file it finds as a
+flake-parts module. This means adding a new host, hjem module, or NixOS module
+is just a new file.
 
 ### Dependency Management (Tack)
 
-Normal Nix flakes use a flake.lock with an inputs block. This configuration
+Normal Nix flakes use a `flake.lock` with an `inputs` block. This configuration
 doesn't, could that mean something... Instead it uses this glorious creation
 [tack](https://github.com/manic-systems/tack).
 
-Inputs are declared in .tack/pins.toml and locked via .tack/pins.lock.json. Tack
-allows for powerful features like global exclude_follow rules and recursive
-input omission (omit_inputs). This optimises the dependency closure size by
-removing garbage.
+Inputs are declared in `.tack/pins.toml` and locked via `.tack/pins.lock.json`.
+Tack allows for powerful features like global `exclude_follow` rules and
+recursive input omission (`omit_inputs`). This optimises the dependency closure
+size by removing garbage.
 
 ### One file, one concern
 
 Host specific modules are generally named `<host>-config.nix`,
 `<host>-hardware.nix`, `<host>-hjem.nix`, `<host>-disko.nix`, and combined in a
 small `default.nix` that calls `nixpkgs.lib.nixosSystem`. Shared building blocks
-(`defaults`, `hyprland`, `oledppuccin`, and so on) live in their own files and
-are pulled in by name.
+(defaults, hyprland, oledppuccin, and so on) live in their own files and are
+pulled in by name.
 
 ### Registries: hjemModules, nvfModules, secretModules
 
 Three custom flake-parts options act as registries for reusable pieces:
 
 - `flake.hjemModules` — reusable [hjem](https://github.com/feel-co/hjem) user
-  configuration, tagged with `_class = "hjem"` so it can be `imports`-ed by name
+  configuration, tagged with `_class = "hjem"` so it can be imported by name
   from any host's `hjem.users.<name>`.
 - `flake.nvfModules` — reusable Neovim configuration, tagged `_class = "nvf"`,
   composed together in the `nvim-qwerty` package (see the NVF Modules page).
-- `flake.secretModules` — optional, per-user `nix-secrets` declarations. See the
+- `flake.secretModules` — optional, per-user nix-secrets declarations. See the
   Secrets page for why these are kept separate from the main `defaults` module.
 
-Each registry is defined once, using `flake-parts-lib.mkSubmoduleOptions`, and
-every other file just adds entries to it, e.g.
+Each registry is defined once using `flake-parts-lib.mkSubmoduleOptions`, and
+every other file just adds entries to it, e.g.,
 `flake.hjemModules.connor = { ... };`.
 
 ### Composing a host
 
 A typical host file looks like:
 
-```
+```nix
 flake.nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
   modules = with self.nixosModules; [
     defaults
@@ -117,7 +117,7 @@ name to its age public key, plus an `all-hosts` alias covering every real
 machine. Each secret declares which aliases can decrypt it via `recipients`,
 e.g.:
 
-```
+```nix
 security.nix-secrets.secrets."connor/linux" = {
   neededForUsers = true;
   recipients = ["ACE" "cookie" "lenix" "murtle" "onyx" "turtle" "yubikey"];
@@ -130,18 +130,18 @@ its own hostname.
 
 ### Why secrets are split per user
 
-`nix-secrets` attempts to decrypt every secret declared for a host's evaluated
+nix-secrets attempts to decrypt every secret declared for a host's evaluated
 config, regardless of whether that host is actually a recipient — a host that
 isn't listed still fails activation instead of just skipping the secret. To
 avoid every host trying (and failing) to decrypt secrets for users it doesn't
 have, each user's secrets live in their own `flake.secretModules.<user>` entry
-(`connor`, `connor-eduroam`, `ewan`, `kyla`, `aude`), and only the NixOS modules
-for hosts that actually have that user import the relevant one — e.g.
-`self.secretModules.connor` is only imported by the `connor` NixOS module, which
-in turn is only imported by hosts with a `connor` account.
+(connor, connor-eduroam, ewan, kyla, aude), and only the NixOS modules for hosts
+that actually have that user import the relevant one — e.g.
+`self.secretModules.connor` is only imported by the connor NixOS module, which
+in turn is only imported by hosts with a connor account.
 
 `connor-eduroam` is a good example of splitting even further: it holds a single
-secret (`connor/wifi/eduroam`) scoped to `lenix` and `yubikey` only, because no
+secret (`connor/wifi/eduroam`) scoped to lenix and yubikey only, because no
 other host needs eduroam credentials.
 
 ### secret-assertions
@@ -151,8 +151,9 @@ it carefully before changing it) runs at evaluation time and fails the build,
 rather than failing silently at activation, if:
 
 - the host's recipient alias isn't present in `recipientAliases`, or
-- any secret declared in that host's config lists recipients that don't include
-  the host's alias (i.e. a secret that would fail to decrypt at runtime).
+- any secret declared in that host's config lists `recipients` that don't
+  include the host's alias (i.e. a secret that would fail to decrypt at
+  runtime).
 
 This turns a runtime activation failure into a build-time error, which is the
 main reason to prefer importing scoped `secretModules` over adding secrets
@@ -160,12 +161,12 @@ directly to `defaults`.
 
 ### escapepod3 is the exception
 
-`escapepod3` explicitly disables `nix-secrets`
+escapepod3 explicitly disables nix-secrets
 
 ## Building these docs
 
-You can use the provided .envrc or manually enter the docs devshell with nix
-develop. Run each of these commands in a seperate terminal:
+You can use the provided `.envrc` or manually enter the docs devshell with
+`nix develop`. Run each of these commands in a seperate terminal:
 
 ```
 darkhttpd build
