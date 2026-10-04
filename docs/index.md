@@ -31,17 +31,25 @@ This is a "dendritic" flake: almost every file under `nix/` is a small,
 self-contained module that attaches itself to the flake's output tree, rather
 than being wired together by hand in `flake.nix`.
 
-### import-tree
+### Assimilate (Hivemind)
 
-`flake.nix` only does one interesting thing:
+`flake.nix` only does one thing: it runs a recursive function called
+`assimilate`. This imports all code inside `nix/` into the hivemind.
 
+```nix
+assimilate = d:
+  builtins.readDir d
+  |> builtins.mapAttrs (name: type:
+    if type == "directory"
+    then assimilate (d + "/${name}")
+    else [(d + "/${name}")])
+  |> builtins.attrValues
+  |> builtins.concatLists;
 ```
-outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./nix);
-```
 
-`import-tree` walks `nix/` and imports every `.nix` file it finds as a
-flake-parts module. This means adding a new host, hjem module, or NixOS module
-is usually just "add a new file" — nothing else needs to know it exists.
+assimilate natively walks nix/ and imports every file it finds as a flake-parts
+module. This means adding a new host, hjem module, or NixOS module is just a new
+file.
 
 ### Dependency Management (Tack)
 

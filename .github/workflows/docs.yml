@@ -29,10 +29,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v30
+      - name: Install Lix
+        uses: canidae-solutions/lix-quick-install-action@v5
         with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          lix_conf: |
+            experimental-features = nix-command flakes pipe-operator
 
       - name: Build docs with ndg
         run: nix develop -c ndg html
