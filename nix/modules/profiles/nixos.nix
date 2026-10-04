@@ -4,6 +4,7 @@
   ...
 }: {
   flake.nixosModules.defaults = {
+    config,
     lib,
     pkgs,
     ...
@@ -104,25 +105,30 @@
     };
     networking.networkmanager.enable = false;
     nix.channel.enable = false;
-    nix.settings = {
-      auto-allocate-uids = true;
-      auto-optimise-store = true;
-      use-cgroups = true;
-      experimental-features = [
-        "auto-allocate-uids"
-        "cgroups"
-        "flakes"
-        "nix-command"
-        "pipe-operator"
-      ];
-      trusted-public-keys = [
-        "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
-      ];
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-      use-xdg-base-directories = true;
+    nix = {
+      extraOptions = ''
+        !include ${config.security.nix-secrets.secrets."gh-token".path}
+      '';
+      settings = {
+        auto-allocate-uids = true;
+        auto-optimise-store = true;
+        use-cgroups = true;
+        experimental-features = [
+          "auto-allocate-uids"
+          "cgroups"
+          "flakes"
+          "nix-command"
+          "pipe-operator"
+        ];
+        trusted-public-keys = [
+          "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="
+        ];
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
+        use-xdg-base-directories = true;
+      };
     };
     nixpkgs = {
       config.allowUnfree = true;
@@ -194,9 +200,13 @@
           turtle = "age16wjhsc4uaf0jnucdx649v95ztjy8645smm33w7z47nlr8378r9tsmj5jnm";
           yubikey = "age10galsk69w2j2s45e00s2zla77ycrstgu9z7avhdrer2jzj3yj9xqp0np50";
         };
-        secrets."nix-cache-key".recipients = [
-          "all-hosts"
-        ];
+        secrets = {
+          "gh-token" = {
+            recipients = ["all-hosts"];
+            mode = "0444";
+          };
+          "nix-cache-key".recipients = ["all-hosts"];
+        };
         storage = self + "/secrets";
       };
       pam = {
