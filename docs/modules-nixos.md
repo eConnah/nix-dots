@@ -20,9 +20,7 @@ Tailscale and importing user-specific preservation and secret modules.
 
 ## aude-preservation
 
-Configures impermanence state persistence specifically for Aude's home
-directory, ensuring applications like Firefox, Spotify, Steam, and LibreOffice
-retain their data across reboots.
+Configures impermanence state persistence specifically for Aude.
 
 ## bootloader
 
@@ -36,9 +34,7 @@ keys. Enables `pcscd`, `udev` rules for YubiKey personalisation, and Tailscale.
 
 ## connor-preservation
 
-Configures impermanence state persistence specifically for Connor's home
-directory, retaining data for tools like OBS Studio, Obsidian, Heroic, and
-Steam.
+Configures impermanence state persistence specifically for Connor.
 
 ## defaults
 
@@ -53,8 +49,7 @@ Tailscale, and authorises `ydotool` usage.
 
 ## ewan-preservation
 
-Configures impermanence state persistence specifically for Ewan's home
-directory, retaining data for applications like VS Code, Spotify, and Steam.
+Configures impermanence state persistence specifically for Ewan.
 
 ## hyprland
 
@@ -68,13 +63,7 @@ enables Tailscale routing features.
 
 ## kyla-preservation
 
-Configures impermanence state persistence specifically for Kyla's home
-directory, retaining data for Epic Games, Steam, and Obsidian.
-
-## label
-
-A simple module that sets the internal NixOS system label (currently set to
-"separate-wallpapers").
+Configures impermanence state persistence specifically for Kyla.
 
 ## laptops
 

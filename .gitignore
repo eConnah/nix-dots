@@ -1,12 +1,7 @@
-# Ignore build outputs from performing a nix-build or `nix build` command
+*.qcow2
+.direnv
+.jj
+.ndg-cache/
+build
 result
 result-*
-
-# Ignore automatically generated direnv output
-.direnv
-
-*.qcow2
-
-.jj
-
-build

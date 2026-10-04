@@ -20,9 +20,9 @@ provides configuration files for IRC and version control.
 
 ## defaults
 
-Establishes the baseline user environment. Enables the GNOME Keyring daemon,
-configures `direnv`, `kitty` (with Neovim scrollback integration), and provides
-`eza` aliases and a custom prompt for the `fish` shell.
+Provides some defaults like configuring `direnv` and `kitty` (with Neovim
+scrollback integration), and provides `eza` aliases and a gives me Rexiels
+`fish` prompt.
 
 ## easyeffects
 
