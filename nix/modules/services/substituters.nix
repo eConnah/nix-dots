@@ -26,7 +26,7 @@
           {
             url = "https://cache.manic.systems";
             priority = 20;
-            public_key = "cache.manic.systems-1:s6OZanN8Us8vRi0jVivP3qlMn0cYHBjBALKrNe5nH8s=";
+            public_key = "ci.manic.systems-1:s6OZanN8Us8vRi0jVivP3qlMn0cYHBjBALKrNe5nH8s=";
           }
           {
             url = "https://nix-community.cachix.org";
