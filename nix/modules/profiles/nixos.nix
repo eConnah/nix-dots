@@ -12,7 +12,6 @@
     disabledModules = ["programs/tack.nix"];
     imports = [
       inputs.hjem.nixosModules.default
-      inputs.lix-module.nixosModules.default
       inputs.nix-secrets.nixosModules.default
       inputs.nixos-core.nixosModules.default
       inputs.tack.nixosModules.default
@@ -121,7 +120,6 @@
           "cgroups"
           "flakes"
           "nix-command"
-          "pipe-operator"
         ];
         trusted-public-keys = [
           "lecache:T6owlM58CGYc8X5xrAMq+IP6ilNWBpWlR8VazPPkjAQ="

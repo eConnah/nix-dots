@@ -12,6 +12,7 @@
       hyprland
       kyla
       limine
+      lix
       nvidia
       preservation
       turtle-config

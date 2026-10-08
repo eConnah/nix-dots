@@ -14,6 +14,7 @@
       lenix-hardware
       lenix-hjem
       limine
+      lix
       preservation
       self.secretModules.connor-eduroam
     ];

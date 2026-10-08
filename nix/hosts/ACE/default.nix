@@ -15,6 +15,7 @@
       kyla
       laptops
       limine
+      lix
       mesa
       preservation
     ];

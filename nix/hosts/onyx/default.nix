@@ -9,6 +9,7 @@
       defaults
       hyprland
       limine
+      lix
       nvidia
       onyx-config
       onyx-disko

@@ -14,6 +14,7 @@
       laptops
       leo
       limine
+      lix
     ];
   };
 }
