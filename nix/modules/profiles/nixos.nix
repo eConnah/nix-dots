@@ -258,6 +258,7 @@
         pulse.enable = true;
         wireplumber.enable = true;
       };
+      stash-clipboard.enable = true;
     };
     system = {
       nixos-core = {

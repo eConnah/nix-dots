@@ -1,6 +1,6 @@
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("uwsm app -- " .. terminal))
 hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(mod .. " + M", hl.dsp.exit())
+hl.bind(mod .. " + M", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + SPACE", hl.dsp.exec_cmd("uwsm app -- " .. menu))
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
