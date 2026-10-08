@@ -67,6 +67,9 @@ exclude_follow = ["nixpkgs"]
 url = "github:manic-systems/tack"
 group = "rafware"
 exclude_follow = ["nixpkgs"]
+patches = [
+"https://github.com/manic-systems/tack/pull/153"
+]
 [inputs.nvf]
 url = "github:notashelf/nvf"
 group = "rafware"

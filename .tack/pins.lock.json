@@ -114,6 +114,20 @@
     "repo": "tack",
     "rev": "4a8b68df58488b311840eb0244c75b4857871789",
     "narHash": "sha256-ST/08SMwfjtXeP/+72GJYVFkO2xT6PDU5ofh9Gh9IJ8=",
-    "lastModified": 1791058919
+    "lastModified": 1791058919,
+    "patched": {
+      "path": "/nix/store/mamm79abf688b667l7lxz4y5adm35myv-source",
+      "narHash": "sha256-XS34wVbGGVYjtTA0wfDdq2XpG8oIcX3jC6v6rXmP7XI=",
+      "lastModified": 1791058919,
+      "patches": [
+        {
+          "source": "https://github.com/manic-systems/tack/pull/153",
+          "url": "https://github.com/manic-systems/tack/pull/153",
+          "file": "patches/tack/pr-153.patch",
+          "sha256": "da5dec882c0bbba3f18b1474dba8d985dabb4cf96cc2bcf9a56f31f1e435e205",
+          "head": "d8190b02e77779db47879f917e4266d3a790503c"
+        }
+      ]
+    }
   }
 }
