@@ -36,12 +36,6 @@ keys. Enables `pcscd`, `udev` rules for YubiKey personalisation, and Tailscale.
 
 Configures impermanence state persistence specifically for Connor.
 
-## defaults
-
-The foundational system profile. Defines baseline packages, fonts, Nix settings,
-SSH, XDG defaults, Pipewire, and system-wide secrets management. Disables
-NetworkManager in favour of explicit networking.
-
 ## ewan
 
 System-level user configuration for Ewan. Defines user IDs and groups, enables
@@ -50,6 +44,17 @@ Tailscale, and authorises `ydotool` usage.
 ## ewan-preservation
 
 Configures impermanence state persistence specifically for Ewan.
+
+## graphical
+
+Inherits from headless but adds stuff required for graphical hosts, such as
+pipewire, oo7, flatpaks and steam.
+
+## headless
+
+The foundational system profile. Defines baseline packages, fonts, Nix settings,
+SSH, XDG defaults, and system-wide secrets management. Disables NetworkManager
+in favour of explicit networking.
 
 ## hyprland
 

@@ -6,9 +6,9 @@
   flake.nixosConfigurations.turtle = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       aude
-      connor
-      defaults
+      connor-graphical
       ewan
+      graphical
       hyprland
       kyla
       limine

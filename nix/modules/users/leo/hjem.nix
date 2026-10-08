@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.hjemModules.leo = {pkgs, ...}: {
     imports = with self.hjemModules; [
-      defaults
+      graphical
       oledppuccin
       vicinae
     ];

@@ -19,6 +19,7 @@ in {
             imports = [v];
             _class = "nixos";
             _file = "${toString moduleLocation}#secretModules.${k}";
+            key = "${toString moduleLocation}#secretModules.${k}";
           }
         );
         default = {};

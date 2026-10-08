@@ -19,6 +19,7 @@ in {
             imports = [v];
             _class = "hjem";
             _file = "${toString moduleLocation}#hjemModules.${k}";
+            key = "${toString moduleLocation}#hjemModules.${k}";
           }
         );
         default = {};

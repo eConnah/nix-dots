@@ -5,9 +5,9 @@
 }: {
   flake.nixosConfigurations.murtle = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      connor
-      defaults
+      connor-graphical
       ewan
+      graphical
       hyprland
       limine
       lix

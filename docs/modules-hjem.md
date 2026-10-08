@@ -12,17 +12,15 @@ User environment configuration for Aude. Configures `git` and `jujutsu` (jj),
 sets Neovim as the default editor, and installs applications like LibreOffice,
 Signal, and Vesktop.
 
-## connor
+## connor-graphical
 
-User environment configuration for Connor. Installs core applications (Obsidian,
-Halloy, Vesktop), sets up SSH keys, configures `git` with GPG signing, and
-provides configuration files for IRC and version control.
+Graphical setup for Connor. Installs core applications (Obsidian, Halloy,
+Vesktop) and provides configuration for IRC.
 
-## defaults
+## connor-headless
 
-Provides some defaults like configuring `direnv` and `kitty` (with Neovim
-scrollback integration), and provides `eza` aliases and a gives me Rexiels
-`fish` prompt.
+User environment configuration for Connor. Sets up SSH keys, configures `git`
+with GPG signing, and provides configuration files for version control.
 
 ## easyeffects
 
@@ -33,6 +31,16 @@ as a systemd service.
 
 User environment configuration for Ewan. Configures `git` and `jujutsu` (jj),
 sets Neovim as the default editor, and installs core applications.
+
+## graphical
+
+Configures `kitty` (with Neovim scrollback integration) and adds a swaybg
+service.
+
+## headless
+
+Provides some defaults like configuring `direnv`, provides `eza` aliases and
+gives me Rexiel's `fish` prompt.
 
 ## hyprland
 

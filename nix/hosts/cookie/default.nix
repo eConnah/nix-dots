@@ -6,12 +6,11 @@
   flake.nixosConfigurations.cookie = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       aude
-      connor
+      connor-graphical
       cookie-config
       cookie-disko
       cookie-hardware
       cookie-hjem
-      defaults
       hyprland
       kyla
       laptops

@@ -19,6 +19,7 @@ in {
             imports = [v];
             _class = "nvf";
             _file = "${toString moduleLocation}#nvfModules.${k}";
+            key = "${toString moduleLocation}#nvfModules.${k}";
           }
         );
         default = {};

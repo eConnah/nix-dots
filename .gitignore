@@ -3,5 +3,6 @@
 .jj
 .ndg-cache/
 build
+flake.lock
 result
 result-*

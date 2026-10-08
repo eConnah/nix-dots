@@ -1,9 +1,10 @@
-{
+{self, ...}: {
   flake.nixosModules.laptops = {
     lib,
     pkgs,
     ...
   }: {
+    imports = with self.nixosModules; [graphical];
     environment.systemPackages = with pkgs; [
       brightnessctl
       jolt-tui

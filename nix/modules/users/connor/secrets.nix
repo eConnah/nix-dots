@@ -1,10 +1,9 @@
 {
   flake.secretModules = {
-    connor = {
+    connor-headless = {
       security.nix-secrets.secrets = {
-        "connor/halloy" = {
-          group = "connor";
-          owner = "connor";
+        "connor/linux" = {
+          neededForUsers = true;
           recipients = [
             "ACE"
             "cookie"
@@ -15,8 +14,13 @@
             "yubikey"
           ];
         };
-        "connor/linux" = {
-          neededForUsers = true;
+      };
+    };
+    connor-graphical = {
+      security.nix-secrets.secrets = {
+        "connor/halloy" = {
+          group = "connor";
+          owner = "connor";
           recipients = [
             "ACE"
             "cookie"

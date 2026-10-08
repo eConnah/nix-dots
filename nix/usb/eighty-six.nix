@@ -6,8 +6,8 @@
   flake.nixosConfigurations.eighty-six = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-      connor
-      defaults
+      connor-headless
+      headless
       mesa
       (
         {

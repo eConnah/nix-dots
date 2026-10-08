@@ -8,7 +8,10 @@
     pkgs,
     ...
   }: {
-    imports = [inputs.apple-silicon.nixosModules.apple-silicon-support];
+    imports = [
+      inputs.apple-silicon.nixosModules.apple-silicon-support
+      self.nixosModules.laptops
+    ];
     boot = {
       kexec.enable = false;
       loader.efi.canTouchEfiVariables = lib.mkForce false;

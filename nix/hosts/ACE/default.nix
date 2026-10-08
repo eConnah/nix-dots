@@ -9,8 +9,7 @@
       ACE-disko
       ACE-hardware
       ACE-hjem
-      connor
-      defaults
+      connor-graphical
       hyprland
       kyla
       laptops

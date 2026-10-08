@@ -5,8 +5,8 @@
 }: {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      connor
-      defaults
+      connor-graphical
+      graphical
       hyprland
       limine
       lix

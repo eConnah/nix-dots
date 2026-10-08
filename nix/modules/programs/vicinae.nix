@@ -1,6 +1,7 @@
 {
   flake.hjemModules.vicinae = {
     lib,
+    osConfig,
     pkgs,
     ...
   }: {

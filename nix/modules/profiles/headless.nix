@@ -3,7 +3,7 @@
   self,
   ...
 }: {
-  flake.nixosModules.defaults = {
+  flake.nixosModules.headless = {
     config,
     lib,
     pkgs,
@@ -20,61 +20,37 @@
     ];
     boot.zfs.forceImportRoot = lib.mkDefault false;
     environment = {
-      etc."tuigreet/config.toml".source = "${self}/not-nix/presets/tuigreet.toml";
       sessionVariables = {
         MANPAGER = "nvim -n --cmd 'set laststatus=0 nonumber noruler noshowcmd' +Man!";
         NH_ELEVATION_STRATEGY = "run0";
-        NIXOS_OZONE_WL = "1";
-        PROTON_ENABLE_WAYLAND = "1";
-      };
-      variables = {
-        QT_STYLE_OVERRIDE = lib.mkForce null;
       };
       systemPackages = with pkgs; [
-        (mpv.override {youtubeSupport = false;})
         age-plugin-fido2-hmac
         alejandra
-        alsa-utils
         atool
         cryptsetup
-        distrobox
         e2fsprogs
         eza
         fastfetch
         fd
         file
-        firefox
         gh
-        gimp
         httpie
-        hunspell
-        hunspellDicts.en_GB-large
-        hunspellDicts.fr-moderne
         hy
-        imv
         jujutsu
-        libinput
-        liblc3
-        matugen
-        mesa-demos
         nixfmt
         nixfmt-tree
         p7zip
         patchelf
-        pavucontrol
-        pulseaudio
-        qpwgraph
         ripgrep
         sbctl
         sshfs
         tree
         usbutils
-        vulkan-tools
         waypipe
         wget
         wl-clipboard
         yt-dlp
-        zulu
       ];
     };
     fonts = {
@@ -131,16 +107,10 @@
         use-xdg-base-directories = true;
       };
     };
-    nixpkgs = {
-      config.allowUnfree = true;
-      overlays = [inputs.nixos-core.overlays.default];
-    };
+    nixpkgs.config.allowUnfree = true;
     programs = {
       bat.enable = true;
-      dconf.enable = true;
-      firefox.enable = true;
       fish.enable = true;
-      gamemode.enable = true;
       git.enable = true;
       gnupg.agent = {
         enable = true;
@@ -154,18 +124,6 @@
         };
       };
       ssh.startAgent = true;
-      steam = {
-        enable = lib.mkDefault true;
-        extraPackages = with pkgs; [
-          hyprpicker
-          hyprshot
-          rose-pine-cursor
-          rose-pine-hyprcursor
-        ];
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
-      };
       tack = {
         enable = true;
         nixConfTokens = true;
@@ -175,11 +133,6 @@
         enableFishIntegration = true;
       };
       nano.enable = lib.mkForce false;
-    };
-    qt = {
-      enable = true;
-      platformTheme = "qt5ct";
-      style = "kvantum";
     };
     security = {
       loginDefs.settings.UMASK = "002";
@@ -214,14 +167,7 @@
         };
         storage = self + "/secrets";
       };
-      pam = {
-        enableUMask = true;
-        services = {
-          greetd.oo7.enable = false; # for now
-          login.oo7.enable = lib.mkForce false;
-        };
-      };
-      rtkit.enable = true;
+      pam.enableUMask = true;
       run0 = {
         enable = true;
         sudo-shim.enable = true;
@@ -230,44 +176,20 @@
           enableRemote = true;
         };
       };
-      soteria.enable = true;
       sudo.enable = false;
     };
     services = {
-      flatpak.enable = lib.mkDefault true;
       fwupd.enable = true;
       gnome.gnome-keyring.enable = lib.mkForce false;
-      greetd = {
-        enable = true;
-        useTextGreeter = true;
-        settings.default_session = {
-          user = "greeter";
-          command = "${lib.getExe pkgs.tuigreet}";
-        };
-      };
-      libinput.enable = true;
-      oo7.enable = true;
       openssh = {
         enable = true;
         settings = {
           PermitRootLogin = "no";
         };
       };
-      pipewire = {
-        enable = true;
-        pulse.enable = true;
-        wireplumber.enable = true;
-      };
-      stash-clipboard.enable = true;
     };
     system = {
-      nixos-core = {
-        enable = true;
-        package = pkgs.nixos-core.override {
-          withInitScript = false;
-          withStage1 = false;
-        };
-      };
+      nixos-core.enable = true;
       stateVersion = "25.11";
       tools = {
         nixos-rebuild.enable = false;
@@ -281,34 +203,13 @@
       services."user@".serviceConfig.LimitMEMLOCK = "infinity";
       user.services."dbus-org.freedesktop.secrets".enable = false;
     };
-    virtualisation = {
-      vmVariant = {
-        boot.kernelParams = ["video=2560x1440@240"];
-        virtualisation.cores = 4;
-        virtualisation.memorySize = 10240;
-      };
-    };
     users.groups."la-famille".gid = 2018;
     xdg.mime = {
       enable = true;
       defaultApplications = {
-        "application/pdf" = "firefox.desktop";
         "application/x-desktop" = "nvim.desktop";
-        "text/html" = "firefox.desktop";
         "text/markdown" = "nvim.desktop";
         "text/plain" = "nvim.desktop";
-        "video/mp4" = "mpv.desktop";
-        "video/mpeg" = "mpv.desktop";
-        "video/quicktime" = "mpv.desktop";
-        "video/webm" = "mpv.desktop";
-        "video/x-flv" = "mpv.desktop";
-        "video/x-matroska" = "mpv.desktop";
-        "video/x-msvideo" = "mpv.desktop";
-        "x-scheme-handler/about" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/terminal" = "kitty.desktop";
-        "x-scheme-handler/unknown" = "firefox.desktop";
       };
     };
   };

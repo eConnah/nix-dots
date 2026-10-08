@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.hjemModules.kyla = {pkgs, ...}: {
     imports = with self.hjemModules; [
-      defaults
+      graphical
       oledppuccin
       vicinae
     ];
