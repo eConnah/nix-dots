@@ -18,9 +18,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "nixos-apple-silicon",
-    "rev": "c263106abdb41b2b88072d5850b04e30dc4bb23e",
-    "narHash": "sha256-QLyJ8+yDihDs0pg2Z3nsihinOubRdsPoo3MwRs2KM+w=",
-    "lastModified": 1791319332
+    "rev": "12cd234285d3037cedfab979aa70b75284a59afc",
+    "narHash": "sha256-A3JRH8qkp+NrP3sSwfutu7nZ5AclDY/HDmn/xDxduM4=",
+    "lastModified": 1791830269
   },
   "disko": {
     "type": "github",
@@ -42,9 +42,9 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "cef02450f2c18a7e2b9297ea8d366f9a597254f7",
-    "narHash": "sha256-tycoVCB2KSVdy9ERT1lJGHdP9Hf4FHanaEY25hUxylw=",
-    "lastModified": 1790081753
+    "rev": "6b2cc57463bbbac3d7c61206ab365a2c928861a4",
+    "narHash": "sha256-Q5hGcKBaqz1L0neSRDfQgQPBKmSCkV1N5YBRwp+RtUc=",
+    "lastModified": 1791807571
   },
   "hjem-rum": {
     "type": "github",
@@ -58,25 +58,25 @@
     "type": "git",
     "url": "https://git.lix.systems/lix-project/lix",
     "ref": "HEAD",
-    "rev": "b4c0a61943de5d74a4521143aace4058323c826c",
-    "narHash": "sha256-OeI3N/mu75Vidt/6X9gBBXkoTaUhrHYpbsmq043LCIY=",
-    "lastModified": 1791112051
+    "rev": "ce4ec25af86cb1df338af4070e9230e458c11c68",
+    "narHash": "sha256-xgqDnAcTAAUxBHpGzTkeqHm7UVH6ssQEmlt4LZpblnE=",
+    "lastModified": 1791792811
   },
   "lix-module": {
     "type": "git",
     "url": "https://git.lix.systems/lix-project/nixos-module",
     "ref": "HEAD",
-    "rev": "c5b8d8576206ddce31b86e336476c2f9b8361085",
-    "narHash": "sha256-Ikdf593tWTFMkKhtScxE+t2fV+Myh8n4JeYU/0Xc8H8=",
-    "lastModified": 1787347232
+    "rev": "9311ca94aac0ff3378ab4eea887284d11de94158",
+    "narHash": "sha256-7KBL8PF28zweSpAAb62Dxo1oznqGUiXLu4807aAFw4s=",
+    "lastModified": 1791014283
   },
   "ncro": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "ncro",
-    "rev": "14ebb0a4ba22358abe77ee4b3a3f793811e63573",
-    "narHash": "sha256-Mxg043HH0/X15CulDQN+QhuwDTHjmPhJUgHdqB+XYqs=",
-    "lastModified": 1790759465
+    "rev": "f224e3e8852cebbe1f74a2d43537e5e5eece8368",
+    "narHash": "sha256-MYNywU2QeJ22mb3nd18TVrJQAPfDaI1ZGYj/QVh8mhw=",
+    "lastModified": 1791615473
   },
   "nix-secrets": {
     "type": "github",
@@ -90,30 +90,31 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "nixos-core",
-    "rev": "81590b0cad964baec77c05294e24fcc53d5a4ec4",
-    "narHash": "sha256-tfqyNBUyHpDX4AaNtE8YQkQbG73bkRqqCm8TEbtKBf0=",
-    "lastModified": 1790670188
+    "rev": "8cc795588d743dd38e78ec129f5d6550eca77bfb",
+    "narHash": "sha256-wLoiBBvvUYPt61717RZowAMDxwMMJXyoaQ/7muCq/Z8=",
+    "lastModified": 1791741529
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1084968.a7868a727837/nixexprs.tar.zst?rev=a7868a727837f3c09cee2ce0ca671c76b1589fed&lastModified=1791048980",
-    "rev": "a7868a727837f3c09cee2ce0ca671c76b1589fed",
-    "narHash": "sha256-u3KCLxsnf1622GdFccg8hmkEIutOZ1h4pvia5ERjIuI="
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1090327.7fd4004d0511/nixexprs.tar.zst?rev=7fd4004d0511991fff3a0524856a9be09e28c5f0&lastModified=1791734076",
+    "rev": "7fd4004d0511991fff3a0524856a9be09e28c5f0",
+    "narHash": "sha256-0dNcyVeoD61zhucIpt5BAQ+ytd6JzF641Z+A9bgltLo=",
+    "lastModified": 315532800
   },
   "nvf": {
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "888cd55361046e6502e7a568ccc37fbf9d034948",
-    "narHash": "sha256-Ke6XaIjUewxYyDZrkQokvs5I7yJhNV3Czn4PbGskhQ0=",
-    "lastModified": 1791106120
+    "rev": "19992540d372466340ededda0c065a3a0a962fd6",
+    "narHash": "sha256-cxmegj6Tg0xYk8A2icSl3v1+SeVDj+bESU2BnCqERPE=",
+    "lastModified": 1791651540
   },
   "tack": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "5957ec0bd3df490a06dab467337152ae75977585",
-    "narHash": "sha256-dkuO01AoiMwzwY5DtEPDRyQYKjD3RRPZ8evLLYfEeY4=",
-    "lastModified": 1791612427
+    "rev": "ceef477f4c9fada177872d29ac00a8651f21df8b",
+    "narHash": "sha256-IMSEULXBQoHKobbnr6mqVUujm36RXvdvE1Tt5OdRj2E=",
+    "lastModified": 1791839790
   }
 }
