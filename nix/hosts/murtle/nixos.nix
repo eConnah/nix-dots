@@ -14,10 +14,7 @@
     };
     programs.iio-hyprland.enable = true;
     programs.nh.flake = "/persistent/dotfiles";
-    security.nix-secrets = {
-      identityPaths = ["/persistent/nix-keys/age-identity.txt"];
-      storagePath = "/persistent/dotfiles/secrets";
-    };
+    security.nix-secrets.identityPaths = ["/persistent/nix-keys/age-identity.txt"];
     services.resolved = {
       enable = true;
     };

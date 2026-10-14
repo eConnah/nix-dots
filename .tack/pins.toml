@@ -26,7 +26,7 @@ names = [
 # armored pgp key, a file under .tack holding either, or an array of those.
 # `tack signer add <name> --github <user>` fills one in from GitHub
 [signers]
-# alice = "ssh-ed25519 AAAA..."
+clementine = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIILd7radoI+ZnYz/NKDVLBDH8zFdq6r2I/gP0HuZGs0gAAAABHNzaDo= ssh:"
 
 # inputs.<name> fields
 #   url             required, shorturl ok, ?rev=<sha> pins an exact commit
@@ -74,6 +74,13 @@ group = "rafware"
 url = "github:feel-co/hjem"
 group = "rafware"
 exclude_follow = ["nixpkgs"]
+
+# my stuff
+[inputs.super-secret]
+url = "github:eConnah/secrets"
+signers = ["clementine"]
+type = "fetch"
+frozen = "729b71881a4467bfd66e8fa8550a38b92f023b51"
 
 # other stuff
 [inputs.apple-silicon]

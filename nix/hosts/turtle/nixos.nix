@@ -30,9 +30,7 @@
         capSysNice = true;
       };
     };
-    security.nix-secrets = {
-      identityPaths = ["/persistent/nix-keys/age-identity.txt"];
-    };
+    security.nix-secrets.identityPaths = ["/persistent/nix-keys/age-identity.txt"];
     services.pipewire.extraConfig.pipewire."92-custom-quantum" = {
       "context.properties" = {
         "default.clock.max-quantum" = 8192;

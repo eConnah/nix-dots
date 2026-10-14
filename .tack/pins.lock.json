@@ -12,6 +12,7 @@
     "nixos-core": "github:manic-systems/nixos-core",
     "nixpkgs": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst",
     "nvf": "github:notashelf/nvf",
+    "super-secret": "github:eConnah/secrets",
     "tack": "github:manic-systems/tack"
   },
   "apple-silicon": {
@@ -108,6 +109,19 @@
     "rev": "19992540d372466340ededda0c065a3a0a962fd6",
     "narHash": "sha256-cxmegj6Tg0xYk8A2icSl3v1+SeVDj+bESU2BnCqERPE=",
     "lastModified": 1791651540
+  },
+  "super-secret": {
+    "type": "github",
+    "owner": "eConnah",
+    "repo": "secrets",
+    "rev": "729b71881a4467bfd66e8fa8550a38b92f023b51",
+    "narHash": "sha256-x/r/RYE++suJDwIVNaRbydAnbWquMhuUdEkMVriCnDA=",
+    "lastModified": 1792083796,
+    "signedBy": {
+      "signer": "clementine",
+      "keys": "sha256-abd58ec74b824c69f55fc328e1a814f736ffc69fc689d61321256af9944c3e63",
+      "since": "729b71881a4467bfd66e8fa8550a38b92f023b51"
+    }
   },
   "tack": {
     "type": "github",

@@ -47,7 +47,7 @@
           "/persistent/nix-keys/age-identity.txt"
           "/persistent/nix-keys/yubikey-age.txt"
         ];
-        storagePath = "/persistent/dotfiles/secrets";
+        storagePath = "/persistent/secrets";
       };
       systemd.tmpfiles.rules = [
         "L+ /var/lib/iwd/eduroam.8021x - - - - ${

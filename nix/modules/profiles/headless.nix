@@ -167,7 +167,7 @@
           };
           "nix-cache-key".recipients = ["all-hosts"];
         };
-        storage = self + "/secrets";
+        storage = inputs.super-secret;
       };
       pam.enableUMask = true;
       run0 = {

@@ -55,7 +55,7 @@
           "/persistent/nix-keys/age-identity.txt"
           "/persistent/nix-keys/yubikey-age.txt"
         ];
-        storagePath = "/persistent/dotfiles/secrets";
+        storagePath = "/persistent/secrets";
       };
       services.pipewire.extraConfig.pipewire."92-custom-quantum" = {
         "context.properties" = {
