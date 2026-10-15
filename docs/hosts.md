@@ -58,6 +58,13 @@ with a 2TB HDD, and is configured to dual-boot Windows 11 via Limine. It comes
 loaded with `steam`, `gamescope`, `davinci-resolve`, and full OBS Studio
 integrations.
 
+## phoenix
+
+A headless aarch64 host running inside an Oracle vps, currently is the main
+circus builder/database since I haven't switched my homelab itself to nixos but
+will later be just a remote aarch64 builder. Only has connor as a user and uses
+BTRFS impermanence like most hosts.
+
 ## turtle
 
 A family desktop powered by an Intel CPU and Nvidia graphics, configured for

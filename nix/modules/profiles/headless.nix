@@ -146,6 +146,7 @@
             "lenix"
             "murtle"
             "onyx"
+            "phoenix"
             "turtle"
             "yubikey"
           ];
@@ -156,6 +157,7 @@
           murtle = "age1eqm8wgfpc8aawaxardpypg5gcdluavplfy7gn2qp9tefwauezs2sd69wvl";
           onyx = "age1vx67nthmpprcv7mws3rvp6wtqe23td8rkxvexhvay0gvsqse0saqquv2fe";
           turtle = "age16wjhsc4uaf0jnucdx649v95ztjy8645smm33w7z47nlr8378r9tsmj5jnm";
+          phoenix = "age1nur5twlqsdmlqtjwa2809rpj4wtj9hufayuahy4a8r6ayxfk435q25ufcj";
           yubikey = "age10galsk69w2j2s45e00s2zla77ycrstgu9z7avhdrer2jzj3yj9xqp0np50";
         };
         secrets = {

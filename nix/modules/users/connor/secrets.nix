@@ -10,6 +10,7 @@
             "lenix"
             "murtle"
             "onyx"
+            "phoenix"
             "turtle"
             "yubikey"
           ];
