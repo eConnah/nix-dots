@@ -23,9 +23,10 @@
           ''
             mod = "SUPER"
             browser = "firefox"
-            terminal = "kitty"
+            terminal = "kitty -1"
 
             hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+            hl.dsp.exec_cmd("uwsm app -- kitty --start-as=hidden -1")
           '';
         environment.sessionVariables = {
           HYPRCURSOR_SIZE = "24";
