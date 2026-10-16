@@ -28,9 +28,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "circus",
-    "rev": "f19e9e072291bea14abb2532cf087bb907bc08eb",
-    "narHash": "sha256-Kll3BlXqntOt+IHzwRpuGxuV4rD20rbHsjU7qV3ZUHU=",
-    "lastModified": 1791407947
+    "rev": "c49d659ba8bbbd8e8e675187e87223b12df8e8ec",
+    "narHash": "sha256-+J3ouk3+DjeWnEkfbC1b2OM0x3b0B/cNXQwAr0Se1jM=",
+    "lastModified": 1792191463
   },
   "disko": {
     "type": "github",
@@ -68,9 +68,9 @@
     "type": "git",
     "url": "https://git.lix.systems/lix-project/lix",
     "ref": "HEAD",
-    "rev": "ce4ec25af86cb1df338af4070e9230e458c11c68",
-    "narHash": "sha256-xgqDnAcTAAUxBHpGzTkeqHm7UVH6ssQEmlt4LZpblnE=",
-    "lastModified": 1791792811
+    "rev": "3c5f629014e92037f9e446863441bcc5ba94eae3",
+    "narHash": "sha256-q1afbP0uTTIFPUC4KMHbta+61saOMKQTsRbdvOs7rTw=",
+    "lastModified": 1792015917
   },
   "lix-module": {
     "type": "git",
@@ -84,9 +84,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "ncro",
-    "rev": "f224e3e8852cebbe1f74a2d43537e5e5eece8368",
-    "narHash": "sha256-MYNywU2QeJ22mb3nd18TVrJQAPfDaI1ZGYj/QVh8mhw=",
-    "lastModified": 1791615473
+    "rev": "e125f8a9b2b7c9414f780604cae02182e8772597",
+    "narHash": "sha256-wdmRnrB60UVo6MERmPijnVoyo/ialR1b62I/NrXGLw8=",
+    "lastModified": 1792183455
   },
   "nix-secrets": {
     "type": "github",
@@ -100,24 +100,24 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "nixos-core",
-    "rev": "8cc795588d743dd38e78ec129f5d6550eca77bfb",
-    "narHash": "sha256-wLoiBBvvUYPt61717RZowAMDxwMMJXyoaQ/7muCq/Z8=",
-    "lastModified": 1791741529
+    "rev": "d3c2e1de4f6387da12713a26ef5b9a7930f46b22",
+    "narHash": "sha256-ZBvWH97NmR6P5Rapi4YXjrQTmmwXtw8RYgmIortbXyU=",
+    "lastModified": 1791933734
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1090327.7fd4004d0511/nixexprs.tar.zst?rev=7fd4004d0511991fff3a0524856a9be09e28c5f0&lastModified=1791734076",
-    "rev": "7fd4004d0511991fff3a0524856a9be09e28c5f0",
-    "narHash": "sha256-0dNcyVeoD61zhucIpt5BAQ+ytd6JzF641Z+A9bgltLo=",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1092090.55bfb4d7437b/nixexprs.tar.zst?rev=55bfb4d7437bd4e09ab7cba58a43bd68eb310044&lastModified=1791956154",
+    "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
+    "narHash": "sha256-gJX2+xcImvxBCI3bp7zXKLUX2AwsdTxMgJ1UX/5Hm/o=",
     "lastModified": 315532800
   },
   "nvf": {
     "type": "github",
     "owner": "notashelf",
     "repo": "nvf",
-    "rev": "19992540d372466340ededda0c065a3a0a962fd6",
-    "narHash": "sha256-cxmegj6Tg0xYk8A2icSl3v1+SeVDj+bESU2BnCqERPE=",
-    "lastModified": 1791651540
+    "rev": "a736b60b1e2019931168979951c94dc46e342957",
+    "narHash": "sha256-XD64JVLV8iE4lR+W5gkTweEaT+SBwOrSy0+le2WgITI=",
+    "lastModified": 1792175215
   },
   "super-secret": {
     "type": "github",
@@ -136,8 +136,8 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "ceef477f4c9fada177872d29ac00a8651f21df8b",
-    "narHash": "sha256-IMSEULXBQoHKobbnr6mqVUujm36RXvdvE1Tt5OdRj2E=",
-    "lastModified": 1791839790
+    "rev": "d785e637b7f6d0694a53951588c484f32397335e",
+    "narHash": "sha256-q3o87E0s55Z09YVhFJtws2Dvv1IRCoGxOOtomZsJEXA=",
+    "lastModified": 1792090744
   }
 }
