@@ -1,0 +1,138 @@
+From 228765a9cf457807d6e9bb70d18e808581ca1585 Mon Sep 17 00:00:00 2001
+From: Connor Alecks <git@econnah.uk>
+Date: Fri, 16 Oct 2026 06:59:12 +0200
+Subject: [PATCH 1/2] lazyspotify: 0.5.1 -> 0.5.2
+
+---
+ pkgs/by-name/la/lazyspotify/go-librespot.nix | 13 +++++++------
+ pkgs/by-name/la/lazyspotify/package.nix      | 10 +++++-----
+ 2 files changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/pkgs/by-name/la/lazyspotify/go-librespot.nix b/pkgs/by-name/la/lazyspotify/go-librespot.nix
+index d4cca117ceffc..7eff1d155b354 100644
+--- a/pkgs/by-name/la/lazyspotify/go-librespot.nix
++++ b/pkgs/by-name/la/lazyspotify/go-librespot.nix
+@@ -2,17 +2,17 @@
+   alsa-lib,
+   buildGoModule,
+   fetchFromGitHub,
++  pkg-config,
++  stdenv,
+   flac,
+   lib,
++  libmpg123,
+   libogg,
+   libvorbis,
+-  pkg-config,
+-  stdenv,
+ }:
+-
+ buildGoModule (finalAttrs: {
+   pname = "lazyspotify-librespot";
+-  version = "0.7.1.1";
++  version = "0.8.0";
+ 
+   __structuredAttrs = true;
+ 
+@@ -20,10 +20,10 @@ buildGoModule (finalAttrs: {
+     owner = "dubeyKartikay";
+     repo = "go-librespot";
+     tag = "v${finalAttrs.version}";
+-    hash = "sha256-Hq9Qk8f8oKzpBwsbLNAvPO7qam3bh4L4RPUQC67/NZY=";
++    hash = "sha256-HAuBSgf+15IZJENStS30Pc3BhOWkzBstA5sUNfjIO98=";
+   };
+ 
+-  vendorHash = "sha256-5J5i2Wc0zHCdvJ3aUkftXeMKS5X8jWimup0Ir4HLuS8=";
++  vendorHash = "sha256-WLyKs35MxCxs96hG6FTYsLhDKYDmhg6125i22kW+K7M=";
+ 
+   subPackages = [ "cmd/daemon" ];
+ 
+@@ -31,6 +31,7 @@ buildGoModule (finalAttrs: {
+ 
+   buildInputs = [
+     flac
++    libmpg123
+     libogg
+     libvorbis
+   ]
+diff --git a/pkgs/by-name/la/lazyspotify/package.nix b/pkgs/by-name/la/lazyspotify/package.nix
+index 3867356eb25cf..f3d3c0ae8f1ce 100644
+--- a/pkgs/by-name/la/lazyspotify/package.nix
++++ b/pkgs/by-name/la/lazyspotify/package.nix
+@@ -4,11 +4,10 @@
+   fetchFromGitHub,
+   lib,
+   versionCheckHook,
+-  go-librespot ? callPackage ./go-librespot.nix { },
+ }:
+ buildGoModule (finalAttrs: {
+   pname = "lazyspotify";
+-  version = "0.5.1";
++  version = "0.5.2";
+ 
+   __structuredAttrs = true;
+ 
+@@ -16,7 +15,7 @@ buildGoModule (finalAttrs: {
+     owner = "dubeyKartikay";
+     repo = "lazyspotify";
+     tag = "v${finalAttrs.version}";
+-    hash = "sha256-ZL/UPqQ6ClK0JN9LbPtr8nqcdBLdoOYti94BPRXn/Pk=";
++    hash = "sha256-P7Zon1O3YlD6Rga53DJA0Dap7qAcj8G6RaBi/3XWjAI=";
+   };
+ 
+   vendorHash = "sha256-Axdt3/3ZOZY9Z5VUI6Wh77oIREOO26ODMyEgtscTmn8=";
+@@ -27,7 +26,9 @@ buildGoModule (finalAttrs: {
+     "-s"
+     "-w"
+     "-X github.com/dubeyKartikay/lazyspotify/buildinfo.Version=${finalAttrs.version}"
+-    "-X github.com/dubeyKartikay/lazyspotify/buildinfo.PackagedDaemonPath=${lib.getExe go-librespot}"
++    "-X github.com/dubeyKartikay/lazyspotify/buildinfo.PackagedDaemonPath=${
++      lib.getExe (callPackage ./go-librespot.nix { })
++    }"
+   ];
+ 
+   nativeInstallCheckInputs = [ versionCheckHook ];
+@@ -43,6 +44,5 @@ buildGoModule (finalAttrs: {
+     maintainers = with lib.maintainers; [
+       eConnah
+     ];
+-    broken = true;
+   };
+ })
+
+From 823693bf8f5c9e17fe617a9e2ad3c7dda412ad84 Mon Sep 17 00:00:00 2001
+From: Connor Alecks <git@econnah.uk>
+Date: Fri, 16 Oct 2026 08:47:58 +0200
+Subject: [PATCH 2/2] lazyspotify: add custom keyring support
+
+---
+ pkgs/by-name/la/lazyspotify/package.nix | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/pkgs/by-name/la/lazyspotify/package.nix b/pkgs/by-name/la/lazyspotify/package.nix
+index f3d3c0ae8f1ce..3ef806af08c26 100644
+--- a/pkgs/by-name/la/lazyspotify/package.nix
++++ b/pkgs/by-name/la/lazyspotify/package.nix
+@@ -4,6 +4,7 @@
+   fetchFromGitHub,
+   lib,
+   versionCheckHook,
++  customKeyring ? null,
+ }:
+ buildGoModule (finalAttrs: {
+   pname = "lazyspotify";
+@@ -22,6 +23,14 @@ buildGoModule (finalAttrs: {
+ 
+   subPackages = [ "cmd/lazyspotify" ];
+ 
++  # lets me use oo7 with /org/freedesktop/secrets/collection/Login
++  # unsure why its needed tbh but fails without
++  preBuild = lib.optionalString (customKeyring != null) ''
++    chmod -R u+w vendor/github.com/zalando/go-keyring
++    substituteInPlace vendor/github.com/zalando/go-keyring/secret_service/secret_service.go \
++      --replace-fail '/org/freedesktop/secrets/aliases/default' '${customKeyring}'
++  '';
++
+   ldflags = [
+     "-s"
+     "-w"

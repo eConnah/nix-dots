@@ -109,7 +109,20 @@
     "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1092090.55bfb4d7437b/nixexprs.tar.zst?rev=55bfb4d7437bd4e09ab7cba58a43bd68eb310044&lastModified=1791956154",
     "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
     "narHash": "sha256-gJX2+xcImvxBCI3bp7zXKLUX2AwsdTxMgJ1UX/5Hm/o=",
-    "lastModified": 315532800
+    "lastModified": 315532800,
+    "patched": {
+      "path": "/nix/store/kygm471gpc2nxc08w7sj18w0dvzn4jky-source",
+      "narHash": "sha256-+LFFhYq8xUvPx9bLfRAvJof5MwhaJ4TX8uIVyl3+dds=",
+      "lastModified": 315532800,
+      "patches": [
+        {
+          "source": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574778.patch",
+          "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574778.patch",
+          "file": "patches/nixpkgs/574778.patch",
+          "sha256": "c4b2d5fcd7764b0ec0943015a2331d901e518041ab7cb20a5e622a8c3681083b"
+        }
+      ]
+    }
   },
   "nvf": {
     "type": "github",

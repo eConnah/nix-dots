@@ -4,6 +4,7 @@
       ".config/Epic"
       ".config/halloy"
       ".config/heroic"
+      ".config/lazyspotify"
       ".config/libreoffice"
       ".config/mozilla"
       ".config/obs-studio"
