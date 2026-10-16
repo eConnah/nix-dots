@@ -8,8 +8,6 @@
       ];
       rum.programs = {
         kitty = {
-          enable = true;
-          integrations.fish.enable = true;
           settings = {
             action_alias = "kitty_scrollback_nvim kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py";
             allow_remote_control = "socket-only";
@@ -47,6 +45,10 @@
           ignore = ''
             .direnv
           '';
+        };
+        kitty = {
+          enable = true;
+          integrations.fish.enable = true;
         };
       };
       xdg.config.files = {
