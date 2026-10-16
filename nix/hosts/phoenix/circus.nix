@@ -9,6 +9,10 @@
 
       settings = {
         database.url = "postgresql:///circus?host=/run/postgresql&user=circus";
+        cache = {
+          enabled = true;
+          cache_url = "https://circus.ts.econnah.uk/nix-cache";
+        };
         declarative = {
           users = [
             {
@@ -33,7 +37,6 @@
         };
         queue_runner.workers = 2;
         evaluator.poll_interval = 300;
-        cache.enabled = true;
         signing = {
           enabled = true;
           key_file = config.security.nix-secrets.secrets."nix-cache-key".path;
