@@ -12,9 +12,9 @@
         };
       };
       profile-pics = {
-        "connor.jpg" = pkgs.fetchurl {
+        "clementine.jpg" = pkgs.fetchurl {
           hash = "sha256-jvghKg73h6+QyaEb/yNcJrt5EJSlMnL2NMuOiKRXgmY=";
-          url = "https://assets.econnah.uk/nix/profile-pics/connor.jpg";
+          url = "https://assets.econnah.uk/nix/profile-pics/clementine.jpg";
         };
         "leo.png" = pkgs.fetchurl {
           hash = "sha256-w9cHmg3SyIAXv1j14sNvl2JAY2CwOarJXVs2Ym4eYmE=";

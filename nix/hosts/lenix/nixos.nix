@@ -51,7 +51,7 @@
       };
       systemd.tmpfiles.rules = [
         "L+ /var/lib/iwd/eduroam.8021x - - - - ${
-          config.security.nix-secrets.secrets."connor/wifi/eduroam".path
+          config.security.nix-secrets.secrets."clementine/wifi/eduroam".path
         }"
       ];
       time.timeZone = "Europe/Amsterdam";
@@ -64,8 +64,8 @@
 
       users = {
         mutableUsers = false;
-        users.connor = {
-          hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
+        users.clementine = {
+          hashedPasswordFile = config.security.nix-secrets.secrets."clementine/linux".path;
           extraGroups = ["wireshark"];
         };
       };

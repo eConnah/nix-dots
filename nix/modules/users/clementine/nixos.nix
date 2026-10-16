@@ -1,14 +1,14 @@
 {self, ...}: {
   flake.nixosModules = {
-    connor-graphical = {pkgs, ...}: {
+    clementine-graphical = {pkgs, ...}: {
       imports = [
-        self.nixosModules.connor-headless
-        self.secretModules.connor-graphical
+        self.nixosModules.clementine-headless
+        self.secretModules.clementine-graphical
       ];
       environment.systemPackages = with pkgs; [
         yubikey-manager
       ];
-      hjem.users.connor.imports = [self.hjemModules.connor-graphical];
+      hjem.users.clementine.imports = [self.hjemModules.clementine-graphical];
       services = {
         pcscd.enable = true;
         udev.packages = with pkgs; [
@@ -16,18 +16,18 @@
         ];
       };
     };
-    connor-headless = {pkgs, ...}: {
+    clementine-headless = {pkgs, ...}: {
       imports = [
-        self.nixosModules.connor-preservation
+        self.nixosModules.clementine-preservation
         self.nixosModules.oledppuccin
-        self.secretModules.connor-headless
+        self.secretModules.clementine-headless
       ];
       hjem = {
-        users.connor = {
-          imports = [self.hjemModules.connor-headless];
+        users.clementine = {
+          imports = [self.hjemModules.clementine-headless];
           enable = true;
-          directory = "/home/connor";
-          user = "connor";
+          directory = "/home/clementine";
+          user = "clementine";
         };
       };
       services = {
@@ -37,12 +37,12 @@
         };
       };
       users = {
-        groups.connor = {
+        groups.clementine = {
           gid = 2026;
         };
 
-        users.connor = {
-          description = "Connor Alecks";
+        users.clementine = {
+          description = "Clémentine Alecks";
           extraGroups = [
             "dialout"
             "input"
@@ -50,7 +50,7 @@
             "uucp"
             "wheel"
           ];
-          group = "connor";
+          group = "clementine";
           isNormalUser = true;
           linger = true;
           openssh.authorizedKeys.keys = [

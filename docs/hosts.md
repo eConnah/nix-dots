@@ -6,10 +6,6 @@ title = "Nix-Dots - Hosts"
 
 # Hosts
 
-Any hosts owned by my family members have me as a user on the device so I can
-easily update the hosts for them. This does not mean I use their device, it is
-simply due to their insufficient experience with Linux and NixOS.
-
 ## ACE
 
 An AMD-based laptop belonging to Kyla. It utilises an `f2fs` filesystem with
@@ -25,7 +21,7 @@ subvolume to a blank snapshot on every boot, keeping the base system pristine.
 ## eighty-six
 
 A minimal NixOS installer ISO (`x86_64-linux`) used for bootstrapping new
-machines. Built from the `connor`, `defaults`, and `mesa` modules with
+machines. Built from the `clementine`, `defaults`, and `mesa` modules with
 persistence, `nix-secrets`, and `sudo` password prompts disabled, and root SSH
 login enabled for initial setup.
 
@@ -38,7 +34,7 @@ firmware.
 
 ## lenix
 
-Connor's primary Apple Silicon laptop. It features LUKS full-disk encryption
+Clémentine's primary Apple Silicon laptop. It features LUKS full-disk encryption
 (`cryptlenix`) and an ephemeral BTRFS root that wipes on boot. It includes
 specific overrides for university Wi-Fi (`eduroam`), network analysis tools
 (`wireshark`), and game streaming (`moonlight-qt`).
@@ -51,19 +47,19 @@ dual 1080p 60Hz monitor setup.
 
 ## onyx
 
-A high-end workstation and gaming desktop built for Connor. It features Nvidia
-graphics driving a 1440p 240Hz monitor with variable refresh rate enabled. The
-system boots entirely into RAM with a `tmpfs` root, utilises a 2TB NVMe paired
-with a 2TB HDD, and is configured to dual-boot Windows 11 via Limine. It comes
-loaded with `steam`, `gamescope`, `davinci-resolve`, and full OBS Studio
-integrations.
+A high-end workstation and gaming desktop built for Clémentine. It features
+Nvidia graphics driving a 1440p 240Hz monitor with variable refresh rate
+enabled. The system boots entirely into RAM with a `tmpfs` root, utilises a 2TB
+NVMe paired with a 2TB HDD, and is configured to dual-boot Windows 11 via
+Limine. It comes loaded with `steam`, `gamescope`, `davinci-resolve`, and full
+OBS Studio integrations.
 
 ## phoenix
 
 A headless aarch64 host running inside an Oracle vps, currently is the main
 circus builder/database since I haven't switched my homelab itself to nixos but
-will later be just a remote aarch64 builder. Only has connor as a user and uses
-BTRFS impermanence like most hosts.
+will later be just a remote aarch64 builder. Only has clementine as a user and
+uses BTRFS impermanence like most hosts.
 
 ## turtle
 

@@ -9,7 +9,6 @@
       ACE-disko
       ACE-hardware
       ACE-hjem
-      connor-graphical
       hyprland
       kyla
       laptops

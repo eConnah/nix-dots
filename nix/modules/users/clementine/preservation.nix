@@ -1,6 +1,6 @@
 {
-  flake.nixosModules.connor-preservation = {
-    system.nixos-core.persistence.stores."/persistent".users.connor.directories = [
+  flake.nixosModules.clementine-preservation = {
+    system.nixos-core.persistence.stores."/persistent".users.clementine.directories = [
       ".config/Epic"
       ".config/halloy"
       ".config/heroic"

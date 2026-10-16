@@ -1,6 +1,6 @@
 {self, ...}: {
   flake.nixosModules.lenix-hjem = {pkgs, ...}: {
-    hjem.users.connor = {
+    hjem.users.clementine = {
       imports = with self.hjemModules; [
         lenix-hyprland
         modprobed-db

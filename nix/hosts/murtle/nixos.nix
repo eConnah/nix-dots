@@ -39,7 +39,6 @@
     users = {
       mutableUsers = false;
       users = {
-        connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
         ewan.hashedPasswordFile = config.security.nix-secrets.secrets."ewan/linux".path;
       };
     };

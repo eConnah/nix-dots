@@ -84,7 +84,7 @@ Three custom flake-parts options act as registries for reusable pieces:
 
 Each registry is defined once using `flake-parts-lib.mkSubmoduleOptions`, and
 every other file just adds entries to it, e.g.,
-`flake.hjemModules.connor = { ... };`.
+`flake.hjemModules.clementine = { ... };`.
 
 ### Composing a host
 
@@ -99,7 +99,7 @@ flake.nixosConfigurations.<host> = inputs.nixpkgs.lib.nixosSystem {
     <host>-config
     <host>-hardware
     <host>-hjem
-    # ...per-user modules (connor, kyla, aude, ewan, leo)...
+    # ...per-user modules (clementine, kyla, aude, ewan, leo)...
   ];
 ```
 
@@ -118,7 +118,7 @@ machine. Each secret declares which aliases can decrypt it via `recipients`,
 e.g.:
 
 ```nix
-security.nix-secrets.secrets."connor/linux" = {
+security.nix-secrets.secrets."clementine/linux" = {
   neededForUsers = true;
   recipients = ["ACE" "cookie" "lenix" "murtle" "onyx" "turtle" "yubikey"];
 };
@@ -135,13 +135,13 @@ config, regardless of whether that host is actually a recipient — a host that
 isn't listed still fails activation instead of just skipping the secret. To
 avoid every host trying (and failing) to decrypt secrets for users it doesn't
 have, each user's secrets live in their own `flake.secretModules.<user>` entry
-(connor, connor-eduroam, ewan, kyla, aude), and only the NixOS modules for hosts
+(clementine, clementine-eduroam, ewan, kyla, aude), and only the NixOS modules for hosts
 that actually have that user import the relevant one — e.g.
-`self.secretModules.connor` is only imported by the connor NixOS module, which
-in turn is only imported by hosts with a connor account.
+`self.secretModules.clementine` is only imported by the clementine NixOS module, which
+in turn is only imported by hosts with a clementine account.
 
-`connor-eduroam` is a good example of splitting even further: it holds a single
-secret (`connor/wifi/eduroam`) scoped to lenix and yubikey only, because no
+`clementine-eduroam` is a good example of splitting even further: it holds a single
+secret (`clementine/wifi/eduroam`) scoped to lenix and yubikey only, because no
 other host needs eduroam credentials.
 
 ### secret-assertions

@@ -5,7 +5,7 @@
 }: {
   flake.nixosConfigurations.phoenix = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      connor-headless
+      clementine-headless
       headless
       limine
       phoenix-circus

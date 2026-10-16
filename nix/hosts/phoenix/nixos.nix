@@ -26,7 +26,7 @@
     users = {
       mutableUsers = false;
       users = {
-        connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
+        clementine.hashedPasswordFile = config.security.nix-secrets.secrets."clementine/linux".path;
       };
     };
   });

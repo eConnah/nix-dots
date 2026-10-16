@@ -62,7 +62,6 @@
       mutableUsers = false;
       users = {
         aude.hashedPasswordFile = config.security.nix-secrets.secrets."aude/linux".path;
-        connor.hashedPasswordFile = config.security.nix-secrets.secrets."connor/linux".path;
         ewan.hashedPasswordFile = config.security.nix-secrets.secrets."ewan/linux".path;
         kyla.hashedPasswordFile = config.security.nix-secrets.secrets."kyla/linux".path;
       };

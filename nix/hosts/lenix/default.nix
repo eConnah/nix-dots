@@ -6,7 +6,7 @@
   flake.nixosConfigurations.lenix = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       asahi
-      connor-graphical
+      clementine-graphical
       hyprland
       lenix-config
       lenix-hardware
@@ -14,7 +14,7 @@
       limine
       lix
       preservation
-      self.secretModules.connor-eduroam
+      self.secretModules.clementine-eduroam
     ];
   };
 }

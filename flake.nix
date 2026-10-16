@@ -1,5 +1,5 @@
 {
-  description = "Connors NixOS Dendritic Flake";
+  description = "Clémentine's NixOS Dendritic Flake";
 
   outputs = {self, ...} @ args: let
     # flake-parts fix

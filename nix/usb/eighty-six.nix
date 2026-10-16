@@ -6,7 +6,7 @@
   flake.nixosConfigurations.eighty-six = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-      connor-headless
+      clementine-headless
       headless
       mesa
       (
@@ -32,10 +32,10 @@
           users = {
             mutableUsers = lib.mkForce true;
             users = {
-              connor.password = "nixos";
+              clementine.password = "nixos";
               root = {
                 initialHashedPassword = lib.mkForce null;
-                openssh.authorizedKeys.keys = config.users.users.connor.openssh.authorizedKeys.keys;
+                openssh.authorizedKeys.keys = config.users.users.clementine.openssh.authorizedKeys.keys;
                 password = "nixos";
               };
             };

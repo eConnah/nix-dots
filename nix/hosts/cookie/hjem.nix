@@ -11,16 +11,6 @@
         ];
         theme.wallpaper = "your_name-01.png";
       };
-      connor = {
-        imports = with self.hjemModules; [
-          cookie-hyprland
-        ];
-        packages = with pkgs; [
-          plezy
-          spotify
-        ];
-        theme.wallpaper = "frieren-02.png";
-      };
       kyla = {
         imports = with self.hjemModules; [
           cookie-hyprland

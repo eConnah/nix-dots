@@ -84,7 +84,7 @@ exclude_follow = ["nixpkgs"]
 url = "github:eConnah/secrets"
 signers = ["clementine"]
 type = "fetch"
-frozen = "729b71881a4467bfd66e8fa8550a38b92f023b51"
+frozen = "e9b299177e22f814e58ee3bc8e347f50662fbc56"
 
 # other stuff
 [inputs.apple-silicon]

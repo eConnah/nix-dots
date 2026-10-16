@@ -27,14 +27,15 @@ Configures impermanence state persistence specifically for Aude.
 A core module that enables initrd systemd and allows the bootloader to touch EFI
 variables.
 
-## connor
+## clementine
 
-System-level user configuration for Connor. Defines user IDs, groups, and SSH
-keys. Enables `pcscd`, `udev` rules for YubiKey personalisation, and Tailscale.
+System-level user configuration for Clémentine. Defines user IDs, groups, and
+SSH keys. Enables `pcscd`, `udev` rules for YubiKey personalisation, and
+Tailscale.
 
-## connor-preservation
+## clementine-preservation
 
-Configures impermanence state persistence specifically for Connor.
+Configures impermanence state persistence specifically for Clémentine.
 
 ## ewan
 

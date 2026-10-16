@@ -5,7 +5,7 @@
 }: {
   flake.nixosConfigurations.onyx = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
-      connor-graphical
+      clementine-graphical
       graphical
       hyprland
       limine

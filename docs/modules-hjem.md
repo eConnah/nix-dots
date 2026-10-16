@@ -12,15 +12,15 @@ User environment configuration for Aude. Configures `git` and `jujutsu` (jj),
 sets Neovim as the default editor, and installs applications like LibreOffice,
 Signal, and Vesktop.
 
-## connor-graphical
+## clementine-graphical
 
-Graphical setup for Connor. Installs core applications (Obsidian, Halloy,
+Graphical setup for Clémentine. Installs core applications (Obsidian, Halloy,
 Vesktop) and provides configuration for IRC.
 
-## connor-headless
+## clementine-headless
 
-User environment configuration for Connor. Sets up SSH keys, configures `git`
-with GPG signing, and provides configuration files for version control.
+User environment configuration for Clémentine. Sets up SSH keys, configures
+`git` with GPG signing, and provides configuration files for version control.
 
 ## easyeffects
 

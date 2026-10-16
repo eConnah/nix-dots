@@ -1,6 +1,6 @@
 {self, ...}: {
   flake.hjemModules = {
-    connor-graphical = {
+    clementine-graphical = {
       osConfig,
       pkgs,
       ...
@@ -36,7 +36,7 @@
                 channels = ["#nixos"];
                 nickname = "eConnah";
                 sasl.plain = {
-                  password_file = osConfig.security.nix-secrets.secrets."connor/halloy".path;
+                  password_file = osConfig.security.nix-secrets.secrets."clementine/halloy".path;
                   username = "eConnah";
                 };
                 server = "irc.libera.chat";
@@ -44,10 +44,10 @@
             };
           };
         };
-        "vesktop/settings/settings.json".source = "${self}/not-nix/connor/vesktop/settings.json";
+        "vesktop/settings/settings.json".source = "${self}/not-nix/clementine/vesktop/settings.json";
       };
     };
-    connor-headless = {pkgs, ...}: {
+    clementine-headless = {pkgs, ...}: {
       imports = with self.hjemModules; [
         headless
         oledppuccin
@@ -56,12 +56,12 @@
       files = {
         ".ssh/config" = {
           permissions = "0600";
-          source = "${self}/not-nix/connor/ssh/config";
+          source = "${self}/not-nix/clementine/ssh/config";
           type = "copy";
         };
         ".ssh/id_ed25519_sk_rk.pub" = {
           permissions = "0644";
-          source = "${self}/not-nix/connor/ssh/id_ed25519_sk_rk.pub";
+          source = "${self}/not-nix/clementine/ssh/id_ed25519_sk_rk.pub";
           type = "copy";
         };
       };
