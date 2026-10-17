@@ -3,6 +3,9 @@
 # nix reads pins.lock.json
 # this file drives tack update
 
+[tack]
+recomposable = true
+
 # shorturl schemes
 # scheme rest expands rest into {path}
 [shorturls]
@@ -61,26 +64,21 @@ patches = [
 [inputs.circus]
 url = "github:manic-systems/circus"
 group = "rafware"
-exclude_follow = ["nixpkgs"]
 [inputs.ncro]
 url = "github:manic-systems/ncro"
 group = "rafware"
-exclude_follow = ["nixpkgs"]
 [inputs.nixos-core]
 url = "github:manic-systems/nixos-core"
 group = "rafware"
-exclude_follow = ["nixpkgs"]
 [inputs.tack]
 url = "github:manic-systems/tack"
 group = "rafware"
-exclude_follow = ["nixpkgs"]
 [inputs.nvf]
 url = "github:notashelf/nvf"
 group = "rafware"
 [inputs.hjem]
 url = "github:feel-co/hjem"
 group = "rafware"
-exclude_follow = ["nixpkgs"]
 
 # my stuff
 [inputs.super-secret]
@@ -103,6 +101,5 @@ url = "git+https://git.lix.systems/lix-project/lix"
 type = "fetch"
 [inputs.lix-module]
 url = "git+https://git.lix.systems/lix-project/nixos-module"
-exclude_follow = ["nixpkgs"]
 [inputs.nix-secrets]
 url = "github:unnamed-systems/nix-secrets"

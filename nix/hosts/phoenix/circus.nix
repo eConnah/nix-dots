@@ -36,7 +36,10 @@
           force_secure_cookies = true;
         };
         queue_runner.workers = 2;
-        evaluator.poll_interval = 300;
+        evaluator = {
+          poll_interval = 300;
+          restrict_eval = false;
+        };
         signing = {
           enabled = true;
           key_file = config.security.nix-secrets.secrets."nix-cache-key".path;
