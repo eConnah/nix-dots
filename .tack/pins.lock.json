@@ -28,9 +28,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "circus",
-    "rev": "c49d659ba8bbbd8e8e675187e87223b12df8e8ec",
-    "narHash": "sha256-+J3ouk3+DjeWnEkfbC1b2OM0x3b0B/cNXQwAr0Se1jM=",
-    "lastModified": 1792191463
+    "rev": "22340f45f15a9604f51e5102ea00430399a04d01",
+    "narHash": "sha256-JDS8XLFXn0h4T5GGhvU4242HEF2/ftsYsvtyQmOr9Ys=",
+    "lastModified": 1792213876
   },
   "disko": {
     "type": "github",
@@ -52,9 +52,9 @@
     "type": "github",
     "owner": "feel-co",
     "repo": "hjem",
-    "rev": "6b2cc57463bbbac3d7c61206ab365a2c928861a4",
-    "narHash": "sha256-Q5hGcKBaqz1L0neSRDfQgQPBKmSCkV1N5YBRwp+RtUc=",
-    "lastModified": 1791807571
+    "rev": "7fec35f695f1d8784d2485be6871f85dc0d0f522",
+    "narHash": "sha256-E3vrGA6k5Suh2NDP18PO+HTaL5zCQMfGW5toKoVqcQ8=",
+    "lastModified": 1792374494
   },
   "hjem-rum": {
     "type": "github",
@@ -68,9 +68,9 @@
     "type": "git",
     "url": "https://git.lix.systems/lix-project/lix",
     "ref": "HEAD",
-    "rev": "3c5f629014e92037f9e446863441bcc5ba94eae3",
-    "narHash": "sha256-q1afbP0uTTIFPUC4KMHbta+61saOMKQTsRbdvOs7rTw=",
-    "lastModified": 1792015917
+    "rev": "96e92932da1171707f52de4123b246685a72f913",
+    "narHash": "sha256-bpZ2PHj9EKrQ9uMnxx8GRZ7mdPxBFP8eiO3Tz2B40lE=",
+    "lastModified": 1792320035
   },
   "lix-module": {
     "type": "git",
@@ -84,9 +84,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "ncro",
-    "rev": "e125f8a9b2b7c9414f780604cae02182e8772597",
-    "narHash": "sha256-wdmRnrB60UVo6MERmPijnVoyo/ialR1b62I/NrXGLw8=",
-    "lastModified": 1792183455
+    "rev": "7dcf3063ae37c3f012a9c7f4de8561af4bd2a289",
+    "narHash": "sha256-DqRqnGyEmmkB5sbvg5/n4Cyraaz84wwl86ZbpT2m+oA=",
+    "lastModified": 1792394949
   },
   "nix-secrets": {
     "type": "github",
@@ -100,19 +100,19 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "nixos-core",
-    "rev": "d3c2e1de4f6387da12713a26ef5b9a7930f46b22",
-    "narHash": "sha256-ZBvWH97NmR6P5Rapi4YXjrQTmmwXtw8RYgmIortbXyU=",
-    "lastModified": 1791933734
+    "rev": "ea3d43aab1da4ab847065d50892c774904aa492d",
+    "narHash": "sha256-4XPY3uV0guJjLwzQb2wbio448zKfgkaH3dEh7ui2Bxg=",
+    "lastModified": 1792210974
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1092090.55bfb4d7437b/nixexprs.tar.zst?rev=55bfb4d7437bd4e09ab7cba58a43bd68eb310044&lastModified=1791956154",
-    "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
-    "narHash": "sha256-gJX2+xcImvxBCI3bp7zXKLUX2AwsdTxMgJ1UX/5Hm/o=",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1093333.fe13242281a6/nixexprs.tar.zst?rev=fe13242281a67641c0102cdb1087f0ebe586c7df&lastModified=1792094642",
+    "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
+    "narHash": "sha256-LPFRbrCWWyNsdQLO3SX1B/5UMkFK0hfe7bZR6lENvpc=",
     "lastModified": 315532800,
     "patched": {
-      "path": "/nix/store/kygm471gpc2nxc08w7sj18w0dvzn4jky-source",
-      "narHash": "sha256-+LFFhYq8xUvPx9bLfRAvJof5MwhaJ4TX8uIVyl3+dds=",
+      "path": "/nix/store/gri0yr0yjr6zw9wvh65n894jpv84zf0f-source",
+      "narHash": "sha256-bC/2630U4XnZhSSRWdLZYf8qlsWbW4wzPHFlb6yW1/k=",
       "lastModified": 315532800,
       "patches": [
         {

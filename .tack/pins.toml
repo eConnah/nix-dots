@@ -64,6 +64,7 @@ patches = [
 [inputs.circus]
 url = "github:manic-systems/circus"
 group = "rafware"
+exclude_follow = ["nixpkgs"]
 [inputs.ncro]
 url = "github:manic-systems/ncro"
 group = "rafware"
