@@ -169,7 +169,23 @@
         };
         storage = inputs.super-secret;
       };
-      pam.enableUMask = true;
+      pam = {
+        enableUMask = true;
+        loginLimits = [
+          {
+            domain = "*";
+            type = "soft";
+            item = "nofile";
+            value = "65535";
+          }
+          {
+            domain = "*";
+            type = "hard";
+            item = "nofile";
+            value = "65535";
+          }
+        ];
+      };
       run0 = {
         enable = true;
         sudo-shim.enable = true;
