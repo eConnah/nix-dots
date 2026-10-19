@@ -23,5 +23,8 @@
       };
       wantedBy = ["graphical-session.target"];
     };
+    xdg.state.files."vicinae/onboarding.json".text = ''
+      {"version":1,"completedAt":"2026-01-01T00:00:00Z"}
+    '';
   };
 }
