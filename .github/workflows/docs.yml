@@ -35,6 +35,9 @@ jobs:
           lix_conf: |
             experimental-features = nix-command flakes pipe-operator
 
+      - name: tack materialize
+        run: nix run --accept-flake-config github:manic-systems/tack -- materialize
+
       - name: Build docs with ndg
         run: nix develop -c ndg html
 
