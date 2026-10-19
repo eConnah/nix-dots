@@ -53,12 +53,14 @@
       };
     };
     nixosModules.hyprland = {
-      programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-        xwayland.enable = true;
+      programs = {
+        hyprland = {
+          enable = true;
+          withUWSM = true;
+          xwayland.enable = true;
+        };
+        uwsm.enable = true;
       };
-      programs.uwsm.enable = true;
       environment.sessionVariables.TUIGREET_SESSION_COMMAND = "uwsm start default";
     };
   };

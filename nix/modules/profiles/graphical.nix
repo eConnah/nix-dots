@@ -1,9 +1,12 @@
 {self, ...}: {
   flake.nixosModules.graphical = {
+    config,
     lib,
     pkgs,
     ...
-  }: {
+  }: let
+    inherit (lib) optionalAttrs;
+  in {
     imports = with self.nixosModules; [headless];
     environment = {
       etc."tuigreet/config.toml".source = "${self}/not-nix/presets/tuigreet.toml";
@@ -50,6 +53,10 @@
         extraCompatPackages = with pkgs; [
           proton-ge-bin
         ];
+        # fazzi da goat https://gitlab.com/fazzi/nixohess/
+        package = pkgs.steam.override {
+          extraEnv.DBUS_SYSTEM_BUS_ADDRESS = "";
+        };
       };
     };
     qt = {
