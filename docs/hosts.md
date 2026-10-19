@@ -32,6 +32,15 @@ Unlike the other hosts, it uses a traditional BTRFS partition layout without the
 `preservation` module or `nix-secrets`, running the Asahi Linux kernel and
 firmware.
 
+## evilix
+
+A wsl host for Clémentine. Runs without `preservation` module. To use via
+windows terminal utilise this command:
+
+```
+C:\WINDOWS\system32\wsl.exe -d NixOS -u root -e /run/current-system/sw/bin/machinectl shell -E DISPLAY=:0 -E WAYLAND_DISPLAY=wayland-0 -E XDG_RUNTIME_DIR=/run/user/2026 clementine@.host /etc/wsl-session-init.sh
+```
+
 ## lenix
 
 Clémentine's primary Apple Silicon laptop. It features LUKS full-disk encryption

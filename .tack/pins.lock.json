@@ -14,7 +14,8 @@
     "nixpkgs": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst",
     "nvf": "github:notashelf/nvf",
     "super-secret": "github:eConnah/secrets",
-    "tack": "github:manic-systems/tack"
+    "tack": "github:manic-systems/tack",
+    "wsl": "github:nix-community/NixOS-WSL"
   },
   "apple-silicon": {
     "type": "github",
@@ -152,5 +153,13 @@
     "rev": "d785e637b7f6d0694a53951588c484f32397335e",
     "narHash": "sha256-q3o87E0s55Z09YVhFJtws2Dvv1IRCoGxOOtomZsJEXA=",
     "lastModified": 1792090744
+  },
+  "wsl": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "NixOS-WSL",
+    "rev": "72c92b11bb8289e6651c7fef29cc0a885fd6a255",
+    "narHash": "sha256-DoYGPM6QpnYBLWj9gGw6ZwAzIX+HrAVov1BoT+8Jixo=",
+    "lastModified": 1789164534
   }
 }

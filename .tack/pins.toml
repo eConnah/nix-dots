@@ -104,3 +104,5 @@ type = "fetch"
 url = "git+https://git.lix.systems/lix-project/nixos-module"
 [inputs.nix-secrets]
 url = "github:unnamed-systems/nix-secrets"
+[inputs.wsl]
+url = "github:nix-community/NixOS-WSL"

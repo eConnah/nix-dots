@@ -71,7 +71,10 @@
           lsp.servers = ["roslyn-ls"];
           extensions.roslyn-nvim = {
             enable = true;
-            setupOpts.extensions.razor.enabled = false;
+            setupOpts = {
+              extensions.razor.enabled = false;
+              filewatching = "off";
+            };
           };
         };
         enableExtraDiagnostics = true;
@@ -110,6 +113,10 @@
         name = "catppuccin";
         style = "mocha";
         transparent = true;
+      };
+      treesitter = {
+        enable = true;
+        context.enable = true;
       };
       undoFile.enable = true;
       viAlias = true;
