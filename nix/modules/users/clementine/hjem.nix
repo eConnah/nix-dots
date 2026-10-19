@@ -46,7 +46,8 @@
           };
         };
         "lazyspotify/config.yml".text = ''
-          client_id: a05e9b38cd3e420a87ca1d09b26b7179
+          auth:
+            client_id: a05e9b38cd3e420a87ca1d09b26b7179
         '';
         "vesktop/settings/settings.json".source = "${self}/not-nix/clementine/vesktop/settings.json";
       };
