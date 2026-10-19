@@ -11,7 +11,7 @@ end
 # disable shitty vi indicator
 
 ## PROMPT ARCHITECTURE
-# EVENT FISH_PROMPT 
+# EVENT FISH_PROMPT
 # |> async functions will auto run <- async functions will write to specific paths
 # ||> async counter is increased by each function
 # |> prompt is written to $paths_prompt <- this call sync functions that will read from paths async functions write to
