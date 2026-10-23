@@ -69,9 +69,9 @@
     "type": "git",
     "url": "https://git.lix.systems/lix-project/lix",
     "ref": "HEAD",
-    "rev": "27c8a887d9ed348005d91787e10f9761f547e62b",
-    "narHash": "sha256-5M+lCq9w3THPCY7vXW9oHkO1yhVHCGzcYrRBMfQJkXk=",
-    "lastModified": 1792584289
+    "rev": "a16e8511de98ad1b4d7ef73afd97d995bc32ea28",
+    "narHash": "sha256-EWt88eAeVixW1MB6OoJThr2fQ9z996poZvYwsNkN7t4=",
+    "lastModified": 1792716936
   },
   "lix-module": {
     "type": "git",
@@ -110,7 +110,20 @@
     "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1097682.02c087f3fe67/nixexprs.tar.zst?rev=02c087f3fe673c9e317f206a627cb6b910336dbe&lastModified=1792502884",
     "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
     "narHash": "sha256-ij8QUxzTOHovLrNOxVRx+RAhGQFOMsJbji0veiatH5k=",
-    "lastModified": 1792502884
+    "lastModified": 1792502884,
+    "patched": {
+      "path": "/nix/store/iy2fmi7xqqccc5iwpmfq8ivjzl4zb8yq-source",
+      "narHash": "sha256-Zo6v3XnxgR7j1RKxsTvaemhDM8WTpytWZV5n0CxLisE=",
+      "lastModified": 1792502884,
+      "patches": [
+        {
+          "source": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/576564.patch",
+          "url": "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/576564.patch",
+          "file": "patches/nixpkgs/576564.patch",
+          "sha256": "ab144f93c19114c36311492aefe5e6f4f20ef8d23dab66df5de9c5b223394e4c"
+        }
+      ]
+    }
   },
   "nvf": {
     "type": "github",
