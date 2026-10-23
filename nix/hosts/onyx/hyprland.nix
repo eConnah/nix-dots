@@ -10,6 +10,8 @@
       lua
       */
       ''
+        menu = "vicinae toggle"
+
         hl.monitor({
             output = "DP-3",
             mode = "2560x1440@240",
@@ -39,8 +41,6 @@
                 sensitivity = 0,
             },
         })
-
-        menu = "vicinae toggle"
 
         for i = 1, 10 do
             local key = i % 10

@@ -10,6 +10,8 @@
       lua
       */
       ''
+        menu = "vicinae toggle"
+
         hl.monitor({
             output = "eDP-1",
             mode = "1920x1080@60",
@@ -38,8 +40,6 @@
                 },
             },
         })
-
-        menu = "vicinae toggle"
 
         for i = 1, 10 do
             local key = i % 10

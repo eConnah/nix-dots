@@ -10,6 +10,8 @@
       lua
       */
       ''
+        menu = "vicinae toggle"
+
         hl.monitor({
             output = "DP-1",
             mode = "1920x1080@144",
@@ -44,11 +46,6 @@
                 sensitivity = 0.5,
             },
         })
-
-        menu = "vicinae toggle"
-
-        hl.bind("F5", hl.dsp.exec_cmd("${self}/not-nix/ewan/antiafk.sh"))
-        hl.bind("F6", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
 
         for i = 1, 10 do
             local key = i % 10

@@ -1,5 +1,9 @@
 {self, ...}: {
-  flake.hjemModules.ewan = {pkgs, ...}: {
+  flake.hjemModules.ewan = {
+    pkgs,
+    lib,
+    ...
+  }: {
     imports = with self.hjemModules; [
       graphical
       oledppuccin
@@ -75,5 +79,15 @@
         };
       };
     };
+    custom.hyprland.extraLuaConfig =
+      lib.mkOrder 502
+      /*
+      lua
+      */
+      ''
+        hl.bind("mouse:276", hl.dsp.exec_cmd("${self}/not-nix/ewan/autoclicker.sh"))
+        hl.bind("F6", hl.dsp.exec_cmd("${self}/not-nix/ewan/antiafk.sh"))
+        hl.bind("F7", hl.dsp.exec_cmd("${self}/not-nix/ewan/fspam.sh"))
+      '';
   };
 }
