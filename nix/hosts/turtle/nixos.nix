@@ -70,5 +70,23 @@
       enable = true;
       memoryPercent = 25;
     };
+    # printer stuff
+    services = {
+      printing.enable = true;
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
+    };
+    hardware.sane = {
+      enable = true;
+      extraBackends = [pkgs.sane-airscan];
+    };
+    users.users = {
+      aude.extraGroups = ["lp"];
+      ewan.extraGroups = ["lp"];
+      kyla.extraGroups = ["lp"];
+    };
   });
 }
