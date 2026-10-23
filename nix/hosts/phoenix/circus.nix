@@ -35,7 +35,10 @@
           port = 3000;
           force_secure_cookies = true;
         };
-        queue_runner.workers = 2;
+        queue_runner = {
+          build_timeout = 10000;
+          workers = 2;
+        };
         evaluator = {
           poll_interval = 300;
           restrict_eval = false;
@@ -65,6 +68,45 @@
       "nix-cache-key" = {
         group = "circus";
         owner = "circus";
+      };
+    };
+    systemd.services = {
+      tailscale-online = {
+        description = "wait for tailscale to get an ip";
+        after = ["tailscaled.service"];
+        requires = ["tailscaled.service"];
+        partOf = ["tailscaled.service"];
+        wantedBy = ["multi-user.target"];
+        path = [config.services.tailscale.package];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          TimeoutStartSec = "infinity";
+        };
+        script = ''
+          until tailscale ip -4 >/dev/null 2>&1; do
+            sleep 1
+          done
+        '';
+      };
+      circus-server = {
+        after = ["tailscale-online.service"];
+        requires = ["tailscale-online.service"];
+        partOf = ["tailscale-online.service"];
+
+        serviceConfig.LimitNOFILE = 65536;
+      };
+      circus-evaluator = {
+        after = ["tailscale-online.service"];
+        requires = ["tailscale-online.service"];
+        partOf = ["tailscale-online.service"];
+      };
+      circus-queue-runner = {
+        after = ["tailscale-online.service"];
+        requires = ["tailscale-online.service"];
+        partOf = ["tailscale-online.service"];
+
+        serviceConfig.LimitNOFILE = 65536;
       };
     };
   };
