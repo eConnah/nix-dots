@@ -72,7 +72,10 @@
     };
     # printer stuff
     services = {
-      printing.enable = true;
+      printing = {
+        enable = true;
+        drivers = [pkgs.hplipWithPlugin];
+      };
       avahi = {
         enable = true;
         nssmdns4 = true;
@@ -81,12 +84,12 @@
     };
     hardware.sane = {
       enable = true;
-      extraBackends = [pkgs.sane-airscan];
+      extraBackends = [pkgs.hplipWithPlugin];
     };
     users.users = {
-      aude.extraGroups = ["lp"];
-      ewan.extraGroups = ["lp"];
-      kyla.extraGroups = ["lp"];
+      aude.extraGroups = ["lp" "scanner"];
+      ewan.extraGroups = ["lp" "scanner"];
+      kyla.extraGroups = ["lp" "scanner"];
     };
   });
 }
