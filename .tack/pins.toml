@@ -83,10 +83,9 @@ group = "rafware"
 
 # my stuff
 [inputs.super-secret]
-url = "github:eConnah/secrets"
+url = "github:notaclementine/secrets"
 signers = ["clementine"]
 type = "fetch"
-frozen = "e9b299177e22f814e58ee3bc8e347f50662fbc56"
 
 # other stuff
 [inputs.apple-silicon]

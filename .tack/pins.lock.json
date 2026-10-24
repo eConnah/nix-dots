@@ -13,7 +13,7 @@
     "nixos-core": "github:manic-systems/nixos-core",
     "nixpkgs": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst",
     "nvf": "github:notashelf/nvf",
-    "super-secret": "github:eConnah/secrets",
+    "super-secret": "github:notaclementine/secrets",
     "tack": "github:manic-systems/tack",
     "wsl": "github:nix-community/NixOS-WSL"
   },
@@ -135,7 +135,7 @@
   },
   "super-secret": {
     "type": "github",
-    "owner": "eConnah",
+    "owner": "notaclementine",
     "repo": "secrets",
     "rev": "e9b299177e22f814e58ee3bc8e347f50662fbc56",
     "narHash": "sha256-SjrH0jlSJgqIjf8OT2h7JZApoqIlhwSUZgN+uj9Kzjs=",
@@ -143,7 +143,7 @@
     "signedBy": {
       "signer": "clementine",
       "keys": "sha256-abd58ec74b824c69f55fc328e1a814f736ffc69fc689d61321256af9944c3e63",
-      "since": "729b71881a4467bfd66e8fa8550a38b92f023b51"
+      "since": "e9b299177e22f814e58ee3bc8e347f50662fbc56"
     }
   },
   "tack": {
